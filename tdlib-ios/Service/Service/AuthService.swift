@@ -80,7 +80,7 @@ final class AuthService: UpdateListener {
             }
             let tdlibPath = cachesUrl.appendingPathComponent("tdlib", isDirectory: true).path
             let params = TdlibParameters(
-                apiHash: "5e6d7b36f0e363cf0c07baf2deb26076",
+                apiHash: "5e6d7b36f0e363cf0c07baf2deb26076", // https://core.telegram.org/api/obtaining_api_id
                 apiId: 287311,
                 applicationVersion: "1.0",
                 databaseDirectory: tdlibPath,

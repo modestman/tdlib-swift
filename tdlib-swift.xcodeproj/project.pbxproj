@@ -15,7 +15,6 @@
 		782C74B5233BE356006039BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C74B4233BE355006039BE /* ViewController.swift */; };
 		782C74B7233BE356006039BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 782C74B6233BE356006039BE /* Assets.xcassets */; };
 		782C74BA233BE356006039BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 782C74B8233BE356006039BE /* Main.storyboard */; };
-		782C7962233BE538006039BE /* TdlibKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 782C7960233BE538006039BE /* TdlibKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		782C7965233BE538006039BE /* TdlibKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 782C795E233BE538006039BE /* TdlibKit.framework */; };
 		782C7966233BE538006039BE /* TdlibKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 782C795E233BE538006039BE /* TdlibKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		782C7994233BE914006039BE /* TlObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 782C7980233BE914006039BE /* TlObject.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -674,7 +673,6 @@
 		782C74BB233BE356006039BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		782C74BC233BE356006039BE /* tdlib_macos.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tdlib_macos.entitlements; sourceTree = "<group>"; };
 		782C795E233BE538006039BE /* TdlibKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TdlibKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		782C7960233BE538006039BE /* TdlibKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TdlibKit.h; sourceTree = "<group>"; };
 		782C7961233BE538006039BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		782C797B233BE914006039BE /* libtdjson.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libtdjson.dylib; sourceTree = "<group>"; };
 		782C7980233BE914006039BE /* TlObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TlObject.h; sourceTree = "<group>"; };
@@ -1364,7 +1362,6 @@
 				782C7E4D233F7625006039BE /* Supporting */,
 				782C7E45233F642F006039BE /* ProjectModule */,
 				782C796C233BE8CF006039BE /* td */,
-				782C7960233BE538006039BE /* TdlibKit.h */,
 				782C7961233BE538006039BE /* Info.plist */,
 			);
 			path = TdlibKit;
@@ -2176,7 +2173,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				782C799A233BE914006039BE /* td_api.hpp in Headers */,
-				782C7962233BE538006039BE /* TdlibKit.h in Headers */,
 				782C7999233BE914006039BE /* td_log.h in Headers */,
 				782C7997233BE914006039BE /* Client.h in Headers */,
 				782C7998233BE914006039BE /* td_api.h in Headers */,
