@@ -1,0 +1,64 @@
+//
+//  ConnectedWebsite.swift
+//  tl2swift
+//
+//  Created by Code Generator
+//
+
+import Foundation
+
+
+/// Contains information about one website the current user is logged in with Telegram
+public struct ConnectedWebsite: Codable {
+
+    /// User identifier of a bot linked with the website
+    public let botUserId: Int
+
+    /// The version of a browser used to log in
+    public let browser: String
+
+    /// The domain name of the website
+    public let domainName: String
+
+    /// Website identifier
+    public let id: String
+
+    /// IP address from which the user was logged in, in human-readable format
+    public let ip: String
+
+    /// Point in time (Unix timestamp) when obtained authorization was last used
+    public let lastActiveDate: Int
+
+    /// Human-readable description of a country and a region, from which the user was logged in, based on the IP address
+    public let location: String
+
+    /// Point in time (Unix timestamp) when the user was logged in
+    public let logInDate: Int
+
+    /// Operating system the browser is running on
+    public let platform: String
+
+
+    public init (
+        botUserId: Int,
+        browser: String,
+        domainName: String,
+        id: String,
+        ip: String,
+        lastActiveDate: Int,
+        location: String,
+        logInDate: Int,
+        platform: String) {
+
+        self.botUserId = botUserId
+        self.browser = browser
+        self.domainName = domainName
+        self.id = id
+        self.ip = ip
+        self.lastActiveDate = lastActiveDate
+        self.location = location
+        self.logInDate = logInDate
+        self.platform = platform
+    }
+}
+

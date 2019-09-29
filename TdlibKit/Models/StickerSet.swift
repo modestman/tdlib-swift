@@ -1,0 +1,79 @@
+//
+//  StickerSet.swift
+//  tl2swift
+//
+//  Created by Code Generator
+//
+
+import Foundation
+
+
+/// Represents a sticker set
+public struct StickerSet: Codable {
+
+    /// A list of emoji corresponding to the stickers in the same order. The list is only for informational purposes, because a sticker is always sent with a fixed emoji from the corresponding Sticker object
+    public let emojis: [Emojis]
+
+    /// Identifier of the sticker set
+    public let id: String
+
+    /// True, is the stickers in the set are animated
+    public let isAnimated: Bool
+
+    /// True, if the sticker set has been archived. A sticker set can't be installed and archived simultaneously
+    public let isArchived: Bool
+
+    /// True, if the sticker set has been installed by the current user
+    public let isInstalled: Bool
+
+    /// True, if the stickers in the set are masks
+    public let isMasks: Bool
+
+    /// True, if the sticker set is official
+    public let isOfficial: Bool
+
+    /// True for already viewed trending sticker sets
+    public let isViewed: Bool
+
+    /// Name of the sticker set
+    public let name: String
+
+    /// List of stickers in this set
+    public let stickers: [Sticker]
+
+    /// Sticker set thumbnail in WEBP format with width and height 100; may be null. The file can be downloaded only before the thumbnail is changed
+    public let thumbnail: PhotoSize?
+
+    /// Title of the sticker set
+    public let title: String
+
+
+    public init (
+        emojis: [Emojis],
+        id: String,
+        isAnimated: Bool,
+        isArchived: Bool,
+        isInstalled: Bool,
+        isMasks: Bool,
+        isOfficial: Bool,
+        isViewed: Bool,
+        name: String,
+        stickers: [Sticker],
+        thumbnail: PhotoSize?,
+        title: String) {
+
+        self.emojis = emojis
+        self.id = id
+        self.isAnimated = isAnimated
+        self.isArchived = isArchived
+        self.isInstalled = isInstalled
+        self.isMasks = isMasks
+        self.isOfficial = isOfficial
+        self.isViewed = isViewed
+        self.name = name
+        self.stickers = stickers
+        self.thumbnail = thumbnail
+        self.title = title
+    }
+}
+
