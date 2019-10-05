@@ -24,7 +24,7 @@ public struct SendInlineQueryResultMessage: Codable {
     public let hideViaBot: Bool
 
     /// Identifier of the inline query
-    public let queryId: String
+    public let queryId: TdInt64
 
     /// Identifier of a message to reply to or 0
     public let replyToMessageId: Int64
@@ -38,7 +38,7 @@ public struct SendInlineQueryResultMessage: Codable {
         disableNotification: Bool,
         fromBackground: Bool,
         hideViaBot: Bool,
-        queryId: String,
+        queryId: TdInt64,
         replyToMessageId: Int64,
         resultId: String) {
 

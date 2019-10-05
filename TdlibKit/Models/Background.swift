@@ -15,7 +15,7 @@ public struct Background: Codable {
     public let document: Document?
 
     /// Unique background identifier
-    public let id: String
+    public let id: TdInt64
 
     /// True, if the background is dark and is recommended to be used with dark theme
     public let isDark: Bool
@@ -32,7 +32,7 @@ public struct Background: Codable {
 
     public init (
         document: Document?,
-        id: String,
+        id: TdInt64,
         isDark: Bool,
         isDefault: Bool,
         name: String,

@@ -12,7 +12,7 @@ import Foundation
 public struct InlineQueryResults: Codable {
 
     /// Unique identifier of the inline query
-    public let inlineQueryId: String
+    public let inlineQueryId: TdInt64
 
     /// The offset for the next request. If empty, there are no more results
     public let nextOffset: String
@@ -28,7 +28,7 @@ public struct InlineQueryResults: Codable {
 
 
     public init (
-        inlineQueryId: String,
+        inlineQueryId: TdInt64,
         nextOffset: String,
         results: [InlineQueryResult],
         switchPmParameter: String,

@@ -1019,13 +1019,13 @@ public struct UpdateChatLastMessage: Codable {
     public let lastMessage: Message?
 
     /// New value of the chat order
-    public let order: String
+    public let order: TdInt64
 
 
     public init (
         chatId: Int64,
         lastMessage: Message?,
-        order: String) {
+        order: TdInt64) {
 
         self.chatId = chatId
         self.lastMessage = lastMessage
@@ -1040,12 +1040,12 @@ public struct UpdateChatOrder: Codable {
     public let chatId: Int64
 
     /// New value of the order
-    public let order: String
+    public let order: TdInt64
 
 
     public init (
         chatId: Int64,
-        order: String) {
+        order: TdInt64) {
 
         self.chatId = chatId
         self.order = order
@@ -1062,13 +1062,13 @@ public struct UpdateChatIsPinned: Codable {
     public let isPinned: Bool
 
     /// New value of the chat order
-    public let order: String
+    public let order: TdInt64
 
 
     public init (
         chatId: Int64,
         isPinned: Bool,
-        order: String) {
+        order: TdInt64) {
 
         self.chatId = chatId
         self.isPinned = isPinned
@@ -1105,13 +1105,13 @@ public struct UpdateChatIsSponsored: Codable {
     public let isSponsored: Bool
 
     /// New value of chat order
-    public let order: String
+    public let order: TdInt64
 
 
     public init (
         chatId: Int64,
         isSponsored: Bool,
-        order: String) {
+        order: TdInt64) {
 
         self.chatId = chatId
         self.isSponsored = isSponsored
@@ -1286,13 +1286,13 @@ public struct UpdateChatDraftMessage: Codable {
     public let draftMessage: DraftMessage?
 
     /// New value of the chat order
-    public let order: String
+    public let order: TdInt64
 
 
     public init (
         chatId: Int64,
         draftMessage: DraftMessage?,
-        order: String) {
+        order: TdInt64) {
 
         self.chatId = chatId
         self.draftMessage = draftMessage
@@ -1636,7 +1636,7 @@ public struct UpdateFileGenerationStart: Codable {
     public let destinationPath: String
 
     /// Unique identifier for the generation process
-    public let generationId: String
+    public let generationId: TdInt64
 
     /// The path to a file from which a new file is generated; may be empty
     public let originalPath: String
@@ -1645,7 +1645,7 @@ public struct UpdateFileGenerationStart: Codable {
     public init (
         conversion: String,
         destinationPath: String,
-        generationId: String,
+        generationId: TdInt64,
         originalPath: String) {
 
         self.conversion = conversion
@@ -1659,10 +1659,10 @@ public struct UpdateFileGenerationStart: Codable {
 public struct UpdateFileGenerationStop: Codable {
 
     /// Unique identifier for the generation process
-    public let generationId: String
+    public let generationId: TdInt64
 
 
-    public init (generationId: String) {
+    public init (generationId: TdInt64) {
         self.generationId = generationId
     }
 }
@@ -1772,12 +1772,12 @@ public struct UpdateInstalledStickerSets: Codable {
     public let isMasks: Bool
 
     /// The new list of installed ordinary sticker sets
-    public let stickerSetIds: [String]
+    public let stickerSetIds: [TdInt64]
 
 
     public init (
         isMasks: Bool,
-        stickerSetIds: [String]) {
+        stickerSetIds: [TdInt64]) {
 
         self.isMasks = isMasks
         self.stickerSetIds = stickerSetIds
@@ -1917,7 +1917,7 @@ public struct UpdateTermsOfService: Codable {
 public struct UpdateNewInlineQuery: Codable {
 
     /// Unique query identifier
-    public let id: String
+    public let id: TdInt64
 
     /// Offset of the first entry to return
     public let offset: String
@@ -1933,7 +1933,7 @@ public struct UpdateNewInlineQuery: Codable {
 
 
     public init (
-        id: String,
+        id: TdInt64,
         offset: String,
         query: String,
         senderUserId: Int,
@@ -1988,10 +1988,10 @@ public struct UpdateNewCallbackQuery: Codable {
     public let chatId: Int64
 
     /// Identifier that uniquely corresponds to the chat to which the message was sent
-    public let chatInstance: String
+    public let chatInstance: TdInt64
 
     /// Unique query identifier
-    public let id: String
+    public let id: TdInt64
 
     /// Identifier of the message, from which the query originated
     public let messageId: Int64
@@ -2005,8 +2005,8 @@ public struct UpdateNewCallbackQuery: Codable {
 
     public init (
         chatId: Int64,
-        chatInstance: String,
-        id: String,
+        chatInstance: TdInt64,
+        id: TdInt64,
         messageId: Int64,
         payload: CallbackQueryPayload,
         senderUserId: Int) {
@@ -2024,10 +2024,10 @@ public struct UpdateNewCallbackQuery: Codable {
 public struct UpdateNewInlineCallbackQuery: Codable {
 
     /// An identifier uniquely corresponding to the chat a message was sent to
-    public let chatInstance: String
+    public let chatInstance: TdInt64
 
     /// Unique query identifier
-    public let id: String
+    public let id: TdInt64
 
     /// Identifier of the inline message, from which the query originated
     public let inlineMessageId: String
@@ -2040,8 +2040,8 @@ public struct UpdateNewInlineCallbackQuery: Codable {
 
 
     public init (
-        chatInstance: String,
-        id: String,
+        chatInstance: TdInt64,
+        id: TdInt64,
         inlineMessageId: String,
         payload: CallbackQueryPayload,
         senderUserId: Int) {
@@ -2058,7 +2058,7 @@ public struct UpdateNewInlineCallbackQuery: Codable {
 public struct UpdateNewShippingQuery: Codable {
 
     /// Unique query identifier
-    public let id: String
+    public let id: TdInt64
 
     /// Invoice payload
     public let invoicePayload: String
@@ -2071,7 +2071,7 @@ public struct UpdateNewShippingQuery: Codable {
 
 
     public init (
-        id: String,
+        id: TdInt64,
         invoicePayload: String,
         senderUserId: Int,
         shippingAddress: Address) {
@@ -2090,7 +2090,7 @@ public struct UpdateNewPreCheckoutQuery: Codable {
     public let currency: String
 
     /// Unique query identifier
-    public let id: String
+    public let id: TdInt64
 
     /// Invoice payload
     public let invoicePayload: Data
@@ -2110,7 +2110,7 @@ public struct UpdateNewPreCheckoutQuery: Codable {
 
     public init (
         currency: String,
-        id: String,
+        id: TdInt64,
         invoicePayload: Data,
         orderInfo: OrderInfo?,
         senderUserId: Int,
@@ -2146,7 +2146,7 @@ public struct UpdateNewCustomQuery: Codable {
     public let data: String
 
     /// The query identifier
-    public let id: String
+    public let id: TdInt64
 
     /// Query timeout
     public let timeout: Int
@@ -2154,7 +2154,7 @@ public struct UpdateNewCustomQuery: Codable {
 
     public init (
         data: String,
-        id: String,
+        id: TdInt64,
         timeout: Int) {
 
         self.data = data

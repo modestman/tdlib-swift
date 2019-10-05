@@ -15,7 +15,7 @@ public struct StickerSet: Codable {
     public let emojis: [Emojis]
 
     /// Identifier of the sticker set
-    public let id: String
+    public let id: TdInt64
 
     /// True, is the stickers in the set are animated
     public let isAnimated: Bool
@@ -50,7 +50,7 @@ public struct StickerSet: Codable {
 
     public init (
         emojis: [Emojis],
-        id: String,
+        id: TdInt64,
         isAnimated: Bool,
         isArchived: Bool,
         isInstalled: Bool,

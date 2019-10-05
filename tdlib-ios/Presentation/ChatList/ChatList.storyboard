@@ -23,7 +23,7 @@
             </objects>
             <point key="canvasLocation" x="-797" y="157"/>
         </scene>
-        <!--Chat List View Controller-->
+        <!--Chats-->
         <scene sceneID="Aoo-ic-qcJ">
             <objects>
                 <viewController id="iZR-2F-7ym" customClass="ChatListViewController" customModule="tdlib_ios" customModuleProvider="target" sceneMemberID="viewController">
@@ -34,6 +34,32 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xBF-yk-gKl">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChatCell" textLabel="ZsU-jC-yHK" detailTextLabel="OK7-mV-2Ns" style="IBUITableViewCellStyleSubtitle" id="XIb-ob-0vz">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XIb-ob-0vz" id="5Zh-Hk-NcS">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="55.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZsU-jC-yHK">
+                                                    <rect key="frame" x="20" y="10" width="33.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OK7-mV-2Ns">
+                                                    <rect key="frame" x="20" y="31.5" width="44" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -45,17 +71,25 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Qys-gE-cJ6"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Chats" image="message" catalog="system" id="G5t-wz-vWp"/>
                     <navigationItem key="navigationItem" id="Zri-L4-RZF">
-                        <barButtonItem key="rightBarButtonItem" title="Close" id="DeU-o2-SPo">
+                        <barButtonItem key="rightBarButtonItem" title="Log out" id="DeU-o2-SPo">
                             <connections>
                                 <action selector="close:" destination="iZR-2F-7ym" id="R8f-Qa-9Th"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="xBF-yk-gKl" id="720-hb-GLU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fzp-Gw-tNw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="151" y="158"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="message" catalog="system" width="64" height="58"/>
+    </resources>
 </document>

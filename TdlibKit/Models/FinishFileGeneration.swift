@@ -15,12 +15,12 @@ public struct FinishFileGeneration: Codable {
     public let error: Error
 
     /// The identifier of the generation process
-    public let generationId: String
+    public let generationId: TdInt64
 
 
     public init (
         error: Error,
-        generationId: String) {
+        generationId: TdInt64) {
 
         self.error = error
         self.generationId = generationId

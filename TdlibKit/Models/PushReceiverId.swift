@@ -12,10 +12,10 @@ import Foundation
 public struct PushReceiverId: Codable {
 
     /// The globally unique identifier of push notification subscription
-    public let id: String
+    public let id: TdInt64
 
 
-    public init (id: String) {
+    public init (id: TdInt64) {
         self.id = id
     }
 }

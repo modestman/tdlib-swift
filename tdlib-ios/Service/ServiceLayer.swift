@@ -14,12 +14,17 @@ final class ServiceLayer {
     
     let telegramService: TelegramService
     let authService: AuthService
+    let chatListService: ChatListService
     
     private init() {
         let logger = StdOutLogger()
         telegramService = TelegramService(logger: logger)
+        
         authService = AuthService(tdApi: telegramService.api)
         telegramService.add(listener: authService)
+        
+        chatListService = ChatListService(tdApi: telegramService.api)
+        telegramService.add(listener: chatListService)
     }
     
 }

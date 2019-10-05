@@ -54,7 +54,7 @@ public struct Chat: Codable {
     public let notificationSettings: ChatNotificationSettings
 
     /// Descending parameter by which chats are sorted in the main chat list. If the order number of two chats is the same, they must be sorted in descending order by ID. If 0, the position of the chat in the list is undetermined
-    public let order: String
+    public let order: TdInt64
 
     /// Actions that non-administrator chat members are allowed to take in the chat
     public let permissions: ChatPermissions
@@ -96,7 +96,7 @@ public struct Chat: Codable {
         lastReadInboxMessageId: Int64,
         lastReadOutboxMessageId: Int64,
         notificationSettings: ChatNotificationSettings,
-        order: String,
+        order: TdInt64,
         permissions: ChatPermissions,
         photo: ChatPhoto?,
         pinnedMessageId: Int64,

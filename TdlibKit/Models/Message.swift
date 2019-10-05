@@ -54,7 +54,7 @@ public struct Message: Codable {
     public let isOutgoing: Bool
 
     /// Unique identifier of an album this message belongs to. Only photos and videos can be grouped together in albums
-    public let mediaAlbumId: String
+    public let mediaAlbumId: TdInt64
 
     /// Reply markup for the message; may be null
     public let replyMarkup: ReplyMarkup?
@@ -96,7 +96,7 @@ public struct Message: Codable {
         id: Int64,
         isChannelPost: Bool,
         isOutgoing: Bool,
-        mediaAlbumId: String,
+        mediaAlbumId: TdInt64,
         replyMarkup: ReplyMarkup?,
         replyToMessageId: Int64,
         senderUserId: Int,

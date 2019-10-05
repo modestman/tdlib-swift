@@ -15,7 +15,7 @@ public struct UserProfilePhoto: Codable {
     public let addedDate: Int
 
     /// Unique user profile photo identifier
-    public let id: String
+    public let id: TdInt64
 
     /// Available variants of the user photo, in different sizes
     public let sizes: [PhotoSize]
@@ -23,7 +23,7 @@ public struct UserProfilePhoto: Codable {
 
     public init (
         addedDate: Int,
-        id: String,
+        id: TdInt64,
         sizes: [PhotoSize]) {
 
         self.addedDate = addedDate

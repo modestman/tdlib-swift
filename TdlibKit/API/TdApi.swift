@@ -511,7 +511,7 @@ public final class TdApi {
     public func getChats(
         limit: Int,
         offsetChatId: Int64,
-        offsetOrder: String,
+        offsetOrder: TdInt64,
         completion: @escaping (Result<Chats, Swift.Error>) -> Void) throws {
 
         let query = GetChats(
@@ -782,7 +782,7 @@ public final class TdApi {
     public func searchSecretMessages(
         chatId: Int64,
         filter: SearchMessagesFilter,
-        fromSearchId: String,
+        fromSearchId: TdInt64,
         limit: Int,
         query: String,
         completion: @escaping (Result<FoundMessages, Swift.Error>) -> Void) throws {
@@ -1027,7 +1027,7 @@ public final class TdApi {
         disableNotification: Bool,
         fromBackground: Bool,
         hideViaBot: Bool,
-        queryId: String,
+        queryId: TdInt64,
         replyToMessageId: Int64,
         resultId: String,
         completion: @escaping (Result<Message, Swift.Error>) -> Void) throws {
@@ -1543,7 +1543,7 @@ public final class TdApi {
     /// - Parameter switchPmText: If non-empty, this text should be shown on the button that opens a private chat with the bot and sends a start message to the bot with the parameter switch_pm_parameter
     public func answerInlineQuery(
         cacheTime: Int,
-        inlineQueryId: String,
+        inlineQueryId: TdInt64,
         isPersonal: Bool,
         nextOffset: String,
         results: [InputInlineQueryResult],
@@ -1589,7 +1589,7 @@ public final class TdApi {
     /// - Parameter url: URL to be opened
     public func answerCallbackQuery(
         cacheTime: Int,
-        callbackQueryId: String,
+        callbackQueryId: TdInt64,
         showAlert: Bool,
         text: String,
         url: String,
@@ -1612,7 +1612,7 @@ public final class TdApi {
     public func answerShippingQuery(
         errorMessage: String,
         shippingOptions: [ShippingOption],
-        shippingQueryId: String,
+        shippingQueryId: TdInt64,
         completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
 
         let query = AnswerShippingQuery(
@@ -1628,7 +1628,7 @@ public final class TdApi {
     /// - Parameter preCheckoutQueryId: Identifier of the pre-checkout query
     public func answerPreCheckoutQuery(
         errorMessage: String,
-        preCheckoutQueryId: String,
+        preCheckoutQueryId: TdInt64,
         completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
 
         let query = AnswerPreCheckoutQuery(
@@ -2401,7 +2401,7 @@ public final class TdApi {
     /// - Parameter offset: The offset from which to write the data to the file
     public func writeGeneratedFilePart(
         data: Data,
-        generationId: String,
+        generationId: TdInt64,
         offset: Int,
         completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
 
@@ -2419,7 +2419,7 @@ public final class TdApi {
     /// - Parameter localPrefixSize: The number of bytes already generated
     public func setFileGenerationProgress(
         expectedSize: Int,
-        generationId: String,
+        generationId: TdInt64,
         localPrefixSize: Int,
         completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
 
@@ -2436,7 +2436,7 @@ public final class TdApi {
     /// - Parameter generationId: The identifier of the generation process
     public func finishFileGeneration(
         error: Error,
-        generationId: String,
+        generationId: TdInt64,
         completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
 
         let query = FinishFileGeneration(
@@ -2549,7 +2549,7 @@ public final class TdApi {
     /// - Parameter isDisconnected: True, if the user was disconnected
     public func discardCall(
         callId: Int,
-        connectionId: String,
+        connectionId: TdInt64,
         duration: Int,
         isDisconnected: Bool,
         completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
@@ -2777,7 +2777,7 @@ public final class TdApi {
     public func getArchivedStickerSets(
         isMasks: Bool,
         limit: Int,
-        offsetStickerSetId: String,
+        offsetStickerSetId: TdInt64,
         completion: @escaping (Result<StickerSets, Swift.Error>) -> Void) throws {
 
         let query = GetArchivedStickerSets(
@@ -2810,7 +2810,7 @@ public final class TdApi {
     /// Returns information about a sticker set by its identifier
     /// - Parameter setId: Identifier of the sticker set
     public func getStickerSet(
-        setId: String,
+        setId: TdInt64,
         completion: @escaping (Result<StickerSet, Swift.Error>) -> Void) throws {
 
         let query = GetStickerSet(
@@ -2868,7 +2868,7 @@ public final class TdApi {
     public func changeStickerSet(
         isArchived: Bool,
         isInstalled: Bool,
-        setId: String,
+        setId: TdInt64,
         completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
 
         let query = ChangeStickerSet(
@@ -2882,7 +2882,7 @@ public final class TdApi {
     /// Informs the server that some trending sticker sets have been viewed by the user
     /// - Parameter stickerSetIds: Identifiers of viewed trending sticker sets
     public func viewTrendingStickerSets(
-        stickerSetIds: [String],
+        stickerSetIds: [TdInt64],
         completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
 
         let query = ViewTrendingStickerSets(
@@ -2896,7 +2896,7 @@ public final class TdApi {
     /// - Parameter stickerSetIds: Identifiers of installed sticker sets in the new correct order
     public func reorderInstalledStickerSets(
         isMasks: Bool,
-        stickerSetIds: [String],
+        stickerSetIds: [TdInt64],
         completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
 
         let query = ReorderInstalledStickerSets(
@@ -3137,7 +3137,7 @@ public final class TdApi {
     /// Deletes a profile photo. If something changes, updateUser will be sent
     /// - Parameter profilePhotoId: Identifier of the profile photo to delete
     public func deleteProfilePhoto(
-        profilePhotoId: String,
+        profilePhotoId: TdInt64,
         completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
 
         let query = DeleteProfilePhoto(
@@ -3229,7 +3229,7 @@ public final class TdApi {
     /// Terminates a session of the current user
     /// - Parameter sessionId: Session identifier
     public func terminateSession(
-        sessionId: String,
+        sessionId: TdInt64,
         completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
 
         let query = TerminateSession(
@@ -3255,7 +3255,7 @@ public final class TdApi {
     /// Disconnects website from the current user's Telegram account
     /// - Parameter websiteId: Website identifier
     public func disconnectWebsite(
-        websiteId: String,
+        websiteId: TdInt64,
         completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
 
         let query = DisconnectWebsite(
@@ -3290,7 +3290,7 @@ public final class TdApi {
     /// - Parameter stickerSetId: New value of the supergroup sticker set identifier. Use 0 to remove the supergroup sticker set
     /// - Parameter supergroupId: Identifier of the supergroup
     public func setSupergroupStickerSet(
-        stickerSetId: String,
+        stickerSetId: TdInt64,
         supergroupId: Int,
         completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
 
@@ -3404,7 +3404,7 @@ public final class TdApi {
     public func getChatEventLog(
         chatId: Int64,
         filters: ChatEventLogFilters,
-        fromEventId: String,
+        fromEventId: TdInt64,
         limit: Int,
         query: String,
         userIds: [Int],
@@ -3584,7 +3584,7 @@ public final class TdApi {
     /// Removes background from the list of installed backgrounds
     /// - Parameter backgroundId: The background indentifier
     public func removeBackground(
-        backgroundId: String,
+        backgroundId: TdInt64,
         completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
 
         let query = RemoveBackground(
@@ -4431,7 +4431,7 @@ public final class TdApi {
     /// - Parameter customQueryId: Identifier of a custom query
     /// - Parameter data: JSON-serialized answer to the query
     public func answerCustomQuery(
-        customQueryId: String,
+        customQueryId: TdInt64,
         data: String,
         completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
 
@@ -4849,7 +4849,10 @@ public final class TdApi {
 
         let dto = DTO(query, encoder: self.encoder)
         client.send(query: dto) { [weak self] result in
-            guard let `self` = self else { return }
+            guard let self = self else { return }
+            if let error = try? self.decoder.decode(DTO<Error>.self, from: result) {
+                completion(.failure(error.payload))
+            }
             let response = self.decoder.tryDecode(DTO<R>.self, from: result)
             completion(response.map { $0.payload })
         }

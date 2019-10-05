@@ -15,7 +15,7 @@ public struct AnswerCallbackQuery: Codable {
     public let cacheTime: Int
 
     /// Identifier of the callback query
-    public let callbackQueryId: String
+    public let callbackQueryId: TdInt64
 
     /// If true, an alert should be shown to the user instead of a toast notification
     public let showAlert: Bool
@@ -29,7 +29,7 @@ public struct AnswerCallbackQuery: Codable {
 
     public init (
         cacheTime: Int,
-        callbackQueryId: String,
+        callbackQueryId: TdInt64,
         showAlert: Bool,
         text: String,
         url: String) {

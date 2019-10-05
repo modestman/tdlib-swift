@@ -18,7 +18,7 @@ public struct GetChatEventLog: Codable {
     public let filters: ChatEventLogFilters
 
     /// Identifier of an event from which to return results. Use 0 to get results from the latest events
-    public let fromEventId: String
+    public let fromEventId: TdInt64
 
     /// Maximum number of events to return; up to 100
     public let limit: Int
@@ -33,7 +33,7 @@ public struct GetChatEventLog: Codable {
     public init (
         chatId: Int64,
         filters: ChatEventLogFilters,
-        fromEventId: String,
+        fromEventId: TdInt64,
         limit: Int,
         query: String,
         userIds: [Int]) {

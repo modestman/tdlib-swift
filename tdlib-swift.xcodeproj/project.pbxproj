@@ -621,6 +621,9 @@
 		782C82F12340048F006039BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 782C82F02340048F006039BE /* Main.storyboard */; };
 		782C82F3234004A6006039BE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C82F2234004A6006039BE /* MainViewController.swift */; };
 		782C82F5234004EB006039BE /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C82F4234004EB006039BE /* ChatListViewController.swift */; };
+		782C830823429F24006039BE /* ChatListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C830723429F24006039BE /* ChatListService.swift */; };
+		78B708F62348953B001199C8 /* ChatInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B708F52348953B001199C8 /* ChatInfo.swift */; };
+		78B709172348AB87001199C8 /* TdInt64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B709162348AB87001199C8 /* TdInt64.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1278,6 +1281,9 @@
 		782C82F02340048F006039BE /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		782C82F2234004A6006039BE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		782C82F4234004EB006039BE /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
+		782C830723429F24006039BE /* ChatListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListService.swift; sourceTree = "<group>"; };
+		78B708F52348953B001199C8 /* ChatInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInfo.swift; sourceTree = "<group>"; };
+		78B709162348AB87001199C8 /* TdInt64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TdInt64.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1333,6 +1339,7 @@
 			isa = PBXGroup;
 			children = (
 				782C82D8233FB6E2006039BE /* Service */,
+				78B708F4234894F3001199C8 /* Model */,
 				782C82D7233FB6BF006039BE /* Presentation */,
 				782C82D9233FB717006039BE /* Resources */,
 				782C82DA233FB722006039BE /* Supporting Files */,
@@ -1496,6 +1503,7 @@
 				782C7E4F233F7625006039BE /* DtoCodingKeys.swift */,
 				782C7E51233F7625006039BE /* JSONDecoder+Result.swift */,
 				782C7E4E233F7625006039BE /* Logger.swift */,
+				78B709162348AB87001199C8 /* TdInt64.swift */,
 			);
 			path = Supporting;
 			sourceTree = "<group>";
@@ -2143,6 +2151,7 @@
 			children = (
 				782C82D5233F76C6006039BE /* TelegramService.swift */,
 				782C82E2233FE7D6006039BE /* AuthService.swift */,
+				782C830723429F24006039BE /* ChatListService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -2150,8 +2159,8 @@
 		782C82E6233FEB64006039BE /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				782C82E7233FEB84006039BE /* AuthViewController.swift */,
 				782C82E9233FEBA8006039BE /* Auth.storyboard */,
+				782C82E7233FEB84006039BE /* AuthViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -2163,6 +2172,14 @@
 				782C82F2234004A6006039BE /* MainViewController.swift */,
 			);
 			path = Mian;
+			sourceTree = "<group>";
+		};
+		78B708F4234894F3001199C8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				78B708F52348953B001199C8 /* ChatInfo.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2320,8 +2337,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				782C82D6233F76C7006039BE /* TelegramService.swift in Sources */,
+				782C830823429F24006039BE /* ChatListService.swift in Sources */,
 				782C82E0233FB825006039BE /* ServiceLayer.swift in Sources */,
 				782C7E49233F6F2F006039BE /* StdOutLogger.swift in Sources */,
+				78B708F62348953B001199C8 /* ChatInfo.swift in Sources */,
 				782C82E5233FE9BE006039BE /* Types.swift in Sources */,
 				782C82F5234004EB006039BE /* ChatListViewController.swift in Sources */,
 				782C82EC233FF66D006039BE /* ApplicationController.swift in Sources */,
@@ -2693,6 +2712,7 @@
 				782C80BB233F7627006039BE /* LogTags.swift in Sources */,
 				782C8250233F7628006039BE /* LanguagePackStrings.swift in Sources */,
 				782C81F3233F7628006039BE /* TestVectorInt.swift in Sources */,
+				78B709172348AB87001199C8 /* TdInt64.swift in Sources */,
 				782C829E233F7628006039BE /* EmailAddressAuthenticationCodeInfo.swift in Sources */,
 				782C8178233F7628006039BE /* GetLanguagePackStrings.swift in Sources */,
 				782C82A6233F7628006039BE /* UpgradeBasicGroupChatToSupergroupChat.swift in Sources */,

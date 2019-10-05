@@ -12,7 +12,7 @@ import Foundation
 public struct Poll: Codable {
 
     /// Unique poll identifier
-    public let id: String
+    public let id: TdInt64
 
     /// True, if the poll is closed
     public let isClosed: Bool
@@ -28,7 +28,7 @@ public struct Poll: Codable {
 
 
     public init (
-        id: String,
+        id: TdInt64,
         isClosed: Bool,
         options: [PollOption],
         question: String,

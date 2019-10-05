@@ -15,7 +15,7 @@ public struct WriteGeneratedFilePart: Codable {
     public let data: Data
 
     /// The identifier of the generation process
-    public let generationId: String
+    public let generationId: TdInt64
 
     /// The offset from which to write the data to the file
     public let offset: Int
@@ -23,7 +23,7 @@ public struct WriteGeneratedFilePart: Codable {
 
     public init (
         data: Data,
-        generationId: String,
+        generationId: TdInt64,
         offset: Int) {
 
         self.data = data

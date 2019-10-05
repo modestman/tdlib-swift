@@ -10,5 +10,4 @@ import UIKit
 
 final class MainViewController: UITabBarController {
 
-
 }

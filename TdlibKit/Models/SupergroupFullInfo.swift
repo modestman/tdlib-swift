@@ -44,7 +44,7 @@ public struct SupergroupFullInfo: Codable {
     public let restrictedCount: Int
 
     /// Identifier of the supergroup sticker set; 0 if none
-    public let stickerSetId: String
+    public let stickerSetId: TdInt64
 
     /// Identifier of the basic group from which supergroup was upgraded; 0 if none
     public let upgradedFromBasicGroupId: Int
@@ -65,7 +65,7 @@ public struct SupergroupFullInfo: Codable {
         isAllHistoryAvailable: Bool,
         memberCount: Int,
         restrictedCount: Int,
-        stickerSetId: String,
+        stickerSetId: TdInt64,
         upgradedFromBasicGroupId: Int,
         upgradedFromMaxMessageId: Int64) {
 

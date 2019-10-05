@@ -898,7 +898,7 @@ public struct MessageCustomServiceAction: Codable {
 public struct MessageGameScore: Codable {
 
     /// Identifier of the game; may be different from the games presented in the message with the game
-    public let gameId: String
+    public let gameId: TdInt64
 
     /// Identifier of the message with the game, can be an identifier of a deleted message
     public let gameMessageId: Int64
@@ -908,7 +908,7 @@ public struct MessageGameScore: Codable {
 
 
     public init (
-        gameId: String,
+        gameId: TdInt64,
         gameMessageId: Int64,
         score: Int) {
 

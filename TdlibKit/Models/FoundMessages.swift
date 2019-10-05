@@ -15,12 +15,12 @@ public struct FoundMessages: Codable {
     public let messages: [Message]
 
     /// Value to pass as from_search_id to get more results
-    public let nextFromSearchId: String
+    public let nextFromSearchId: TdInt64
 
 
     public init (
         messages: [Message],
-        nextFromSearchId: String) {
+        nextFromSearchId: TdInt64) {
 
         self.messages = messages
         self.nextFromSearchId = nextFromSearchId

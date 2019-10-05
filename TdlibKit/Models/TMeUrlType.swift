@@ -109,10 +109,10 @@ public struct TMeUrlTypeChatInvite: Codable {
 public struct TMeUrlTypeStickerSet: Codable {
 
     /// Identifier of the sticker set
-    public let stickerSetId: String
+    public let stickerSetId: TdInt64
 
 
-    public init (stickerSetId: String) {
+    public init (stickerSetId: TdInt64) {
         self.stickerSetId = stickerSetId
     }
 }

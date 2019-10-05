@@ -65,10 +65,10 @@ public struct InputBackgroundLocal: Codable {
 public struct InputBackgroundRemote: Codable {
 
     /// The background identifier
-    public let backgroundId: String
+    public let backgroundId: TdInt64
 
 
-    public init (backgroundId: String) {
+    public init (backgroundId: TdInt64) {
         self.backgroundId = backgroundId
     }
 }

@@ -18,13 +18,13 @@ public struct GetArchivedStickerSets: Codable {
     public let limit: Int
 
     /// Identifier of the sticker set from which to return the result
-    public let offsetStickerSetId: String
+    public let offsetStickerSetId: TdInt64
 
 
     public init (
         isMasks: Bool,
         limit: Int,
-        offsetStickerSetId: String) {
+        offsetStickerSetId: TdInt64) {
 
         self.isMasks = isMasks
         self.limit = limit

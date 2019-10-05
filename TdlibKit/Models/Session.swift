@@ -27,7 +27,7 @@ public struct Session: Codable {
     public let deviceModel: String
 
     /// Session identifier
-    public let id: String
+    public let id: TdInt64
 
     /// IP address from which the session was created, in human-readable format
     public let ip: String
@@ -63,7 +63,7 @@ public struct Session: Codable {
         applicationVersion: String,
         country: String,
         deviceModel: String,
-        id: String,
+        id: TdInt64,
         ip: String,
         isCurrent: Bool,
         isOfficialApplication: Bool,

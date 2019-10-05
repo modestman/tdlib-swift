@@ -24,7 +24,7 @@ final class ApplicationController {
         window?.rootViewController = vc
     }
     
-    private static func showAuth() {
+    static func showAuth() {
         let authStoryboard = UIStoryboard(name: "Auth", bundle: nil)
         let vc = authStoryboard.instantiateInitialViewController() as? AuthViewController
         window?.rootViewController = vc

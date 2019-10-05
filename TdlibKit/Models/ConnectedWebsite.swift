@@ -21,7 +21,7 @@ public struct ConnectedWebsite: Codable {
     public let domainName: String
 
     /// Website identifier
-    public let id: String
+    public let id: TdInt64
 
     /// IP address from which the user was logged in, in human-readable format
     public let ip: String
@@ -43,7 +43,7 @@ public struct ConnectedWebsite: Codable {
         botUserId: Int,
         browser: String,
         domainName: String,
-        id: String,
+        id: TdInt64,
         ip: String,
         lastActiveDate: Int,
         location: String,

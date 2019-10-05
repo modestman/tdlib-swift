@@ -18,7 +18,7 @@ public struct SearchSecretMessages: Codable {
     public let filter: SearchMessagesFilter
 
     /// The identifier from the result of a previous request, use 0 to get results from the last message
-    public let fromSearchId: String
+    public let fromSearchId: TdInt64
 
     /// Maximum number of messages to be returned; up to 100. Fewer messages may be returned than specified by the limit, even if the end of the message history has not been reached
     public let limit: Int
@@ -30,7 +30,7 @@ public struct SearchSecretMessages: Codable {
     public init (
         chatId: Int64,
         filter: SearchMessagesFilter,
-        fromSearchId: String,
+        fromSearchId: TdInt64,
         limit: Int,
         query: String) {
 

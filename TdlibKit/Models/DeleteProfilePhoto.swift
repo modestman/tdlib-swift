@@ -12,10 +12,10 @@ import Foundation
 public struct DeleteProfilePhoto: Codable {
 
     /// Identifier of the profile photo to delete
-    public let profilePhotoId: String
+    public let profilePhotoId: TdInt64
 
 
-    public init (profilePhotoId: String) {
+    public init (profilePhotoId: TdInt64) {
         self.profilePhotoId = profilePhotoId
     }
 }

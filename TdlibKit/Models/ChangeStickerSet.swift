@@ -18,13 +18,13 @@ public struct ChangeStickerSet: Codable {
     public let isInstalled: Bool
 
     /// Identifier of the sticker set
-    public let setId: String
+    public let setId: TdInt64
 
 
     public init (
         isArchived: Bool,
         isInstalled: Bool,
-        setId: String) {
+        setId: TdInt64) {
 
         self.isArchived = isArchived
         self.isInstalled = isInstalled

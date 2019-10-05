@@ -15,7 +15,7 @@ public struct AnswerInlineQuery: Codable {
     public let cacheTime: Int
 
     /// Identifier of the inline query
-    public let inlineQueryId: String
+    public let inlineQueryId: TdInt64
 
     /// True, if the result of the query can be cached for the specified user
     public let isPersonal: Bool
@@ -35,7 +35,7 @@ public struct AnswerInlineQuery: Codable {
 
     public init (
         cacheTime: Int,
-        inlineQueryId: String,
+        inlineQueryId: TdInt64,
         isPersonal: Bool,
         nextOffset: String,
         results: [InputInlineQueryResult],

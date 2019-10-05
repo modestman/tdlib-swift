@@ -17,7 +17,7 @@ public struct Game: Codable {
     public let description: String
 
     /// Game ID
-    public let id: String
+    public let id: TdInt64
 
     /// Game photo
     public let photo: Photo
@@ -35,7 +35,7 @@ public struct Game: Codable {
     public init (
         animation: Animation?,
         description: String,
-        id: String,
+        id: TdInt64,
         photo: Photo,
         shortName: String,
         text: FormattedText,

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TdlibKit
 
 final class AuthViewController: UIViewController {
  
@@ -84,6 +85,13 @@ extension AuthViewController: AuthServiceDelegate {
     
     func onReady() {
         ApplicationController.showMain()
+    }
+    
+    func onError(_ error: Swift.Error) {
+        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true)
     }
     
 }

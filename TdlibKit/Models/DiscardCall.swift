@@ -15,7 +15,7 @@ public struct DiscardCall: Codable {
     public let callId: Int
 
     /// Identifier of the connection used during the call
-    public let connectionId: String
+    public let connectionId: TdInt64
 
     /// The call duration, in seconds
     public let duration: Int
@@ -26,7 +26,7 @@ public struct DiscardCall: Codable {
 
     public init (
         callId: Int,
-        connectionId: String,
+        connectionId: TdInt64,
         duration: Int,
         isDisconnected: Bool) {
 

@@ -15,12 +15,12 @@ public struct ReorderInstalledStickerSets: Codable {
     public let isMasks: Bool
 
     /// Identifiers of installed sticker sets in the new correct order
-    public let stickerSetIds: [String]
+    public let stickerSetIds: [TdInt64]
 
 
     public init (
         isMasks: Bool,
-        stickerSetIds: [String]) {
+        stickerSetIds: [TdInt64]) {
 
         self.isMasks = isMasks
         self.stickerSetIds = stickerSetIds

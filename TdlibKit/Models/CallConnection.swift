@@ -12,7 +12,7 @@ import Foundation
 public struct CallConnection: Codable {
 
     /// Reflector identifier
-    public let id: String
+    public let id: TdInt64
 
     /// IPv4 reflector address
     public let ip: String
@@ -28,7 +28,7 @@ public struct CallConnection: Codable {
 
 
     public init (
-        id: String,
+        id: TdInt64,
         ip: String,
         ipv6: String,
         peerTag: Data,

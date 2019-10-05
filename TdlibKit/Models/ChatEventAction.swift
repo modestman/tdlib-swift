@@ -458,15 +458,15 @@ public struct ChatEventSignMessagesToggled: Codable {
 public struct ChatEventStickerSetChanged: Codable {
 
     /// New identifier of the chat sticker set; 0 if none
-    public let newStickerSetId: String
+    public let newStickerSetId: TdInt64
 
     /// Previous identifier of the chat sticker set; 0 if none
-    public let oldStickerSetId: String
+    public let oldStickerSetId: TdInt64
 
 
     public init (
-        newStickerSetId: String,
-        oldStickerSetId: String) {
+        newStickerSetId: TdInt64,
+        oldStickerSetId: TdInt64) {
 
         self.newStickerSetId = newStickerSetId
         self.oldStickerSetId = oldStickerSetId

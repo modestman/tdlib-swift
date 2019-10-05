@@ -18,13 +18,13 @@ public struct GetChats: Codable {
     public let offsetChatId: Int64
 
     /// Chat order to return chats from
-    public let offsetOrder: String
+    public let offsetOrder: TdInt64
 
 
     public init (
         limit: Int,
         offsetChatId: Int64,
-        offsetOrder: String) {
+        offsetOrder: TdInt64) {
 
         self.limit = limit
         self.offsetChatId = offsetChatId

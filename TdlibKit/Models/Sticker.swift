@@ -27,7 +27,7 @@ public struct Sticker: Codable {
     public let maskPosition: MaskPosition?
 
     /// The identifier of the sticker set to which the sticker belongs; 0 if none
-    public let setId: String
+    public let setId: TdInt64
 
     /// File containing the sticker
     public let sticker: File
@@ -45,7 +45,7 @@ public struct Sticker: Codable {
         isAnimated: Bool,
         isMask: Bool,
         maskPosition: MaskPosition?,
-        setId: String,
+        setId: TdInt64,
         sticker: File,
         thumbnail: PhotoSize?,
         width: Int) {

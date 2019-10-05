@@ -15,6 +15,7 @@ protocol AuthServiceDelegate: class {
     func waitCode()
     func waitPassword()
     func onReady()
+    func onError(_ error: Swift.Error)
 }
 
 
@@ -55,16 +56,27 @@ final class AuthService: UpdateListener {
             isCurrentPhoneNumber: false)
         try? self.api.setAuthenticationPhoneNumber(
             phoneNumber: phone,
-            settings: settings,
-            completion: { _ in })
+            settings: settings) { [weak self] in
+                self?.chekResult($0)
+            }
     }
     
     func sendCode(_ code: String) {
-        try? self.api.checkAuthenticationCode(code: code, completion: { _ in })
+        try? self.api.checkAuthenticationCode(code: code) { [weak self] in
+            self?.chekResult($0)
+        }
     }
     
     func sendPassword(_ password: String) {
-        try? self.api.checkAuthenticationPassword(password: password, completion: { _ in })
+        try? self.api.checkAuthenticationPassword(password: password) { [weak self] in
+            self?.chekResult($0)
+        }
+    }
+    
+    public func logout() {
+        try? self.api.logOut() { [weak self] in
+            self?.chekResult($0)
+        }
     }
     
     
@@ -95,11 +107,15 @@ final class AuthService: UpdateListener {
                 useMessageDatabase: true,
                 useSecretChats: true,
                 useTestDc: false)
-            try api.setTdlibParameters(parameters: params, completion: { _ in })
+            try api.setTdlibParameters(parameters: params) { [weak self] in
+                self?.chekResult($0)
+            }
             
         case .authorizationStateWaitEncryptionKey(_):
             let keyData = "sdfsdkjfkbsddsj".data(using: .utf8)!
-            try api.checkDatabaseEncryptionKey(encryptionKey: keyData, completion: { _ in })
+            try api.checkDatabaseEncryptionKey(encryptionKey: keyData) { [weak self] in
+                self?.chekResult($0)
+            }
             
         case .authorizationStateWaitPhoneNumber:
             delegate?.waitPhoneNumer()
@@ -126,6 +142,16 @@ final class AuthService: UpdateListener {
             
         case .authorizationStateWaitRegistration:
             break
+        }
+    }
+    
+    private func chekResult(_ result: Result<Ok, Swift.Error>) {
+        switch result {
+        case .success:
+            // result is already received through UpdateAuthorizationState, nothing to do
+            break
+        case .failure(let error):
+            delegate?.onError(error)
         }
     }
 }

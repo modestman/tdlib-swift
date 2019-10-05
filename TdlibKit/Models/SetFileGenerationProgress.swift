@@ -15,7 +15,7 @@ public struct SetFileGenerationProgress: Codable {
     public let expectedSize: Int
 
     /// The identifier of the generation process
-    public let generationId: String
+    public let generationId: TdInt64
 
     /// The number of bytes already generated
     public let localPrefixSize: Int
@@ -23,7 +23,7 @@ public struct SetFileGenerationProgress: Codable {
 
     public init (
         expectedSize: Int,
-        generationId: String,
+        generationId: TdInt64,
         localPrefixSize: Int) {
 
         self.expectedSize = expectedSize

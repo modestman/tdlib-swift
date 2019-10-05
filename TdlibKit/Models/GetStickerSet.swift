@@ -12,10 +12,10 @@ import Foundation
 public struct GetStickerSet: Codable {
 
     /// Identifier of the sticker set
-    public let setId: String
+    public let setId: TdInt64
 
 
-    public init (setId: String) {
+    public init (setId: TdInt64) {
         self.setId = setId
     }
 }
