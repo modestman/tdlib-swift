@@ -62,7 +62,12 @@ extension ChatListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let chatOrder = chatListService.chatList[indexPath.row]
         guard let chat = chatListService.chats[chatOrder.chatId] else { preconditionFailure() }
-        performSegue(withIdentifier: "ShowChat", sender: chat)
+        
+        let vc = ConversationViewController()
+        vc.chat = chat
+        show(vc, sender: self)
+        
+//        performSegue(withIdentifier: "ShowChat", sender: chat)
     }
     
 }

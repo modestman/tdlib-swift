@@ -27,12 +27,14 @@ final class ConversationService: UpdateListener {
     // MARK: - Public properties
     private(set) var messages: [TextMessage] = []
     weak var delegate: ConversationServiceDelegate?
+    weak var userService: UsersService?
 
 
     // MARK: - Init
 
-    init(tdApi: TdApi, chatId: Int64) {
+    init(tdApi: TdApi, userService: UsersService?, chatId: Int64) {
         self.api = tdApi
+        self.userService = userService
         self.chatId = chatId
     }
     
@@ -46,14 +48,13 @@ final class ConversationService: UpdateListener {
             let msg = TextMessage(newMsg.message)
             messages.insert(msg, at: 0)
             getUser(msg)
+            delegate?.messagesUpdated()
             
         case .updateMessageContent(let upd):
             guard upd.chatId == chatId else { return }
             if let idx = messages.firstIndex(where: { $0.id == upd.messageId }) {
-                var msg = messages[idx]
+                let msg = messages[idx]
                 msg.updateContent(upd.newContent)
-                messages.remove(at: idx)
-                messages.insert(msg, at: idx)
             }
             delegate?.messagesUpdated()
             
@@ -90,21 +91,20 @@ final class ConversationService: UpdateListener {
     }
     
     private func getUser(_ message: TextMessage) {
-        guard message.senderUserId != 0 else { return }
-        try? api.getUser(userId: message.senderUserId, completion: { [weak self] result in
-            guard
-                let self = self,
-                let user = try? result.get()
-            else { return }
-            
-            if let idx = self.messages.firstIndex(where: { $0.id == message.id }) {
-                var msg = self.messages[idx]
-                msg.user = UserInfo(user)
-                self.messages.remove(at: idx)
-                self.messages.insert(msg, at: idx)
+        guard
+            let userService = userService,
+            message.senderUserId != 0
+        else { return }
+        
+        if let user = userService.users[message.senderUserId] {
+            message.user = user
+        } else {
+            userService.obtainUser(message.senderUserId) { [weak self] user in
+                guard let self = self else { return }
+                message.user = user
                 self.delegate?.messagesUpdated()
             }
-        })
+        }
     }
     
     private func addMessages(_ messages: [TextMessage]) {

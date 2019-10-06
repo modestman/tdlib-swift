@@ -9,20 +9,43 @@
 import Foundation
 import TdlibKit
 
-struct UserInfo {
-    
+class UserInfo {
+
     let id: Int
     let name: String
     let username: String
+    var profileImage: Data?
+ 
+    init(id: Int, name: String, username: String, profileImage: Data? = nil) {
+        self.id = id
+        self.name = name
+        self.username = username
+        self.profileImage = profileImage
+    }
 }
 
 
 extension UserInfo {
     
-    init(_ user: User) {
-        id = user.id
-        name = "\(user.firstName) \(user.lastName)"
-        username = user.username
+    convenience init(_ user: User) {
+        self.init(
+            id: user.id,
+            name: "\(user.firstName) \(user.lastName)",
+            username: user.username
+        )
+        updateImage(user.profilePhoto?.small)
+    }
+    
+    func updateImage(_ file: File?) {
+        guard
+            let path = file?.local.path,
+            !path.isEmpty
+        else {
+            profileImage = nil
+            return
+        }
+        let url = URL(fileURLWithPath: path)
+        profileImage = try? Data(contentsOf: url)
     }
     
 }
