@@ -33,6 +33,9 @@ final class UsersService: UpdateListener {
         self.api = tdApi
     }
     
+    
+    // MARK: - Public methods
+    
     func onUpdate(_ update: Update) {
         switch update {
         case .updateUser(let upd):
@@ -42,9 +45,6 @@ final class UsersService: UpdateListener {
             break
         }
     }
- 
-    
-    // MARK: - Public methods
     
     func obtainUser(_ id: Int, completion: @escaping (UserInfo?) -> Void) {
         guard id != 0 else {

@@ -25,6 +25,7 @@ final class ConversationService: UpdateListener {
 
     
     // MARK: - Public properties
+    
     private(set) var messages: [TextMessage] = []
     weak var delegate: ConversationServiceDelegate?
     weak var userService: UsersService?
@@ -61,6 +62,11 @@ final class ConversationService: UpdateListener {
         case .updateMessageEdited:
             break
             
+        case .updateDeleteMessages(let upd):
+            guard upd.chatId == chatId else { return }
+            messages.removeAll(where: { upd.messageIds.contains($0.id) })
+            delegate?.messagesUpdated()
+            
         default:
             break
         }
@@ -89,6 +95,35 @@ final class ConversationService: UpdateListener {
             }
         )
     }
+    
+    func sendMessage(text: String) {
+        let messageText = InputMessageText(
+            clearDraft: true,
+            disableWebPagePreview: true,
+            text: FormattedText(entities: [], text: text))
+        
+        try? api.sendMessage(
+            chatId: chatId,
+            disableNotification: false,
+            fromBackground: false,
+            inputMessageContent: .inputMessageText(messageText),
+            replyMarkup: .replyMarkupRemoveKeyboard(ReplyMarkupRemoveKeyboard(isPersonal: true)),
+            replyToMessageId: 0,
+            completion: { [weak self] result in
+                guard let self = self else { return }
+                if case .failure(let error) = result {
+                    self.delegate?.onError(error)
+                    return
+                }
+                if let message = try? result.get() {
+                    self.addMessages([TextMessage(message)])
+                }
+            }
+        )
+    }
+    
+    
+    // MARK: - Private methods
     
     private func getUser(_ message: TextMessage) {
         guard
