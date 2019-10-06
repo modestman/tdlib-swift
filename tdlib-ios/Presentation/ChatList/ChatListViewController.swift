@@ -18,9 +18,19 @@ final class ChatListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self
         chatListService.delegate = self
         try? chatListService.getChatList(limit: 30)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard
+            segue.identifier == "ShowChat",
+            let vc = segue.destination as? ConversationViewController,
+            let chat = sender as? ChatInfo
+        else {
+            return
+        }
+        vc.chat = chat
     }
     
     @IBAction func close(_ sender: Any) {
@@ -42,10 +52,19 @@ extension ChatListViewController: UITableViewDataSource {
         let chatOrder = chatListService.chatList[indexPath.row]
         guard let chat = chatListService.chats[chatOrder.chatId] else { preconditionFailure() }
         cell.textLabel?.text = chat.title
-        cell.detailTextLabel?.text = "Unread: \(chat.unreadCount)"
+        cell.detailTextLabel?.text = chat.lastMessage?.text
         return cell
     }
+}
 
+extension ChatListViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let chatOrder = chatListService.chatList[indexPath.row]
+        guard let chat = chatListService.chats[chatOrder.chatId] else { preconditionFailure() }
+        performSegue(withIdentifier: "ShowChat", sender: chat)
+    }
+    
 }
 
 

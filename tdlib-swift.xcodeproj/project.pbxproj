@@ -624,6 +624,15 @@
 		782C830823429F24006039BE /* ChatListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C830723429F24006039BE /* ChatListService.swift */; };
 		78B708F62348953B001199C8 /* ChatInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B708F52348953B001199C8 /* ChatInfo.swift */; };
 		78B709172348AB87001199C8 /* TdInt64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B709162348AB87001199C8 /* TdInt64.swift */; };
+		78B7091923491756001199C8 /* TextMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B7091823491756001199C8 /* TextMessage.swift */; };
+		78B7091B23491776001199C8 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B7091A23491776001199C8 /* UserInfo.swift */; };
+		78B7091E23492CB3001199C8 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B7091D23492CB3001199C8 /* ConversationViewController.swift */; };
+		78B7092023492CD5001199C8 /* Conversation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78B7091F23492CD5001199C8 /* Conversation.storyboard */; };
+		78B7092323492DF1001199C8 /* TextMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B7092223492DF1001199C8 /* TextMessageCell.swift */; };
+		78B7092523492EBE001199C8 /* ConversationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B7092423492EBE001199C8 /* ConversationService.swift */; };
+		78B7092723493845001199C8 /* UsersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B7092623493845001199C8 /* UsersService.swift */; };
+		78B7092D2349E03D001199C8 /* IncomingMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B7092B2349E03D001199C8 /* IncomingMessageCell.swift */; };
+		78B7092E2349E03D001199C8 /* IncomingMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78B7092C2349E03D001199C8 /* IncomingMessageCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1284,6 +1293,15 @@
 		782C830723429F24006039BE /* ChatListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListService.swift; sourceTree = "<group>"; };
 		78B708F52348953B001199C8 /* ChatInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInfo.swift; sourceTree = "<group>"; };
 		78B709162348AB87001199C8 /* TdInt64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TdInt64.swift; sourceTree = "<group>"; };
+		78B7091823491756001199C8 /* TextMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextMessage.swift; sourceTree = "<group>"; };
+		78B7091A23491776001199C8 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		78B7091D23492CB3001199C8 /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
+		78B7091F23492CD5001199C8 /* Conversation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Conversation.storyboard; sourceTree = "<group>"; };
+		78B7092223492DF1001199C8 /* TextMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextMessageCell.swift; sourceTree = "<group>"; };
+		78B7092423492EBE001199C8 /* ConversationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationService.swift; sourceTree = "<group>"; };
+		78B7092623493845001199C8 /* UsersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersService.swift; sourceTree = "<group>"; };
+		78B7092B2349E03D001199C8 /* IncomingMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingMessageCell.swift; sourceTree = "<group>"; };
+		78B7092C2349E03D001199C8 /* IncomingMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomingMessageCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2096,6 +2114,7 @@
 				782C82E6233FEB64006039BE /* Auth */,
 				782C82EF23400481006039BE /* Mian */,
 				782C82DC233FB7A1006039BE /* ChatList */,
+				78B7091C23492C83001199C8 /* Conversation */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -2152,6 +2171,8 @@
 				782C82D5233F76C6006039BE /* TelegramService.swift */,
 				782C82E2233FE7D6006039BE /* AuthService.swift */,
 				782C830723429F24006039BE /* ChatListService.swift */,
+				78B7092423492EBE001199C8 /* ConversationService.swift */,
+				78B7092623493845001199C8 /* UsersService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -2178,8 +2199,38 @@
 			isa = PBXGroup;
 			children = (
 				78B708F52348953B001199C8 /* ChatInfo.swift */,
+				78B7091823491756001199C8 /* TextMessage.swift */,
+				78B7091A23491776001199C8 /* UserInfo.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		78B7091C23492C83001199C8 /* Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				78B709282349DEF0001199C8 /* Layout */,
+				78B7092123492DC9001199C8 /* Views */,
+				78B7091F23492CD5001199C8 /* Conversation.storyboard */,
+				78B7091D23492CB3001199C8 /* ConversationViewController.swift */,
+			);
+			path = Conversation;
+			sourceTree = "<group>";
+		};
+		78B7092123492DC9001199C8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				78B7092223492DF1001199C8 /* TextMessageCell.swift */,
+				78B7092B2349E03D001199C8 /* IncomingMessageCell.swift */,
+				78B7092C2349E03D001199C8 /* IncomingMessageCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		78B709282349DEF0001199C8 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Layout;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2306,8 +2357,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				782C82EA233FEBA8006039BE /* Auth.storyboard in Resources */,
+				78B7092E2349E03D001199C8 /* IncomingMessageCell.xib in Resources */,
 				782C82F12340048F006039BE /* Main.storyboard in Resources */,
 				782C7495233BE2F7006039BE /* LaunchScreen.storyboard in Resources */,
+				78B7092023492CD5001199C8 /* Conversation.storyboard in Resources */,
 				782C7492233BE2F7006039BE /* Assets.xcassets in Resources */,
 				782C82EE2340045A006039BE /* ChatList.storyboard in Resources */,
 			);
@@ -2338,16 +2391,23 @@
 			files = (
 				782C82D6233F76C7006039BE /* TelegramService.swift in Sources */,
 				782C830823429F24006039BE /* ChatListService.swift in Sources */,
+				78B7091923491756001199C8 /* TextMessage.swift in Sources */,
 				782C82E0233FB825006039BE /* ServiceLayer.swift in Sources */,
 				782C7E49233F6F2F006039BE /* StdOutLogger.swift in Sources */,
 				78B708F62348953B001199C8 /* ChatInfo.swift in Sources */,
 				782C82E5233FE9BE006039BE /* Types.swift in Sources */,
 				782C82F5234004EB006039BE /* ChatListViewController.swift in Sources */,
+				78B7092D2349E03D001199C8 /* IncomingMessageCell.swift in Sources */,
 				782C82EC233FF66D006039BE /* ApplicationController.swift in Sources */,
+				78B7092323492DF1001199C8 /* TextMessageCell.swift in Sources */,
 				782C7489233BE2F6006039BE /* AppDelegate.swift in Sources */,
+				78B7091E23492CB3001199C8 /* ConversationViewController.swift in Sources */,
+				78B7092723493845001199C8 /* UsersService.swift in Sources */,
 				782C748B233BE2F6006039BE /* SceneDelegate.swift in Sources */,
 				782C82E8233FEB84006039BE /* AuthViewController.swift in Sources */,
+				78B7092523492EBE001199C8 /* ConversationService.swift in Sources */,
 				782C82E3233FE7D6006039BE /* AuthService.swift in Sources */,
+				78B7091B23491776001199C8 /* UserInfo.swift in Sources */,
 				782C82F3234004A6006039BE /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

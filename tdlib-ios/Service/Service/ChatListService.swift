@@ -89,7 +89,13 @@ final class ChatListService: UpdateListener {
             break
             
         case .updateChatLastMessage(let upd):
-            if let chat = chats[upd.chatId] {
+            if var chat = chats[upd.chatId] {
+                if let msg = upd.lastMessage {
+                    chat.lastMessage = TextMessage(msg)
+                } else {
+                    chat.lastMessage = nil
+                }
+                chats[upd.chatId] = chat
                 setChatOrder(chat, upd.order.rawValue)
             }
             

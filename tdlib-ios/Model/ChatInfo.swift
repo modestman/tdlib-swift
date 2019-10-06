@@ -20,6 +20,7 @@ struct ChatInfo {
     var unreadMentionCount: Int
     var lastReadInboxMessageId: Int64
     var lastReadOutboxMessageId: Int64
+    var lastMessage: TextMessage?
     
     
     init(
@@ -31,7 +32,8 @@ struct ChatInfo {
         unreadCount: Int = 0,
         unreadMentionCount: Int = 0,
         lastReadInboxMessageId: Int64 = 0,
-        lastReadOutboxMessageId: Int64 = 0) {
+        lastReadOutboxMessageId: Int64 = 0,
+        lastMessage: TextMessage? = nil) {
         
         self.id = id
         self.order = order
@@ -58,5 +60,8 @@ extension ChatInfo {
         unreadMentionCount = chat.unreadMentionCount
         lastReadInboxMessageId = chat.lastReadInboxMessageId
         lastReadOutboxMessageId = chat.lastReadOutboxMessageId
+        if let message = chat.lastMessage {
+            lastMessage = TextMessage(message)
+        }
     }
 }

@@ -60,6 +60,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="iZR-2F-7ym" id="APL-kv-Zxa"/>
+                                    <outlet property="delegate" destination="iZR-2F-7ym" id="Mn9-tz-eam"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -82,11 +86,22 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="xBF-yk-gKl" id="720-hb-GLU"/>
+                        <segue destination="RFd-Ab-t0v" kind="show" identifier="ShowChat" id="MPQ-ys-Mh9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fzp-Gw-tNw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="151" y="158"/>
+        </scene>
+        <!--ConversationViewController-->
+        <scene sceneID="bqj-R5-Ly6">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Conversation" referencedIdentifier="ConversationViewController" id="RFd-Ab-t0v" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="dWO-BO-Y2M"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9qD-dy-G0p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="846" y="157"/>
         </scene>
     </scenes>
     <resources>
