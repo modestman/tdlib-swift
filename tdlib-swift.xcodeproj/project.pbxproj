@@ -17,14 +17,9 @@
 		782C74BA233BE356006039BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 782C74B8233BE356006039BE /* Main.storyboard */; };
 		782C7965233BE538006039BE /* TdlibKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 782C795E233BE538006039BE /* TdlibKit.framework */; };
 		782C7966233BE538006039BE /* TdlibKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 782C795E233BE538006039BE /* TdlibKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		782C7994233BE914006039BE /* TlObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 782C7980233BE914006039BE /* TlObject.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		782C7995233BE914006039BE /* tdjson_export.h in Headers */ = {isa = PBXBuildFile; fileRef = 782C7982233BE914006039BE /* tdjson_export.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		782C7996233BE914006039BE /* td_json_client.h in Headers */ = {isa = PBXBuildFile; fileRef = 782C7983233BE914006039BE /* td_json_client.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		782C7997233BE914006039BE /* Client.h in Headers */ = {isa = PBXBuildFile; fileRef = 782C7984233BE914006039BE /* Client.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		782C7998233BE914006039BE /* td_api.h in Headers */ = {isa = PBXBuildFile; fileRef = 782C7985233BE914006039BE /* td_api.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		782C7999233BE914006039BE /* td_log.h in Headers */ = {isa = PBXBuildFile; fileRef = 782C7986233BE914006039BE /* td_log.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		782C799A233BE914006039BE /* td_api.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 782C7987233BE914006039BE /* td_api.hpp */; settings = {ATTRIBUTES = (Private, ); }; };
-		782C799B233BE914006039BE /* Log.h in Headers */ = {isa = PBXBuildFile; fileRef = 782C7988233BE914006039BE /* Log.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		782C799E233BE9BE006039BE /* TdlibKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 782C795E233BE538006039BE /* TdlibKit.framework */; };
 		782C7E3A233BEC01006039BE /* TdClientImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C7E39233BEC01006039BE /* TdClientImpl.swift */; };
 		782C7E41233BED9C006039BE /* libtdjson.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 782C798A233BE914006039BE /* libtdjson.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -687,14 +682,9 @@
 		782C795E233BE538006039BE /* TdlibKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TdlibKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		782C7961233BE538006039BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		782C797B233BE914006039BE /* libtdjson.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libtdjson.dylib; sourceTree = "<group>"; };
-		782C7980233BE914006039BE /* TlObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TlObject.h; sourceTree = "<group>"; };
 		782C7982233BE914006039BE /* tdjson_export.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tdjson_export.h; sourceTree = "<group>"; };
 		782C7983233BE914006039BE /* td_json_client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = td_json_client.h; sourceTree = "<group>"; };
-		782C7984233BE914006039BE /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Client.h; sourceTree = "<group>"; };
-		782C7985233BE914006039BE /* td_api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = td_api.h; sourceTree = "<group>"; };
 		782C7986233BE914006039BE /* td_log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = td_log.h; sourceTree = "<group>"; };
-		782C7987233BE914006039BE /* td_api.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = td_api.hpp; sourceTree = "<group>"; };
-		782C7988233BE914006039BE /* Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
 		782C798A233BE914006039BE /* libtdjson.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libtdjson.dylib; sourceTree = "<group>"; };
 		782C7E39233BEC01006039BE /* TdClientImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TdClientImpl.swift; sourceTree = "<group>"; };
 		782C7E46233F6463006039BE /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
@@ -1437,18 +1427,9 @@
 		782C797E233BE914006039BE /* td */ = {
 			isa = PBXGroup;
 			children = (
-				782C797F233BE914006039BE /* tl */,
 				782C7981233BE914006039BE /* telegram */,
 			);
 			path = td;
-			sourceTree = "<group>";
-		};
-		782C797F233BE914006039BE /* tl */ = {
-			isa = PBXGroup;
-			children = (
-				782C7980233BE914006039BE /* TlObject.h */,
-			);
-			path = tl;
 			sourceTree = "<group>";
 		};
 		782C7981233BE914006039BE /* telegram */ = {
@@ -1456,11 +1437,7 @@
 			children = (
 				782C7982233BE914006039BE /* tdjson_export.h */,
 				782C7983233BE914006039BE /* td_json_client.h */,
-				782C7984233BE914006039BE /* Client.h */,
-				782C7985233BE914006039BE /* td_api.h */,
 				782C7986233BE914006039BE /* td_log.h */,
-				782C7987233BE914006039BE /* td_api.hpp */,
-				782C7988233BE914006039BE /* Log.h */,
 			);
 			path = telegram;
 			sourceTree = "<group>";
@@ -2240,14 +2217,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				782C799A233BE914006039BE /* td_api.hpp in Headers */,
 				782C7999233BE914006039BE /* td_log.h in Headers */,
-				782C7997233BE914006039BE /* Client.h in Headers */,
-				782C7998233BE914006039BE /* td_api.h in Headers */,
-				782C799B233BE914006039BE /* Log.h in Headers */,
 				782C7995233BE914006039BE /* tdjson_export.h in Headers */,
 				782C7996233BE914006039BE /* td_json_client.h in Headers */,
-				782C7994233BE914006039BE /* TlObject.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
