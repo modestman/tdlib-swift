@@ -20,9 +20,7 @@
 		782C7995233BE914006039BE /* tdjson_export.h in Headers */ = {isa = PBXBuildFile; fileRef = 782C7982233BE914006039BE /* tdjson_export.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		782C7996233BE914006039BE /* td_json_client.h in Headers */ = {isa = PBXBuildFile; fileRef = 782C7983233BE914006039BE /* td_json_client.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		782C7999233BE914006039BE /* td_log.h in Headers */ = {isa = PBXBuildFile; fileRef = 782C7986233BE914006039BE /* td_log.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		782C799E233BE9BE006039BE /* TdlibKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 782C795E233BE538006039BE /* TdlibKit.framework */; };
 		782C7E3A233BEC01006039BE /* TdClientImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C7E39233BEC01006039BE /* TdClientImpl.swift */; };
-		782C7E41233BED9C006039BE /* libtdjson.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 782C798A233BE914006039BE /* libtdjson.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		782C7E49233F6F2F006039BE /* StdOutLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C7E48233F6F2F006039BE /* StdOutLogger.swift */; };
 		782C8091233F7627006039BE /* TdApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C7E4B233F7625006039BE /* TdApi.swift */; };
 		782C8092233F7627006039BE /* TdClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C7E4C233F7625006039BE /* TdClient.swift */; };
@@ -628,10 +626,19 @@
 		78B7092723493845001199C8 /* UsersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B7092623493845001199C8 /* UsersService.swift */; };
 		78B7092D2349E03D001199C8 /* IncomingMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B7092B2349E03D001199C8 /* IncomingMessageCell.swift */; };
 		78B7092E2349E03D001199C8 /* IncomingMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78B7092C2349E03D001199C8 /* IncomingMessageCell.xib */; };
+		78D2BD9B2353B7CC002115B9 /* TdlibKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 782C795E233BE538006039BE /* TdlibKit.framework */; };
+		78D2BD9C2353B7CC002115B9 /* TdlibKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 782C795E233BE538006039BE /* TdlibKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		782C7963233BE538006039BE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 782C7470233BE280006039BE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 782C795D233BE538006039BE;
+			remoteInfo = TdlibKit;
+		};
+		78D2BD9D2353B7CC002115B9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 782C7470233BE280006039BE /* Project object */;
 			proxyType = 1;
@@ -658,9 +665,19 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				782C7E41233BED9C006039BE /* libtdjson.dylib in Embed Libraries */,
 			);
 			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78D2BD942353655F002115B9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				78D2BD9C2353B7CC002115B9 /* TdlibKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -681,7 +698,6 @@
 		782C74BC233BE356006039BE /* tdlib_macos.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tdlib_macos.entitlements; sourceTree = "<group>"; };
 		782C795E233BE538006039BE /* TdlibKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TdlibKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		782C7961233BE538006039BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		782C797B233BE914006039BE /* libtdjson.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libtdjson.dylib; sourceTree = "<group>"; };
 		782C7982233BE914006039BE /* tdjson_export.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tdjson_export.h; sourceTree = "<group>"; };
 		782C7983233BE914006039BE /* td_json_client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = td_json_client.h; sourceTree = "<group>"; };
 		782C7986233BE914006039BE /* td_log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = td_log.h; sourceTree = "<group>"; };
@@ -1292,6 +1308,7 @@
 		78B7092623493845001199C8 /* UsersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersService.swift; sourceTree = "<group>"; };
 		78B7092B2349E03D001199C8 /* IncomingMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingMessageCell.swift; sourceTree = "<group>"; };
 		78B7092C2349E03D001199C8 /* IncomingMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomingMessageCell.xib; sourceTree = "<group>"; };
+		78D2BD9A2353B779002115B9 /* libtdjson.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libtdjson.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1307,7 +1324,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				782C799E233BE9BE006039BE /* TdlibKit.framework in Frameworks */,
+				78D2BD9B2353B7CC002115B9 /* TdlibKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1387,25 +1404,9 @@
 			children = (
 				782C797D233BE914006039BE /* include */,
 				782C797C233BE914006039BE /* iOS */,
-				782C796D233BE914006039BE /* macOS */,
+				78D2BD982353B779002115B9 /* macOS */,
 			);
 			path = td;
-			sourceTree = "<group>";
-		};
-		782C796D233BE914006039BE /* macOS */ = {
-			isa = PBXGroup;
-			children = (
-				782C797A233BE914006039BE /* lib */,
-			);
-			path = macOS;
-			sourceTree = "<group>";
-		};
-		782C797A233BE914006039BE /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				782C797B233BE914006039BE /* libtdjson.dylib */,
-			);
-			path = lib;
 			sourceTree = "<group>";
 		};
 		782C797C233BE914006039BE /* iOS */ = {
@@ -2210,6 +2211,22 @@
 			path = Layout;
 			sourceTree = "<group>";
 		};
+		78D2BD982353B779002115B9 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				78D2BD992353B779002115B9 /* lib */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		78D2BD992353B779002115B9 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				78D2BD9A2353B779002115B9 /* libtdjson.dylib */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -2234,6 +2251,7 @@
 				782C7483233BE2F6006039BE /* Frameworks */,
 				782C7484233BE2F6006039BE /* Resources */,
 				782C74AB233BE32E006039BE /* Embed Frameworks */,
+				78D2BD8C23534DE5002115B9 /* Codesign TdlibKit.framework */,
 			);
 			buildRules = (
 			);
@@ -2252,10 +2270,13 @@
 				782C74AC233BE355006039BE /* Sources */,
 				782C74AD233BE355006039BE /* Frameworks */,
 				782C74AE233BE355006039BE /* Resources */,
+				78D2BD942353655F002115B9 /* Embed Frameworks */,
+				78D2BD912353645D002115B9 /* Codesign TdlibKit.framework */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				78D2BD9E2353B7CC002115B9 /* PBXTargetDependency */,
 			);
 			name = "tdlib-macos";
 			productName = "tdlib-macos";
@@ -2271,6 +2292,7 @@
 				782C795B233BE538006039BE /* Frameworks */,
 				782C795C233BE538006039BE /* Resources */,
 				782C7E42233BED9C006039BE /* Embed Libraries */,
+				78D2BD8D23535801002115B9 /* Embed libtdjson.dylib */,
 			);
 			buildRules = (
 			);
@@ -2355,6 +2377,63 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		78D2BD8C23534DE5002115B9 /* Codesign TdlibKit.framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Codesign TdlibKit.framework";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Signs a framework with the provided identity\ncode_sign_if_enabled() {\n  if [ -n \"${EXPANDED_CODE_SIGN_IDENTITY:-}\" -a \"${CODE_SIGNING_REQUIRED:-}\" != \"NO\" -a \"${CODE_SIGNING_ALLOWED}\" != \"NO\" ]; then\n    # Use the current code_sign_identity\n    echo \"Code Signing $1 with Identity ${EXPANDED_CODE_SIGN_IDENTITY_NAME}\"\n    local code_sign_cmd=\"/usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} ${OTHER_CODE_SIGN_FLAGS:-} --preserve-metadata=identifier,entitlements '$1'\"\n\n    echo \"$code_sign_cmd\"\n    eval \"$code_sign_cmd\"\n  fi\n}\n\ncode_sign_if_enabled \"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TdlibKit.framework/Frameworks/libtdjson.dylib\"\n";
+		};
+		78D2BD8D23535801002115B9 /* Embed libtdjson.dylib */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Embed libtdjson.dylib";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "destination=\"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}\"\nsrc_path=\"\"\nif [[ \"$PLATFORM_NAME\" == \"macosx\"  ]]; then\n    src_path=\"${SRCROOT}/TdlibKit/td/macOS/lib/libtdjson.dylib\"\nelse \n    src_path=\"${SRCROOT}/TdlibKit/td/iOS/lib/libtdjson.dylib\"\nfi\necho \"rsync -av \\\"$src_path\\\" \\\"$destination\\\"\"\nmkdir -p \"$destination\"\ncp \"$src_path\" \"$destination\"\n";
+		};
+		78D2BD912353645D002115B9 /* Codesign TdlibKit.framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Codesign TdlibKit.framework";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Signs a framework with the provided identity\ncode_sign_if_enabled() {\n  if [ -n \"${EXPANDED_CODE_SIGN_IDENTITY:-}\" -a \"${CODE_SIGNING_REQUIRED:-}\" != \"NO\" -a \"${CODE_SIGNING_ALLOWED}\" != \"NO\" ]; then\n    # Use the current code_sign_identity\n    echo \"Code Signing $1 with Identity ${EXPANDED_CODE_SIGN_IDENTITY_NAME}\"\n    local code_sign_cmd=\"/usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} ${OTHER_CODE_SIGN_FLAGS:-} --preserve-metadata=identifier,entitlements '$1'\"\n\n    echo \"$code_sign_cmd\"\n    eval \"$code_sign_cmd\"\n  fi\n}\n\ncode_sign_if_enabled \"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TdlibKit.framework/Versions/A/Frameworks/libtdjson.dylib\"\ncode_sign_if_enabled \"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TdlibKit.framework\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		782C7482233BE2F6006039BE /* Sources */ = {
@@ -2990,6 +3069,11 @@
 			target = 782C795D233BE538006039BE /* TdlibKit */;
 			targetProxy = 782C7963233BE538006039BE /* PBXContainerItemProxy */;
 		};
+		78D2BD9E2353B7CC002115B9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 782C795D233BE538006039BE /* TdlibKit */;
+			targetProxy = 78D2BD9D2353B7CC002115B9 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -3212,10 +3296,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 659FYM3937;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -3234,6 +3319,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.glezman.TdlibKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
@@ -3251,10 +3337,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 659FYM3937;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -3273,6 +3360,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.glezman.TdlibKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";

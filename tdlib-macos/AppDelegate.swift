@@ -7,17 +7,19 @@
 //
 
 import Cocoa
+import TdlibKit
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+    var client: TdClient!
 
-
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+    func applicationDidFinishLaunching(_ aNotification: Foundation.Notification) {
+        client = TdClientImpl(completionQueue: .main, logger: nil)
+        client.run(updateHandler: { _ in })
     }
 
-    func applicationWillTerminate(_ aNotification: Notification) {
+    func applicationWillTerminate(_ aNotification: Foundation.Notification) {
         // Insert code here to tear down your application
     }
 
