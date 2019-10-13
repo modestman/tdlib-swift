@@ -11,7 +11,6 @@ import UIKit
 final class ConversationViewController: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var collectionView: UICollectionView!
     
     private var conversationService: ConversationService!
     
@@ -20,43 +19,38 @@ final class ConversationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureCollectionView()
+        configureTableView()
         conversationService = ConversationService(tdApi: ServiceLayer.instance.telegramService.api, chatId: chat.id)
         ServiceLayer.instance.telegramService.add(listener: conversationService)
         conversationService.delegate = self
         conversationService.getMessages()
     }
     
-    private func configureCollectionView() {
-//        collectionView.collectionViewLayout = ChatCollectionViewFlowLayout()
-        
-        let incomingCell = UINib(nibName: IncomingMessageCell.identifier, bundle: nil)
-        collectionView.register(incomingCell, forCellWithReuseIdentifier: IncomingMessageCell.identifier)
+    private func configureTableView() {
+
+
     }
 }
 
-extension ConversationViewController: UICollectionViewDataSource {
+extension ConversationViewController: UITableViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return conversationService.messages.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: IncomingMessageCell.identifier,
-            for: indexPath) as! IncomingMessageCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath) as! TextMessageCell
         let message = conversationService.messages[indexPath.row]
-        cell.configure(with: message)
+        cell.configure(message)
         return cell
     }
-    
 }
 
 
 extension ConversationViewController: ConversationServiceDelegate {
     
     func messagesUpdated() {
-        collectionView.reloadData()
+        tableView.reloadData()
     }
     
     func onError(_ error: Error) {

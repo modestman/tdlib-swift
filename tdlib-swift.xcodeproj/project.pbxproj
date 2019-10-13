@@ -623,9 +623,6 @@
 		78B7092023492CD5001199C8 /* Conversation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78B7091F23492CD5001199C8 /* Conversation.storyboard */; };
 		78B7092323492DF1001199C8 /* TextMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B7092223492DF1001199C8 /* TextMessageCell.swift */; };
 		78B7092523492EBE001199C8 /* ConversationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B7092423492EBE001199C8 /* ConversationService.swift */; };
-		78B7092723493845001199C8 /* UsersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B7092623493845001199C8 /* UsersService.swift */; };
-		78B7092D2349E03D001199C8 /* IncomingMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B7092B2349E03D001199C8 /* IncomingMessageCell.swift */; };
-		78B7092E2349E03D001199C8 /* IncomingMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78B7092C2349E03D001199C8 /* IncomingMessageCell.xib */; };
 		78D2BD9B2353B7CC002115B9 /* TdlibKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 782C795E233BE538006039BE /* TdlibKit.framework */; };
 		78D2BD9C2353B7CC002115B9 /* TdlibKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 782C795E233BE538006039BE /* TdlibKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -1305,9 +1302,6 @@
 		78B7091F23492CD5001199C8 /* Conversation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Conversation.storyboard; sourceTree = "<group>"; };
 		78B7092223492DF1001199C8 /* TextMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextMessageCell.swift; sourceTree = "<group>"; };
 		78B7092423492EBE001199C8 /* ConversationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationService.swift; sourceTree = "<group>"; };
-		78B7092623493845001199C8 /* UsersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersService.swift; sourceTree = "<group>"; };
-		78B7092B2349E03D001199C8 /* IncomingMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingMessageCell.swift; sourceTree = "<group>"; };
-		78B7092C2349E03D001199C8 /* IncomingMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomingMessageCell.xib; sourceTree = "<group>"; };
 		78D2BD9A2353B779002115B9 /* libtdjson.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libtdjson.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -2150,7 +2144,6 @@
 				782C82E2233FE7D6006039BE /* AuthService.swift */,
 				782C830723429F24006039BE /* ChatListService.swift */,
 				78B7092423492EBE001199C8 /* ConversationService.swift */,
-				78B7092623493845001199C8 /* UsersService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -2186,7 +2179,6 @@
 		78B7091C23492C83001199C8 /* Conversation */ = {
 			isa = PBXGroup;
 			children = (
-				78B709282349DEF0001199C8 /* Layout */,
 				78B7092123492DC9001199C8 /* Views */,
 				78B7091F23492CD5001199C8 /* Conversation.storyboard */,
 				78B7091D23492CB3001199C8 /* ConversationViewController.swift */,
@@ -2198,17 +2190,8 @@
 			isa = PBXGroup;
 			children = (
 				78B7092223492DF1001199C8 /* TextMessageCell.swift */,
-				78B7092B2349E03D001199C8 /* IncomingMessageCell.swift */,
-				78B7092C2349E03D001199C8 /* IncomingMessageCell.xib */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		78B709282349DEF0001199C8 /* Layout */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Layout;
 			sourceTree = "<group>";
 		};
 		78D2BD982353B779002115B9 /* macOS */ = {
@@ -2351,7 +2334,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				782C82EA233FEBA8006039BE /* Auth.storyboard in Resources */,
-				78B7092E2349E03D001199C8 /* IncomingMessageCell.xib in Resources */,
 				782C82F12340048F006039BE /* Main.storyboard in Resources */,
 				782C7495233BE2F7006039BE /* LaunchScreen.storyboard in Resources */,
 				78B7092023492CD5001199C8 /* Conversation.storyboard in Resources */,
@@ -2448,12 +2430,10 @@
 				78B708F62348953B001199C8 /* ChatInfo.swift in Sources */,
 				782C82E5233FE9BE006039BE /* Types.swift in Sources */,
 				782C82F5234004EB006039BE /* ChatListViewController.swift in Sources */,
-				78B7092D2349E03D001199C8 /* IncomingMessageCell.swift in Sources */,
 				782C82EC233FF66D006039BE /* ApplicationController.swift in Sources */,
 				78B7092323492DF1001199C8 /* TextMessageCell.swift in Sources */,
 				782C7489233BE2F6006039BE /* AppDelegate.swift in Sources */,
 				78B7091E23492CB3001199C8 /* ConversationViewController.swift in Sources */,
-				78B7092723493845001199C8 /* UsersService.swift in Sources */,
 				782C748B233BE2F6006039BE /* SceneDelegate.swift in Sources */,
 				782C82E8233FEB84006039BE /* AuthViewController.swift in Sources */,
 				78B7092523492EBE001199C8 /* ConversationService.swift in Sources */,
