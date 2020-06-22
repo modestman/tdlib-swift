@@ -3,18 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0267EA2724A0A2C200C3587A /* libtdjson.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 782C798A233BE914006039BE /* libtdjson.dylib */; };
+		0267EA2C24A0BBD300C3587A /* libtdjson.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 782C798A233BE914006039BE /* libtdjson.dylib */; };
+		089B9A5EABEC9ED66C3EA4A9 /* Pods_TdlibKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2417D9B8E6D9A2E0A75C1C99 /* Pods_TdlibKit.framework */; };
 		782C7489233BE2F6006039BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C7488233BE2F6006039BE /* AppDelegate.swift */; };
 		782C748B233BE2F6006039BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C748A233BE2F6006039BE /* SceneDelegate.swift */; };
 		782C7492233BE2F7006039BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 782C7491233BE2F7006039BE /* Assets.xcassets */; };
 		782C7495233BE2F7006039BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 782C7493233BE2F7006039BE /* LaunchScreen.storyboard */; };
-		782C74B3233BE355006039BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C74B2233BE355006039BE /* AppDelegate.swift */; };
-		782C74B5233BE356006039BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C74B4233BE355006039BE /* ViewController.swift */; };
-		782C74B7233BE356006039BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 782C74B6233BE356006039BE /* Assets.xcassets */; };
-		782C74BA233BE356006039BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 782C74B8233BE356006039BE /* Main.storyboard */; };
 		782C7965233BE538006039BE /* TdlibKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 782C795E233BE538006039BE /* TdlibKit.framework */; };
 		782C7966233BE538006039BE /* TdlibKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 782C795E233BE538006039BE /* TdlibKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		782C7995233BE914006039BE /* tdjson_export.h in Headers */ = {isa = PBXBuildFile; fileRef = 782C7982233BE914006039BE /* tdjson_export.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -604,7 +603,6 @@
 		782C82D4233F7628006039BE /* GetTemporaryPasswordState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C8090233F7627006039BE /* GetTemporaryPasswordState.swift */; };
 		782C82D6233F76C7006039BE /* TelegramService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C82D5233F76C6006039BE /* TelegramService.swift */; };
 		782C82E0233FB825006039BE /* ServiceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C82DF233FB825006039BE /* ServiceLayer.swift */; };
-		782C82E1233FB95C006039BE /* libtdjson.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 782C798A233BE914006039BE /* libtdjson.dylib */; };
 		782C82E3233FE7D6006039BE /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C82E2233FE7D6006039BE /* AuthService.swift */; };
 		782C82E5233FE9BE006039BE /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C82E4233FE9BE006039BE /* Types.swift */; };
 		782C82E8233FEB84006039BE /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C82E7233FEB84006039BE /* AuthViewController.swift */; };
@@ -623,19 +621,11 @@
 		78B7092023492CD5001199C8 /* Conversation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78B7091F23492CD5001199C8 /* Conversation.storyboard */; };
 		78B7092323492DF1001199C8 /* TextMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B7092223492DF1001199C8 /* TextMessageCell.swift */; };
 		78B7092523492EBE001199C8 /* ConversationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B7092423492EBE001199C8 /* ConversationService.swift */; };
-		78D2BD9B2353B7CC002115B9 /* TdlibKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 782C795E233BE538006039BE /* TdlibKit.framework */; };
-		78D2BD9C2353B7CC002115B9 /* TdlibKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 782C795E233BE538006039BE /* TdlibKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9E536212A0EC8F480FA0732C /* Pods_tdlib_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4625B042BDD947B55A06681B /* Pods_tdlib_ios.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		782C7963233BE538006039BE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 782C7470233BE280006039BE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 782C795D233BE538006039BE;
-			remoteInfo = TdlibKit;
-		};
-		78D2BD9D2353B7CC002115B9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 782C7470233BE280006039BE /* Project object */;
 			proxyType = 1;
@@ -662,37 +652,25 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				0267EA2C24A0BBD300C3587A /* libtdjson.dylib in Embed Libraries */,
 			);
 			name = "Embed Libraries";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		78D2BD942353655F002115B9 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				78D2BD9C2353B7CC002115B9 /* TdlibKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0F4FE9306B13CF881925A6C9 /* Pods-tdlib-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tdlib-ios.release.xcconfig"; path = "Target Support Files/Pods-tdlib-ios/Pods-tdlib-ios.release.xcconfig"; sourceTree = "<group>"; };
+		2417D9B8E6D9A2E0A75C1C99 /* Pods_TdlibKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TdlibKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		378C0C184118BAA038862411 /* Pods-tdlib-macos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tdlib-macos.debug.xcconfig"; path = "Target Support Files/Pods-tdlib-macos/Pods-tdlib-macos.debug.xcconfig"; sourceTree = "<group>"; };
+		4625B042BDD947B55A06681B /* Pods_tdlib_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tdlib_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		53D4412CAD87C8E29B56188E /* Pods-tdlib-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tdlib-ios.debug.xcconfig"; path = "Target Support Files/Pods-tdlib-ios/Pods-tdlib-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		782C7486233BE2F6006039BE /* tdlib-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tdlib-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		782C7488233BE2F6006039BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		782C748A233BE2F6006039BE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		782C7491233BE2F7006039BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		782C7494233BE2F7006039BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		782C7496233BE2F7006039BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		782C74B0233BE355006039BE /* tdlib-macos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tdlib-macos.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		782C74B2233BE355006039BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		782C74B4233BE355006039BE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		782C74B6233BE356006039BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		782C74B9233BE356006039BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		782C74BB233BE356006039BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		782C74BC233BE356006039BE /* tdlib_macos.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tdlib_macos.entitlements; sourceTree = "<group>"; };
 		782C795E233BE538006039BE /* TdlibKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TdlibKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		782C7961233BE538006039BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		782C7982233BE914006039BE /* tdjson_export.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tdjson_export.h; sourceTree = "<group>"; };
@@ -1302,7 +1280,10 @@
 		78B7091F23492CD5001199C8 /* Conversation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Conversation.storyboard; sourceTree = "<group>"; };
 		78B7092223492DF1001199C8 /* TextMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextMessageCell.swift; sourceTree = "<group>"; };
 		78B7092423492EBE001199C8 /* ConversationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationService.swift; sourceTree = "<group>"; };
-		78D2BD9A2353B779002115B9 /* libtdjson.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libtdjson.dylib; sourceTree = "<group>"; };
+		90FBC636384424EF923EC6FF /* Pods_tdlib_macos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tdlib_macos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3C122EC0DF74602C2CB7EBC /* Pods-TdlibKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TdlibKit.debug.xcconfig"; path = "Target Support Files/Pods-TdlibKit/Pods-TdlibKit.debug.xcconfig"; sourceTree = "<group>"; };
+		ECE5CA54D3DA889BC61D175D /* Pods-tdlib-macos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tdlib-macos.release.xcconfig"; path = "Target Support Files/Pods-tdlib-macos/Pods-tdlib-macos.release.xcconfig"; sourceTree = "<group>"; };
+		F81B0F451A92E7B3F3DC146E /* Pods-TdlibKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TdlibKit.release.xcconfig"; path = "Target Support Files/Pods-TdlibKit/Pods-TdlibKit.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1311,14 +1292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				782C7965233BE538006039BE /* TdlibKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		782C74AD233BE355006039BE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				78D2BD9B2353B7CC002115B9 /* TdlibKit.framework in Frameworks */,
+				9E536212A0EC8F480FA0732C /* Pods_tdlib_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1326,7 +1300,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				782C82E1233FB95C006039BE /* libtdjson.dylib in Frameworks */,
+				089B9A5EABEC9ED66C3EA4A9 /* Pods_TdlibKit.framework in Frameworks */,
+				0267EA2724A0A2C200C3587A /* libtdjson.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1337,10 +1312,10 @@
 			isa = PBXGroup;
 			children = (
 				782C7487233BE2F6006039BE /* tdlib-ios */,
-				782C74B1233BE355006039BE /* tdlib-macos */,
 				782C795F233BE538006039BE /* TdlibKit */,
 				782C7479233BE280006039BE /* Products */,
 				782C799D233BE9BE006039BE /* Frameworks */,
+				F4045D0817D11E8D642CDAB4 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1348,7 +1323,6 @@
 			isa = PBXGroup;
 			children = (
 				782C7486233BE2F6006039BE /* tdlib-ios.app */,
-				782C74B0233BE355006039BE /* tdlib-macos.app */,
 				782C795E233BE538006039BE /* TdlibKit.framework */,
 			);
 			name = Products;
@@ -1364,19 +1338,6 @@
 				782C82DA233FB722006039BE /* Supporting Files */,
 			);
 			path = "tdlib-ios";
-			sourceTree = "<group>";
-		};
-		782C74B1233BE355006039BE /* tdlib-macos */ = {
-			isa = PBXGroup;
-			children = (
-				782C74B2233BE355006039BE /* AppDelegate.swift */,
-				782C74B4233BE355006039BE /* ViewController.swift */,
-				782C74B6233BE356006039BE /* Assets.xcassets */,
-				782C74B8233BE356006039BE /* Main.storyboard */,
-				782C74BB233BE356006039BE /* Info.plist */,
-				782C74BC233BE356006039BE /* tdlib_macos.entitlements */,
-			);
-			path = "tdlib-macos";
 			sourceTree = "<group>";
 		};
 		782C795F233BE538006039BE /* TdlibKit */ = {
@@ -1398,7 +1359,6 @@
 			children = (
 				782C797D233BE914006039BE /* include */,
 				782C797C233BE914006039BE /* iOS */,
-				78D2BD982353B779002115B9 /* macOS */,
 			);
 			path = td;
 			sourceTree = "<group>";
@@ -1448,6 +1408,9 @@
 		782C799D233BE9BE006039BE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2417D9B8E6D9A2E0A75C1C99 /* Pods_TdlibKit.framework */,
+				4625B042BDD947B55A06681B /* Pods_tdlib_ios.framework */,
+				90FBC636384424EF923EC6FF /* Pods_tdlib_macos.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2194,20 +2157,17 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		78D2BD982353B779002115B9 /* macOS */ = {
+		F4045D0817D11E8D642CDAB4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				78D2BD992353B779002115B9 /* lib */,
+				E3C122EC0DF74602C2CB7EBC /* Pods-TdlibKit.debug.xcconfig */,
+				F81B0F451A92E7B3F3DC146E /* Pods-TdlibKit.release.xcconfig */,
+				53D4412CAD87C8E29B56188E /* Pods-tdlib-ios.debug.xcconfig */,
+				0F4FE9306B13CF881925A6C9 /* Pods-tdlib-ios.release.xcconfig */,
+				378C0C184118BAA038862411 /* Pods-tdlib-macos.debug.xcconfig */,
+				ECE5CA54D3DA889BC61D175D /* Pods-tdlib-macos.release.xcconfig */,
 			);
-			path = macOS;
-			sourceTree = "<group>";
-		};
-		78D2BD992353B779002115B9 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				78D2BD9A2353B779002115B9 /* libtdjson.dylib */,
-			);
-			path = lib;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2230,11 +2190,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 782C7499233BE2F7006039BE /* Build configuration list for PBXNativeTarget "tdlib-ios" */;
 			buildPhases = (
+				B752599DE64729E33111C91B /* [CP] Check Pods Manifest.lock */,
 				782C7482233BE2F6006039BE /* Sources */,
 				782C7483233BE2F6006039BE /* Frameworks */,
 				782C7484233BE2F6006039BE /* Resources */,
 				782C74AB233BE32E006039BE /* Embed Frameworks */,
+				0267EA2B24A0B7AB00C3587A /* Remove unused architectures */,
 				78D2BD8C23534DE5002115B9 /* Codesign TdlibKit.framework */,
+				A8F5CF31DEC909BDF5AABF39 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2246,36 +2209,16 @@
 			productReference = 782C7486233BE2F6006039BE /* tdlib-ios.app */;
 			productType = "com.apple.product-type.application";
 		};
-		782C74AF233BE355006039BE /* tdlib-macos */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 782C74BD233BE356006039BE /* Build configuration list for PBXNativeTarget "tdlib-macos" */;
-			buildPhases = (
-				782C74AC233BE355006039BE /* Sources */,
-				782C74AD233BE355006039BE /* Frameworks */,
-				782C74AE233BE355006039BE /* Resources */,
-				78D2BD942353655F002115B9 /* Embed Frameworks */,
-				78D2BD912353645D002115B9 /* Codesign TdlibKit.framework */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				78D2BD9E2353B7CC002115B9 /* PBXTargetDependency */,
-			);
-			name = "tdlib-macos";
-			productName = "tdlib-macos";
-			productReference = 782C74B0233BE355006039BE /* tdlib-macos.app */;
-			productType = "com.apple.product-type.application";
-		};
 		782C795D233BE538006039BE /* TdlibKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 782C7967233BE538006039BE /* Build configuration list for PBXNativeTarget "TdlibKit" */;
 			buildPhases = (
+				BB3067124C49781B3E43B24A /* [CP] Check Pods Manifest.lock */,
 				782C7959233BE538006039BE /* Headers */,
 				782C795A233BE538006039BE /* Sources */,
 				782C795B233BE538006039BE /* Frameworks */,
 				782C795C233BE538006039BE /* Resources */,
 				782C7E42233BED9C006039BE /* Embed Libraries */,
-				78D2BD8D23535801002115B9 /* Embed libtdjson.dylib */,
 			);
 			buildRules = (
 			);
@@ -2299,9 +2242,6 @@
 					782C7485233BE2F6006039BE = {
 						CreatedOnToolsVersion = 11.0;
 					};
-					782C74AF233BE355006039BE = {
-						CreatedOnToolsVersion = 11.0;
-					};
 					782C795D233BE538006039BE = {
 						CreatedOnToolsVersion = 11.0;
 						LastSwiftMigration = 1100;
@@ -2322,7 +2262,6 @@
 			projectRoot = "";
 			targets = (
 				782C7485233BE2F6006039BE /* tdlib-ios */,
-				782C74AF233BE355006039BE /* tdlib-macos */,
 				782C795D233BE538006039BE /* TdlibKit */,
 			);
 		};
@@ -2342,15 +2281,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		782C74AE233BE355006039BE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				782C74B7233BE356006039BE /* Assets.xcassets in Resources */,
-				782C74BA233BE356006039BE /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		782C795C233BE538006039BE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2361,6 +2291,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0267EA2B24A0B7AB00C3587A /* Remove unused architectures */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Remove unused architectures";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This script loops through the frameworks embedded in the application and\n# removes unused architectures.\nFRAMEWORK_EXECUTABLE_NAME=\"libtdjson.dylib\"\nFRAMEWORK_EXECUTABLE_PATH=\"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TdlibKit.framework/Frameworks/$FRAMEWORK_EXECUTABLE_NAME\"\n\nEXTRACTED_ARCHS=()\nfor ARCH in $ARCHS\ndo\n    echo \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\n    lipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\n    EXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\ndone\n\necho \"Merging extracted architectures: ${ARCHS}\"\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\nrm \"${EXTRACTED_ARCHS[@]}\"\n\necho \"Replacing original executable with thinned version\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n";
+		};
 		78D2BD8C23534DE5002115B9 /* Codesign TdlibKit.framework */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2379,25 +2327,24 @@
 			shellPath = /bin/sh;
 			shellScript = "# Signs a framework with the provided identity\ncode_sign_if_enabled() {\n  if [ -n \"${EXPANDED_CODE_SIGN_IDENTITY:-}\" -a \"${CODE_SIGNING_REQUIRED:-}\" != \"NO\" -a \"${CODE_SIGNING_ALLOWED}\" != \"NO\" ]; then\n    # Use the current code_sign_identity\n    echo \"Code Signing $1 with Identity ${EXPANDED_CODE_SIGN_IDENTITY_NAME}\"\n    local code_sign_cmd=\"/usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} ${OTHER_CODE_SIGN_FLAGS:-} --preserve-metadata=identifier,entitlements '$1'\"\n\n    echo \"$code_sign_cmd\"\n    eval \"$code_sign_cmd\"\n  fi\n}\n\ncode_sign_if_enabled \"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TdlibKit.framework/Frameworks/libtdjson.dylib\"\n";
 		};
-		78D2BD8D23535801002115B9 /* Embed libtdjson.dylib */ = {
+		A8F5CF31DEC909BDF5AABF39 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tdlib-ios/Pods-tdlib-ios-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
-			name = "Embed libtdjson.dylib";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tdlib-ios/Pods-tdlib-ios-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "destination=\"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}\"\nsrc_path=\"\"\nif [[ \"$PLATFORM_NAME\" == \"macosx\"  ]]; then\n    src_path=\"${SRCROOT}/TdlibKit/td/macOS/lib/libtdjson.dylib\"\nelse \n    src_path=\"${SRCROOT}/TdlibKit/td/iOS/lib/libtdjson.dylib\"\nfi\necho \"rsync -av \\\"$src_path\\\" \\\"$destination\\\"\"\nmkdir -p \"$destination\"\ncp \"$src_path\" \"$destination\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tdlib-ios/Pods-tdlib-ios-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
-		78D2BD912353645D002115B9 /* Codesign TdlibKit.framework */ = {
+		B752599DE64729E33111C91B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2405,15 +2352,41 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "Codesign TdlibKit.framework";
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-tdlib-ios-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Signs a framework with the provided identity\ncode_sign_if_enabled() {\n  if [ -n \"${EXPANDED_CODE_SIGN_IDENTITY:-}\" -a \"${CODE_SIGNING_REQUIRED:-}\" != \"NO\" -a \"${CODE_SIGNING_ALLOWED}\" != \"NO\" ]; then\n    # Use the current code_sign_identity\n    echo \"Code Signing $1 with Identity ${EXPANDED_CODE_SIGN_IDENTITY_NAME}\"\n    local code_sign_cmd=\"/usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} ${OTHER_CODE_SIGN_FLAGS:-} --preserve-metadata=identifier,entitlements '$1'\"\n\n    echo \"$code_sign_cmd\"\n    eval \"$code_sign_cmd\"\n  fi\n}\n\ncode_sign_if_enabled \"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TdlibKit.framework/Versions/A/Frameworks/libtdjson.dylib\"\ncode_sign_if_enabled \"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TdlibKit.framework\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BB3067124C49781B3E43B24A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TdlibKit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2440,15 +2413,6 @@
 				782C82E3233FE7D6006039BE /* AuthService.swift in Sources */,
 				78B7091B23491776001199C8 /* UserInfo.swift in Sources */,
 				782C82F3234004A6006039BE /* MainViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		782C74AC233BE355006039BE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				782C74B5233BE356006039BE /* ViewController.swift in Sources */,
-				782C74B3233BE355006039BE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3049,11 +3013,6 @@
 			target = 782C795D233BE538006039BE /* TdlibKit */;
 			targetProxy = 782C7963233BE538006039BE /* PBXContainerItemProxy */;
 		};
-		78D2BD9E2353B7CC002115B9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 782C795D233BE538006039BE /* TdlibKit */;
-			targetProxy = 78D2BD9D2353B7CC002115B9 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -3063,14 +3022,6 @@
 				782C7494233BE2F7006039BE /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		782C74B8233BE356006039BE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				782C74B9233BE356006039BE /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -3191,18 +3142,19 @@
 		};
 		782C7497233BE2F7006039BE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53D4412CAD87C8E29B56188E /* Pods-tdlib-ios.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 659FYM3937;
+				DEVELOPMENT_TEAM = 42LRQS6X44;
 				INFOPLIST_FILE = "tdlib-ios/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.glezman.tdlib-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.redmadrobot.tdlib-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -3212,18 +3164,19 @@
 		};
 		782C7498233BE2F7006039BE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F4FE9306B13CF881925A6C9 /* Pods-tdlib-ios.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 659FYM3937;
+				DEVELOPMENT_TEAM = 42LRQS6X44;
 				INFOPLIST_FILE = "tdlib-ios/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.glezman.tdlib-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.redmadrobot.tdlib-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -3232,48 +3185,9 @@
 			};
 			name = Release;
 		};
-		782C74BE233BE356006039BE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "tdlib-macos/tdlib_macos.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 659FYM3937;
-				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = "tdlib-macos/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.glezman.tdlib-macos";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		782C74BF233BE356006039BE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "tdlib-macos/tdlib_macos.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 659FYM3937;
-				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = "tdlib-macos/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.glezman.tdlib-macos";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 		782C7968233BE538006039BE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3C122EC0DF74602C2CB7EBC /* Pods-TdlibKit.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -3297,7 +3211,7 @@
 					"$(PROJECT_DIR)/TdlibKit/td/macOS/lib",
 					"$(PROJECT_DIR)/TdlibKit/td/iOS/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.glezman.TdlibKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.redmadrobot.TdlibKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -3315,6 +3229,7 @@
 		};
 		782C7969233BE538006039BE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F81B0F451A92E7B3F3DC146E /* Pods-TdlibKit.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -3338,7 +3253,7 @@
 					"$(PROJECT_DIR)/TdlibKit/td/macOS/lib",
 					"$(PROJECT_DIR)/TdlibKit/td/iOS/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.glezman.TdlibKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.redmadrobot.TdlibKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -3371,15 +3286,6 @@
 			buildConfigurations = (
 				782C7497233BE2F7006039BE /* Debug */,
 				782C7498233BE2F7006039BE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		782C74BD233BE356006039BE /* Build configuration list for PBXNativeTarget "tdlib-macos" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				782C74BE233BE356006039BE /* Debug */,
-				782C74BF233BE356006039BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
