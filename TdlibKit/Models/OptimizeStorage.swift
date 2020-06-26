@@ -29,6 +29,9 @@ public struct OptimizeStorage: Codable {
     /// The amount of time after the creation of a file during which it can't be deleted, in seconds. Pass -1 to use the default value
     public let immunityDelay: Int
 
+    /// Pass true if deleted file statistics needs to be returned instead of the whole storage usage statistics. Affects only returned statistics
+    public let returnDeletedFileStatistics: Bool
+
     /// Limit on the total size of files after deletion. Pass -1 to use the default limit
     public let size: Int64
 
@@ -43,6 +46,7 @@ public struct OptimizeStorage: Codable {
         excludeChatIds: [Int64],
         fileTypes: [FileType],
         immunityDelay: Int,
+        returnDeletedFileStatistics: Bool,
         size: Int64,
         ttl: Int) {
 
@@ -52,6 +56,7 @@ public struct OptimizeStorage: Codable {
         self.excludeChatIds = excludeChatIds
         self.fileTypes = fileTypes
         self.immunityDelay = immunityDelay
+        self.returnDeletedFileStatistics = returnDeletedFileStatistics
         self.size = size
         self.ttl = ttl
     }

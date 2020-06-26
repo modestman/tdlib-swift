@@ -20,8 +20,8 @@ public struct VideoNote: Codable {
     /// Video minithumbnail; may be null
     public let minithumbnail: Minithumbnail?
 
-    /// Video thumbnail; as defined by the sender; may be null
-    public let thumbnail: PhotoSize?
+    /// Video thumbnail in JPEG format; as defined by the sender; may be null
+    public let thumbnail: Thumbnail?
 
     /// File containing the video
     public let video: File
@@ -31,7 +31,7 @@ public struct VideoNote: Codable {
         duration: Int,
         length: Int,
         minithumbnail: Minithumbnail?,
-        thumbnail: PhotoSize?,
+        thumbnail: Thumbnail?,
         video: File) {
 
         self.duration = duration

@@ -11,7 +11,7 @@ import Foundation
 /// Describes a chat background
 public struct Background: Codable {
 
-    /// Document with the background; may be null. Null only for solid backgrounds
+    /// Document with the background; may be null. Null only for filled backgrounds
     public let document: Document?
 
     /// Unique background identifier

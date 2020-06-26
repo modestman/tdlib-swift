@@ -20,6 +20,9 @@ public enum UserPrivacySettingRule: Codable {
     /// A rule to allow certain specified users to do something
     case userPrivacySettingRuleAllowUsers(UserPrivacySettingRuleAllowUsers)
 
+    /// A rule to allow all members of certain specified basic groups and supergroups to doing something
+    case userPrivacySettingRuleAllowChatMembers(UserPrivacySettingRuleAllowChatMembers)
+
     /// A rule to restrict all users from doing something
     case userPrivacySettingRuleRestrictAll
 
@@ -29,14 +32,19 @@ public enum UserPrivacySettingRule: Codable {
     /// A rule to restrict all specified users from doing something
     case userPrivacySettingRuleRestrictUsers(UserPrivacySettingRuleRestrictUsers)
 
+    /// A rule to restrict all members of specified basic groups and supergroups from doing something
+    case userPrivacySettingRuleRestrictChatMembers(UserPrivacySettingRuleRestrictChatMembers)
+
 
     private enum Kind: String, Codable {
         case userPrivacySettingRuleAllowAll
         case userPrivacySettingRuleAllowContacts
         case userPrivacySettingRuleAllowUsers
+        case userPrivacySettingRuleAllowChatMembers
         case userPrivacySettingRuleRestrictAll
         case userPrivacySettingRuleRestrictContacts
         case userPrivacySettingRuleRestrictUsers
+        case userPrivacySettingRuleRestrictChatMembers
     }
 
     public init(from decoder: Decoder) throws {
@@ -50,6 +58,9 @@ public enum UserPrivacySettingRule: Codable {
         case .userPrivacySettingRuleAllowUsers:
             let value = try UserPrivacySettingRuleAllowUsers(from: decoder)
             self = .userPrivacySettingRuleAllowUsers(value)
+        case .userPrivacySettingRuleAllowChatMembers:
+            let value = try UserPrivacySettingRuleAllowChatMembers(from: decoder)
+            self = .userPrivacySettingRuleAllowChatMembers(value)
         case .userPrivacySettingRuleRestrictAll:
             self = .userPrivacySettingRuleRestrictAll
         case .userPrivacySettingRuleRestrictContacts:
@@ -57,6 +68,9 @@ public enum UserPrivacySettingRule: Codable {
         case .userPrivacySettingRuleRestrictUsers:
             let value = try UserPrivacySettingRuleRestrictUsers(from: decoder)
             self = .userPrivacySettingRuleRestrictUsers(value)
+        case .userPrivacySettingRuleRestrictChatMembers:
+            let value = try UserPrivacySettingRuleRestrictChatMembers(from: decoder)
+            self = .userPrivacySettingRuleRestrictChatMembers(value)
         }
     }
 
@@ -70,12 +84,18 @@ public enum UserPrivacySettingRule: Codable {
         case .userPrivacySettingRuleAllowUsers(let value):
             try container.encode(Kind.userPrivacySettingRuleAllowUsers, forKey: .type)
             try value.encode(to: encoder)
+        case .userPrivacySettingRuleAllowChatMembers(let value):
+            try container.encode(Kind.userPrivacySettingRuleAllowChatMembers, forKey: .type)
+            try value.encode(to: encoder)
         case .userPrivacySettingRuleRestrictAll:
             try container.encode(Kind.userPrivacySettingRuleRestrictAll, forKey: .type)
         case .userPrivacySettingRuleRestrictContacts:
             try container.encode(Kind.userPrivacySettingRuleRestrictContacts, forKey: .type)
         case .userPrivacySettingRuleRestrictUsers(let value):
             try container.encode(Kind.userPrivacySettingRuleRestrictUsers, forKey: .type)
+            try value.encode(to: encoder)
+        case .userPrivacySettingRuleRestrictChatMembers(let value):
+            try container.encode(Kind.userPrivacySettingRuleRestrictChatMembers, forKey: .type)
             try value.encode(to: encoder)
         }
     }
@@ -84,7 +104,7 @@ public enum UserPrivacySettingRule: Codable {
 /// A rule to allow certain specified users to do something
 public struct UserPrivacySettingRuleAllowUsers: Codable {
 
-    /// The user identifiers
+    /// The user identifiers, total number of users in all rules must not exceed 1000
     public let userIds: [Int]
 
 
@@ -93,15 +113,39 @@ public struct UserPrivacySettingRuleAllowUsers: Codable {
     }
 }
 
+/// A rule to allow all members of certain specified basic groups and supergroups to doing something
+public struct UserPrivacySettingRuleAllowChatMembers: Codable {
+
+    /// The chat identifiers, total number of chats in all rules must not exceed 20
+    public let chatIds: [Int64]
+
+
+    public init (chatIds: [Int64]) {
+        self.chatIds = chatIds
+    }
+}
+
 /// A rule to restrict all specified users from doing something
 public struct UserPrivacySettingRuleRestrictUsers: Codable {
 
-    /// The user identifiers
+    /// The user identifiers, total number of users in all rules must not exceed 1000
     public let userIds: [Int]
 
 
     public init (userIds: [Int]) {
         self.userIds = userIds
+    }
+}
+
+/// A rule to restrict all members of specified basic groups and supergroups from doing something
+public struct UserPrivacySettingRuleRestrictChatMembers: Codable {
+
+    /// The chat identifiers, total number of chats in all rules must not exceed 20
+    public let chatIds: [Int64]
+
+
+    public init (chatIds: [Int64]) {
+        self.chatIds = chatIds
     }
 }
 

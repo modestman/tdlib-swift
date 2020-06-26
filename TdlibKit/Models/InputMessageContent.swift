@@ -47,13 +47,16 @@ public enum InputMessageContent: Codable {
     /// A message containing a user contact
     case inputMessageContact(InputMessageContact)
 
+    /// A dice message
+    case inputMessageDice(InputMessageDice)
+
     /// A message with a game; not supported for channels or secret chats
     case inputMessageGame(InputMessageGame)
 
     /// A message with an invoice; can be used only by bots and only in private chats
     case inputMessageInvoice(InputMessageInvoice)
 
-    /// A message with a poll. Polls can't be sent to private or secret chats
+    /// A message with a poll. Polls can't be sent to secret chats. Polls can be sent only to a private chat with a bot
     case inputMessagePoll(InputMessagePoll)
 
     /// A forwarded message
@@ -73,6 +76,7 @@ public enum InputMessageContent: Codable {
         case inputMessageLocation
         case inputMessageVenue
         case inputMessageContact
+        case inputMessageDice
         case inputMessageGame
         case inputMessageInvoice
         case inputMessagePoll
@@ -119,6 +123,9 @@ public enum InputMessageContent: Codable {
         case .inputMessageContact:
             let value = try InputMessageContact(from: decoder)
             self = .inputMessageContact(value)
+        case .inputMessageDice:
+            let value = try InputMessageDice(from: decoder)
+            self = .inputMessageDice(value)
         case .inputMessageGame:
             let value = try InputMessageGame(from: decoder)
             self = .inputMessageGame(value)
@@ -173,6 +180,9 @@ public enum InputMessageContent: Codable {
         case .inputMessageContact(let value):
             try container.encode(Kind.inputMessageContact, forKey: .type)
             try value.encode(to: encoder)
+        case .inputMessageDice(let value):
+            try container.encode(Kind.inputMessageDice, forKey: .type)
+            try value.encode(to: encoder)
         case .inputMessageGame(let value):
             try container.encode(Kind.inputMessageGame, forKey: .type)
             try value.encode(to: encoder)
@@ -198,7 +208,7 @@ public struct InputMessageText: Codable {
     /// True, if rich web page previews for URLs in the message text should be disabled
     public let disableWebPagePreview: Bool
 
-    /// Formatted text to be sent; 1-GetOption("message_text_length_max") characters. Only Bold, Italic, Code, Pre, PreCode and TextUrl entities are allowed to be specified manually
+    /// Formatted text to be sent; 1-GetOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually
     public let text: FormattedText
 
 
@@ -215,6 +225,9 @@ public struct InputMessageText: Codable {
 
 /// An animation message (GIF-style).
 public struct InputMessageAnimation: Codable {
+
+    /// File identifiers of the stickers added to the animation, if applicable
+    public let addedStickerFileIds: [Int]
 
     /// Animation file to be sent
     public let animation: InputFile
@@ -236,6 +249,7 @@ public struct InputMessageAnimation: Codable {
 
 
     public init (
+        addedStickerFileIds: [Int],
         animation: InputFile,
         caption: FormattedText,
         duration: Int,
@@ -243,6 +257,7 @@ public struct InputMessageAnimation: Codable {
         thumbnail: InputThumbnail,
         width: Int) {
 
+        self.addedStickerFileIds = addedStickerFileIds
         self.animation = animation
         self.caption = caption
         self.duration = duration
@@ -503,7 +518,7 @@ public struct InputMessageVoiceNote: Codable {
 /// A message with a location
 public struct InputMessageLocation: Codable {
 
-    /// Period for which the location can be updated, in seconds; should bebetween 60 and 86400 for a live location and 0 otherwise
+    /// Period for which the location can be updated, in seconds; should be between 60 and 86400 for a live location and 0 otherwise
     public let livePeriod: Int
 
     /// Location to be sent
@@ -540,6 +555,25 @@ public struct InputMessageContact: Codable {
 
     public init (contact: Contact) {
         self.contact = contact
+    }
+}
+
+/// A dice message
+public struct InputMessageDice: Codable {
+
+    /// True, if a chat message draft should be deleted
+    public let clearDraft: Bool
+
+    /// Emoji on which the dice throw animation is based
+    public let emoji: String
+
+
+    public init (
+        clearDraft: Bool,
+        emoji: String) {
+
+        self.clearDraft = clearDraft
+        self.emoji = emoji
     }
 }
 
@@ -625,8 +659,20 @@ public struct InputMessageInvoice: Codable {
     }
 }
 
-/// A message with a poll. Polls can't be sent to private or secret chats
+/// A message with a poll. Polls can't be sent to secret chats. Polls can be sent only to a private chat with a bot
 public struct InputMessagePoll: Codable {
+
+    /// Point in time (Unix timestamp) when the poll will be automatically closed; for bots only
+    public let closeDate: Int
+
+    /// True, if the poll voters are anonymous. Non-anonymous polls can't be sent or forwarded to channels
+    public let isAnonymous: Bool
+
+    /// True, if the poll needs to be sent already closed; for bots only
+    public let isClosed: Bool
+
+    /// Amount of time the poll will be active after creation, in seconds; for bots only
+    public let openPeriod: Int
 
     /// List of poll answer options, 2-10 strings 1-100 characters each
     public let options: [String]
@@ -634,13 +680,26 @@ public struct InputMessagePoll: Codable {
     /// Poll question, 1-255 characters
     public let question: String
 
+    /// Type of the poll
+    public let type: PollType
+
 
     public init (
+        closeDate: Int,
+        isAnonymous: Bool,
+        isClosed: Bool,
+        openPeriod: Int,
         options: [String],
-        question: String) {
+        question: String,
+        type: PollType) {
 
+        self.closeDate = closeDate
+        self.isAnonymous = isAnonymous
+        self.isClosed = isClosed
+        self.openPeriod = openPeriod
         self.options = options
         self.question = question
+        self.type = type
     }
 }
 

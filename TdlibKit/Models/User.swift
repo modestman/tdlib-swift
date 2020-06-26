@@ -20,8 +20,11 @@ public struct User: Codable {
     /// User identifier
     public let id: Int
 
-    /// Relationship from the other user to the current user
-    public let incomingLink: LinkState
+    /// The user is a contact of the current user
+    public let isContact: Bool
+
+    /// The user is a contact of the current user and the current user is a contact of the user
+    public let isMutualContact: Bool
 
     /// True, if many users reported this user as a scam
     public let isScam: Bool
@@ -38,16 +41,13 @@ public struct User: Codable {
     /// Last name of the user
     public let lastName: String
 
-    /// Relationship from the current user to the other user
-    public let outgoingLink: LinkState
-
     /// Phone number of the user
     public let phoneNumber: String
 
     /// Profile photo of the user; may be null
     public let profilePhoto: ProfilePhoto?
 
-    /// If non-empty, it contains the reason why access to this user must be restricted. The format of the string is "{type}: {description}".//-{type} contains the type of the restriction and at least one of the suffixes "-all", "-ios", "-android", or "-wp", which describe the platforms on which access should be restricted. (For example, "terms-ios-android". {description} contains a human-readable description of the restriction, which can be shown to the user)
+    /// If non-empty, it contains a human-readable description of the reason why access to this user must be restricted
     public let restrictionReason: String
 
     /// Current online status of the user
@@ -64,13 +64,13 @@ public struct User: Codable {
         firstName: String,
         haveAccess: Bool,
         id: Int,
-        incomingLink: LinkState,
+        isContact: Bool,
+        isMutualContact: Bool,
         isScam: Bool,
         isSupport: Bool,
         isVerified: Bool,
         languageCode: String,
         lastName: String,
-        outgoingLink: LinkState,
         phoneNumber: String,
         profilePhoto: ProfilePhoto?,
         restrictionReason: String,
@@ -81,13 +81,13 @@ public struct User: Codable {
         self.firstName = firstName
         self.haveAccess = haveAccess
         self.id = id
-        self.incomingLink = incomingLink
+        self.isContact = isContact
+        self.isMutualContact = isMutualContact
         self.isScam = isScam
         self.isSupport = isSupport
         self.isVerified = isVerified
         self.languageCode = languageCode
         self.lastName = lastName
-        self.outgoingLink = outgoingLink
         self.phoneNumber = phoneNumber
         self.profilePhoto = profilePhoto
         self.restrictionReason = restrictionReason

@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Returns an HTTP URL with the chat statistics. Currently this method can be used only for channels
+/// Returns an HTTP URL with the chat statistics. Currently this method of getting the statistics is disabled and can be deleted in the future
 public struct GetChatStatisticsUrl: Codable {
 
     /// Chat identifier

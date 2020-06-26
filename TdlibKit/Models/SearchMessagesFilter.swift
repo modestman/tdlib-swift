@@ -59,6 +59,9 @@ public enum SearchMessagesFilter: Codable {
     /// Returns only messages with unread mentions of the current user, or messages that are replies to their messages. When using this filter the results can't be additionally filtered by a query or by the sending user
     case searchMessagesFilterUnreadMention
 
+    /// Returns only failed to send messages. This filter can be used only if the message database is used
+    case searchMessagesFilterFailedToSend
+
 
     private enum Kind: String, Codable {
         case searchMessagesFilterEmpty
@@ -77,6 +80,7 @@ public enum SearchMessagesFilter: Codable {
         case searchMessagesFilterVoiceAndVideoNote
         case searchMessagesFilterMention
         case searchMessagesFilterUnreadMention
+        case searchMessagesFilterFailedToSend
     }
 
     public init(from decoder: Decoder) throws {
@@ -115,6 +119,8 @@ public enum SearchMessagesFilter: Codable {
             self = .searchMessagesFilterMention
         case .searchMessagesFilterUnreadMention:
             self = .searchMessagesFilterUnreadMention
+        case .searchMessagesFilterFailedToSend:
+            self = .searchMessagesFilterFailedToSend
         }
     }
 
@@ -153,6 +159,8 @@ public enum SearchMessagesFilter: Codable {
             try container.encode(Kind.searchMessagesFilterMention, forKey: .type)
         case .searchMessagesFilterUnreadMention:
             try container.encode(Kind.searchMessagesFilterUnreadMention, forKey: .type)
+        case .searchMessagesFilterFailedToSend:
+            try container.encode(Kind.searchMessagesFilterFailedToSend, forKey: .type)
         }
     }
 }

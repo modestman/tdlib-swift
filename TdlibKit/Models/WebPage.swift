@@ -20,7 +20,7 @@ public struct WebPage: Codable {
     /// Author of the content
     public let author: String
 
-    public let description: String
+    public let description: FormattedText
 
     /// URL to display
     public let displayUrl: String
@@ -78,7 +78,7 @@ public struct WebPage: Codable {
         animation: Animation?,
         audio: Audio?,
         author: String,
-        description: String,
+        description: FormattedText,
         displayUrl: String,
         document: Document?,
         duration: Int,

@@ -14,7 +14,7 @@ public struct SearchChatRecentLocationMessages: Codable {
     /// Chat identifier
     public let chatId: Int64
 
-    /// Maximum number of messages to be returned
+    /// The maximum number of messages to be returned
     public let limit: Int
 
 

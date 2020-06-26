@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Returns a list of service actions taken by chat members and administrators in the last 48 hours. Available only in supergroups and channels. Requires administrator rights. Returns results in reverse chronological order (i. e., in order of decreasing event_id)
+/// Returns a list of service actions taken by chat members and administrators in the last 48 hours. Available only for supergroups and channels. Requires administrator rights. Returns results in reverse chronological order (i. e., in order of decreasing event_id)
 public struct GetChatEventLog: Codable {
 
     /// Chat identifier
@@ -20,7 +20,7 @@ public struct GetChatEventLog: Codable {
     /// Identifier of an event from which to return results. Use 0 to get results from the latest events
     public let fromEventId: TdInt64
 
-    /// Maximum number of events to return; up to 100
+    /// The maximum number of events to return; up to 100
     public let limit: Int
 
     /// Search query by which to filter events

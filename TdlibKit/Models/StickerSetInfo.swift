@@ -41,8 +41,8 @@ public struct StickerSetInfo: Codable {
     /// Total number of stickers in the set
     public let size: Int
 
-    /// Sticker set thumbnail in WEBP format with width and height 100; may be null
-    public let thumbnail: PhotoSize?
+    /// Sticker set thumbnail in WEBP or TGS format with width and height 100; may be null
+    public let thumbnail: Thumbnail?
 
     /// Title of the sticker set
     public let title: String
@@ -59,7 +59,7 @@ public struct StickerSetInfo: Codable {
         isViewed: Bool,
         name: String,
         size: Int,
-        thumbnail: PhotoSize?,
+        thumbnail: Thumbnail?,
         title: String) {
 
         self.covers = covers

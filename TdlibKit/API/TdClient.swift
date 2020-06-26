@@ -19,7 +19,7 @@ public protocol TdClient {
 
     /// Synchronously executes TDLib request. Only a few requests can be executed synchronously.
     func execute(query: TdQuery)
-    
+
     /// Close connection with TDLib.
     func close()
 

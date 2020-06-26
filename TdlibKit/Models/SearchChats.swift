@@ -8,10 +8,10 @@
 import Foundation
 
 
-/// Searches for the specified query in the title and username of already known chats, this is an offline request. Returns chats in the order seen in the chat list
+/// Searches for the specified query in the title and username of already known chats, this is an offline request. Returns chats in the order seen in the main chat list
 public struct SearchChats: Codable {
 
-    /// Maximum number of chats to be returned
+    /// The maximum number of chats to be returned
     public let limit: Int
 
     /// Query to search for. If the query is empty, returns up to 20 recently found chats

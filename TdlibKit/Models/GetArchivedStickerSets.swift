@@ -14,7 +14,7 @@ public struct GetArchivedStickerSets: Codable {
     /// Pass true to return mask stickers sets; pass false to return ordinary sticker sets
     public let isMasks: Bool
 
-    /// Maximum number of sticker sets to return
+    /// The maximum number of sticker sets to return
     public let limit: Int
 
     /// Identifier of the sticker set from which to return the result

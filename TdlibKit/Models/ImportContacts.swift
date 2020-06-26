@@ -8,10 +8,10 @@
 import Foundation
 
 
-/// Adds new contacts or edits existing contacts; contacts' user identifiers are ignored
+/// Adds new contacts or edits existing contacts by their phone numbers; contacts' user identifiers are ignored
 public struct ImportContacts: Codable {
 
-    /// The list of contacts to import or edit, contact's vCard are ignored and are not imported
+    /// The list of contacts to import or edit; contacts' vCard are ignored and are not imported
     public let contacts: [Contact]
 
 

@@ -23,7 +23,7 @@ public indirect enum RichText: Codable {
     /// An underlined rich text
     case richTextUnderline(RichTextUnderline)
 
-    /// A strike-through rich text
+    /// A strikethrough rich text
     case richTextStrikethrough(RichTextStrikethrough)
 
     /// A fixed-width rich text
@@ -50,8 +50,14 @@ public indirect enum RichText: Codable {
     /// A small image inside the text
     case richTextIcon(RichTextIcon)
 
-    /// A rich text anchor
+    /// A rich text reference of a text on the same web page
+    case richTextReference(RichTextReference)
+
+    /// An anchor
     case richTextAnchor(RichTextAnchor)
+
+    /// A link to an anchor on the same web page
+    case richTextAnchorLink(RichTextAnchorLink)
 
     /// A concatenation of rich texts
     case richTexts(RichTexts)
@@ -71,7 +77,9 @@ public indirect enum RichText: Codable {
         case richTextMarked
         case richTextPhoneNumber
         case richTextIcon
+        case richTextReference
         case richTextAnchor
+        case richTextAnchorLink
         case richTexts
     }
 
@@ -118,9 +126,15 @@ public indirect enum RichText: Codable {
         case .richTextIcon:
             let value = try RichTextIcon(from: decoder)
             self = .richTextIcon(value)
+        case .richTextReference:
+            let value = try RichTextReference(from: decoder)
+            self = .richTextReference(value)
         case .richTextAnchor:
             let value = try RichTextAnchor(from: decoder)
             self = .richTextAnchor(value)
+        case .richTextAnchorLink:
+            let value = try RichTextAnchorLink(from: decoder)
+            self = .richTextAnchorLink(value)
         case .richTexts:
             let value = try RichTexts(from: decoder)
             self = .richTexts(value)
@@ -169,8 +183,14 @@ public indirect enum RichText: Codable {
         case .richTextIcon(let value):
             try container.encode(Kind.richTextIcon, forKey: .type)
             try value.encode(to: encoder)
+        case .richTextReference(let value):
+            try container.encode(Kind.richTextReference, forKey: .type)
+            try value.encode(to: encoder)
         case .richTextAnchor(let value):
             try container.encode(Kind.richTextAnchor, forKey: .type)
+            try value.encode(to: encoder)
+        case .richTextAnchorLink(let value):
+            try container.encode(Kind.richTextAnchorLink, forKey: .type)
             try value.encode(to: encoder)
         case .richTexts(let value):
             try container.encode(Kind.richTexts, forKey: .type)
@@ -227,7 +247,7 @@ public struct RichTextUnderline: Codable {
     }
 }
 
-/// A strike-through rich text
+/// A strikethrough rich text
 public struct RichTextStrikethrough: Codable {
 
     /// Text
@@ -254,6 +274,9 @@ public struct RichTextFixed: Codable {
 /// A rich text URL link
 public struct RichTextUrl: Codable {
 
+    /// True, if the URL has cached instant view server-side
+    public let isCached: Bool
+
     /// Text
     public let text: RichText
 
@@ -262,9 +285,11 @@ public struct RichTextUrl: Codable {
 
 
     public init (
+        isCached: Bool,
         text: RichText,
         url: String) {
 
+        self.isCached = isCached
         self.text = text
         self.url = url
     }
@@ -368,22 +393,63 @@ public struct RichTextIcon: Codable {
     }
 }
 
-/// A rich text anchor
+/// A rich text reference of a text on the same web page
+public struct RichTextReference: Codable {
+
+    /// The text to show on click
+    public let referenceText: RichText
+
+    /// The text
+    public let text: RichText
+
+    /// An HTTP URL, opening the reference
+    public let url: String
+
+
+    public init (
+        referenceText: RichText,
+        text: RichText,
+        url: String) {
+
+        self.referenceText = referenceText
+        self.text = text
+        self.url = url
+    }
+}
+
+/// An anchor
 public struct RichTextAnchor: Codable {
 
     /// Anchor name
     public let name: String
 
-    /// Text
+
+    public init (name: String) {
+        self.name = name
+    }
+}
+
+/// A link to an anchor on the same web page
+public struct RichTextAnchorLink: Codable {
+
+    /// The anchor name. If the name is empty, the link should bring back to top
+    public let name: String
+
+    /// The link text
     public let text: RichText
+
+    /// An HTTP URL, opening the anchor
+    public let url: String
 
 
     public init (
         name: String,
-        text: RichText) {
+        text: RichText,
+        url: String) {
 
         self.name = name
         self.text = text
+        self.url = url
     }
 }
 

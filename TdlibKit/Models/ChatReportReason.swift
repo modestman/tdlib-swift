@@ -26,6 +26,9 @@ public enum ChatReportReason: Codable {
     /// The chat contains copyrighted content
     case chatReportReasonCopyright
 
+    /// The location-based chat is unrelated to its stated location
+    case chatReportReasonUnrelatedLocation
+
     /// A custom reason provided by the user
     case chatReportReasonCustom(ChatReportReasonCustom)
 
@@ -36,6 +39,7 @@ public enum ChatReportReason: Codable {
         case chatReportReasonPornography
         case chatReportReasonChildAbuse
         case chatReportReasonCopyright
+        case chatReportReasonUnrelatedLocation
         case chatReportReasonCustom
     }
 
@@ -53,6 +57,8 @@ public enum ChatReportReason: Codable {
             self = .chatReportReasonChildAbuse
         case .chatReportReasonCopyright:
             self = .chatReportReasonCopyright
+        case .chatReportReasonUnrelatedLocation:
+            self = .chatReportReasonUnrelatedLocation
         case .chatReportReasonCustom:
             let value = try ChatReportReasonCustom(from: decoder)
             self = .chatReportReasonCustom(value)
@@ -72,6 +78,8 @@ public enum ChatReportReason: Codable {
             try container.encode(Kind.chatReportReasonChildAbuse, forKey: .type)
         case .chatReportReasonCopyright:
             try container.encode(Kind.chatReportReasonCopyright, forKey: .type)
+        case .chatReportReasonUnrelatedLocation:
+            try container.encode(Kind.chatReportReasonUnrelatedLocation, forKey: .type)
         case .chatReportReasonCustom(let value):
             try container.encode(Kind.chatReportReasonCustom, forKey: .type)
             try value.encode(to: encoder)

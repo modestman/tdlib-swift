@@ -20,11 +20,15 @@ public enum KeyboardButtonType: Codable {
     /// A button that sends the user's location when pressed; available only in private chats
     case keyboardButtonTypeRequestLocation
 
+    /// A button that allows the user to create and send a poll when pressed; available only in private chats
+    case keyboardButtonTypeRequestPoll(KeyboardButtonTypeRequestPoll)
+
 
     private enum Kind: String, Codable {
         case keyboardButtonTypeText
         case keyboardButtonTypeRequestPhoneNumber
         case keyboardButtonTypeRequestLocation
+        case keyboardButtonTypeRequestPoll
     }
 
     public init(from decoder: Decoder) throws {
@@ -37,6 +41,9 @@ public enum KeyboardButtonType: Codable {
             self = .keyboardButtonTypeRequestPhoneNumber
         case .keyboardButtonTypeRequestLocation:
             self = .keyboardButtonTypeRequestLocation
+        case .keyboardButtonTypeRequestPoll:
+            let value = try KeyboardButtonTypeRequestPoll(from: decoder)
+            self = .keyboardButtonTypeRequestPoll(value)
         }
     }
 
@@ -49,7 +56,29 @@ public enum KeyboardButtonType: Codable {
             try container.encode(Kind.keyboardButtonTypeRequestPhoneNumber, forKey: .type)
         case .keyboardButtonTypeRequestLocation:
             try container.encode(Kind.keyboardButtonTypeRequestLocation, forKey: .type)
+        case .keyboardButtonTypeRequestPoll(let value):
+            try container.encode(Kind.keyboardButtonTypeRequestPoll, forKey: .type)
+            try value.encode(to: encoder)
         }
+    }
+}
+
+/// A button that allows the user to create and send a poll when pressed; available only in private chats
+public struct KeyboardButtonTypeRequestPoll: Codable {
+
+    /// If true, only polls in quiz mode must be allowed to create
+    public let forceQuiz: Bool
+
+    /// If true, only regular polls must be allowed to create
+    public let forceRegular: Bool
+
+
+    public init (
+        forceQuiz: Bool,
+        forceRegular: Bool) {
+
+        self.forceQuiz = forceQuiz
+        self.forceRegular = forceRegular
     }
 }
 

@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Returns information about a supergroup or channel by its identifier. This is an offline request if the current user is not a bot
+/// Returns information about a supergroup or a channel by its identifier. This is an offline request if the current user is not a bot
 public struct GetSupergroup: Codable {
 
     /// Supergroup or channel identifier

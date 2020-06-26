@@ -14,7 +14,7 @@ public struct SearchStickers: Codable {
     /// String representation of emoji; must be non-empty
     public let emoji: String
 
-    /// Maximum number of stickers to be returned
+    /// The maximum number of stickers to be returned
     public let limit: Int
 
 

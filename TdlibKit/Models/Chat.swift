@@ -11,6 +11,9 @@ import Foundation
 /// A chat. (Can be a private chat, basic group, supergroup, or secret chat)
 public struct Chat: Codable {
 
+    /// Describes actions which should be possible to do through a chat action bar; may be null
+    public let actionBar: ChatActionBar?
+
     /// True, if the chat messages can be deleted for all users
     public let canBeDeletedForAllUsers: Bool
 
@@ -20,7 +23,7 @@ public struct Chat: Codable {
     /// True, if the chat can be reported to Telegram moderators through reportChat
     public let canBeReported: Bool
 
-    /// Contains client-specific data associated with the chat. (For example, the chat position or local chat notification settings can be stored here.) Persistent if a message database is used
+    /// Contains client-specific data associated with the chat. (For example, the chat scroll position or local chat notification settings can be stored here.) Persistent if the message database is used
     public let clientData: String
 
     /// Default value of the disable_notification parameter, used when a message is sent to the chat
@@ -29,17 +32,14 @@ public struct Chat: Codable {
     /// A draft of a message in the chat; may be null
     public let draftMessage: DraftMessage?
 
+    /// True, if the chat has scheduled messages
+    public let hasScheduledMessages: Bool
+
     /// Chat unique identifier
     public let id: Int64
 
     /// True, if the chat is marked as unread
     public let isMarkedAsUnread: Bool
-
-    /// True, if the chat is pinned
-    public let isPinned: Bool
-
-    /// True, if the chat is sponsored by the user's MTProxy server
-    public let isSponsored: Bool
 
     /// Last message in the chat; may be null
     public let lastMessage: Message?
@@ -53,9 +53,6 @@ public struct Chat: Codable {
     /// Notification settings for this chat
     public let notificationSettings: ChatNotificationSettings
 
-    /// Descending parameter by which chats are sorted in the main chat list. If the order number of two chats is the same, they must be sorted in descending order by ID. If 0, the position of the chat in the list is undetermined
-    public let order: TdInt64
-
     /// Actions that non-administrator chat members are allowed to take in the chat
     public let permissions: ChatPermissions
 
@@ -64,6 +61,9 @@ public struct Chat: Codable {
 
     /// Identifier of the pinned message in the chat; 0 if none
     public let pinnedMessageId: Int64
+
+    /// Positions of the chat in chat lists
+    public let positions: [ChatPosition]
 
     /// Identifier of the message from which reply markup needs to be used; 0 if there is no default custom reply markup in the chat
     public let replyMarkupMessageId: Int64
@@ -82,48 +82,48 @@ public struct Chat: Codable {
 
 
     public init (
+        actionBar: ChatActionBar?,
         canBeDeletedForAllUsers: Bool,
         canBeDeletedOnlyForSelf: Bool,
         canBeReported: Bool,
         clientData: String,
         defaultDisableNotification: Bool,
         draftMessage: DraftMessage?,
+        hasScheduledMessages: Bool,
         id: Int64,
         isMarkedAsUnread: Bool,
-        isPinned: Bool,
-        isSponsored: Bool,
         lastMessage: Message?,
         lastReadInboxMessageId: Int64,
         lastReadOutboxMessageId: Int64,
         notificationSettings: ChatNotificationSettings,
-        order: TdInt64,
         permissions: ChatPermissions,
         photo: ChatPhoto?,
         pinnedMessageId: Int64,
+        positions: [ChatPosition],
         replyMarkupMessageId: Int64,
         title: String,
         type: ChatType,
         unreadCount: Int,
         unreadMentionCount: Int) {
 
+        self.actionBar = actionBar
         self.canBeDeletedForAllUsers = canBeDeletedForAllUsers
         self.canBeDeletedOnlyForSelf = canBeDeletedOnlyForSelf
         self.canBeReported = canBeReported
         self.clientData = clientData
         self.defaultDisableNotification = defaultDisableNotification
         self.draftMessage = draftMessage
+        self.hasScheduledMessages = hasScheduledMessages
         self.id = id
         self.isMarkedAsUnread = isMarkedAsUnread
-        self.isPinned = isPinned
-        self.isSponsored = isSponsored
         self.lastMessage = lastMessage
         self.lastReadInboxMessageId = lastReadInboxMessageId
         self.lastReadOutboxMessageId = lastReadOutboxMessageId
         self.notificationSettings = notificationSettings
-        self.order = order
         self.permissions = permissions
         self.photo = photo
         self.pinnedMessageId = pinnedMessageId
+        self.positions = positions
         self.replyMarkupMessageId = replyMarkupMessageId
         self.title = title
         self.type = type

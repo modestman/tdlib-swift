@@ -8,27 +8,87 @@
 import Foundation
 
 
-/// Describes a sticker that should be added to a sticker set
-public struct InputSticker: Codable {
+/// Describes a sticker that needs to be added to a sticker set
+public enum InputSticker: Codable {
 
-    /// Emoji corresponding to the sticker
+    /// A static sticker in PNG format, which will be converted to WEBP server-side
+    case inputStickerStatic(InputStickerStatic)
+
+    /// An animated sticker in TGS format
+    case inputStickerAnimated(InputStickerAnimated)
+
+
+    private enum Kind: String, Codable {
+        case inputStickerStatic
+        case inputStickerAnimated
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: DtoCodingKeys.self)
+        let type = try container.decode(Kind.self, forKey: .type)
+        switch type {
+        case .inputStickerStatic:
+            let value = try InputStickerStatic(from: decoder)
+            self = .inputStickerStatic(value)
+        case .inputStickerAnimated:
+            let value = try InputStickerAnimated(from: decoder)
+            self = .inputStickerAnimated(value)
+        }
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: DtoCodingKeys.self)
+        switch self {
+        case .inputStickerStatic(let value):
+            try container.encode(Kind.inputStickerStatic, forKey: .type)
+            try value.encode(to: encoder)
+        case .inputStickerAnimated(let value):
+            try container.encode(Kind.inputStickerAnimated, forKey: .type)
+            try value.encode(to: encoder)
+        }
+    }
+}
+
+/// A static sticker in PNG format, which will be converted to WEBP server-side
+public struct InputStickerStatic: Codable {
+
+    /// Emojis corresponding to the sticker
     public let emojis: String
 
     /// For masks, position where the mask should be placed; may be null
     public let maskPosition: MaskPosition?
 
-    /// PNG image with the sticker; must be up to 512 kB in size and fit in a 512x512 square
-    public let pngSticker: InputFile
+    /// PNG image with the sticker; must be up to 512 KB in size and fit in a 512x512 square
+    public let sticker: InputFile
 
 
     public init (
         emojis: String,
         maskPosition: MaskPosition?,
-        pngSticker: InputFile) {
+        sticker: InputFile) {
 
         self.emojis = emojis
         self.maskPosition = maskPosition
-        self.pngSticker = pngSticker
+        self.sticker = sticker
+    }
+}
+
+/// An animated sticker in TGS format
+public struct InputStickerAnimated: Codable {
+
+    /// Emojis corresponding to the sticker
+    public let emojis: String
+
+    /// File with the animated sticker. Only local or uploaded within a week files are supported. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements
+    public let sticker: InputFile
+
+
+    public init (
+        emojis: String,
+        sticker: InputFile) {
+
+        self.emojis = emojis
+        self.sticker = sticker
     }
 }
 

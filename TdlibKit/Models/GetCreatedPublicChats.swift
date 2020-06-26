@@ -8,11 +8,15 @@
 import Foundation
 
 
-/// Returns a list of public chats with username created by the user
+/// Returns a list of public chats of the specified type, owned by the user
 public struct GetCreatedPublicChats: Codable {
 
+    /// Type of the public chats to return
+    public let type: PublicChatType
 
-    public init () {
+
+    public init (type: PublicChatType) {
+        self.type = type
     }
 }
 

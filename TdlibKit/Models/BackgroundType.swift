@@ -8,23 +8,23 @@
 import Foundation
 
 
-/// Describes a type of a background
+/// Describes the type of a background
 public enum BackgroundType: Codable {
 
     /// A wallpaper in JPEG format
     case backgroundTypeWallpaper(BackgroundTypeWallpaper)
 
-    /// A PNG pattern to be combined with the color chosen by the user
+    /// A PNG or TGV (gzipped subset of SVG with MIME type "application/x-tgwallpattern") pattern to be combined with the background fill chosen by the user
     case backgroundTypePattern(BackgroundTypePattern)
 
-    /// A solid background
-    case backgroundTypeSolid(BackgroundTypeSolid)
+    /// A filled background
+    case backgroundTypeFill(BackgroundTypeFill)
 
 
     private enum Kind: String, Codable {
         case backgroundTypeWallpaper
         case backgroundTypePattern
-        case backgroundTypeSolid
+        case backgroundTypeFill
     }
 
     public init(from decoder: Decoder) throws {
@@ -37,9 +37,9 @@ public enum BackgroundType: Codable {
         case .backgroundTypePattern:
             let value = try BackgroundTypePattern(from: decoder)
             self = .backgroundTypePattern(value)
-        case .backgroundTypeSolid:
-            let value = try BackgroundTypeSolid(from: decoder)
-            self = .backgroundTypeSolid(value)
+        case .backgroundTypeFill:
+            let value = try BackgroundTypeFill(from: decoder)
+            self = .backgroundTypeFill(value)
         }
     }
 
@@ -52,8 +52,8 @@ public enum BackgroundType: Codable {
         case .backgroundTypePattern(let value):
             try container.encode(Kind.backgroundTypePattern, forKey: .type)
             try value.encode(to: encoder)
-        case .backgroundTypeSolid(let value):
-            try container.encode(Kind.backgroundTypeSolid, forKey: .type)
+        case .backgroundTypeFill(let value):
+            try container.encode(Kind.backgroundTypeFill, forKey: .type)
             try value.encode(to: encoder)
         }
     }
@@ -65,7 +65,7 @@ public struct BackgroundTypeWallpaper: Codable {
     /// True, if the wallpaper must be downscaled to fit in 450x450 square and then box-blurred with radius 12
     public let isBlurred: Bool
 
-    /// True, if the background needs to be slightly moved when device is rotated
+    /// True, if the background needs to be slightly moved when device is tilted
     public let isMoving: Bool
 
 
@@ -78,39 +78,39 @@ public struct BackgroundTypeWallpaper: Codable {
     }
 }
 
-/// A PNG pattern to be combined with the color chosen by the user
+/// A PNG or TGV (gzipped subset of SVG with MIME type "application/x-tgwallpattern") pattern to be combined with the background fill chosen by the user
 public struct BackgroundTypePattern: Codable {
 
-    /// Main color of the background in RGB24 format
-    public let color: Int
+    /// Description of the background fill
+    public let fill: BackgroundFill
 
-    /// Intensity of the pattern when it is shown above the main background color, 0-100
+    /// Intensity of the pattern when it is shown above the filled background, 0-100
     public let intensity: Int
 
-    /// True, if the background needs to be slightly moved when device is rotated
+    /// True, if the background needs to be slightly moved when device is tilted
     public let isMoving: Bool
 
 
     public init (
-        color: Int,
+        fill: BackgroundFill,
         intensity: Int,
         isMoving: Bool) {
 
-        self.color = color
+        self.fill = fill
         self.intensity = intensity
         self.isMoving = isMoving
     }
 }
 
-/// A solid background
-public struct BackgroundTypeSolid: Codable {
+/// A filled background
+public struct BackgroundTypeFill: Codable {
 
-    /// A color of the background in RGB24 format
-    public let color: Int
+    /// Description of the background fill
+    public let fill: BackgroundFill
 
 
-    public init (color: Int) {
-        self.color = color
+    public init (fill: BackgroundFill) {
+        self.fill = fill
     }
 }
 

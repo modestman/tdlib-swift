@@ -14,7 +14,7 @@ public struct GetStickers: Codable {
     /// String representation of emoji. If empty, returns all known installed stickers
     public let emoji: String
 
-    /// Maximum number of stickers to be returned
+    /// The maximum number of stickers to be returned
     public let limit: Int
 
 

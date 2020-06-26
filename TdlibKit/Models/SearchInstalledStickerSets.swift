@@ -14,7 +14,7 @@ public struct SearchInstalledStickerSets: Codable {
     /// Pass true to return mask sticker sets; pass false to return ordinary sticker sets
     public let isMasks: Bool
 
-    /// Maximum number of sticker sets to return
+    /// The maximum number of sticker sets to return
     public let limit: Int
 
     /// Query to search for

@@ -59,11 +59,20 @@ public enum ChatEventAction: Codable {
     /// The can_invite_users permission of a supergroup chat was toggled
     case chatEventInvitesToggled(ChatEventInvitesToggled)
 
+    /// The linked chat of a supergroup was changed
+    case chatEventLinkedChatChanged(ChatEventLinkedChatChanged)
+
+    /// The slow_mode_delay setting of a supergroup was changed
+    case chatEventSlowModeDelayChanged(ChatEventSlowModeDelayChanged)
+
     /// The sign_messages setting of a channel was toggled
     case chatEventSignMessagesToggled(ChatEventSignMessagesToggled)
 
     /// The supergroup sticker set was changed
     case chatEventStickerSetChanged(ChatEventStickerSetChanged)
+
+    /// The supergroup location was changed
+    case chatEventLocationChanged(ChatEventLocationChanged)
 
     /// The is_all_history_available setting of a supergroup was toggled
     case chatEventIsAllHistoryAvailableToggled(ChatEventIsAllHistoryAvailableToggled)
@@ -86,8 +95,11 @@ public enum ChatEventAction: Codable {
         case chatEventUsernameChanged
         case chatEventPhotoChanged
         case chatEventInvitesToggled
+        case chatEventLinkedChatChanged
+        case chatEventSlowModeDelayChanged
         case chatEventSignMessagesToggled
         case chatEventStickerSetChanged
+        case chatEventLocationChanged
         case chatEventIsAllHistoryAvailableToggled
     }
 
@@ -140,12 +152,21 @@ public enum ChatEventAction: Codable {
         case .chatEventInvitesToggled:
             let value = try ChatEventInvitesToggled(from: decoder)
             self = .chatEventInvitesToggled(value)
+        case .chatEventLinkedChatChanged:
+            let value = try ChatEventLinkedChatChanged(from: decoder)
+            self = .chatEventLinkedChatChanged(value)
+        case .chatEventSlowModeDelayChanged:
+            let value = try ChatEventSlowModeDelayChanged(from: decoder)
+            self = .chatEventSlowModeDelayChanged(value)
         case .chatEventSignMessagesToggled:
             let value = try ChatEventSignMessagesToggled(from: decoder)
             self = .chatEventSignMessagesToggled(value)
         case .chatEventStickerSetChanged:
             let value = try ChatEventStickerSetChanged(from: decoder)
             self = .chatEventStickerSetChanged(value)
+        case .chatEventLocationChanged:
+            let value = try ChatEventLocationChanged(from: decoder)
+            self = .chatEventLocationChanged(value)
         case .chatEventIsAllHistoryAvailableToggled:
             let value = try ChatEventIsAllHistoryAvailableToggled(from: decoder)
             self = .chatEventIsAllHistoryAvailableToggled(value)
@@ -200,11 +221,20 @@ public enum ChatEventAction: Codable {
         case .chatEventInvitesToggled(let value):
             try container.encode(Kind.chatEventInvitesToggled, forKey: .type)
             try value.encode(to: encoder)
+        case .chatEventLinkedChatChanged(let value):
+            try container.encode(Kind.chatEventLinkedChatChanged, forKey: .type)
+            try value.encode(to: encoder)
+        case .chatEventSlowModeDelayChanged(let value):
+            try container.encode(Kind.chatEventSlowModeDelayChanged, forKey: .type)
+            try value.encode(to: encoder)
         case .chatEventSignMessagesToggled(let value):
             try container.encode(Kind.chatEventSignMessagesToggled, forKey: .type)
             try value.encode(to: encoder)
         case .chatEventStickerSetChanged(let value):
             try container.encode(Kind.chatEventStickerSetChanged, forKey: .type)
+            try value.encode(to: encoder)
+        case .chatEventLocationChanged(let value):
+            try container.encode(Kind.chatEventLocationChanged, forKey: .type)
             try value.encode(to: encoder)
         case .chatEventIsAllHistoryAvailableToggled(let value):
             try container.encode(Kind.chatEventIsAllHistoryAvailableToggled, forKey: .type)
@@ -442,6 +472,44 @@ public struct ChatEventInvitesToggled: Codable {
     }
 }
 
+/// The linked chat of a supergroup was changed
+public struct ChatEventLinkedChatChanged: Codable {
+
+    /// New supergroup linked chat identifier
+    public let newLinkedChatId: Int64
+
+    /// Previous supergroup linked chat identifier
+    public let oldLinkedChatId: Int64
+
+
+    public init (
+        newLinkedChatId: Int64,
+        oldLinkedChatId: Int64) {
+
+        self.newLinkedChatId = newLinkedChatId
+        self.oldLinkedChatId = oldLinkedChatId
+    }
+}
+
+/// The slow_mode_delay setting of a supergroup was changed
+public struct ChatEventSlowModeDelayChanged: Codable {
+
+    /// New value of slow_mode_delay
+    public let newSlowModeDelay: Int
+
+    /// Previous value of slow_mode_delay
+    public let oldSlowModeDelay: Int
+
+
+    public init (
+        newSlowModeDelay: Int,
+        oldSlowModeDelay: Int) {
+
+        self.newSlowModeDelay = newSlowModeDelay
+        self.oldSlowModeDelay = oldSlowModeDelay
+    }
+}
+
 /// The sign_messages setting of a channel was toggled
 public struct ChatEventSignMessagesToggled: Codable {
 
@@ -470,6 +538,25 @@ public struct ChatEventStickerSetChanged: Codable {
 
         self.newStickerSetId = newStickerSetId
         self.oldStickerSetId = oldStickerSetId
+    }
+}
+
+/// The supergroup location was changed
+public struct ChatEventLocationChanged: Codable {
+
+    /// New location; may be null
+    public let newLocation: ChatLocation?
+
+    /// Previous location; may be null
+    public let oldLocation: ChatLocation?
+
+
+    public init (
+        newLocation: ChatLocation?,
+        oldLocation: ChatLocation?) {
+
+        self.newLocation = newLocation
+        self.oldLocation = oldLocation
     }
 }
 

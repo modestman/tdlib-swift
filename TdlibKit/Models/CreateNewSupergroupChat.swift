@@ -16,6 +16,9 @@ public struct CreateNewSupergroupChat: Codable {
     /// True, if a channel chat should be created
     public let isChannel: Bool
 
+    /// Chat location if a location-based supergroup is being created
+    public let location: ChatLocation
+
     /// Title of the new chat; 1-128 characters
     public let title: String
 
@@ -23,10 +26,12 @@ public struct CreateNewSupergroupChat: Codable {
     public init (
         description: String,
         isChannel: Bool,
+        location: ChatLocation,
         title: String) {
 
         self.description = description
         self.isChannel = isChannel
+        self.location = location
         self.title = title
     }
 }

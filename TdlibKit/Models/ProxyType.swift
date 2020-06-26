@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Describes the type of the proxy server
+/// Describes the type of a proxy server
 public enum ProxyType: Codable {
 
     /// A SOCKS5 proxy server
@@ -81,7 +81,7 @@ public struct ProxyTypeSocks5: Codable {
 /// A HTTP transparent proxy server
 public struct ProxyTypeHttp: Codable {
 
-    /// Pass true, if the proxy supports only HTTP requests and doesn't support transparent TCP connections via HTTP CONNECT method
+    /// Pass true if the proxy supports only HTTP requests and doesn't support transparent TCP connections via HTTP CONNECT method
     public let httpOnly: Bool
 
     /// Password for logging in; may be empty

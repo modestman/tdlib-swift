@@ -8,14 +8,14 @@
 import Foundation
 
 
-/// Describes an audio file. Audio is usually in MP3 format
+/// Describes an audio file. Audio is usually in MP3 or M4A format
 public struct Audio: Codable {
 
     /// The minithumbnail of the album cover; may be null
     public let albumCoverMinithumbnail: Minithumbnail?
 
-    /// The thumbnail of the album cover; as defined by the sender. The full size thumbnail should be extracted from the downloaded file; may be null
-    public let albumCoverThumbnail: PhotoSize?
+    /// The thumbnail of the album cover in JPEG format; as defined by the sender. The full size thumbnail should be extracted from the downloaded file; may be null
+    public let albumCoverThumbnail: Thumbnail?
 
     /// File containing the audio
     public let audio: File
@@ -38,7 +38,7 @@ public struct Audio: Codable {
 
     public init (
         albumCoverMinithumbnail: Minithumbnail?,
-        albumCoverThumbnail: PhotoSize?,
+        albumCoverThumbnail: Thumbnail?,
         audio: File,
         duration: Int,
         fileName: String,

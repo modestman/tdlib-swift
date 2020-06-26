@@ -14,7 +14,7 @@ public enum ChatMembersFilter: Codable {
     /// Returns contacts of the user
     case chatMembersFilterContacts
 
-    /// Returns the creator and administrators
+    /// Returns the owner and administrators
     case chatMembersFilterAdministrators
 
     /// Returns all chat members, including restricted chat members

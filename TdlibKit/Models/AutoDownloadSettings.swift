@@ -14,13 +14,13 @@ public struct AutoDownloadSettings: Codable {
     /// True, if the auto-download is enabled
     public let isAutoDownloadEnabled: Bool
 
-    /// Maximum size of other file types to be auto-downloaded
+    /// The maximum size of other file types to be auto-downloaded
     public let maxOtherFileSize: Int
 
-    /// Maximum size of a photo file to be auto-downloaded
+    /// The maximum size of a photo file to be auto-downloaded
     public let maxPhotoFileSize: Int
 
-    /// Maximum size of a video file to be auto-downloaded
+    /// The maximum size of a video file to be auto-downloaded
     public let maxVideoFileSize: Int
 
     /// True, if the beginning of videos needs to be preloaded for instant playback
@@ -32,6 +32,9 @@ public struct AutoDownloadSettings: Codable {
     /// True, if "use less data for calls" option needs to be enabled
     public let useLessDataForCalls: Bool
 
+    /// The maximum suggested bitrate for uploaded videos
+    public let videoUploadBitrate: Int
+
 
     public init (
         isAutoDownloadEnabled: Bool,
@@ -40,7 +43,8 @@ public struct AutoDownloadSettings: Codable {
         maxVideoFileSize: Int,
         preloadLargeVideos: Bool,
         preloadNextAudio: Bool,
-        useLessDataForCalls: Bool) {
+        useLessDataForCalls: Bool,
+        videoUploadBitrate: Int) {
 
         self.isAutoDownloadEnabled = isAutoDownloadEnabled
         self.maxOtherFileSize = maxOtherFileSize
@@ -49,6 +53,7 @@ public struct AutoDownloadSettings: Codable {
         self.preloadLargeVideos = preloadLargeVideos
         self.preloadNextAudio = preloadNextAudio
         self.useLessDataForCalls = useLessDataForCalls
+        self.videoUploadBitrate = videoUploadBitrate
     }
 }
 

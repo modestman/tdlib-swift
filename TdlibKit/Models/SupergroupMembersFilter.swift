@@ -17,7 +17,7 @@ public enum SupergroupMembersFilter: Codable {
     /// Returns contacts of the user, which are members of the supergroup or channel
     case supergroupMembersFilterContacts(SupergroupMembersFilterContacts)
 
-    /// Returns the creator and administrators
+    /// Returns the owner and administrators
     case supergroupMembersFilterAdministrators
 
     /// Used to search for supergroup or channel members via a (string) query

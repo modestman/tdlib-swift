@@ -65,6 +65,9 @@ public indirect enum PageBlock: Codable {
     /// A video
     case pageBlockVideo(PageBlockVideo)
 
+    /// A voice note
+    case pageBlockVoiceNote(PageBlockVoiceNote)
+
     /// A page cover
     case pageBlockCover(PageBlockCover)
 
@@ -115,6 +118,7 @@ public indirect enum PageBlock: Codable {
         case pageBlockAudio
         case pageBlockPhoto
         case pageBlockVideo
+        case pageBlockVoiceNote
         case pageBlockCover
         case pageBlockEmbedded
         case pageBlockEmbeddedPost
@@ -184,6 +188,9 @@ public indirect enum PageBlock: Codable {
         case .pageBlockVideo:
             let value = try PageBlockVideo(from: decoder)
             self = .pageBlockVideo(value)
+        case .pageBlockVoiceNote:
+            let value = try PageBlockVoiceNote(from: decoder)
+            self = .pageBlockVoiceNote(value)
         case .pageBlockCover:
             let value = try PageBlockCover(from: decoder)
             self = .pageBlockCover(value)
@@ -272,6 +279,9 @@ public indirect enum PageBlock: Codable {
             try value.encode(to: encoder)
         case .pageBlockVideo(let value):
             try container.encode(Kind.pageBlockVideo, forKey: .type)
+            try value.encode(to: encoder)
+        case .pageBlockVoiceNote(let value):
+            try container.encode(Kind.pageBlockVoiceNote, forKey: .type)
             try value.encode(to: encoder)
         case .pageBlockCover(let value):
             try container.encode(Kind.pageBlockCover, forKey: .type)
@@ -584,6 +594,25 @@ public struct PageBlockVideo: Codable {
         self.isLooped = isLooped
         self.needAutoplay = needAutoplay
         self.video = video
+    }
+}
+
+/// A voice note
+public struct PageBlockVoiceNote: Codable {
+
+    /// Voice note caption
+    public let caption: PageBlockCaption
+
+    /// Voice note; may be null
+    public let voiceNote: VoiceNote?
+
+
+    public init (
+        caption: PageBlockCaption,
+        voiceNote: VoiceNote?) {
+
+        self.caption = caption
+        self.voiceNote = voiceNote
     }
 }
 

@@ -142,6 +142,9 @@ final class AuthService: UpdateListener {
             
         case .authorizationStateWaitRegistration:
             break
+            
+        case .authorizationStateWaitOtherDeviceConfirmation(_):
+            break
         }
     }
     

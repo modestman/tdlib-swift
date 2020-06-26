@@ -20,6 +20,9 @@ public struct Animation: Codable {
     /// Original name of the file; as defined by the sender
     public let fileName: String
 
+    /// True, if stickers were added to the animation. The list of corresponding sticker set can be received using getAttachedStickerSets
+    public let hasStickers: Bool
+
     /// Height of the animation
     public let height: Int
 
@@ -29,8 +32,8 @@ public struct Animation: Codable {
     /// Animation minithumbnail; may be null
     public let minithumbnail: Minithumbnail?
 
-    /// Animation thumbnail; may be null
-    public let thumbnail: PhotoSize?
+    /// Animation thumbnail in JPEG or MPEG4 format; may be null
+    public let thumbnail: Thumbnail?
 
     /// Width of the animation
     public let width: Int
@@ -40,15 +43,17 @@ public struct Animation: Codable {
         animation: File,
         duration: Int,
         fileName: String,
+        hasStickers: Bool,
         height: Int,
         mimeType: String,
         minithumbnail: Minithumbnail?,
-        thumbnail: PhotoSize?,
+        thumbnail: Thumbnail?,
         width: Int) {
 
         self.animation = animation
         self.duration = duration
         self.fileName = fileName
+        self.hasStickers = hasStickers
         self.height = height
         self.mimeType = mimeType
         self.minithumbnail = minithumbnail

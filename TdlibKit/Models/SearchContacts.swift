@@ -11,7 +11,7 @@ import Foundation
 /// Searches for the specified query in the first names, last names and usernames of the known user contacts
 public struct SearchContacts: Codable {
 
-    /// Maximum number of users to be returned
+    /// The maximum number of users to be returned
     public let limit: Int
 
     /// Query to search for; may be empty to return all contacts

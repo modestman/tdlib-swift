@@ -11,7 +11,7 @@ import Foundation
 /// Returns users that were blocked by the current user
 public struct GetBlockedUsers: Codable {
 
-    /// Maximum number of users to return; up to 100
+    /// The maximum number of users to return; up to 100
     public let limit: Int
 
     /// Number of users to skip in the result; must be non-negative

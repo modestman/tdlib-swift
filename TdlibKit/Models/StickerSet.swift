@@ -41,8 +41,8 @@ public struct StickerSet: Codable {
     /// List of stickers in this set
     public let stickers: [Sticker]
 
-    /// Sticker set thumbnail in WEBP format with width and height 100; may be null. The file can be downloaded only before the thumbnail is changed
-    public let thumbnail: PhotoSize?
+    /// Sticker set thumbnail in WEBP or TGS format with width and height 100; may be null. The file can be downloaded only before the thumbnail is changed
+    public let thumbnail: Thumbnail?
 
     /// Title of the sticker set
     public let title: String
@@ -59,7 +59,7 @@ public struct StickerSet: Codable {
         isViewed: Bool,
         name: String,
         stickers: [Sticker],
-        thumbnail: PhotoSize?,
+        thumbnail: Thumbnail?,
         title: String) {
 
         self.emojis = emojis

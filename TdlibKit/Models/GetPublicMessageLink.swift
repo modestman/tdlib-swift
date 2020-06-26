@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Returns a public HTTPS link to a message. Available only for messages in supergroups and channels with username
+/// Returns a public HTTPS link to a message. Available only for messages in supergroups and channels with a username
 public struct GetPublicMessageLink: Codable {
 
     /// Identifier of the chat to which the message belongs

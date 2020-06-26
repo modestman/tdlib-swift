@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Describes type of notifications in the group
+/// Describes the type of notifications in a notification group
 public enum NotificationGroupType: Codable {
 
     /// A group containing notifications of type notificationTypeNewMessage and notificationTypeNewPushMessage with ordinary unread messages

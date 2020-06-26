@@ -11,13 +11,13 @@ import Foundation
 /// Creates a new sticker set; for bots only. Returns the newly created sticker set
 public struct CreateNewStickerSet: Codable {
 
-    /// True, if stickers are masks
+    /// True, if stickers are masks. Animated stickers can't be masks
     public let isMasks: Bool
 
     /// Sticker set name. Can contain only English letters, digits and underscores. Must end with *"_by_<bot username>"* (*<bot_username>* is case insensitive); 1-64 characters
     public let name: String
 
-    /// List of stickers to be added to the set
+    /// List of stickers to be added to the set; must be non-empty. All stickers must be of the same type
     public let stickers: [InputSticker]
 
     /// Sticker set title; 1-64 characters

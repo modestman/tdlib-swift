@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Returns a list of users who are administrators of the chat
+/// Returns a list of administrators of the chat with their custom titles
 public struct GetChatAdministrators: Codable {
 
     /// Chat identifier

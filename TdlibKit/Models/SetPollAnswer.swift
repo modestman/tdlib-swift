@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Changes user answer to a poll
+/// Changes the user answer to a poll. A poll in quiz mode can be answered only once
 public struct SetPollAnswer: Codable {
 
     /// Identifier of the chat to which the poll belongs
@@ -17,7 +17,7 @@ public struct SetPollAnswer: Codable {
     /// Identifier of the message containing the poll
     public let messageId: Int64
 
-    /// 0-based identifiers of options, chosen by the user. Currently user can't choose more than 1 option
+    /// 0-based identifiers of answer options, chosen by the user. User can choose more than 1 answer option only is the poll allows multiple answers
     public let optionIds: [Int]
 
 

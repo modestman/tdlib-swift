@@ -11,7 +11,7 @@ import Foundation
 /// Returns a list of common group chats with a given user. Chats are sorted by their type and creation date
 public struct GetGroupsInCommon: Codable {
 
-    /// Maximum number of chats to be returned; up to 100
+    /// The maximum number of chats to be returned; up to 100
     public let limit: Int
 
     /// Chat identifier starting from which to return chats; use 0 for the first request

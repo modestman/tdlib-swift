@@ -23,8 +23,8 @@ public struct PageBlockTableCell: Codable {
     /// The number of rows the cell should span
     public let rowspan: Int
 
-    /// Cell text
-    public let text: RichText
+    /// Cell text; may be null. If the text is null, then the cell should be invisible
+    public let text: RichText?
 
     /// Vertical cell content alignment
     public let valign: PageBlockVerticalAlignment
@@ -35,7 +35,7 @@ public struct PageBlockTableCell: Codable {
         colspan: Int,
         isHeader: Bool,
         rowspan: Int,
-        text: RichText,
+        text: RichText?,
         valign: PageBlockVerticalAlignment) {
 
         self.align = align

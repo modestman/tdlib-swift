@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Returns full information about a supergroup or channel by its identifier, cached for up to 1 minute
+/// Returns full information about a supergroup or a channel by its identifier, cached for up to 1 minute
 public struct GetSupergroupFullInfo: Codable {
 
     /// Supergroup or channel identifier

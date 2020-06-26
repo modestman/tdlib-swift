@@ -20,25 +20,25 @@ public struct WebPageInstantView: Codable {
     /// Content of the web page
     public let pageBlocks: [PageBlock]
 
-    /// Instant view URL; may be different from WebPage.url and must be used for the correct anchors handling
-    public let url: String
-
     /// Version of the instant view, currently can be 1 or 2
     public let version: Int
+
+    /// Number of the instant view views; 0 if unknown
+    public let viewCount: Int
 
 
     public init (
         isFull: Bool,
         isRtl: Bool,
         pageBlocks: [PageBlock],
-        url: String,
-        version: Int) {
+        version: Int,
+        viewCount: Int) {
 
         self.isFull = isFull
         self.isRtl = isRtl
         self.pageBlocks = pageBlocks
-        self.url = url
         self.version = version
+        self.viewCount = viewCount
     }
 }
 

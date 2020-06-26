@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Changes the username of a supergroup or channel, requires creator privileges in the supergroup or channel
+/// Changes the username of a supergroup or channel, requires owner privileges in the supergroup or channel
 public struct SetSupergroupUsername: Codable {
 
     /// Identifier of the supergroup or channel

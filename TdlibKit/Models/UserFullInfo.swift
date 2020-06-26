@@ -29,6 +29,9 @@ public struct UserFullInfo: Codable {
     /// True, if the user is blacklisted by the current user
     public let isBlocked: Bool
 
+    /// True, if the current user needs to explicitly allow to share their phone number with the user when the method addContact is used
+    public let needPhoneNumberPrivacyException: Bool
+
     /// For bots, the text that is included with the link when users share the bot
     public let shareText: String
 
@@ -40,6 +43,7 @@ public struct UserFullInfo: Codable {
         groupInCommonCount: Int,
         hasPrivateCalls: Bool,
         isBlocked: Bool,
+        needPhoneNumberPrivacyException: Bool,
         shareText: String) {
 
         self.bio = bio
@@ -48,6 +52,7 @@ public struct UserFullInfo: Codable {
         self.groupInCommonCount = groupInCommonCount
         self.hasPrivateCalls = hasPrivateCalls
         self.isBlocked = isBlocked
+        self.needPhoneNumberPrivacyException = needPhoneNumberPrivacyException
         self.shareText = shareText
     }
 }

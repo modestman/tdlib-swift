@@ -12,10 +12,9 @@ import TdlibKit
 struct ChatInfo {
     
     let id: Int64
-    var order: Int64
+    var positions: [ChatPosition]
     var title: String
     var isMarkedAsUnread: Bool
-    var isPinned: Bool
     var unreadCount: Int
     var unreadMentionCount: Int
     var lastReadInboxMessageId: Int64
@@ -25,10 +24,9 @@ struct ChatInfo {
     
     init(
         id: Int64,
-        order: Int64,
+        positions: [ChatPosition],
         title: String,
         isMarkedAsUnread: Bool = false,
-        isPinned: Bool = false,
         unreadCount: Int = 0,
         unreadMentionCount: Int = 0,
         lastReadInboxMessageId: Int64 = 0,
@@ -36,10 +34,9 @@ struct ChatInfo {
         lastMessage: TextMessage? = nil) {
         
         self.id = id
-        self.order = order
+        self.positions = positions
         self.title = title
         self.isMarkedAsUnread = isMarkedAsUnread
-        self.isPinned = isPinned
         self.unreadCount = unreadCount
         self.unreadMentionCount = unreadMentionCount
         self.lastReadInboxMessageId = lastReadInboxMessageId
@@ -52,10 +49,9 @@ extension ChatInfo {
     
     init(_ chat: Chat) {
         id = chat.id
-        order = chat.order.rawValue
+        positions = chat.positions
         title = chat.title
         isMarkedAsUnread = chat.isMarkedAsUnread
-        isPinned = chat.isPinned
         unreadCount = chat.unreadCount
         unreadMentionCount = chat.unreadMentionCount
         lastReadInboxMessageId = chat.lastReadInboxMessageId

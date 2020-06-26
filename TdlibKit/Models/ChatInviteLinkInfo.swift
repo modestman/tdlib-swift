@@ -14,10 +14,10 @@ public struct ChatInviteLinkInfo: Codable {
     /// Chat identifier of the invite link; 0 if the user is not a member of this chat
     public let chatId: Int64
 
-    /// True, if the chat is a public supergroup or a channel with a username
+    /// True, if the chat is a public supergroup or channel, i.e. it has a username or it is a location-based supergroup
     public let isPublic: Bool
 
-    /// Number of members
+    /// Number of members in the chat
     public let memberCount: Int
 
     /// User identifiers of some chat members that may be known to the current user

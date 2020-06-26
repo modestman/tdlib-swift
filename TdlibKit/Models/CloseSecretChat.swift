@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Closes a secret chat, effectively transfering its state to secretChatStateClosed
+/// Closes a secret chat, effectively transferring its state to secretChatStateClosed
 public struct CloseSecretChat: Codable {
 
     /// Secret chat identifier

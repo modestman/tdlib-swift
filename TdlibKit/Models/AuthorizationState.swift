@@ -17,11 +17,14 @@ public enum AuthorizationState: Codable {
     /// TDLib needs an encryption key to decrypt the local database
     case authorizationStateWaitEncryptionKey(AuthorizationStateWaitEncryptionKey)
 
-    /// TDLib needs the user's phone number to authorize
+    /// TDLib needs the user's phone number to authorize. Call `setAuthenticationPhoneNumber` to provide the phone number, or use `requestQrCodeAuthentication`, or `checkAuthenticationBotToken` for other authentication options
     case authorizationStateWaitPhoneNumber
 
     /// TDLib needs the user's authentication code to authorize
     case authorizationStateWaitCode(AuthorizationStateWaitCode)
+
+    /// The user needs to confirm authorization on another logged in device by scanning a QR code with the provided link
+    case authorizationStateWaitOtherDeviceConfirmation(AuthorizationStateWaitOtherDeviceConfirmation)
 
     /// The user is unregistered and need to accept terms of service and enter their first name and last name to finish registration
     case authorizationStateWaitRegistration(AuthorizationStateWaitRegistration)
@@ -47,6 +50,7 @@ public enum AuthorizationState: Codable {
         case authorizationStateWaitEncryptionKey
         case authorizationStateWaitPhoneNumber
         case authorizationStateWaitCode
+        case authorizationStateWaitOtherDeviceConfirmation
         case authorizationStateWaitRegistration
         case authorizationStateWaitPassword
         case authorizationStateReady
@@ -69,6 +73,9 @@ public enum AuthorizationState: Codable {
         case .authorizationStateWaitCode:
             let value = try AuthorizationStateWaitCode(from: decoder)
             self = .authorizationStateWaitCode(value)
+        case .authorizationStateWaitOtherDeviceConfirmation:
+            let value = try AuthorizationStateWaitOtherDeviceConfirmation(from: decoder)
+            self = .authorizationStateWaitOtherDeviceConfirmation(value)
         case .authorizationStateWaitRegistration:
             let value = try AuthorizationStateWaitRegistration(from: decoder)
             self = .authorizationStateWaitRegistration(value)
@@ -98,6 +105,9 @@ public enum AuthorizationState: Codable {
             try container.encode(Kind.authorizationStateWaitPhoneNumber, forKey: .type)
         case .authorizationStateWaitCode(let value):
             try container.encode(Kind.authorizationStateWaitCode, forKey: .type)
+            try value.encode(to: encoder)
+        case .authorizationStateWaitOtherDeviceConfirmation(let value):
+            try container.encode(Kind.authorizationStateWaitOtherDeviceConfirmation, forKey: .type)
             try value.encode(to: encoder)
         case .authorizationStateWaitRegistration(let value):
             try container.encode(Kind.authorizationStateWaitRegistration, forKey: .type)
@@ -138,6 +148,18 @@ public struct AuthorizationStateWaitCode: Codable {
 
     public init (codeInfo: AuthenticationCodeInfo) {
         self.codeInfo = codeInfo
+    }
+}
+
+/// The user needs to confirm authorization on another logged in device by scanning a QR code with the provided link
+public struct AuthorizationStateWaitOtherDeviceConfirmation: Codable {
+
+    /// A tg:// URL for the QR code. The link will be updated frequently
+    public let link: String
+
+
+    public init (link: String) {
+        self.link = link
     }
 }
 

@@ -160,8 +160,8 @@ public struct InlineQueryResultArticle: Codable {
     /// Unique identifier of the query result
     public let id: String
 
-    /// Result thumbnail; may be null
-    public let thumbnail: PhotoSize?
+    /// Result thumbnail in JPEG format; may be null
+    public let thumbnail: Thumbnail?
 
     /// Title of the result
     public let title: String
@@ -174,7 +174,7 @@ public struct InlineQueryResultArticle: Codable {
         description: String,
         hideUrl: Bool,
         id: String,
-        thumbnail: PhotoSize?,
+        thumbnail: Thumbnail?,
         title: String,
         url: String) {
 
@@ -196,14 +196,14 @@ public struct InlineQueryResultContact: Codable {
     /// Unique identifier of the query result
     public let id: String
 
-    /// Result thumbnail; may be null
-    public let thumbnail: PhotoSize?
+    /// Result thumbnail in JPEG format; may be null
+    public let thumbnail: Thumbnail?
 
 
     public init (
         contact: Contact,
         id: String,
-        thumbnail: PhotoSize?) {
+        thumbnail: Thumbnail?) {
 
         self.contact = contact
         self.id = id
@@ -220,8 +220,8 @@ public struct InlineQueryResultLocation: Codable {
     /// Location result
     public let location: Location
 
-    /// Result thumbnail; may be null
-    public let thumbnail: PhotoSize?
+    /// Result thumbnail in JPEG format; may be null
+    public let thumbnail: Thumbnail?
 
     /// Title of the result
     public let title: String
@@ -230,7 +230,7 @@ public struct InlineQueryResultLocation: Codable {
     public init (
         id: String,
         location: Location,
-        thumbnail: PhotoSize?,
+        thumbnail: Thumbnail?,
         title: String) {
 
         self.id = id
@@ -246,8 +246,8 @@ public struct InlineQueryResultVenue: Codable {
     /// Unique identifier of the query result
     public let id: String
 
-    /// Result thumbnail; may be null
-    public let thumbnail: PhotoSize?
+    /// Result thumbnail in JPEG format; may be null
+    public let thumbnail: Thumbnail?
 
     /// Venue result
     public let venue: Venue
@@ -255,7 +255,7 @@ public struct InlineQueryResultVenue: Codable {
 
     public init (
         id: String,
-        thumbnail: PhotoSize?,
+        thumbnail: Thumbnail?,
         venue: Venue) {
 
         self.id = id

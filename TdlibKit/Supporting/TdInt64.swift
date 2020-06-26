@@ -64,3 +64,12 @@ extension TdInt64: Comparable {
         return lhs.rawValue < rhs.rawValue
     }
 }
+
+extension TdInt64: Hashable {
+
+    public var hashValue: Int { return rawValue.hashValue }
+    
+    public func hash(into hasher: inout Hasher) {
+        rawValue.hash(into: &hasher)
+    }
+}

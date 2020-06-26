@@ -20,6 +20,9 @@ public enum UserPrivacySetting: Codable {
     /// A privacy setting for managing whether a link to the user's account is included in forwarded messages
     case userPrivacySettingShowLinkInForwardedMessages
 
+    /// A privacy setting for managing whether the user's phone number is visible
+    case userPrivacySettingShowPhoneNumber
+
     /// A privacy setting for managing whether the user can be invited to chats
     case userPrivacySettingAllowChatInvites
 
@@ -29,14 +32,19 @@ public enum UserPrivacySetting: Codable {
     /// A privacy setting for managing whether peer-to-peer connections can be used for calls
     case userPrivacySettingAllowPeerToPeerCalls
 
+    /// A privacy setting for managing whether the user can be found by their phone number. Checked only if the phone number is not known to the other user. Can be set only to "Allow contacts" or "Allow all"
+    case userPrivacySettingAllowFindingByPhoneNumber
+
 
     private enum Kind: String, Codable {
         case userPrivacySettingShowStatus
         case userPrivacySettingShowProfilePhoto
         case userPrivacySettingShowLinkInForwardedMessages
+        case userPrivacySettingShowPhoneNumber
         case userPrivacySettingAllowChatInvites
         case userPrivacySettingAllowCalls
         case userPrivacySettingAllowPeerToPeerCalls
+        case userPrivacySettingAllowFindingByPhoneNumber
     }
 
     public init(from decoder: Decoder) throws {
@@ -49,12 +57,16 @@ public enum UserPrivacySetting: Codable {
             self = .userPrivacySettingShowProfilePhoto
         case .userPrivacySettingShowLinkInForwardedMessages:
             self = .userPrivacySettingShowLinkInForwardedMessages
+        case .userPrivacySettingShowPhoneNumber:
+            self = .userPrivacySettingShowPhoneNumber
         case .userPrivacySettingAllowChatInvites:
             self = .userPrivacySettingAllowChatInvites
         case .userPrivacySettingAllowCalls:
             self = .userPrivacySettingAllowCalls
         case .userPrivacySettingAllowPeerToPeerCalls:
             self = .userPrivacySettingAllowPeerToPeerCalls
+        case .userPrivacySettingAllowFindingByPhoneNumber:
+            self = .userPrivacySettingAllowFindingByPhoneNumber
         }
     }
 
@@ -67,12 +79,16 @@ public enum UserPrivacySetting: Codable {
             try container.encode(Kind.userPrivacySettingShowProfilePhoto, forKey: .type)
         case .userPrivacySettingShowLinkInForwardedMessages:
             try container.encode(Kind.userPrivacySettingShowLinkInForwardedMessages, forKey: .type)
+        case .userPrivacySettingShowPhoneNumber:
+            try container.encode(Kind.userPrivacySettingShowPhoneNumber, forKey: .type)
         case .userPrivacySettingAllowChatInvites:
             try container.encode(Kind.userPrivacySettingAllowChatInvites, forKey: .type)
         case .userPrivacySettingAllowCalls:
             try container.encode(Kind.userPrivacySettingAllowCalls, forKey: .type)
         case .userPrivacySettingAllowPeerToPeerCalls:
             try container.encode(Kind.userPrivacySettingAllowPeerToPeerCalls, forKey: .type)
+        case .userPrivacySettingAllowFindingByPhoneNumber:
+            try container.encode(Kind.userPrivacySettingAllowFindingByPhoneNumber, forKey: .type)
         }
     }
 }

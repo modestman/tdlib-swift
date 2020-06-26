@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Uses current user IP to found their country. Returns two-letter ISO 3166-1 alpha-2 country code. Can be called before authorization
+/// Uses current user IP address to find their country. Returns two-letter ISO 3166-1 alpha-2 country code. Can be called before authorization
 public struct GetCountryCode: Codable {
 
 

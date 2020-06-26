@@ -17,6 +17,9 @@ public struct Notification: Codable {
     /// Unique persistent identifier of this notification
     public let id: Int
 
+    /// True, if the notification was initially silent
+    public let isSilent: Bool
+
     /// Notification type
     public let type: NotificationType
 
@@ -24,10 +27,12 @@ public struct Notification: Codable {
     public init (
         date: Int,
         id: Int,
+        isSilent: Bool,
         type: NotificationType) {
 
         self.date = date
         self.id = id
+        self.isSilent = isSilent
         self.type = type
     }
 }

@@ -29,6 +29,9 @@ public enum TopChatCategory: Codable {
     /// A category containing frequently used chats used for calls
     case topChatCategoryCalls
 
+    /// A category containing frequently used chats used to forward messages
+    case topChatCategoryForwardChats
+
 
     private enum Kind: String, Codable {
         case topChatCategoryUsers
@@ -37,6 +40,7 @@ public enum TopChatCategory: Codable {
         case topChatCategoryChannels
         case topChatCategoryInlineBots
         case topChatCategoryCalls
+        case topChatCategoryForwardChats
     }
 
     public init(from decoder: Decoder) throws {
@@ -55,6 +59,8 @@ public enum TopChatCategory: Codable {
             self = .topChatCategoryInlineBots
         case .topChatCategoryCalls:
             self = .topChatCategoryCalls
+        case .topChatCategoryForwardChats:
+            self = .topChatCategoryForwardChats
         }
     }
 
@@ -73,6 +79,8 @@ public enum TopChatCategory: Codable {
             try container.encode(Kind.topChatCategoryInlineBots, forKey: .type)
         case .topChatCategoryCalls:
             try container.encode(Kind.topChatCategoryCalls, forKey: .type)
+        case .topChatCategoryForwardChats:
+            try container.encode(Kind.topChatCategoryForwardChats, forKey: .type)
         }
     }
 }

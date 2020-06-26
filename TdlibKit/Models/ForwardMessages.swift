@@ -17,17 +17,14 @@ public struct ForwardMessages: Codable {
     /// Identifier of the chat to which to forward messages
     public let chatId: Int64
 
-    /// Pass true to disable notification for the message, doesn't work if messages are forwarded to a secret chat
-    public let disableNotification: Bool
-
-    /// Pass true if the messages are sent from the background
-    public let fromBackground: Bool
-
     /// Identifier of the chat from which to forward messages
     public let fromChatId: Int64
 
     /// Identifiers of the messages to forward
     public let messageIds: [Int64]
+
+    /// Options to be used to send the messages
+    public let options: SendMessageOptions
 
     /// True, if media captions of message copies needs to be removed. Ignored if send_copy is false
     public let removeCaption: Bool
@@ -39,19 +36,17 @@ public struct ForwardMessages: Codable {
     public init (
         asAlbum: Bool,
         chatId: Int64,
-        disableNotification: Bool,
-        fromBackground: Bool,
         fromChatId: Int64,
         messageIds: [Int64],
+        options: SendMessageOptions,
         removeCaption: Bool,
         sendCopy: Bool) {
 
         self.asAlbum = asAlbum
         self.chatId = chatId
-        self.disableNotification = disableNotification
-        self.fromBackground = fromBackground
         self.fromChatId = fromChatId
         self.messageIds = messageIds
+        self.options = options
         self.removeCaption = removeCaption
         self.sendCopy = sendCopy
     }

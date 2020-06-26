@@ -8,13 +8,13 @@
 import Foundation
 
 
-/// Parses Bold, Italic, Code, Pre, PreCode and TextUrl entities contained in the text. This is an offline method. Can be called before authorization. Can be called synchronously
+/// Parses Bold, Italic, Underline, Strikethrough, Code, Pre, PreCode, TextUrl and MentionName entities contained in the text. This is an offline method. Can be called before authorization. Can be called synchronously
 public struct ParseTextEntities: Codable {
 
     /// Text parse mode
     public let parseMode: TextParseMode
 
-    /// The text which should be parsed
+    /// The text to parse
     public let text: String
 
 

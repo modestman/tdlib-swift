@@ -17,7 +17,7 @@ public struct Video: Codable {
     /// Original name of the file; as defined by the sender
     public let fileName: String
 
-    /// True, if stickers were added to the photo
+    /// True, if stickers were added to the video. The list of corresponding sticker sets can be received using getAttachedStickerSets
     public let hasStickers: Bool
 
     /// Video height; as defined by the sender
@@ -32,8 +32,8 @@ public struct Video: Codable {
     /// True, if the video should be tried to be streamed
     public let supportsStreaming: Bool
 
-    /// Video thumbnail; as defined by the sender; may be null
-    public let thumbnail: PhotoSize?
+    /// Video thumbnail in JPEG or MPEG4 format; as defined by the sender; may be null
+    public let thumbnail: Thumbnail?
 
     /// File containing the video
     public let video: File
@@ -50,7 +50,7 @@ public struct Video: Codable {
         mimeType: String,
         minithumbnail: Minithumbnail?,
         supportsStreaming: Bool,
-        thumbnail: PhotoSize?,
+        thumbnail: Thumbnail?,
         video: File,
         width: Int) {
 

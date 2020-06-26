@@ -29,11 +29,23 @@ public enum TextEntityType: Codable {
     /// An email address
     case textEntityTypeEmailAddress
 
+    /// A phone number
+    case textEntityTypePhoneNumber
+
+    /// A bank card number. The getBankCardInfo method can be used to get information about the bank card
+    case textEntityTypeBankCardNumber
+
     /// A bold text
     case textEntityTypeBold
 
     /// An italic text
     case textEntityTypeItalic
+
+    /// An underlined text
+    case textEntityTypeUnderline
+
+    /// A strikethrough text
+    case textEntityTypeStrikethrough
 
     /// Text that must be formatted as if inside a code HTML tag
     case textEntityTypeCode
@@ -50,9 +62,6 @@ public enum TextEntityType: Codable {
     /// A text shows instead of a raw mention of the user (e.g., when the user has no username)
     case textEntityTypeMentionName(TextEntityTypeMentionName)
 
-    /// A phone number
-    case textEntityTypePhoneNumber
-
 
     private enum Kind: String, Codable {
         case textEntityTypeMention
@@ -61,14 +70,17 @@ public enum TextEntityType: Codable {
         case textEntityTypeBotCommand
         case textEntityTypeUrl
         case textEntityTypeEmailAddress
+        case textEntityTypePhoneNumber
+        case textEntityTypeBankCardNumber
         case textEntityTypeBold
         case textEntityTypeItalic
+        case textEntityTypeUnderline
+        case textEntityTypeStrikethrough
         case textEntityTypeCode
         case textEntityTypePre
         case textEntityTypePreCode
         case textEntityTypeTextUrl
         case textEntityTypeMentionName
-        case textEntityTypePhoneNumber
     }
 
     public init(from decoder: Decoder) throws {
@@ -87,10 +99,18 @@ public enum TextEntityType: Codable {
             self = .textEntityTypeUrl
         case .textEntityTypeEmailAddress:
             self = .textEntityTypeEmailAddress
+        case .textEntityTypePhoneNumber:
+            self = .textEntityTypePhoneNumber
+        case .textEntityTypeBankCardNumber:
+            self = .textEntityTypeBankCardNumber
         case .textEntityTypeBold:
             self = .textEntityTypeBold
         case .textEntityTypeItalic:
             self = .textEntityTypeItalic
+        case .textEntityTypeUnderline:
+            self = .textEntityTypeUnderline
+        case .textEntityTypeStrikethrough:
+            self = .textEntityTypeStrikethrough
         case .textEntityTypeCode:
             self = .textEntityTypeCode
         case .textEntityTypePre:
@@ -104,8 +124,6 @@ public enum TextEntityType: Codable {
         case .textEntityTypeMentionName:
             let value = try TextEntityTypeMentionName(from: decoder)
             self = .textEntityTypeMentionName(value)
-        case .textEntityTypePhoneNumber:
-            self = .textEntityTypePhoneNumber
         }
     }
 
@@ -124,10 +142,18 @@ public enum TextEntityType: Codable {
             try container.encode(Kind.textEntityTypeUrl, forKey: .type)
         case .textEntityTypeEmailAddress:
             try container.encode(Kind.textEntityTypeEmailAddress, forKey: .type)
+        case .textEntityTypePhoneNumber:
+            try container.encode(Kind.textEntityTypePhoneNumber, forKey: .type)
+        case .textEntityTypeBankCardNumber:
+            try container.encode(Kind.textEntityTypeBankCardNumber, forKey: .type)
         case .textEntityTypeBold:
             try container.encode(Kind.textEntityTypeBold, forKey: .type)
         case .textEntityTypeItalic:
             try container.encode(Kind.textEntityTypeItalic, forKey: .type)
+        case .textEntityTypeUnderline:
+            try container.encode(Kind.textEntityTypeUnderline, forKey: .type)
+        case .textEntityTypeStrikethrough:
+            try container.encode(Kind.textEntityTypeStrikethrough, forKey: .type)
         case .textEntityTypeCode:
             try container.encode(Kind.textEntityTypeCode, forKey: .type)
         case .textEntityTypePre:
@@ -141,8 +167,6 @@ public enum TextEntityType: Codable {
         case .textEntityTypeMentionName(let value):
             try container.encode(Kind.textEntityTypeMentionName, forKey: .type)
             try value.encode(to: encoder)
-        case .textEntityTypePhoneNumber:
-            try container.encode(Kind.textEntityTypePhoneNumber, forKey: .type)
         }
     }
 }

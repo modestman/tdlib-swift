@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Represents commands supported by a bot
+/// Represents a command supported by a bot
 public struct BotCommand: Codable {
 
     /// Text of the bot command

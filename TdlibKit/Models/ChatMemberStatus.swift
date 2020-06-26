@@ -11,7 +11,7 @@ import Foundation
 /// Provides information about the status of a member in a chat
 public enum ChatMemberStatus: Codable {
 
-    /// The user is the creator of a chat and has all the administrator privileges
+    /// The user is the owner of a chat and has all the administrator privileges
     case chatMemberStatusCreator(ChatMemberStatusCreator)
 
     /// The user is a member of a chat and has some additional privileges. In basic groups, administrators can edit and delete messages sent by others, add new members, and ban unprivileged members. In supergroups and channels, there are more detailed options for administrator privileges
@@ -85,14 +85,21 @@ public enum ChatMemberStatus: Codable {
     }
 }
 
-/// The user is the creator of a chat and has all the administrator privileges
+/// The user is the owner of a chat and has all the administrator privileges
 public struct ChatMemberStatusCreator: Codable {
+
+    /// A custom title of the owner; 0-16 characters without emojis; applicable to supergroups only
+    public let customTitle: String
 
     /// True, if the user is a member of the chat
     public let isMember: Bool
 
 
-    public init (isMember: Bool) {
+    public init (
+        customTitle: String,
+        isMember: Bool) {
+
+        self.customTitle = customTitle
         self.isMember = isMember
     }
 }
@@ -121,11 +128,14 @@ public struct ChatMemberStatusAdministrator: Codable {
     /// True, if the administrator can create channel posts; applicable to channels only
     public let canPostMessages: Bool
 
-    /// True, if the administrator can add new administrators with a subset of their own privileges or demote administrators that were directly or indirectly promoted by him
+    /// True, if the administrator can add new administrators with a subset of their own privileges or demote administrators that were directly or indirectly promoted by them
     public let canPromoteMembers: Bool
 
     /// True, if the administrator can restrict, ban, or unban chat members
     public let canRestrictMembers: Bool
+
+    /// A custom title of the administrator; 0-16 characters without emojis; applicable to supergroups only
+    public let customTitle: String
 
 
     public init (
@@ -137,7 +147,8 @@ public struct ChatMemberStatusAdministrator: Codable {
         canPinMessages: Bool,
         canPostMessages: Bool,
         canPromoteMembers: Bool,
-        canRestrictMembers: Bool) {
+        canRestrictMembers: Bool,
+        customTitle: String) {
 
         self.canBeEdited = canBeEdited
         self.canChangeInfo = canChangeInfo
@@ -148,6 +159,7 @@ public struct ChatMemberStatusAdministrator: Codable {
         self.canPostMessages = canPostMessages
         self.canPromoteMembers = canPromoteMembers
         self.canRestrictMembers = canRestrictMembers
+        self.customTitle = customTitle
     }
 }
 

@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Contains a public HTTPS link to a message in a public supergroup or channel with a username
+/// Contains a public HTTPS link to a message in a supergroup or channel with a username
 public struct PublicMessageLink: Codable {
 
     /// HTML-code for embedding the message

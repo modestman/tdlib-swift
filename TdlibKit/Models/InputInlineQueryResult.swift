@@ -11,11 +11,8 @@ import Foundation
 /// Represents a single result of an inline query; for bots only
 public enum InputInlineQueryResult: Codable {
 
-    /// Represents a link to an animated GIF
-    case inputInlineQueryResultAnimatedGif(InputInlineQueryResultAnimatedGif)
-
-    /// Represents a link to an animated (i.e. without sound) H.264/MPEG-4 AVC video
-    case inputInlineQueryResultAnimatedMpeg4(InputInlineQueryResultAnimatedMpeg4)
+    /// Represents a link to an animated GIF or an animated (i.e. without sound) H.264/MPEG-4 AVC video
+    case inputInlineQueryResultAnimation(InputInlineQueryResultAnimation)
 
     /// Represents a link to an article or web page
     case inputInlineQueryResultArticle(InputInlineQueryResultArticle)
@@ -38,7 +35,7 @@ public enum InputInlineQueryResult: Codable {
     /// Represents link to a JPEG image
     case inputInlineQueryResultPhoto(InputInlineQueryResultPhoto)
 
-    /// Represents a link to a WEBP or a TGS sticker
+    /// Represents a link to a WEBP or TGS sticker
     case inputInlineQueryResultSticker(InputInlineQueryResultSticker)
 
     /// Represents information about a venue
@@ -52,8 +49,7 @@ public enum InputInlineQueryResult: Codable {
 
 
     private enum Kind: String, Codable {
-        case inputInlineQueryResultAnimatedGif
-        case inputInlineQueryResultAnimatedMpeg4
+        case inputInlineQueryResultAnimation
         case inputInlineQueryResultArticle
         case inputInlineQueryResultAudio
         case inputInlineQueryResultContact
@@ -71,12 +67,9 @@ public enum InputInlineQueryResult: Codable {
         let container = try decoder.container(keyedBy: DtoCodingKeys.self)
         let type = try container.decode(Kind.self, forKey: .type)
         switch type {
-        case .inputInlineQueryResultAnimatedGif:
-            let value = try InputInlineQueryResultAnimatedGif(from: decoder)
-            self = .inputInlineQueryResultAnimatedGif(value)
-        case .inputInlineQueryResultAnimatedMpeg4:
-            let value = try InputInlineQueryResultAnimatedMpeg4(from: decoder)
-            self = .inputInlineQueryResultAnimatedMpeg4(value)
+        case .inputInlineQueryResultAnimation:
+            let value = try InputInlineQueryResultAnimation(from: decoder)
+            self = .inputInlineQueryResultAnimation(value)
         case .inputInlineQueryResultArticle:
             let value = try InputInlineQueryResultArticle(from: decoder)
             self = .inputInlineQueryResultArticle(value)
@@ -116,11 +109,8 @@ public enum InputInlineQueryResult: Codable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: DtoCodingKeys.self)
         switch self {
-        case .inputInlineQueryResultAnimatedGif(let value):
-            try container.encode(Kind.inputInlineQueryResultAnimatedGif, forKey: .type)
-            try value.encode(to: encoder)
-        case .inputInlineQueryResultAnimatedMpeg4(let value):
-            try container.encode(Kind.inputInlineQueryResultAnimatedMpeg4, forKey: .type)
+        case .inputInlineQueryResultAnimation(let value):
+            try container.encode(Kind.inputInlineQueryResultAnimation, forKey: .type)
             try value.encode(to: encoder)
         case .inputInlineQueryResultArticle(let value):
             try container.encode(Kind.inputInlineQueryResultArticle, forKey: .type)
@@ -159,20 +149,8 @@ public enum InputInlineQueryResult: Codable {
     }
 }
 
-/// Represents a link to an animated GIF
-public struct InputInlineQueryResultAnimatedGif: Codable {
-
-    /// Duration of the GIF, in seconds
-    public let gifDuration: Int
-
-    /// Height of the GIF
-    public let gifHeight: Int
-
-    /// The URL of the GIF-file (file size must not exceed 1MB)
-    public let gifUrl: String
-
-    /// Width of the GIF
-    public let gifWidth: Int
+/// Represents a link to an animated GIF or an animated (i.e. without sound) H.264/MPEG-4 AVC video
+public struct InputInlineQueryResultAnimation: Codable {
 
     /// Unique identifier of the query result
     public let id: String
@@ -183,87 +161,55 @@ public struct InputInlineQueryResultAnimatedGif: Codable {
     /// The message reply markup. Must be of type replyMarkupInlineKeyboard or null
     public let replyMarkup: ReplyMarkup
 
-    /// URL of the static result thumbnail (JPEG or GIF), if it exists
+    /// MIME type of the video thumbnail. If non-empty, must be one of "image/jpeg", "image/gif" and "video/mp4"
+    public let thumbnailMimeType: String
+
+    /// URL of the result thumbnail (JPEG, GIF, or MPEG4), if it exists
     public let thumbnailUrl: String
 
     /// Title of the query result
     public let title: String
 
-
-    public init (
-        gifDuration: Int,
-        gifHeight: Int,
-        gifUrl: String,
-        gifWidth: Int,
-        id: String,
-        inputMessageContent: InputMessageContent,
-        replyMarkup: ReplyMarkup,
-        thumbnailUrl: String,
-        title: String) {
-
-        self.gifDuration = gifDuration
-        self.gifHeight = gifHeight
-        self.gifUrl = gifUrl
-        self.gifWidth = gifWidth
-        self.id = id
-        self.inputMessageContent = inputMessageContent
-        self.replyMarkup = replyMarkup
-        self.thumbnailUrl = thumbnailUrl
-        self.title = title
-    }
-}
-
-/// Represents a link to an animated (i.e. without sound) H.264/MPEG-4 AVC video
-public struct InputInlineQueryResultAnimatedMpeg4: Codable {
-
-    /// Unique identifier of the query result
-    public let id: String
-
-    /// The content of the message to be sent. Must be one of the following types: InputMessageText, InputMessageAnimation, InputMessageLocation, InputMessageVenue or InputMessageContact
-    public let inputMessageContent: InputMessageContent
-
     /// Duration of the video, in seconds
-    public let mpeg4Duration: Int
+    public let videoDuration: Int
 
     /// Height of the video
-    public let mpeg4Height: Int
+    public let videoHeight: Int
 
-    /// The URL of the MPEG4-file (file size must not exceed 1MB)
-    public let mpeg4Url: String
+    /// MIME type of the video file. Must be one of "image/gif" and "video/mp4"
+    public let videoMimeType: String
+
+    /// The URL of the video file (file size must not exceed 1MB)
+    public let videoUrl: String
 
     /// Width of the video
-    public let mpeg4Width: Int
-
-    /// The message reply markup. Must be of type replyMarkupInlineKeyboard or null
-    public let replyMarkup: ReplyMarkup
-
-    /// URL of the static result thumbnail (JPEG or GIF), if it exists
-    public let thumbnailUrl: String
-
-    /// Title of the result
-    public let title: String
+    public let videoWidth: Int
 
 
     public init (
         id: String,
         inputMessageContent: InputMessageContent,
-        mpeg4Duration: Int,
-        mpeg4Height: Int,
-        mpeg4Url: String,
-        mpeg4Width: Int,
         replyMarkup: ReplyMarkup,
+        thumbnailMimeType: String,
         thumbnailUrl: String,
-        title: String) {
+        title: String,
+        videoDuration: Int,
+        videoHeight: Int,
+        videoMimeType: String,
+        videoUrl: String,
+        videoWidth: Int) {
 
         self.id = id
         self.inputMessageContent = inputMessageContent
-        self.mpeg4Duration = mpeg4Duration
-        self.mpeg4Height = mpeg4Height
-        self.mpeg4Url = mpeg4Url
-        self.mpeg4Width = mpeg4Width
         self.replyMarkup = replyMarkup
+        self.thumbnailMimeType = thumbnailMimeType
         self.thumbnailUrl = thumbnailUrl
         self.title = title
+        self.videoDuration = videoDuration
+        self.videoHeight = videoHeight
+        self.videoMimeType = videoMimeType
+        self.videoUrl = videoUrl
+        self.videoWidth = videoWidth
     }
 }
 
@@ -602,7 +548,7 @@ public struct InputInlineQueryResultPhoto: Codable {
     }
 }
 
-/// Represents a link to a WEBP or a TGS sticker
+/// Represents a link to a WEBP or TGS sticker
 public struct InputInlineQueryResultSticker: Codable {
 
     /// Unique identifier of the query result
@@ -617,7 +563,7 @@ public struct InputInlineQueryResultSticker: Codable {
     /// Height of the sticker
     public let stickerHeight: Int
 
-    /// The URL of the WEBP or a TGS sticker (sticker file size must not exceed 5MB)
+    /// The URL of the WEBP or TGS sticker (sticker file size must not exceed 5MB)
     public let stickerUrl: String
 
     /// Width of the sticker

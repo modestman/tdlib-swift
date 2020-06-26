@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Informs TDLib on a file generation prograss
+/// Informs TDLib on a file generation progress
 public struct SetFileGenerationProgress: Codable {
 
     /// Expected size of the generated file, in bytes; 0 if unknown

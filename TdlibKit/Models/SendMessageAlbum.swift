@@ -14,14 +14,11 @@ public struct SendMessageAlbum: Codable {
     /// Target chat
     public let chatId: Int64
 
-    /// Pass true to disable notification for the messages. Not supported in secret chats
-    public let disableNotification: Bool
-
-    /// Pass true if the messages are sent from the background
-    public let fromBackground: Bool
-
     /// Contents of messages to be sent
     public let inputMessageContents: [InputMessageContent]
+
+    /// Options to be used to send the messages
+    public let options: SendMessageOptions
 
     /// Identifier of a message to reply to or 0
     public let replyToMessageId: Int64
@@ -29,15 +26,13 @@ public struct SendMessageAlbum: Codable {
 
     public init (
         chatId: Int64,
-        disableNotification: Bool,
-        fromBackground: Bool,
         inputMessageContents: [InputMessageContent],
+        options: SendMessageOptions,
         replyToMessageId: Int64) {
 
         self.chatId = chatId
-        self.disableNotification = disableNotification
-        self.fromBackground = fromBackground
         self.inputMessageContents = inputMessageContents
+        self.options = options
         self.replyToMessageId = replyToMessageId
     }
 }

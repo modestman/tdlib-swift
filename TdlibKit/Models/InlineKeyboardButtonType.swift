@@ -106,7 +106,7 @@ public struct InlineKeyboardButtonTypeLoginUrl: Codable {
     /// Unique button identifier
     public let id: Int
 
-    /// HTTP URL to open
+    /// An HTTP URL to open
     public let url: String
 
 

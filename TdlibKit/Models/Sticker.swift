@@ -33,7 +33,7 @@ public struct Sticker: Codable {
     public let sticker: File
 
     /// Sticker thumbnail in WEBP or JPEG format; may be null
-    public let thumbnail: PhotoSize?
+    public let thumbnail: Thumbnail?
 
     /// Sticker width; as defined by the sender
     public let width: Int
@@ -47,7 +47,7 @@ public struct Sticker: Codable {
         maskPosition: MaskPosition?,
         setId: TdInt64,
         sticker: File,
-        thumbnail: PhotoSize?,
+        thumbnail: Thumbnail?,
         width: Int) {
 
         self.emoji = emoji

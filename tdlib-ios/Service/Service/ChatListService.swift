@@ -44,10 +44,10 @@ final class ChatListService: UpdateListener {
             var offsetOrder = TdInt64.max
             var offsetChatId: Int64 = 0
             if let last = chatList.last {
-                offsetOrder = TdInt64(last.order)
+                offsetOrder = last.position.order
                 offsetChatId = last.chatId
             }
-            try api.getChats(limit: limit, offsetChatId: offsetChatId, offsetOrder: offsetOrder) { [weak self] result in
+            try api.getChats(chatList: .chatListMain, limit: limit, offsetChatId: offsetChatId, offsetOrder: offsetOrder) { [weak self] result in
                 guard
                     let self = self,
                     let chats = try? result.get()
@@ -73,11 +73,9 @@ final class ChatListService: UpdateListener {
         switch update {
         
         case .updateNewChat(let newChat):
-            var chat = ChatInfo(newChat.chat)
-            let order = chat.order
-            chat.order = 0
+            let chat = ChatInfo(newChat.chat)
             chats[chat.id] = chat
-            setChatOrder(chat, order)
+            setChatPositions(chat, newChat.chat.positions)
         
         case .updateChatTitle(let upd):
             if var chat = chats[upd.chatId] {
@@ -96,19 +94,12 @@ final class ChatListService: UpdateListener {
                     chat.lastMessage = nil
                 }
                 chats[upd.chatId] = chat
-                setChatOrder(chat, upd.order.rawValue)
+                setChatPositions(chat, upd.positions)
             }
             
-        case .updateChatOrder(let upd):
+        case .updateChatPosition(let upd):
             if let chat = chats[upd.chatId] {
-                setChatOrder(chat, upd.order.rawValue)
-            }
-            
-        case .updateChatIsPinned(let upd):
-            if var chat = chats[upd.chatId] {
-                chat.isPinned = upd.isPinned
-                chats[upd.chatId] = chat
-                setChatOrder(chat, upd.order.rawValue)
+                setChatPositions(chat, [upd.position])
             }
         
         case .updateChatReadInbox(let upd):
@@ -141,7 +132,7 @@ final class ChatListService: UpdateListener {
         case .updateChatDraftMessage(let upd):
             if let chat = chats[upd.chatId] {
                 chats[upd.chatId] = chat
-                setChatOrder(chat, upd.order.rawValue)
+                setChatPositions(chat, upd.positions)
             }
             
         case .updateChatNotificationSettings:
@@ -155,12 +146,6 @@ final class ChatListService: UpdateListener {
                 chat.isMarkedAsUnread = upd.isMarkedAsUnread
                 chats[upd.chatId] = chat
             }
-        
-        case .updateChatIsSponsored(let upd):
-            if let chat = chats[upd.chatId] {
-                chats[upd.chatId] = chat
-                setChatOrder(chat, upd.order.rawValue)
-            }
             
         default:
             break
@@ -170,15 +155,19 @@ final class ChatListService: UpdateListener {
     
     // MARK: - Private methods
     
-    private func setChatOrder(_ chat: ChatInfo, _ order: Int64) {
+    private func setChatPositions(_ chat: ChatInfo, _ positions: [ChatPosition]) {
         var updChat: ChatInfo = chat
-        if updChat.order != 0, let idx = chatList.firstIndex(where: { $0.chatId == chat.id }) {
-            chatList.remove(at: idx)
+        for position in positions {
+            if case .chatListMain = position.list, let idx = chatList.firstIndex(where: { $0.chatId == chat.id }) {
+                chatList.remove(at: idx)
+            }
         }
-        updChat.order = order
+        updChat.positions = positions
         chats[updChat.id] = updChat
-        if order != 0 {
-            chatList.append(OrderedChat(chatId: chat.id, order: order))
+        for position in positions {
+            if case .chatListMain = position.list {
+                 chatList.append(OrderedChat(chatId: chat.id, position: position))
+            }
         }
         chatList.sort()
         delegate?.chatListUpdated()
@@ -187,16 +176,16 @@ final class ChatListService: UpdateListener {
 }
 
 
-struct OrderedChat: Comparable, Hashable {
+struct OrderedChat: Comparable {
     
     let chatId: Int64
-    let order: Int64
+    let position: ChatPosition
     
     static func < (lhs: Self, rhs: Self) -> Bool {
-        return lhs.order > rhs.order
+        return lhs.position.order > rhs.position.order
     }
     
     static func == (lhs: Self, rhs: Self) -> Bool {
-        return lhs.chatId == rhs.chatId && lhs.order == rhs.order
+        return lhs.chatId == rhs.chatId && lhs.position.order == rhs.position.order
     }
 }

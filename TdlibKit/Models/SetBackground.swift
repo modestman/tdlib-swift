@@ -11,7 +11,7 @@ import Foundation
 /// Changes the background selected by the user; adds background to the list of installed backgrounds
 public struct SetBackground: Codable {
 
-    /// The input background to use, null for solid backgrounds
+    /// The input background to use, null for filled backgrounds
     public let background: InputBackground
 
     /// True, if the background is chosen for dark theme

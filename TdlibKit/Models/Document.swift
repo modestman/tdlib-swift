@@ -24,7 +24,7 @@ public struct Document: Codable {
     public let minithumbnail: Minithumbnail?
 
     /// Document thumbnail in JPEG or PNG format (PNG will be used only for background patterns); as defined by the sender; may be null
-    public let thumbnail: PhotoSize?
+    public let thumbnail: Thumbnail?
 
 
     public init (
@@ -32,7 +32,7 @@ public struct Document: Codable {
         fileName: String,
         mimeType: String,
         minithumbnail: Minithumbnail?,
-        thumbnail: PhotoSize?) {
+        thumbnail: Thumbnail?) {
 
         self.document = document
         self.fileName = fileName

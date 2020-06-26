@@ -488,15 +488,20 @@ public struct PushMessageContentPoll: Codable {
     /// True, if the message is a pinned message with the specified content
     public let isPinned: Bool
 
+    /// True, if the poll is regular and not in quiz mode
+    public let isRegular: Bool
+
     /// Poll question
     public let question: String
 
 
     public init (
         isPinned: Bool,
+        isRegular: Bool,
         question: String) {
 
         self.isPinned = isPinned
+        self.isRegular = isRegular
         self.question = question
     }
 }
@@ -617,7 +622,7 @@ public struct PushMessageContentChatAddMembers: Codable {
     /// True, if the current user was added to the group
     public let isCurrentUser: Bool
 
-    /// True, if the user has returned to the group himself
+    /// True, if the user has returned to the group themself
     public let isReturned: Bool
 
     /// Name of the added member
@@ -653,7 +658,7 @@ public struct PushMessageContentChatDeleteMember: Codable {
     /// True, if the current user was deleted from the group
     public let isCurrentUser: Bool
 
-    /// True, if the user has left the group himself
+    /// True, if the user has left the group themself
     public let isLeft: Bool
 
     /// Name of the deleted member

@@ -20,7 +20,7 @@ public struct Message: Codable {
     /// True, if the message can be deleted only for the current user while other users will continue to see it
     public let canBeDeletedOnlyForSelf: Bool
 
-    /// True, if the message can be edited. For live location and poll messages this fields shows, whether editMessageLiveLocation or stopPoll can be used with this message by the client
+    /// True, if the message can be edited. For live location and poll messages this fields shows whether editMessageLiveLocation or stopPoll can be used with this message by the client
     public let canBeEdited: Bool
 
     /// True, if the message can be forwarded
@@ -62,6 +62,12 @@ public struct Message: Codable {
     /// If non-zero, the identifier of the message this message is replying to; can be the identifier of a deleted message
     public let replyToMessageId: Int64
 
+    /// If non-empty, contains a human-readable description of the reason why access to this message must be restricted
+    public let restrictionReason: String
+
+    /// Information about the scheduling state of the message; may be null
+    public let schedulingState: MessageSchedulingState?
+
     /// Identifier of the user who sent the message; 0 if unknown. Currently, it is unknown for channel posts and for channel posts automatically forwarded to discussion group
     public let senderUserId: Int
 
@@ -99,6 +105,8 @@ public struct Message: Codable {
         mediaAlbumId: TdInt64,
         replyMarkup: ReplyMarkup?,
         replyToMessageId: Int64,
+        restrictionReason: String,
+        schedulingState: MessageSchedulingState?,
         senderUserId: Int,
         sendingState: MessageSendingState?,
         ttl: Int,
@@ -123,6 +131,8 @@ public struct Message: Codable {
         self.mediaAlbumId = mediaAlbumId
         self.replyMarkup = replyMarkup
         self.replyToMessageId = replyToMessageId
+        self.restrictionReason = restrictionReason
+        self.schedulingState = schedulingState
         self.senderUserId = senderUserId
         self.sendingState = sendingState
         self.ttl = ttl

@@ -14,7 +14,7 @@ public struct GetInlineQueryResults: Codable {
     /// The identifier of the target bot
     public let botUserId: Int
 
-    /// Identifier of the chat, where the query was sent
+    /// Identifier of the chat where the query was sent
     public let chatId: Int64
 
     /// Offset of the first entry to return
