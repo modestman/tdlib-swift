@@ -17,8 +17,11 @@ public struct SendMessage: Codable {
     /// The content of the message to be sent
     public let inputMessageContent: InputMessageContent
 
+    /// If not 0, a message thread identifier in which the message will be sent
+    public let messageThreadId: Int64
+
     /// Options to be used to send the message
-    public let options: SendMessageOptions
+    public let options: MessageSendOptions
 
     /// Markup for replying to the message; for bots only
     public let replyMarkup: ReplyMarkup
@@ -30,12 +33,14 @@ public struct SendMessage: Codable {
     public init (
         chatId: Int64,
         inputMessageContent: InputMessageContent,
-        options: SendMessageOptions,
+        messageThreadId: Int64,
+        options: MessageSendOptions,
         replyMarkup: ReplyMarkup,
         replyToMessageId: Int64) {
 
         self.chatId = chatId
         self.inputMessageContent = inputMessageContent
+        self.messageThreadId = messageThreadId
         self.options = options
         self.replyMarkup = replyMarkup
         self.replyToMessageId = replyToMessageId

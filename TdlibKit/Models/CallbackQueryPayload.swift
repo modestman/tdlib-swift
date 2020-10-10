@@ -11,15 +11,19 @@ import Foundation
 /// Represents a payload of a callback query
 public enum CallbackQueryPayload: Codable {
 
-    /// The payload from a general callback button
+    /// The payload for a general callback button
     case callbackQueryPayloadData(CallbackQueryPayloadData)
 
-    /// The payload from a game callback button
+    /// The payload for a callback button requiring password
+    case callbackQueryPayloadDataWithPassword(CallbackQueryPayloadDataWithPassword)
+
+    /// The payload for a game callback button
     case callbackQueryPayloadGame(CallbackQueryPayloadGame)
 
 
     private enum Kind: String, Codable {
         case callbackQueryPayloadData
+        case callbackQueryPayloadDataWithPassword
         case callbackQueryPayloadGame
     }
 
@@ -30,6 +34,9 @@ public enum CallbackQueryPayload: Codable {
         case .callbackQueryPayloadData:
             let value = try CallbackQueryPayloadData(from: decoder)
             self = .callbackQueryPayloadData(value)
+        case .callbackQueryPayloadDataWithPassword:
+            let value = try CallbackQueryPayloadDataWithPassword(from: decoder)
+            self = .callbackQueryPayloadDataWithPassword(value)
         case .callbackQueryPayloadGame:
             let value = try CallbackQueryPayloadGame(from: decoder)
             self = .callbackQueryPayloadGame(value)
@@ -42,6 +49,9 @@ public enum CallbackQueryPayload: Codable {
         case .callbackQueryPayloadData(let value):
             try container.encode(Kind.callbackQueryPayloadData, forKey: .type)
             try value.encode(to: encoder)
+        case .callbackQueryPayloadDataWithPassword(let value):
+            try container.encode(Kind.callbackQueryPayloadDataWithPassword, forKey: .type)
+            try value.encode(to: encoder)
         case .callbackQueryPayloadGame(let value):
             try container.encode(Kind.callbackQueryPayloadGame, forKey: .type)
             try value.encode(to: encoder)
@@ -49,7 +59,7 @@ public enum CallbackQueryPayload: Codable {
     }
 }
 
-/// The payload from a general callback button
+/// The payload for a general callback button
 public struct CallbackQueryPayloadData: Codable {
 
     /// Data that was attached to the callback button
@@ -61,7 +71,26 @@ public struct CallbackQueryPayloadData: Codable {
     }
 }
 
-/// The payload from a game callback button
+/// The payload for a callback button requiring password
+public struct CallbackQueryPayloadDataWithPassword: Codable {
+
+    /// Data that was attached to the callback button
+    public let data: Data
+
+    /// The password for the current user
+    public let password: String
+
+
+    public init (
+        data: Data,
+        password: String) {
+
+        self.data = data
+        self.password = password
+    }
+}
+
+/// The payload for a game callback button
 public struct CallbackQueryPayloadGame: Codable {
 
     /// A short name of the game that was attached to the callback button

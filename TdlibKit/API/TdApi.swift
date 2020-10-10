@@ -21,7 +21,7 @@ public final class TdApi {
     }
 
 
-    /// Returns the current authorization state; this is an offline request. For informational purposes only. Use updateAuthorizationState instead to maintain the current authorization state
+    /// Returns the current authorization state; this is an offline request. For informational purposes only. Use updateAuthorizationState instead to maintain the current authorization state. Can be called before initialization
     public func getAuthorizationState(completion: @escaping (Result<AuthorizationState, Swift.Error>) -> Void) throws {
 
         let query = GetAuthorizationState()
@@ -87,7 +87,7 @@ public final class TdApi {
     }
 
     /// Requests QR code authentication by scanning a QR code on another logged in device. Works only when the current authorization state is authorizationStateWaitPhoneNumber, or if there is no pending authentication query and the current authorization state is authorizationStateWaitCode, authorizationStateWaitRegistration, or authorizationStateWaitPassword
-    /// - Parameter otherUserIds: List of user identifiers of other users currently using the client
+    /// - Parameter otherUserIds: List of user identifiers of other users currently using the application
     public func requestQrCodeAuthentication(
         otherUserIds: [Int],
         completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
@@ -163,14 +163,14 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Closes the TDLib instance. All databases will be flushed to disk and properly closed. After the close completes, updateAuthorizationState with authorizationStateClosed will be sent
+    /// Closes the TDLib instance. All databases will be flushed to disk and properly closed. After the close completes, updateAuthorizationState with authorizationStateClosed will be sent. Can be called before initialization
     public func close(completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
 
         let query = Close()
         execute(query: query, completion: completion)
     }
 
-    /// Closes the TDLib instance, destroying all local data without a proper logout. The current user session will remain in the list of all active sessions. All local data will be destroyed. After the destruction completes updateAuthorizationState with authorizationStateClosed will be sent
+    /// Closes the TDLib instance, destroying all local data without a proper logout. The current user session will remain in the list of all active sessions. All local data will be destroyed. After the destruction completes updateAuthorizationState with authorizationStateClosed will be sent. Can be called before authorization
     public func destroy(completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
 
         let query = Destroy()
@@ -189,7 +189,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Returns all updates needed to restore current TDLib state, i.e. all actual UpdateAuthorizationState/UpdateUser/UpdateNewChat and others. This is especially useful if TDLib is run in a separate process. This is an offline method. Can be called before authorization
+    /// Returns all updates needed to restore current TDLib state, i.e. all actual UpdateAuthorizationState/UpdateUser/UpdateNewChat and others. This is especially useful if TDLib is run in a separate process. Can be called before initialization
     public func getCurrentState(completion: @escaping (Result<Updates, Swift.Error>) -> Void) throws {
 
         let query = GetCurrentState()
@@ -459,9 +459,9 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Returns information about a message that is replied by given message
+    /// Returns information about a message that is replied by a given message. Also returns the pinned message, the game message, and the invoice message for messages of the types messagePinMessage, messageGameScore, and messagePaymentSuccessful respectively
     /// - Parameter chatId: Identifier of the chat the message belongs to
-    /// - Parameter messageId: Identifier of the message reply to which get
+    /// - Parameter messageId: Identifier of the message reply to which to get
     public func getRepliedMessage(
         chatId: Int64,
         messageId: Int64,
@@ -501,6 +501,21 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
+    /// Returns information about a message thread. Can be used only if message.can_get_message_thread == true
+    /// - Parameter chatId: Chat identifier
+    /// - Parameter messageId: Identifier of the message
+    public func getMessageThread(
+        chatId: Int64,
+        messageId: Int64,
+        completion: @escaping (Result<MessageThreadInfo, Swift.Error>) -> Void) throws {
+
+        let query = GetMessageThread(
+            chatId: chatId,
+            messageId: messageId
+        )
+        execute(query: query, completion: completion)
+    }
+
     /// Returns information about a file; this is an offline request
     /// - Parameter fileId: Identifier of the file to get
     public func getFile(
@@ -513,7 +528,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Returns information about a file by its remote ID; this is an offline request. Can be used to register a URL as a file for further uploading, or sending as a message. Even the request succeeds, the file can be used only if it is still accessible to the user. For example, if the file is from a message, then the message must be not deleted and accessible to the user. If the file database is disabled, then the corresponding object with the file must be preloaded by the client
+    /// Returns information about a file by its remote ID; this is an offline request. Can be used to register a URL as a file for further uploading, or sending as a message. Even the request succeeds, the file can be used only if it is still accessible to the user. For example, if the file is from a message, then the message must be not deleted and accessible to the user. If the file database is disabled, then the corresponding object with the file must be preloaded by the application
     /// - Parameter fileType: File type, if known
     /// - Parameter remoteFileId: Remote identifier of the file to get
     public func getRemoteFile(
@@ -750,7 +765,7 @@ public final class TdApi {
     /// Returns messages in a chat. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id). For optimal performance the number of returned messages is chosen by the library. This is an offline request if only_local is true
     /// - Parameter chatId: Chat identifier
     /// - Parameter fromMessageId: Identifier of the message starting from which history must be fetched; use 0 to get results from the last message
-    /// - Parameter limit: The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater or equal to -offset. Fewer messages may be returned than specified by the limit, even if the end of the message history has not been reached
+    /// - Parameter limit: The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than or equal to -offset. Fewer messages may be returned than specified by the limit, even if the end of the message history has not been reached
     /// - Parameter offset: Specify 0 to get results from exactly the from_message_id or a negative offset up to 99 to get additionally some newer messages
     /// - Parameter onlyLocal: If true, returns only messages that are available locally without sending network requests
     public func getChatHistory(
@@ -767,6 +782,30 @@ public final class TdApi {
             limit: limit,
             offset: offset,
             onlyLocal: onlyLocal
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Returns messages in a message thread of a message. Can be used only if message.can_get_message_thread == true. Message thread of a channel message is in the channel's linked supergroup. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id). For optimal performance the number of returned messages is chosen by the library
+    /// - Parameter chatId: Chat identifier
+    /// - Parameter fromMessageId: Identifier of the message starting from which history must be fetched; use 0 to get results from the last message
+    /// - Parameter limit: The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than or equal to -offset. Fewer messages may be returned than specified by the limit, even if the end of the message thread history has not been reached
+    /// - Parameter messageId: Message identifier, which thread history needs to be returned
+    /// - Parameter offset: Specify 0 to get results from exactly the from_message_id or a negative offset up to 99 to get additionally some newer messages
+    public func getMessageThreadHistory(
+        chatId: Int64,
+        fromMessageId: Int64,
+        limit: Int,
+        messageId: Int64,
+        offset: Int,
+        completion: @escaping (Result<Messages, Swift.Error>) -> Void) throws {
+
+        let query = GetMessageThreadHistory(
+            chatId: chatId,
+            fromMessageId: fromMessageId,
+            limit: limit,
+            messageId: messageId,
+            offset: offset
         )
         execute(query: query, completion: completion)
     }
@@ -794,6 +833,7 @@ public final class TdApi {
     /// - Parameter filter: Filter for message content in the search results
     /// - Parameter fromMessageId: Identifier of the message starting from which history must be fetched; use 0 to get results from the last message
     /// - Parameter limit: The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than -offset. Fewer messages may be returned than specified by the limit, even if the end of the message history has not been reached
+    /// - Parameter messageThreadId: If not 0, only messages in the specified thread will be returned; supergroups only
     /// - Parameter offset: Specify 0 to get results from exactly the from_message_id or a negative offset to get the specified message and some newer messages
     /// - Parameter query: Query to search for
     /// - Parameter senderUserId: If not 0, only messages sent by the specified user will be returned. Not supported in secret chats
@@ -802,6 +842,7 @@ public final class TdApi {
         filter: SearchMessagesFilter,
         fromMessageId: Int64,
         limit: Int,
+        messageThreadId: Int64,
         offset: Int,
         query: String,
         senderUserId: Int,
@@ -812,6 +853,7 @@ public final class TdApi {
             filter: filter,
             fromMessageId: fromMessageId,
             limit: limit,
+            messageThreadId: messageThreadId,
             offset: offset,
             query: query,
             senderUserId: senderUserId
@@ -821,14 +863,20 @@ public final class TdApi {
 
     /// Searches for messages in all chats except secret chats. Returns the results in reverse chronological order (i.e., in order of decreasing (date, chat_id, message_id)). For optimal performance the number of returned messages is chosen by the library
     /// - Parameter chatList: Chat list in which to search messages; pass null to search in all chats regardless of their chat list
-    /// - Parameter limit: The maximum number of messages to be returned, up to 100. Fewer messages may be returned than specified by the limit, even if the end of the message history has not been reached
+    /// - Parameter filter: Filter for message content in the search results; searchMessagesFilterCall, searchMessagesFilterMissedCall, searchMessagesFilterMention, searchMessagesFilterUnreadMention and searchMessagesFilterFailedToSend are unsupported in this function
+    /// - Parameter limit: The maximum number of messages to be returned; up to 100. Fewer messages may be returned than specified by the limit, even if the end of the message history has not been reached
+    /// - Parameter maxDate: If not 0, the maximum date of the messages to return
+    /// - Parameter minDate: If not 0, the minimum date of the messages to return
     /// - Parameter offsetChatId: The chat identifier of the last found message, or 0 for the first request
     /// - Parameter offsetDate: The date of the message starting from which the results should be fetched. Use 0 or any date in the future to get results from the last message
     /// - Parameter offsetMessageId: The message identifier of the last found message, or 0 for the first request
     /// - Parameter query: Query to search for
     public func searchMessages(
         chatList: ChatList,
+        filter: SearchMessagesFilter,
         limit: Int,
+        maxDate: Int,
+        minDate: Int,
         offsetChatId: Int64,
         offsetDate: Int,
         offsetMessageId: Int64,
@@ -837,7 +885,10 @@ public final class TdApi {
 
         let query = SearchMessages(
             chatList: chatList,
+            filter: filter,
             limit: limit,
+            maxDate: maxDate,
+            minDate: minDate,
             offsetChatId: offsetChatId,
             offsetDate: offsetDate,
             offsetMessageId: offsetMessageId,
@@ -848,23 +899,23 @@ public final class TdApi {
 
     /// Searches for messages in secret chats. Returns the results in reverse chronological order. For optimal performance the number of returned messages is chosen by the library
     /// - Parameter chatId: Identifier of the chat in which to search. Specify 0 to search in all secret chats
-    /// - Parameter filter: A filter for the content of messages in the search results
-    /// - Parameter fromSearchId: The identifier from the result of a previous request, use 0 to get results from the last message
+    /// - Parameter filter: A filter for message content in the search results
     /// - Parameter limit: The maximum number of messages to be returned; up to 100. Fewer messages may be returned than specified by the limit, even if the end of the message history has not been reached
+    /// - Parameter offset: Offset of the first entry to return as received from the previous request; use empty string to get first chunk of results
     /// - Parameter query: Query to search for. If empty, searchChatMessages should be used instead
     public func searchSecretMessages(
         chatId: Int64,
         filter: SearchMessagesFilter,
-        fromSearchId: TdInt64,
         limit: Int,
+        offset: String,
         query: String,
         completion: @escaping (Result<FoundMessages, Swift.Error>) -> Void) throws {
 
         let query = SearchSecretMessages(
             chatId: chatId,
             filter: filter,
-            fromSearchId: fromSearchId,
             limit: limit,
+            offset: offset,
             query: query
         )
         execute(query: query, completion: completion)
@@ -903,7 +954,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Returns all active live locations that should be updated by the client. The list is persistent across application restarts only if the message database is used
+    /// Returns all active live locations that should be updated by the application. The list is persistent across application restarts only if the message database is used
     public func getActiveLiveLocationMessages(completion: @escaping (Result<Messages, Swift.Error>) -> Void) throws {
 
         let query = GetActiveLiveLocationMessages()
@@ -955,6 +1006,27 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
+    /// Returns forwarded copies of a channel message to another public channels. For optimal performance the number of returned messages is chosen by the library. The method is under development and may or may not work
+    /// - Parameter chatId: Chat identifier of the message
+    /// - Parameter limit: The maximum number of messages to be returned; must be positive and can't be greater than 100. Fewer messages may be returned than specified by the limit, even if the end of the list has not been reached
+    /// - Parameter messageId: Message identifier
+    /// - Parameter offset: Offset of the first entry to return as received from the previous request; use empty string to get first chunk of results
+    public func getMessagePublicForwards(
+        chatId: Int64,
+        limit: Int,
+        messageId: Int64,
+        offset: String,
+        completion: @escaping (Result<FoundMessages, Swift.Error>) -> Void) throws {
+
+        let query = GetMessagePublicForwards(
+            chatId: chatId,
+            limit: limit,
+            messageId: messageId,
+            offset: offset
+        )
+        execute(query: query, completion: completion)
+    }
+
     /// Removes an active notification from notification list. Needs to be called only if the notification is removed by the current user
     /// - Parameter notificationGroupId: Identifier of notification group to which the notification belongs
     /// - Parameter notificationId: Identifier of removed notification
@@ -985,34 +1057,40 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Returns a public HTTPS link to a message. Available only for messages in supergroups and channels with a username
+    /// Returns an HTTPS link to a message in a chat. Available only for already sent messages in supergroups and channels. This is an offline request
     /// - Parameter chatId: Identifier of the chat to which the message belongs
-    /// - Parameter forAlbum: Pass true if a link for a whole media album should be returned
+    /// - Parameter forAlbum: Pass true to create a link for the whole media album
+    /// - Parameter forComment: Pass true to create a link to the message as a channel post comment, or from a message thread
     /// - Parameter messageId: Identifier of the message
-    public func getPublicMessageLink(
+    public func getMessageLink(
         chatId: Int64,
         forAlbum: Bool,
+        forComment: Bool,
         messageId: Int64,
-        completion: @escaping (Result<PublicMessageLink, Swift.Error>) -> Void) throws {
+        completion: @escaping (Result<MessageLink, Swift.Error>) -> Void) throws {
 
-        let query = GetPublicMessageLink(
+        let query = GetMessageLink(
             chatId: chatId,
             forAlbum: forAlbum,
+            forComment: forComment,
             messageId: messageId
         )
         execute(query: query, completion: completion)
     }
 
-    /// Returns a private HTTPS link to a message in a chat. Available only for already sent messages in supergroups and channels. The link will work only for members of the chat
+    /// Returns an HTML code for embedding the message. Available only for messages in supergroups and channels with a username
     /// - Parameter chatId: Identifier of the chat to which the message belongs
+    /// - Parameter forAlbum: Pass true to return an HTML code for embedding of the whole media album
     /// - Parameter messageId: Identifier of the message
-    public func getMessageLink(
+    public func getMessageEmbeddingCode(
         chatId: Int64,
+        forAlbum: Bool,
         messageId: Int64,
-        completion: @escaping (Result<HttpUrl, Swift.Error>) -> Void) throws {
+        completion: @escaping (Result<Text, Swift.Error>) -> Void) throws {
 
-        let query = GetMessageLink(
+        let query = GetMessageEmbeddingCode(
             chatId: chatId,
+            forAlbum: forAlbum,
             messageId: messageId
         )
         execute(query: query, completion: completion)
@@ -1033,13 +1111,15 @@ public final class TdApi {
     /// Sends a message. Returns the sent message
     /// - Parameter chatId: Target chat
     /// - Parameter inputMessageContent: The content of the message to be sent
+    /// - Parameter messageThreadId: If not 0, a message thread identifier in which the message will be sent
     /// - Parameter options: Options to be used to send the message
     /// - Parameter replyMarkup: Markup for replying to the message; for bots only
     /// - Parameter replyToMessageId: Identifier of the message to reply to or 0
     public func sendMessage(
         chatId: Int64,
         inputMessageContent: InputMessageContent,
-        options: SendMessageOptions,
+        messageThreadId: Int64,
+        options: MessageSendOptions,
         replyMarkup: ReplyMarkup,
         replyToMessageId: Int64,
         completion: @escaping (Result<Message, Swift.Error>) -> Void) throws {
@@ -1047,6 +1127,7 @@ public final class TdApi {
         let query = SendMessage(
             chatId: chatId,
             inputMessageContent: inputMessageContent,
+            messageThreadId: messageThreadId,
             options: options,
             replyMarkup: replyMarkup,
             replyToMessageId: replyToMessageId
@@ -1057,18 +1138,21 @@ public final class TdApi {
     /// Sends messages grouped together into an album. Currently only photo and video messages can be grouped into an album. Returns sent messages
     /// - Parameter chatId: Target chat
     /// - Parameter inputMessageContents: Contents of messages to be sent
+    /// - Parameter messageThreadId: If not 0, a message thread identifier in which the messages will be sent
     /// - Parameter options: Options to be used to send the messages
     /// - Parameter replyToMessageId: Identifier of a message to reply to or 0
     public func sendMessageAlbum(
         chatId: Int64,
         inputMessageContents: [InputMessageContent],
-        options: SendMessageOptions,
+        messageThreadId: Int64,
+        options: MessageSendOptions,
         replyToMessageId: Int64,
         completion: @escaping (Result<Messages, Swift.Error>) -> Void) throws {
 
         let query = SendMessageAlbum(
             chatId: chatId,
             inputMessageContents: inputMessageContents,
+            messageThreadId: messageThreadId,
             options: options,
             replyToMessageId: replyToMessageId
         )
@@ -1096,6 +1180,7 @@ public final class TdApi {
     /// Sends the result of an inline query as a message. Returns the sent message. Always clears a chat draft message
     /// - Parameter chatId: Target chat
     /// - Parameter hideViaBot: If true, there will be no mention of a bot, via which the message is sent. Can be used only for bots GetOption("animation_search_bot_username"), GetOption("photo_search_bot_username") and GetOption("venue_search_bot_username")
+    /// - Parameter messageThreadId: If not 0, a message thread identifier in which the message will be sent
     /// - Parameter options: Options to be used to send the message
     /// - Parameter queryId: Identifier of the inline query
     /// - Parameter replyToMessageId: Identifier of a message to reply to or 0
@@ -1103,7 +1188,8 @@ public final class TdApi {
     public func sendInlineQueryResultMessage(
         chatId: Int64,
         hideViaBot: Bool,
-        options: SendMessageOptions,
+        messageThreadId: Int64,
+        options: MessageSendOptions,
         queryId: TdInt64,
         replyToMessageId: Int64,
         resultId: String,
@@ -1112,6 +1198,7 @@ public final class TdApi {
         let query = SendInlineQueryResultMessage(
             chatId: chatId,
             hideViaBot: hideViaBot,
+            messageThreadId: messageThreadId,
             options: options,
             queryId: queryId,
             replyToMessageId: replyToMessageId,
@@ -1121,25 +1208,22 @@ public final class TdApi {
     }
 
     /// Forwards previously sent messages. Returns the forwarded messages in the same order as the message identifiers passed in message_ids. If a message can't be forwarded, null will be returned instead of the message
-    /// - Parameter asAlbum: True, if the messages should be grouped into an album after forwarding. For this to work, no more than 10 messages may be forwarded, and all of them must be photo or video messages
     /// - Parameter chatId: Identifier of the chat to which to forward messages
     /// - Parameter fromChatId: Identifier of the chat from which to forward messages
-    /// - Parameter messageIds: Identifiers of the messages to forward
+    /// - Parameter messageIds: Identifiers of the messages to forward. Message identifiers must be in a strictly increasing order
     /// - Parameter options: Options to be used to send the messages
-    /// - Parameter removeCaption: True, if media captions of message copies needs to be removed. Ignored if send_copy is false
+    /// - Parameter removeCaption: True, if media caption of message copies needs to be removed. Ignored if send_copy is false
     /// - Parameter sendCopy: True, if content of the messages needs to be copied without links to the original messages. Always true if the messages are forwarded to a secret chat
     public func forwardMessages(
-        asAlbum: Bool,
         chatId: Int64,
         fromChatId: Int64,
         messageIds: [Int64],
-        options: SendMessageOptions,
+        options: MessageSendOptions,
         removeCaption: Bool,
         sendCopy: Bool,
         completion: @escaping (Result<Messages, Swift.Error>) -> Void) throws {
 
         let query = ForwardMessages(
-            asAlbum: asAlbum,
             chatId: chatId,
             fromChatId: fromChatId,
             messageIds: messageIds,
@@ -1456,7 +1540,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Returns all entities (mentions, hashtags, cashtags, bot commands, bank card numbers, URLs, and email addresses) contained in the text. This is an offline method. Can be called before authorization. Can be called synchronously
+    /// Returns all entities (mentions, hashtags, cashtags, bot commands, bank card numbers, URLs, and email addresses) contained in the text. Can be called synchronously
     /// - Parameter text: The text in which to look for entites
     public func getTextEntities(
         text: String,
@@ -1468,7 +1552,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Parses Bold, Italic, Underline, Strikethrough, Code, Pre, PreCode, TextUrl and MentionName entities contained in the text. This is an offline method. Can be called before authorization. Can be called synchronously
+    /// Parses Bold, Italic, Underline, Strikethrough, Code, Pre, PreCode, TextUrl and MentionName entities contained in the text. Can be called synchronously
     /// - Parameter parseMode: Text parse mode
     /// - Parameter text: The text to parse
     public func parseTextEntities(
@@ -1483,7 +1567,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Parses Markdown entities in a human-friendly format, ignoring mark up errors. This is an offline method. Can be called before authorization. Can be called synchronously
+    /// Parses Markdown entities in a human-friendly format, ignoring markup errors. Can be called synchronously
     /// - Parameter text: The text to parse. For example, "__italic__ ~~strikethrough~~ **bold** `code` ```pre``` __[italic__ text_url](telegram.org) __italic**bold italic__bold**"
     public func parseMarkdown(
         text: FormattedText,
@@ -1495,7 +1579,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Replaces text entities with Markdown formatting in a human-friendly format. Entities that can't be represented in Markdown unambiguously are kept as is. This is an offline method. Can be called before authorization. Can be called synchronously
+    /// Replaces text entities with Markdown formatting in a human-friendly format. Entities that can't be represented in Markdown unambiguously are kept as is. Can be called synchronously
     /// - Parameter text: The text
     public func getMarkdownText(
         text: FormattedText,
@@ -1507,7 +1591,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Returns the MIME type of a file, guessed by its extension. Returns an empty string on failure. This is an offline method. Can be called before authorization. Can be called synchronously
+    /// Returns the MIME type of a file, guessed by its extension. Returns an empty string on failure. Can be called synchronously
     /// - Parameter fileName: The name of the file or path to the file
     public func getFileMimeType(
         fileName: String,
@@ -1519,7 +1603,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Returns the extension of a file, guessed by its MIME type. Returns an empty string on failure. This is an offline method. Can be called before authorization. Can be called synchronously
+    /// Returns the extension of a file, guessed by its MIME type. Returns an empty string on failure. Can be called synchronously
     /// - Parameter mimeType: The MIME type of the file
     public func getFileExtension(
         mimeType: String,
@@ -1531,7 +1615,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Removes potentially dangerous characters from the name of a file. The encoding of the file name is supposed to be UTF-8. Returns an empty string on failure. This is an offline method. Can be called before authorization. Can be called synchronously
+    /// Removes potentially dangerous characters from the name of a file. The encoding of the file name is supposed to be UTF-8. Returns an empty string on failure. Can be called synchronously
     /// - Parameter fileName: File name or path to the file
     public func cleanFileName(
         fileName: String,
@@ -1543,7 +1627,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Returns a string stored in the local database from the specified localization target and language pack by its key. Returns a 404 error if the string is not found. This is an offline method. Can be called before authorization. Can be called synchronously
+    /// Returns a string stored in the local database from the specified localization target and language pack by its key. Returns a 404 error if the string is not found. Can be called synchronously
     /// - Parameter key: Language pack key of the string to be returned
     /// - Parameter languagePackDatabasePath: Path to the language pack database in which strings are stored
     /// - Parameter languagePackId: Language pack identifier
@@ -1564,7 +1648,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Converts a JSON-serialized string to corresponding JsonValue object. This is an offline method. Can be called before authorization. Can be called synchronously
+    /// Converts a JSON-serialized string to corresponding JsonValue object. Can be called synchronously
     /// - Parameter json: The JSON-serialized string
     public func getJsonValue(
         json: String,
@@ -1576,7 +1660,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Converts a JsonValue object to corresponding JSON-serialized string. This is an offline method. Can be called before authorization. Can be called synchronously
+    /// Converts a JsonValue object to corresponding JSON-serialized string. Can be called synchronously
     /// - Parameter jsonValue: The JsonValue object
     public func getJsonString(
         jsonValue: JsonValue,
@@ -1644,6 +1728,18 @@ public final class TdApi {
             chatId: chatId,
             messageId: messageId,
             replyMarkup: replyMarkup
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Hides a suggested action
+    /// - Parameter action: Suggested action to hide
+    public func hideSuggestedAction(
+        action: SuggestedAction,
+        completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
+
+        let query = HideSuggestedAction(
+            action: action
         )
         execute(query: query, completion: completion)
     }
@@ -1918,14 +2014,17 @@ public final class TdApi {
     /// Sends a notification about user activity in a chat
     /// - Parameter action: The action description
     /// - Parameter chatId: Chat identifier
+    /// - Parameter messageThreadId: If not 0, a message thread identifier in which the action was performed
     public func sendChatAction(
         action: ChatAction,
         chatId: Int64,
+        messageThreadId: Int64,
         completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
 
         let query = SendChatAction(
             action: action,
-            chatId: chatId
+            chatId: chatId,
+            messageThreadId: messageThreadId
         )
         execute(query: query, completion: completion)
     }
@@ -1956,18 +2055,21 @@ public final class TdApi {
 
     /// Informs TDLib that messages are being viewed by the user. Many useful activities depend on whether the messages are currently being viewed or not (e.g., marking messages as read, incrementing a view counter, updating a view counter, removing deleted messages in supergroups and channels)
     /// - Parameter chatId: Chat identifier
-    /// - Parameter forceRead: True, if messages in closed chats should be marked as read
+    /// - Parameter forceRead: True, if messages in closed chats should be marked as read by the request
     /// - Parameter messageIds: The identifiers of the messages being viewed
+    /// - Parameter messageThreadId: If not 0, a message thread identifier in which the messages are being viewed
     public func viewMessages(
         chatId: Int64,
         forceRead: Bool,
         messageIds: [Int64],
+        messageThreadId: Int64,
         completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
 
         let query = ViewMessages(
             chatId: chatId,
             forceRead: forceRead,
-            messageIds: messageIds
+            messageIds: messageIds,
+            messageThreadId: messageThreadId
         )
         execute(query: query, completion: completion)
     }
@@ -2213,7 +2315,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Returns default icon name for a filter. This is an offline method. Can be called before authorization. Can be called synchronously
+    /// Returns default icon name for a filter. Can be called synchronously
     /// - Parameter filter: Chat filter
     public func getChatFilterDefaultIconName(
         filter: ChatFilter,
@@ -2225,7 +2327,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Changes the chat title. Supported only for basic groups, supergroups and channels. Requires can_change_info rights. The title will not be changed until the request to the server has been completed
+    /// Changes the chat title. Supported only for basic groups, supergroups and channels. Requires can_change_info rights
     /// - Parameter chatId: Chat identifier
     /// - Parameter title: New title of the chat; 1-128 characters
     public func setChatTitle(
@@ -2240,12 +2342,12 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Changes the photo of a chat. Supported only for basic groups, supergroups and channels. Requires can_change_info rights. The photo will not be changed before request to the server has been completed
+    /// Changes the photo of a chat. Supported only for basic groups, supergroups and channels. Requires can_change_info rights
     /// - Parameter chatId: Chat identifier
-    /// - Parameter photo: New chat photo. You can use a zero InputFileId to delete the chat photo. Files that are accessible only by HTTP URL are not acceptable
+    /// - Parameter photo: New chat photo. Pass null to delete the chat photo
     public func setChatPhoto(
         chatId: Int64,
-        photo: InputFile,
+        photo: InputChatPhoto,
         completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
 
         let query = SetChatPhoto(
@@ -2273,14 +2375,17 @@ public final class TdApi {
     /// Changes the draft message in a chat
     /// - Parameter chatId: Chat identifier
     /// - Parameter draftMessage: New draft message; may be null
+    /// - Parameter messageThreadId: If not 0, a message thread identifier in which the draft was changed
     public func setChatDraftMessage(
         chatId: Int64,
         draftMessage: DraftMessage?,
+        messageThreadId: Int64,
         completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
 
         let query = SetChatDraftMessage(
             chatId: chatId,
-            draftMessage: draftMessage
+            draftMessage: draftMessage,
+            messageThreadId: messageThreadId
         )
         execute(query: query, completion: completion)
     }
@@ -2315,6 +2420,21 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
+    /// Changes the block state of a chat. Currently, only private chats and supergroups can be blocked
+    /// - Parameter chatId: Chat identifier
+    /// - Parameter isBlocked: New value of is_blocked
+    public func toggleChatIsBlocked(
+        chatId: Int64,
+        isBlocked: Bool,
+        completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
+
+        let query = ToggleChatIsBlocked(
+            chatId: chatId,
+            isBlocked: isBlocked
+        )
+        execute(query: query, completion: completion)
+    }
+
     /// Changes the value of the default disable_notification parameter, used when a message is sent to a chat
     /// - Parameter chatId: Chat identifier
     /// - Parameter defaultDisableNotification: New value of default_disable_notification
@@ -2330,7 +2450,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Changes client data associated with a chat
+    /// Changes application-specific data associated with a chat
     /// - Parameter chatId: Chat identifier
     /// - Parameter clientData: New value of client_data
     public func setChatClientData(
@@ -2362,7 +2482,7 @@ public final class TdApi {
 
     /// Changes the discussion group of a channel chat; requires can_change_info rights in the channel if it is specified
     /// - Parameter chatId: Identifier of the channel chat. Pass 0 to remove a link from the supergroup passed in the second argument to a linked channel chat (requires can_pin_messages rights in the supergroup)
-    /// - Parameter discussionChatId: Identifier of a new channel's discussion group. Use 0 to remove the discussion group.//-Use the method getSuitableDiscussionChats to find all suitable groups. Basic group chats needs to be first upgraded to supergroup chats. If new chat members don't have access to old messages in the supergroup, then toggleSupergroupIsAllHistoryAvailable needs to be used first to change that
+    /// - Parameter discussionChatId: Identifier of a new channel's discussion group. Use 0 to remove the discussion group.//-Use the method getSuitableDiscussionChats to find all suitable groups. Basic group chats need to be first upgraded to supergroup chats. If new chat members don't have access to old messages in the supergroup, then toggleSupergroupIsAllHistoryAvailable needs to be used first to change that
     public func setChatDiscussionGroup(
         chatId: Int64,
         discussionChatId: Int64,
@@ -2644,7 +2764,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Changes the pinned state of a chat. You can pin up to GetOption("pinned_chat_count_max")/GetOption("pinned_archived_chat_count_max") non-secret chats and the same number of secret chats in the main/arhive chat list
+    /// Changes the pinned state of a chat. There can be up to GetOption("pinned_chat_count_max")/GetOption("pinned_archived_chat_count_max") pinned non-secret chats and the same number of secret chats in the main/arhive chat list
     /// - Parameter chatId: Chat identifier
     /// - Parameter chatList: Chat list in which to change the pinned state of the chat
     /// - Parameter isPinned: True, if the chat is pinned
@@ -2761,7 +2881,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Writes a part of a generated file. This method is intended to be used only if the client has no direct access to TDLib's file system, because it is usually slower than a direct write to the destination file
+    /// Writes a part of a generated file. This method is intended to be used only if the application has no direct access to TDLib's file system, because it is usually slower than a direct write to the destination file
     /// - Parameter data: The data to write
     /// - Parameter generationId: The identifier of the generation process
     /// - Parameter offset: The offset from which to write the data to the file
@@ -2812,7 +2932,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Reads a part of a file from the TDLib file cache and returns read bytes. This method is intended to be used only if the client has no direct access to TDLib's file system, because it is usually slower than a direct read from the file
+    /// Reads a part of a file from the TDLib file cache and returns read bytes. This method is intended to be used only if the application has no direct access to TDLib's file system, because it is usually slower than a direct read from the file
     /// - Parameter count: Number of bytes to read. An error will be returned if there are not enough bytes available in the file from the specified position. Pass 0 to read all available data from the specified position
     /// - Parameter fileId: Identifier of the file. The file must be located in the TDLib file cache
     /// - Parameter offset: The offset from which to read the file
@@ -2879,14 +2999,17 @@ public final class TdApi {
     }
 
     /// Creates a new call
-    /// - Parameter `protocol`: Description of the call protocols supported by the client
+    /// - Parameter isVideo: True, if a video call needs to be created
+    /// - Parameter `protocol`: Description of the call protocols supported by the application
     /// - Parameter userId: Identifier of the user to be called
     public func createCall(
+        isVideo: Bool,
         `protocol`: CallProtocol,
         userId: Int,
         completion: @escaping (Result<CallId, Swift.Error>) -> Void) throws {
 
         let query = CreateCall(
+            isVideo: isVideo,
             protocol: `protocol`,
             userId: userId
         )
@@ -2895,7 +3018,7 @@ public final class TdApi {
 
     /// Accepts an incoming call
     /// - Parameter callId: Call identifier
-    /// - Parameter `protocol`: Description of the call protocols supported by the client
+    /// - Parameter `protocol`: Description of the call protocols supported by the application
     public func acceptCall(
         callId: Int,
         `protocol`: CallProtocol,
@@ -2908,23 +3031,41 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
+    /// Sends call signaling data
+    /// - Parameter callId: Call identifier
+    /// - Parameter data: The data
+    public func sendCallSignalingData(
+        callId: Int,
+        data: Data,
+        completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
+
+        let query = SendCallSignalingData(
+            callId: callId,
+            data: data
+        )
+        execute(query: query, completion: completion)
+    }
+
     /// Discards a call
     /// - Parameter callId: Call identifier
     /// - Parameter connectionId: Identifier of the connection used during the call
     /// - Parameter duration: The call duration, in seconds
     /// - Parameter isDisconnected: True, if the user was disconnected
+    /// - Parameter isVideo: True, if the call was a video call
     public func discardCall(
         callId: Int,
         connectionId: TdInt64,
         duration: Int,
         isDisconnected: Bool,
+        isVideo: Bool,
         completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
 
         let query = DiscardCall(
             callId: callId,
             connectionId: connectionId,
             duration: duration,
-            isDisconnected: isDisconnected
+            isDisconnected: isDisconnected,
+            isVideo: isVideo
         )
         execute(query: query, completion: completion)
     }
@@ -2965,39 +3106,36 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Adds a user to the blacklist
-    /// - Parameter userId: User identifier
-    public func blockUser(
-        userId: Int,
+    /// Blocks an original sender of a message in the Replies chat
+    /// - Parameter deleteAllMessages: Pass true if all messages from the same sender must be deleted
+    /// - Parameter deleteMessage: Pass true if the message must be deleted
+    /// - Parameter messageId: The identifier of an incoming message in the Replies chat
+    /// - Parameter reportSpam: Pass true if the sender must be reported to the Telegram moderators
+    public func blockChatFromReplies(
+        deleteAllMessages: Bool,
+        deleteMessage: Bool,
+        messageId: Int64,
+        reportSpam: Bool,
         completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
 
-        let query = BlockUser(
-            userId: userId
+        let query = BlockChatFromReplies(
+            deleteAllMessages: deleteAllMessages,
+            deleteMessage: deleteMessage,
+            messageId: messageId,
+            reportSpam: reportSpam
         )
         execute(query: query, completion: completion)
     }
 
-    /// Removes a user from the blacklist
-    /// - Parameter userId: User identifier
-    public func unblockUser(
-        userId: Int,
-        completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
-
-        let query = UnblockUser(
-            userId: userId
-        )
-        execute(query: query, completion: completion)
-    }
-
-    /// Returns users that were blocked by the current user
-    /// - Parameter limit: The maximum number of users to return; up to 100
-    /// - Parameter offset: Number of users to skip in the result; must be non-negative
-    public func getBlockedUsers(
+    /// Returns chats that were blocked by the current user
+    /// - Parameter limit: The maximum number of chats to return; up to 100
+    /// - Parameter offset: Number of chats to skip in the result; must be non-negative
+    public func getBlockedChats(
         limit: Int,
         offset: Int,
-        completion: @escaping (Result<Users, Swift.Error>) -> Void) throws {
+        completion: @escaping (Result<Chats, Swift.Error>) -> Void) throws {
 
-        let query = GetBlockedUsers(
+        let query = GetBlockedChats(
             limit: limit,
             offset: offset
         )
@@ -3111,7 +3249,7 @@ public final class TdApi {
         limit: Int,
         offset: Int,
         userId: Int,
-        completion: @escaping (Result<UserProfilePhotos, Swift.Error>) -> Void) throws {
+        completion: @escaping (Result<ChatPhotos, Swift.Error>) -> Void) throws {
 
         let query = GetUserProfilePhotos(
             limit: limit,
@@ -3526,10 +3664,10 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Uploads a new profile photo for the current user. If something changes, updateUser will be sent
-    /// - Parameter photo: Profile photo to set. inputFileId and inputFileRemote may still be unsupported
+    /// Changes a profile photo for the current user
+    /// - Parameter photo: Profile photo to set
     public func setProfilePhoto(
-        photo: InputFile,
+        photo: InputChatPhoto,
         completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
 
         let query = SetProfilePhoto(
@@ -3538,7 +3676,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Deletes a profile photo. If something changes, updateUser will be sent
+    /// Deletes a profile photo
     /// - Parameter profilePhotoId: Identifier of the profile photo to delete
     public func deleteProfilePhoto(
         profilePhotoId: TdInt64,
@@ -3550,7 +3688,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Changes the first and last name of the current user. If something changes, updateUser will be sent
+    /// Changes the first and last name of the current user
     /// - Parameter firstName: The new value of the first name for the user; 1-64 characters
     /// - Parameter lastName: The new value of the optional last name for the user; 0-64 characters
     public func setName(
@@ -3577,7 +3715,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Changes the username of the current user. If something changes, updateUser will be sent
+    /// Changes the username of the current user
     /// - Parameter username: The new value of the username. Use an empty string to remove the username
     public func setUsername(
         username: String,
@@ -3953,7 +4091,7 @@ public final class TdApi {
     }
 
     /// Returns backgrounds installed by the user
-    /// - Parameter forDarkTheme: True, if the backgrounds needs to be ordered for dark theme
+    /// - Parameter forDarkTheme: True, if the backgrounds need to be ordered for dark theme
     public func getBackgrounds(
         forDarkTheme: Bool,
         completion: @escaping (Result<Backgrounds, Swift.Error>) -> Void) throws {
@@ -4147,7 +4285,7 @@ public final class TdApi {
 
     /// Registers the currently used device for receiving push notifications. Returns a globally unique identifier of the push notification subscription
     /// - Parameter deviceToken: Device token
-    /// - Parameter otherUserIds: List of user identifiers of other users currently using the client
+    /// - Parameter otherUserIds: List of user identifiers of other users currently using the application
     public func registerDevice(
         deviceToken: DeviceToken,
         otherUserIds: [Int],
@@ -4172,7 +4310,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Returns a globally unique push notification subscription identifier for identification of an account, which has received a push notification. This is an offline method. Can be called before authorization. Can be called synchronously
+    /// Returns a globally unique push notification subscription identifier for identification of an account, which has received a push notification. Can be called synchronously
     /// - Parameter payload: JSON-encoded push notification payload
     public func getPushReceiverId(
         payload: String,
@@ -4311,7 +4449,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Returns an HTTP URL with the chat statistics. Currently this method of getting the statistics is disabled and can be deleted in the future
+    /// Returns an HTTP URL with the chat statistics. Currently this method of getting the statistics are disabled and can be deleted in the future
     /// - Parameter chatId: Chat identifier
     /// - Parameter isDark: Pass true if a URL with the dark theme must be returned
     /// - Parameter parameters: Parameters from "tg://statsrefresh?params=******" link
@@ -4329,9 +4467,9 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Returns detailed statistics about a chat. Currently this method can be used only for channels. Requires administrator rights in the channel
+    /// Returns detailed statistics about a chat. Currently this method can be used only for supergroups and channels. Can be used only if SupergroupFullInfo.can_get_statistics == true
     /// - Parameter chatId: Chat identifier
-    /// - Parameter isDark: Pass true if a dark theme is used by the app
+    /// - Parameter isDark: Pass true if a dark theme is used by the application
     public func getChatStatistics(
         chatId: Int64,
         isDark: Bool,
@@ -4344,17 +4482,35 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Loads asynchronous or zoomed in chat statistics graph
+    /// Returns detailed statistics about a message. Can be used only if Message.can_get_statistics == true. The method is under development and may or may not work
+    /// - Parameter chatId: Chat identifier
+    /// - Parameter isDark: Pass true if a dark theme is used by the application
+    /// - Parameter messageId: Message identifier
+    public func getMessageStatistics(
+        chatId: Int64,
+        isDark: Bool,
+        messageId: Int64,
+        completion: @escaping (Result<MessageStatistics, Swift.Error>) -> Void) throws {
+
+        let query = GetMessageStatistics(
+            chatId: chatId,
+            isDark: isDark,
+            messageId: messageId
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Loads asynchronous or zoomed in chat or message statistics graph
     /// - Parameter chatId: Chat identifier
     /// - Parameter token: The token for graph loading
     /// - Parameter x: X-value for zoomed in graph or 0 otherwise
-    public func getChatStatisticsGraph(
+    public func getStatisticsGraph(
         chatId: Int64,
         token: String,
         x: Int64,
         completion: @escaping (Result<StatisticsGraph, Swift.Error>) -> Void) throws {
 
-        let query = GetChatStatisticsGraph(
+        let query = GetStatisticsGraph(
             chatId: chatId,
             token: token,
             x: x
@@ -4395,7 +4551,7 @@ public final class TdApi {
     /// - Parameter excludeChatIds: If not empty, files from the given chats are excluded. Use 0 as chat identifier to exclude all files not belonging to any chat (e.g., profile photos)
     /// - Parameter fileTypes: If not empty, only files with the given type(s) are considered. By default, all types except thumbnails, profile photos, stickers and wallpapers are deleted
     /// - Parameter immunityDelay: The amount of time after the creation of a file during which it can't be deleted, in seconds. Pass -1 to use the default value
-    /// - Parameter returnDeletedFileStatistics: Pass true if deleted file statistics needs to be returned instead of the whole storage usage statistics. Affects only returned statistics
+    /// - Parameter returnDeletedFileStatistics: Pass true if deleted file statistics need to be returned instead of the whole storage usage statistics. Affects only returned statistics
     /// - Parameter size: Limit on the total size of files after deletion. Pass -1 to use the default limit
     /// - Parameter ttl: Limit on the time that has passed since the last time a file was accessed (or creation time for some filesystems). Pass -1 to use the default limit
     public func optimizeStorage(
@@ -4809,7 +4965,7 @@ public final class TdApi {
 
     /// Sets a sticker set thumbnail; for bots only. Returns the sticker set
     /// - Parameter name: Sticker set name
-    /// - Parameter thumbnail: Thumbnail to set in PNG or TGS format. Animated thumbnail must be set for animated sticker sets and only for them. You can use a zero InputFileId to delete the thumbnail
+    /// - Parameter thumbnail: Thumbnail to set in PNG or TGS format. Animated thumbnail must be set for animated sticker sets and only for them. Pass a zero InputFileId to delete the thumbnail
     /// - Parameter userId: Sticker set owner
     public func setStickerSetThumbnail(
         name: String,
@@ -4921,7 +5077,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Succeeds after a specified amount of time has passed. Can be called before authorization. Can be called before initialization
+    /// Succeeds after a specified amount of time has passed. Can be called before initialization
     /// - Parameter seconds: Number of seconds before the function returns
     public func setAlarm(
         seconds: Double,
@@ -4933,10 +5089,29 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
+    /// Returns information about existing countries. Can be called before authorization
+    public func getCountries(completion: @escaping (Result<Countries, Swift.Error>) -> Void) throws {
+
+        let query = GetCountries()
+        execute(query: query, completion: completion)
+    }
+
     /// Uses current user IP address to find their country. Returns two-letter ISO 3166-1 alpha-2 country code. Can be called before authorization
     public func getCountryCode(completion: @escaping (Result<Text, Swift.Error>) -> Void) throws {
 
         let query = GetCountryCode()
+        execute(query: query, completion: completion)
+    }
+
+    /// Returns information about a phone number by its prefix. Can be called before authorization
+    /// - Parameter phoneNumberPrefix: The phone number prefix
+    public func getPhoneNumberInfo(
+        phoneNumberPrefix: String,
+        completion: @escaping (Result<PhoneNumberInfo, Swift.Error>) -> Void) throws {
+
+        let query = GetPhoneNumberInfo(
+            phoneNumberPrefix: phoneNumberPrefix
+        )
         execute(query: query, completion: completion)
     }
 
@@ -5091,7 +5266,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Sets new log stream for internal logging of TDLib. This is an offline method. Can be called before authorization. Can be called synchronously
+    /// Sets new log stream for internal logging of TDLib. Can be called synchronously
     /// - Parameter logStream: New log stream
     public func setLogStream(
         logStream: LogStream,
@@ -5103,14 +5278,14 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Returns information about currently used log stream for internal logging of TDLib. This is an offline method. Can be called before authorization. Can be called synchronously
+    /// Returns information about currently used log stream for internal logging of TDLib. Can be called synchronously
     public func getLogStream(completion: @escaping (Result<LogStream, Swift.Error>) -> Void) throws {
 
         let query = GetLogStream()
         execute(query: query, completion: completion)
     }
 
-    /// Sets the verbosity level of the internal logging of TDLib. This is an offline method. Can be called before authorization. Can be called synchronously
+    /// Sets the verbosity level of the internal logging of TDLib. Can be called synchronously
     /// - Parameter newVerbosityLevel: New value of the verbosity level for logging. Value 0 corresponds to fatal errors, value 1 corresponds to errors, value 2 corresponds to warnings and debug warnings, value 3 corresponds to informational, value 4 corresponds to debug, value 5 corresponds to verbose debug, value greater than 5 and up to 1023 can be used to enable even more logging
     public func setLogVerbosityLevel(
         newVerbosityLevel: Int,
@@ -5122,21 +5297,21 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Returns current verbosity level of the internal logging of TDLib. This is an offline method. Can be called before authorization. Can be called synchronously
+    /// Returns current verbosity level of the internal logging of TDLib. Can be called synchronously
     public func getLogVerbosityLevel(completion: @escaping (Result<LogVerbosityLevel, Swift.Error>) -> Void) throws {
 
         let query = GetLogVerbosityLevel()
         execute(query: query, completion: completion)
     }
 
-    /// Returns list of available TDLib internal log tags, for example, ["actor", "binlog", "connections", "notifications", "proxy"]. This is an offline method. Can be called before authorization. Can be called synchronously
+    /// Returns list of available TDLib internal log tags, for example, ["actor", "binlog", "connections", "notifications", "proxy"]. Can be called synchronously
     public func getLogTags(completion: @escaping (Result<LogTags, Swift.Error>) -> Void) throws {
 
         let query = GetLogTags()
         execute(query: query, completion: completion)
     }
 
-    /// Sets the verbosity level for a specified TDLib internal log tag. This is an offline method. Can be called before authorization. Can be called synchronously
+    /// Sets the verbosity level for a specified TDLib internal log tag. Can be called synchronously
     /// - Parameter newVerbosityLevel: New verbosity level; 1-1024
     /// - Parameter tag: Logging tag to change verbosity level
     public func setLogTagVerbosityLevel(
@@ -5151,7 +5326,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Returns current verbosity level for a specified TDLib internal log tag. This is an offline method. Can be called before authorization. Can be called synchronously
+    /// Returns current verbosity level for a specified TDLib internal log tag. Can be called synchronously
     /// - Parameter tag: Logging tag to change verbosity level
     public func getLogTagVerbosityLevel(
         tag: String,
@@ -5163,7 +5338,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Adds a message to TDLib internal log. This is an offline method. Can be called before authorization. Can be called synchronously
+    /// Adds a message to TDLib internal log. Can be called synchronously
     /// - Parameter text: Text of a message to log
     /// - Parameter verbosityLevel: The minimum verbosity level needed for the message to be logged, 0-1023
     public func addLogMessage(
@@ -5314,7 +5489,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Returns the specified error and ensures that the Error object is used; for testing only. This is an offline method. Can be called before authorization. Can be called synchronously
+    /// Returns the specified error and ensures that the Error object is used; for testing only. Can be called synchronously
     /// - Parameter error: The error to be returned
     public func testReturnError(
         error: Error,

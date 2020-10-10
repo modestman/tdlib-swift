@@ -23,17 +23,22 @@ public struct DiscardCall: Codable {
     /// True, if the user was disconnected
     public let isDisconnected: Bool
 
+    /// True, if the call was a video call
+    public let isVideo: Bool
+
 
     public init (
         callId: Int,
         connectionId: TdInt64,
         duration: Int,
-        isDisconnected: Bool) {
+        isDisconnected: Bool,
+        isVideo: Bool) {
 
         self.callId = callId
         self.connectionId = connectionId
         self.duration = duration
         self.isDisconnected = isDisconnected
+        self.isVideo = isVideo
     }
 }
 

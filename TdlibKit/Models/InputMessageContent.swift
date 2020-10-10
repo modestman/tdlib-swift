@@ -312,6 +312,9 @@ public struct InputMessageDocument: Codable {
     /// Document caption; 0-GetOption("message_caption_length_max") characters
     public let caption: FormattedText
 
+    /// If true, automatic file type detection will be disabled and the document will be always sent as file. Always true for files sent to secret chats
+    public let disableContentTypeDetection: Bool
+
     /// Document to be sent
     public let document: InputFile
 
@@ -321,10 +324,12 @@ public struct InputMessageDocument: Codable {
 
     public init (
         caption: FormattedText,
+        disableContentTypeDetection: Bool,
         document: InputFile,
         thumbnail: InputThumbnail) {
 
         self.caption = caption
+        self.disableContentTypeDetection = disableContentTypeDetection
         self.document = document
         self.thumbnail = thumbnail
     }
@@ -677,7 +682,7 @@ public struct InputMessagePoll: Codable {
     /// List of poll answer options, 2-10 strings 1-100 characters each
     public let options: [String]
 
-    /// Poll question, 1-255 characters
+    /// Poll question, 1-255 characters (up to 300 characters for bots)
     public let question: String
 
     /// Type of the poll
@@ -706,6 +711,9 @@ public struct InputMessagePoll: Codable {
 /// A forwarded message
 public struct InputMessageForwarded: Codable {
 
+    /// Options to be used to copy content of the message without a link to the original message
+    public let copyOptions: MessageCopyOptions
+
     /// Identifier for the chat this forwarded message came from
     public let fromChatId: Int64
 
@@ -715,25 +723,17 @@ public struct InputMessageForwarded: Codable {
     /// Identifier of the message to forward
     public let messageId: Int64
 
-    /// True, if media caption of the message copy needs to be removed. Ignored if send_copy is false
-    public let removeCaption: Bool
-
-    /// True, if content of the message needs to be copied without a link to the original message. Always true if the message is forwarded to a secret chat
-    public let sendCopy: Bool
-
 
     public init (
+        copyOptions: MessageCopyOptions,
         fromChatId: Int64,
         inGameShare: Bool,
-        messageId: Int64,
-        removeCaption: Bool,
-        sendCopy: Bool) {
+        messageId: Int64) {
 
+        self.copyOptions = copyOptions
         self.fromChatId = fromChatId
         self.inGameShare = inGameShare
         self.messageId = messageId
-        self.removeCaption = removeCaption
-        self.sendCopy = sendCopy
     }
 }
 

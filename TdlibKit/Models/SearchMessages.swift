@@ -14,8 +14,17 @@ public struct SearchMessages: Codable {
     /// Chat list in which to search messages; pass null to search in all chats regardless of their chat list
     public let chatList: ChatList
 
-    /// The maximum number of messages to be returned, up to 100. Fewer messages may be returned than specified by the limit, even if the end of the message history has not been reached
+    /// Filter for message content in the search results; searchMessagesFilterCall, searchMessagesFilterMissedCall, searchMessagesFilterMention, searchMessagesFilterUnreadMention and searchMessagesFilterFailedToSend are unsupported in this function
+    public let filter: SearchMessagesFilter
+
+    /// The maximum number of messages to be returned; up to 100. Fewer messages may be returned than specified by the limit, even if the end of the message history has not been reached
     public let limit: Int
+
+    /// If not 0, the maximum date of the messages to return
+    public let maxDate: Int
+
+    /// If not 0, the minimum date of the messages to return
+    public let minDate: Int
 
     /// The chat identifier of the last found message, or 0 for the first request
     public let offsetChatId: Int64
@@ -32,14 +41,20 @@ public struct SearchMessages: Codable {
 
     public init (
         chatList: ChatList,
+        filter: SearchMessagesFilter,
         limit: Int,
+        maxDate: Int,
+        minDate: Int,
         offsetChatId: Int64,
         offsetDate: Int,
         offsetMessageId: Int64,
         query: String) {
 
         self.chatList = chatList
+        self.filter = filter
         self.limit = limit
+        self.maxDate = maxDate
+        self.minDate = minDate
         self.offsetChatId = offsetChatId
         self.offsetDate = offsetDate
         self.offsetMessageId = offsetMessageId

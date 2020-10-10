@@ -32,6 +32,12 @@ public enum CallProblem: Codable {
     /// The call ended unexpectedly
     case callProblemDropped
 
+    /// The video was distorted
+    case callProblemDistortedVideo
+
+    /// The video was pixelated
+    case callProblemPixelatedVideo
+
 
     private enum Kind: String, Codable {
         case callProblemEcho
@@ -41,6 +47,8 @@ public enum CallProblem: Codable {
         case callProblemSilentLocal
         case callProblemSilentRemote
         case callProblemDropped
+        case callProblemDistortedVideo
+        case callProblemPixelatedVideo
     }
 
     public init(from decoder: Decoder) throws {
@@ -61,6 +69,10 @@ public enum CallProblem: Codable {
             self = .callProblemSilentRemote
         case .callProblemDropped:
             self = .callProblemDropped
+        case .callProblemDistortedVideo:
+            self = .callProblemDistortedVideo
+        case .callProblemPixelatedVideo:
+            self = .callProblemPixelatedVideo
         }
     }
 
@@ -81,6 +93,10 @@ public enum CallProblem: Codable {
             try container.encode(Kind.callProblemSilentRemote, forKey: .type)
         case .callProblemDropped:
             try container.encode(Kind.callProblemDropped, forKey: .type)
+        case .callProblemDistortedVideo:
+            try container.encode(Kind.callProblemDistortedVideo, forKey: .type)
+        case .callProblemPixelatedVideo:
+            try container.encode(Kind.callProblemPixelatedVideo, forKey: .type)
         }
     }
 }

@@ -11,7 +11,10 @@ import Foundation
 /// Creates a new call
 public struct CreateCall: Codable {
 
-    /// Description of the call protocols supported by the client
+    /// True, if a video call needs to be created
+    public let isVideo: Bool
+
+    /// Description of the call protocols supported by the application
     public let `protocol`: CallProtocol
 
     /// Identifier of the user to be called
@@ -19,9 +22,11 @@ public struct CreateCall: Codable {
 
 
     public init (
+        isVideo: Bool,
         `protocol`: CallProtocol,
         userId: Int) {
 
+        self.isVideo = isVideo
         self.`protocol` = `protocol`
         self.userId = userId
     }

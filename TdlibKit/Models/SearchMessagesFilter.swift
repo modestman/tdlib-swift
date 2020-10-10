@@ -56,7 +56,7 @@ public enum SearchMessagesFilter: Codable {
     /// Returns only messages with mentions of the current user, or messages that are replies to their messages
     case searchMessagesFilterMention
 
-    /// Returns only messages with unread mentions of the current user, or messages that are replies to their messages. When using this filter the results can't be additionally filtered by a query or by the sending user
+    /// Returns only messages with unread mentions of the current user, or messages that are replies to their messages. When using this filter the results can't be additionally filtered by a query, a message thread or by the sending user
     case searchMessagesFilterUnreadMention
 
     /// Returns only failed to send messages. This filter can be used only if the message database is used

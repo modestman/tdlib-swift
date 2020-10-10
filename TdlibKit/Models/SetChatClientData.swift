@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Changes client data associated with a chat
+/// Changes application-specific data associated with a chat
 public struct SetChatClientData: Codable {
 
     /// Chat identifier

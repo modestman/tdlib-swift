@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Returns the MIME type of a file, guessed by its extension. Returns an empty string on failure. This is an offline method. Can be called before authorization. Can be called synchronously
+/// Returns the MIME type of a file, guessed by its extension. Returns an empty string on failure. Can be called synchronously
 public struct GetFileMimeType: Codable {
 
     /// The name of the file or path to the file

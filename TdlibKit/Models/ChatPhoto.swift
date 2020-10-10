@@ -8,22 +8,37 @@
 import Foundation
 
 
-/// Describes the photo of a chat
+/// Describes a chat or user profile photo
 public struct ChatPhoto: Codable {
 
-    /// A big (640x640) chat photo. The file can be downloaded only before the photo is changed
-    public let big: File
+    /// Point in time (Unix timestamp) when the photo has been added
+    public let addedDate: Int
 
-    /// A small (160x160) chat photo. The file can be downloaded only before the photo is changed
-    public let small: File
+    /// Animated variant of the photo in MPEG4 format; may be null
+    public let animation: AnimatedChatPhoto?
+
+    /// Unique photo identifier
+    public let id: TdInt64
+
+    /// Photo minithumbnail; may be null
+    public let minithumbnail: Minithumbnail?
+
+    /// Available variants of the photo in JPEG format, in different size
+    public let sizes: [PhotoSize]
 
 
     public init (
-        big: File,
-        small: File) {
+        addedDate: Int,
+        animation: AnimatedChatPhoto?,
+        id: TdInt64,
+        minithumbnail: Minithumbnail?,
+        sizes: [PhotoSize]) {
 
-        self.big = big
-        self.small = small
+        self.addedDate = addedDate
+        self.animation = animation
+        self.id = id
+        self.minithumbnail = minithumbnail
+        self.sizes = sizes
     }
 }
 

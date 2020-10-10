@@ -11,10 +11,10 @@ import Foundation
 /// Contains a description of a custom keyboard and actions that can be done with it to quickly reply to bots
 public enum ReplyMarkup: Codable {
 
-    /// Instructs clients to remove the keyboard once this message has been received. This kind of keyboard can't be received in an incoming message; instead, UpdateChatReplyMarkup with message_id == 0 will be sent
+    /// Instructs application to remove the keyboard once this message has been received. This kind of keyboard can't be received in an incoming message; instead, UpdateChatReplyMarkup with message_id == 0 will be sent
     case replyMarkupRemoveKeyboard(ReplyMarkupRemoveKeyboard)
 
-    /// Instructs clients to force a reply to this message
+    /// Instructs application to force a reply to this message
     case replyMarkupForceReply(ReplyMarkupForceReply)
 
     /// Contains a custom keyboard layout to quickly reply to bots
@@ -69,7 +69,7 @@ public enum ReplyMarkup: Codable {
     }
 }
 
-/// Instructs clients to remove the keyboard once this message has been received. This kind of keyboard can't be received in an incoming message; instead, UpdateChatReplyMarkup with message_id == 0 will be sent
+/// Instructs application to remove the keyboard once this message has been received. This kind of keyboard can't be received in an incoming message; instead, UpdateChatReplyMarkup with message_id == 0 will be sent
 public struct ReplyMarkupRemoveKeyboard: Codable {
 
     /// True, if the keyboard is removed only for the mentioned users or the target user of a reply
@@ -81,7 +81,7 @@ public struct ReplyMarkupRemoveKeyboard: Codable {
     }
 }
 
-/// Instructs clients to force a reply to this message
+/// Instructs application to force a reply to this message
 public struct ReplyMarkupForceReply: Codable {
 
     /// True, if a forced reply must automatically be shown to the current user. For outgoing messages, specify true to show the forced reply only for the mentioned users and for the target user of a reply
@@ -99,10 +99,10 @@ public struct ReplyMarkupShowKeyboard: Codable {
     /// True, if the keyboard must automatically be shown to the current user. For outgoing messages, specify true to show the keyboard only for the mentioned users and for the target user of a reply
     public let isPersonal: Bool
 
-    /// True, if the client needs to hide the keyboard after use
+    /// True, if the application needs to hide the keyboard after use
     public let oneTime: Bool
 
-    /// True, if the client needs to resize the keyboard vertically
+    /// True, if the application needs to resize the keyboard vertically
     public let resizeKeyboard: Bool
 
     /// A list of rows of bot keyboard buttons

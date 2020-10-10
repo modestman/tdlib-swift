@@ -14,7 +14,7 @@ public struct AcceptCall: Codable {
     /// Call identifier
     public let callId: Int
 
-    /// Description of the call protocols supported by the client
+    /// Description of the call protocols supported by the application
     public let `protocol`: CallProtocol
 
 

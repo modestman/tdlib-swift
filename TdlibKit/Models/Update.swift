@@ -32,8 +32,8 @@ public enum Update: Codable {
     /// A message was edited. Changes in the message content will come in a separate updateMessageContent
     case updateMessageEdited(UpdateMessageEdited)
 
-    /// The view count of the message has changed
-    case updateMessageViews(UpdateMessageViews)
+    /// The information about interactions with a message has changed
+    case updateMessageInteractionInfo(UpdateMessageInteractionInfo)
 
     /// The message content was opened. Updates voice note messages to "listened", video note messages to "viewed" and starts the TTL timer for self-destructing messages
     case updateMessageContentOpened(UpdateMessageContentOpened)
@@ -41,10 +41,10 @@ public enum Update: Codable {
     /// A message with an unread mention was read
     case updateMessageMentionRead(UpdateMessageMentionRead)
 
-    /// A message with a live location was viewed. When the update is received, the client is supposed to update the live location
+    /// A message with a live location was viewed. When the update is received, the application is supposed to update the live location
     case updateMessageLiveLocationViewed(UpdateMessageLiveLocationViewed)
 
-    /// A new chat has been loaded/created. This update is guaranteed to come before the chat identifier is returned to the client. The chat field changes will be reported through separate updates
+    /// A new chat has been loaded/created. This update is guaranteed to come before the chat identifier is returned to the application. The chat field changes will be reported through separate updates
     case updateNewChat(UpdateNewChat)
 
     /// The title of a chat was changed
@@ -64,6 +64,9 @@ public enum Update: Codable {
 
     /// A chat was marked as unread or was read
     case updateChatIsMarkedAsUnread(UpdateChatIsMarkedAsUnread)
+
+    /// A chat was blocked or unblocked
+    case updateChatIsBlocked(UpdateChatIsBlocked)
 
     /// A chat's has_scheduled_messages field has changed
     case updateChatHasScheduledMessages(UpdateChatHasScheduledMessages)
@@ -125,16 +128,16 @@ public enum Update: Codable {
     /// The user went online or offline
     case updateUserStatus(UpdateUserStatus)
 
-    /// Some data of a user has changed. This update is guaranteed to come before the user identifier is returned to the client
+    /// Some data of a user has changed. This update is guaranteed to come before the user identifier is returned to the application
     case updateUser(UpdateUser)
 
-    /// Some data of a basic group has changed. This update is guaranteed to come before the basic group identifier is returned to the client
+    /// Some data of a basic group has changed. This update is guaranteed to come before the basic group identifier is returned to the application
     case updateBasicGroup(UpdateBasicGroup)
 
-    /// Some data of a supergroup or a channel has changed. This update is guaranteed to come before the supergroup identifier is returned to the client
+    /// Some data of a supergroup or a channel has changed. This update is guaranteed to come before the supergroup identifier is returned to the application
     case updateSupergroup(UpdateSupergroup)
 
-    /// Some data of a secret chat has changed. This update is guaranteed to come before the secret chat identifier is returned to the client
+    /// Some data of a secret chat has changed. This update is guaranteed to come before the secret chat identifier is returned to the application
     case updateSecretChat(UpdateSecretChat)
 
     /// Some data from userFullInfo has been changed
@@ -146,13 +149,13 @@ public enum Update: Codable {
     /// Some data from supergroupFullInfo has been changed
     case updateSupergroupFullInfo(UpdateSupergroupFullInfo)
 
-    /// Service notification from the server. Upon receiving this the client must show a popup with the content of the notification
+    /// Service notification from the server. Upon receiving this the application must show a popup with the content of the notification
     case updateServiceNotification(UpdateServiceNotification)
 
     /// Information about a file was updated
     case updateFile(UpdateFile)
 
-    /// The file generation process needs to be started by the client
+    /// The file generation process needs to be started by the application
     case updateFileGenerationStart(UpdateFileGenerationStart)
 
     /// File generation is no longer needed
@@ -160,6 +163,9 @@ public enum Update: Codable {
 
     /// New call was created or information about a call was updated
     case updateCall(UpdateCall)
+
+    /// New call signaling data arrived
+    case updateNewCallSignalingData(UpdateNewCallSignalingData)
 
     /// Some privacy setting rules have been changed
     case updateUserPrivacySettingRules(UpdateUserPrivacySettingRules)
@@ -197,13 +203,13 @@ public enum Update: Codable {
     /// Some language pack strings have been updated
     case updateLanguagePackStrings(UpdateLanguagePackStrings)
 
-    /// The connection state has changed
+    /// The connection state has changed. This update must be used only to show the user a human-readable description of the connection state
     case updateConnectionState(UpdateConnectionState)
 
     /// New terms of service must be accepted by the user. If the terms of service are declined, then the deleteAccount method should be called with the reason "Decline ToS update"
     case updateTermsOfService(UpdateTermsOfService)
 
-    /// The list of users nearby has changed. The update is sent only 60 seconds after a successful searchChatsNearby request
+    /// The list of users nearby has changed. The update is guaranteed to be sent only 60 seconds after a successful searchChatsNearby request
     case updateUsersNearby(UpdateUsersNearby)
 
     /// The list of supported dice emojis has changed
@@ -211,6 +217,9 @@ public enum Update: Codable {
 
     /// The parameters of animation search through GetOption("animation_search_bot_username") bot has changed
     case updateAnimationSearchParameters(UpdateAnimationSearchParameters)
+
+    /// The list of suggested to the user actions has changed
+    case updateSuggestedActions(UpdateSuggestedActions)
 
     /// A new incoming inline query; for bots only
     case updateNewInlineQuery(UpdateNewInlineQuery)
@@ -251,7 +260,7 @@ public enum Update: Codable {
         case updateMessageSendFailed
         case updateMessageContent
         case updateMessageEdited
-        case updateMessageViews
+        case updateMessageInteractionInfo
         case updateMessageContentOpened
         case updateMessageMentionRead
         case updateMessageLiveLocationViewed
@@ -262,6 +271,7 @@ public enum Update: Codable {
         case updateChatLastMessage
         case updateChatPosition
         case updateChatIsMarkedAsUnread
+        case updateChatIsBlocked
         case updateChatHasScheduledMessages
         case updateChatDefaultDisableNotification
         case updateChatReadInbox
@@ -294,6 +304,7 @@ public enum Update: Codable {
         case updateFileGenerationStart
         case updateFileGenerationStop
         case updateCall
+        case updateNewCallSignalingData
         case updateUserPrivacySettingRules
         case updateUnreadMessageCount
         case updateUnreadChatCount
@@ -311,6 +322,7 @@ public enum Update: Codable {
         case updateUsersNearby
         case updateDiceEmojis
         case updateAnimationSearchParameters
+        case updateSuggestedActions
         case updateNewInlineQuery
         case updateNewChosenInlineResult
         case updateNewCallbackQuery
@@ -348,9 +360,9 @@ public enum Update: Codable {
         case .updateMessageEdited:
             let value = try UpdateMessageEdited(from: decoder)
             self = .updateMessageEdited(value)
-        case .updateMessageViews:
-            let value = try UpdateMessageViews(from: decoder)
-            self = .updateMessageViews(value)
+        case .updateMessageInteractionInfo:
+            let value = try UpdateMessageInteractionInfo(from: decoder)
+            self = .updateMessageInteractionInfo(value)
         case .updateMessageContentOpened:
             let value = try UpdateMessageContentOpened(from: decoder)
             self = .updateMessageContentOpened(value)
@@ -381,6 +393,9 @@ public enum Update: Codable {
         case .updateChatIsMarkedAsUnread:
             let value = try UpdateChatIsMarkedAsUnread(from: decoder)
             self = .updateChatIsMarkedAsUnread(value)
+        case .updateChatIsBlocked:
+            let value = try UpdateChatIsBlocked(from: decoder)
+            self = .updateChatIsBlocked(value)
         case .updateChatHasScheduledMessages:
             let value = try UpdateChatHasScheduledMessages(from: decoder)
             self = .updateChatHasScheduledMessages(value)
@@ -477,6 +492,9 @@ public enum Update: Codable {
         case .updateCall:
             let value = try UpdateCall(from: decoder)
             self = .updateCall(value)
+        case .updateNewCallSignalingData:
+            let value = try UpdateNewCallSignalingData(from: decoder)
+            self = .updateNewCallSignalingData(value)
         case .updateUserPrivacySettingRules:
             let value = try UpdateUserPrivacySettingRules(from: decoder)
             self = .updateUserPrivacySettingRules(value)
@@ -528,6 +546,9 @@ public enum Update: Codable {
         case .updateAnimationSearchParameters:
             let value = try UpdateAnimationSearchParameters(from: decoder)
             self = .updateAnimationSearchParameters(value)
+        case .updateSuggestedActions:
+            let value = try UpdateSuggestedActions(from: decoder)
+            self = .updateSuggestedActions(value)
         case .updateNewInlineQuery:
             let value = try UpdateNewInlineQuery(from: decoder)
             self = .updateNewInlineQuery(value)
@@ -585,8 +606,8 @@ public enum Update: Codable {
         case .updateMessageEdited(let value):
             try container.encode(Kind.updateMessageEdited, forKey: .type)
             try value.encode(to: encoder)
-        case .updateMessageViews(let value):
-            try container.encode(Kind.updateMessageViews, forKey: .type)
+        case .updateMessageInteractionInfo(let value):
+            try container.encode(Kind.updateMessageInteractionInfo, forKey: .type)
             try value.encode(to: encoder)
         case .updateMessageContentOpened(let value):
             try container.encode(Kind.updateMessageContentOpened, forKey: .type)
@@ -617,6 +638,9 @@ public enum Update: Codable {
             try value.encode(to: encoder)
         case .updateChatIsMarkedAsUnread(let value):
             try container.encode(Kind.updateChatIsMarkedAsUnread, forKey: .type)
+            try value.encode(to: encoder)
+        case .updateChatIsBlocked(let value):
+            try container.encode(Kind.updateChatIsBlocked, forKey: .type)
             try value.encode(to: encoder)
         case .updateChatHasScheduledMessages(let value):
             try container.encode(Kind.updateChatHasScheduledMessages, forKey: .type)
@@ -714,6 +738,9 @@ public enum Update: Codable {
         case .updateCall(let value):
             try container.encode(Kind.updateCall, forKey: .type)
             try value.encode(to: encoder)
+        case .updateNewCallSignalingData(let value):
+            try container.encode(Kind.updateNewCallSignalingData, forKey: .type)
+            try value.encode(to: encoder)
         case .updateUserPrivacySettingRules(let value):
             try container.encode(Kind.updateUserPrivacySettingRules, forKey: .type)
             try value.encode(to: encoder)
@@ -764,6 +791,9 @@ public enum Update: Codable {
             try value.encode(to: encoder)
         case .updateAnimationSearchParameters(let value):
             try container.encode(Kind.updateAnimationSearchParameters, forKey: .type)
+            try value.encode(to: encoder)
+        case .updateSuggestedActions(let value):
+            try container.encode(Kind.updateSuggestedActions, forKey: .type)
             try value.encode(to: encoder)
         case .updateNewInlineQuery(let value):
             try container.encode(Kind.updateNewInlineQuery, forKey: .type)
@@ -943,27 +973,27 @@ public struct UpdateMessageEdited: Codable {
     }
 }
 
-/// The view count of the message has changed
-public struct UpdateMessageViews: Codable {
+/// The information about interactions with a message has changed
+public struct UpdateMessageInteractionInfo: Codable {
 
     /// Chat identifier
     public let chatId: Int64
 
+    /// New information about interactions with the message; may be null
+    public let interactionInfo: MessageInteractionInfo?
+
     /// Message identifier
     public let messageId: Int64
-
-    /// New value of the view count
-    public let views: Int
 
 
     public init (
         chatId: Int64,
-        messageId: Int64,
-        views: Int) {
+        interactionInfo: MessageInteractionInfo?,
+        messageId: Int64) {
 
         self.chatId = chatId
+        self.interactionInfo = interactionInfo
         self.messageId = messageId
-        self.views = views
     }
 }
 
@@ -1010,7 +1040,7 @@ public struct UpdateMessageMentionRead: Codable {
     }
 }
 
-/// A message with a live location was viewed. When the update is received, the client is supposed to update the live location
+/// A message with a live location was viewed. When the update is received, the application is supposed to update the live location
 public struct UpdateMessageLiveLocationViewed: Codable {
 
     /// Identifier of the chat with the live location message
@@ -1029,7 +1059,7 @@ public struct UpdateMessageLiveLocationViewed: Codable {
     }
 }
 
-/// A new chat has been loaded/created. This update is guaranteed to come before the chat identifier is returned to the client. The chat field changes will be reported through separate updates
+/// A new chat has been loaded/created. This update is guaranteed to come before the chat identifier is returned to the application. The chat field changes will be reported through separate updates
 public struct UpdateNewChat: Codable {
 
     /// The chat
@@ -1067,12 +1097,12 @@ public struct UpdateChatPhoto: Codable {
     public let chatId: Int64
 
     /// The new chat photo; may be null
-    public let photo: ChatPhoto?
+    public let photo: ChatPhotoInfo?
 
 
     public init (
         chatId: Int64,
-        photo: ChatPhoto?) {
+        photo: ChatPhotoInfo?) {
 
         self.chatId = chatId
         self.photo = photo
@@ -1157,6 +1187,25 @@ public struct UpdateChatIsMarkedAsUnread: Codable {
 
         self.chatId = chatId
         self.isMarkedAsUnread = isMarkedAsUnread
+    }
+}
+
+/// A chat was blocked or unblocked
+public struct UpdateChatIsBlocked: Codable {
+
+    /// Chat identifier
+    public let chatId: Int64
+
+    /// New value of is_blocked
+    public let isBlocked: Bool
+
+
+    public init (
+        chatId: Int64,
+        isBlocked: Bool) {
+
+        self.chatId = chatId
+        self.isBlocked = isBlocked
     }
 }
 
@@ -1547,6 +1596,9 @@ public struct UpdateUserChatAction: Codable {
     /// Chat identifier
     public let chatId: Int64
 
+    /// If not 0, a message thread identifier in which the action was performed
+    public let messageThreadId: Int64
+
     /// Identifier of a user performing an action
     public let userId: Int
 
@@ -1554,10 +1606,12 @@ public struct UpdateUserChatAction: Codable {
     public init (
         action: ChatAction,
         chatId: Int64,
+        messageThreadId: Int64,
         userId: Int) {
 
         self.action = action
         self.chatId = chatId
+        self.messageThreadId = messageThreadId
         self.userId = userId
     }
 }
@@ -1581,7 +1635,7 @@ public struct UpdateUserStatus: Codable {
     }
 }
 
-/// Some data of a user has changed. This update is guaranteed to come before the user identifier is returned to the client
+/// Some data of a user has changed. This update is guaranteed to come before the user identifier is returned to the application
 public struct UpdateUser: Codable {
 
     /// New data about the user
@@ -1593,7 +1647,7 @@ public struct UpdateUser: Codable {
     }
 }
 
-/// Some data of a basic group has changed. This update is guaranteed to come before the basic group identifier is returned to the client
+/// Some data of a basic group has changed. This update is guaranteed to come before the basic group identifier is returned to the application
 public struct UpdateBasicGroup: Codable {
 
     /// New data about the group
@@ -1605,7 +1659,7 @@ public struct UpdateBasicGroup: Codable {
     }
 }
 
-/// Some data of a supergroup or a channel has changed. This update is guaranteed to come before the supergroup identifier is returned to the client
+/// Some data of a supergroup or a channel has changed. This update is guaranteed to come before the supergroup identifier is returned to the application
 public struct UpdateSupergroup: Codable {
 
     /// New data about the supergroup
@@ -1617,7 +1671,7 @@ public struct UpdateSupergroup: Codable {
     }
 }
 
-/// Some data of a secret chat has changed. This update is guaranteed to come before the secret chat identifier is returned to the client
+/// Some data of a secret chat has changed. This update is guaranteed to come before the secret chat identifier is returned to the application
 public struct UpdateSecretChat: Codable {
 
     /// New data about the secret chat
@@ -1686,7 +1740,7 @@ public struct UpdateSupergroupFullInfo: Codable {
     }
 }
 
-/// Service notification from the server. Upon receiving this the client must show a popup with the content of the notification
+/// Service notification from the server. Upon receiving this the application must show a popup with the content of the notification
 public struct UpdateServiceNotification: Codable {
 
     /// Notification content
@@ -1717,10 +1771,10 @@ public struct UpdateFile: Codable {
     }
 }
 
-/// The file generation process needs to be started by the client
+/// The file generation process needs to be started by the application
 public struct UpdateFileGenerationStart: Codable {
 
-    /// String specifying the conversion applied to the original file. If conversion is "#url#" than original_path contains an HTTP/HTTPS URL of a file, which should be downloaded by the client
+    /// String specifying the conversion applied to the original file. If conversion is "#url#" than original_path contains an HTTP/HTTPS URL of a file, which should be downloaded by the application
     public let conversion: String
 
     /// The path to a file that should be created and where the new file should be generated
@@ -1767,6 +1821,25 @@ public struct UpdateCall: Codable {
 
     public init (call: Call) {
         self.call = call
+    }
+}
+
+/// New call signaling data arrived
+public struct UpdateNewCallSignalingData: Codable {
+
+    /// The call identifier
+    public let callId: Int
+
+    /// The data
+    public let data: Data
+
+
+    public init (
+        callId: Int,
+        data: Data) {
+
+        self.callId = callId
+        self.data = data
     }
 }
 
@@ -2000,7 +2073,7 @@ public struct UpdateLanguagePackStrings: Codable {
     }
 }
 
-/// The connection state has changed
+/// The connection state has changed. This update must be used only to show the user a human-readable description of the connection state
 public struct UpdateConnectionState: Codable {
 
     /// The new connection state
@@ -2031,7 +2104,7 @@ public struct UpdateTermsOfService: Codable {
     }
 }
 
-/// The list of users nearby has changed. The update is sent only 60 seconds after a successful searchChatsNearby request
+/// The list of users nearby has changed. The update is guaranteed to be sent only 60 seconds after a successful searchChatsNearby request
 public struct UpdateUsersNearby: Codable {
 
     /// The new list of users nearby
@@ -2074,6 +2147,25 @@ public struct UpdateAnimationSearchParameters: Codable {
     }
 }
 
+/// The list of suggested to the user actions has changed
+public struct UpdateSuggestedActions: Codable {
+
+    /// Added suggested actions
+    public let addedActions: [SuggestedAction]
+
+    /// Removed suggested actions
+    public let removedActions: [SuggestedAction]
+
+
+    public init (
+        addedActions: [SuggestedAction],
+        removedActions: [SuggestedAction]) {
+
+        self.addedActions = addedActions
+        self.removedActions = removedActions
+    }
+}
+
 /// A new incoming inline query; for bots only
 public struct UpdateNewInlineQuery: Codable {
 
@@ -2089,7 +2181,7 @@ public struct UpdateNewInlineQuery: Codable {
     /// Identifier of the user who sent the query
     public let senderUserId: Int
 
-    /// User location, provided by the client; may be null
+    /// User location; may be null
     public let userLocation: Location?
 
 
@@ -2123,7 +2215,7 @@ public struct UpdateNewChosenInlineResult: Codable {
     /// Identifier of the user who sent the query
     public let senderUserId: Int
 
-    /// User location, provided by the client; may be null
+    /// User location; may be null
     public let userLocation: Location?
 
 

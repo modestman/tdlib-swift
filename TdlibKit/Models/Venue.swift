@@ -20,7 +20,7 @@ public struct Venue: Codable {
     /// Venue location; as defined by the sender
     public let location: Location
 
-    /// Provider of the venue database; as defined by the sender. Currently only "foursquare" needs to be supported
+    /// Provider of the venue database; as defined by the sender. Currently only "foursquare" and "gplaces" (Google Places) need to be supported
     public let provider: String
 
     /// Venue name; as defined by the sender

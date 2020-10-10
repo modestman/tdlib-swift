@@ -23,7 +23,7 @@ public struct AutoDownloadSettings: Codable {
     /// The maximum size of a video file to be auto-downloaded
     public let maxVideoFileSize: Int
 
-    /// True, if the beginning of videos needs to be preloaded for instant playback
+    /// True, if the beginning of video files needs to be preloaded for instant playback
     public let preloadLargeVideos: Bool
 
     /// True, if the next audio track needs to be preloaded while the user is listening to an audio file

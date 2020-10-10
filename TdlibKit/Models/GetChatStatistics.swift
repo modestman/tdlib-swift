@@ -8,13 +8,13 @@
 import Foundation
 
 
-/// Returns detailed statistics about a chat. Currently this method can be used only for channels. Requires administrator rights in the channel
+/// Returns detailed statistics about a chat. Currently this method can be used only for supergroups and channels. Can be used only if SupergroupFullInfo.can_get_statistics == true
 public struct GetChatStatistics: Codable {
 
     /// Chat identifier
     public let chatId: Int64
 
-    /// Pass true if a dark theme is used by the app
+    /// Pass true if a dark theme is used by the application
     public let isDark: Bool
 
 

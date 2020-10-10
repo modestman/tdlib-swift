@@ -1,5 +1,5 @@
 //
-//  GetPublicMessageLink.swift
+//  GetMessageEmbeddingCode.swift
 //  tl2swift
 //
 //  Created by Code Generator
@@ -8,13 +8,13 @@
 import Foundation
 
 
-/// Returns a public HTTPS link to a message. Available only for messages in supergroups and channels with a username
-public struct GetPublicMessageLink: Codable {
+/// Returns an HTML code for embedding the message. Available only for messages in supergroups and channels with a username
+public struct GetMessageEmbeddingCode: Codable {
 
     /// Identifier of the chat to which the message belongs
     public let chatId: Int64
 
-    /// Pass true if a link for a whole media album should be returned
+    /// Pass true to return an HTML code for embedding of the whole media album
     public let forAlbum: Bool
 
     /// Identifier of the message

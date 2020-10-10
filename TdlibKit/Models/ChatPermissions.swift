@@ -29,7 +29,7 @@ public struct ChatPermissions: Codable {
     /// True, if the user can send text messages, contacts, locations, and venues
     public let canSendMessages: Bool
 
-    /// True, if the user can send animations, games, and stickers and use inline bots. Implies can_send_messages permissions
+    /// True, if the user can send animations, games, stickers, and dice and use inline bots. Implies can_send_messages permissions
     public let canSendOtherMessages: Bool
 
     /// True, if the user can send polls. Implies can_send_messages permissions

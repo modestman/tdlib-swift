@@ -38,7 +38,7 @@ public struct TdlibParameters: Codable {
     /// IETF language tag of the user's operating system language; must be non-empty
     public let systemLanguageCode: String
 
-    /// Version of the operating system the application is being run on; must be non-empty
+    /// Version of the operating system the application is being run on. If empty, the version is automatically detected by TDLib
     public let systemVersion: String
 
     /// If set to true, the library will maintain a cache of users, basic groups, supergroups, channels and secret chats. Implies use_file_database

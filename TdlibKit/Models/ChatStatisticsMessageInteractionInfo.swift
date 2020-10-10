@@ -1,5 +1,5 @@
 //
-//  ChatStatisticsMessageInteractionCounters.swift
+//  ChatStatisticsMessageInteractionInfo.swift
 //  tl2swift
 //
 //  Created by Code Generator
@@ -9,7 +9,7 @@ import Foundation
 
 
 /// Contains statistics about interactions with a message
-public struct ChatStatisticsMessageInteractionCounters: Codable {
+public struct ChatStatisticsMessageInteractionInfo: Codable {
 
     /// Number of times the message was forwarded
     public let forwardCount: Int

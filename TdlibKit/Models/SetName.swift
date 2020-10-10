@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Changes the first and last name of the current user. If something changes, updateUser will be sent
+/// Changes the first and last name of the current user
 public struct SetName: Codable {
 
     /// The new value of the first name for the user; 1-64 characters

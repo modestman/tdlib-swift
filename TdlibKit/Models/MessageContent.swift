@@ -131,7 +131,7 @@ public enum MessageContent: Codable {
     /// Telegram Passport data has been received; for bots only
     case messagePassportDataReceived(MessagePassportDataReceived)
 
-    /// Message content that is not supported by the client
+    /// Message content that is not supported in the current TDLib version
     case messageUnsupported
 
 
@@ -782,13 +782,18 @@ public struct MessageCall: Codable {
     /// Call duration, in seconds
     public let duration: Int
 
+    /// True, if the call was a video call
+    public let isVideo: Bool
+
 
     public init (
         discardReason: CallDiscardReason,
-        duration: Int) {
+        duration: Int,
+        isVideo: Bool) {
 
         self.discardReason = discardReason
         self.duration = duration
+        self.isVideo = isVideo
     }
 }
 
@@ -839,10 +844,10 @@ public struct MessageChatChangeTitle: Codable {
 public struct MessageChatChangePhoto: Codable {
 
     /// New chat photo
-    public let photo: Photo
+    public let photo: ChatPhoto
 
 
-    public init (photo: Photo) {
+    public init (photo: ChatPhoto) {
         self.photo = photo
     }
 }

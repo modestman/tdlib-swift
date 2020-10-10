@@ -20,11 +20,17 @@ public struct Message: Codable {
     /// True, if the message can be deleted only for the current user while other users will continue to see it
     public let canBeDeletedOnlyForSelf: Bool
 
-    /// True, if the message can be edited. For live location and poll messages this fields shows whether editMessageLiveLocation or stopPoll can be used with this message by the client
+    /// True, if the message can be edited. For live location and poll messages this fields shows whether editMessageLiveLocation or stopPoll can be used with this message by the application
     public let canBeEdited: Bool
 
     /// True, if the message can be forwarded
     public let canBeForwarded: Bool
+
+    /// True, if the message thread info is available
+    public let canGetMessageThread: Bool
+
+    /// True, if the message statistics are available
+    public let canGetStatistics: Bool
 
     /// Chat identifier
     public let chatId: Int64
@@ -44,8 +50,11 @@ public struct Message: Codable {
     /// Information about the initial message sender; may be null
     public let forwardInfo: MessageForwardInfo?
 
-    /// Message identifier, unique for the chat to which the message belongs
+    /// Message identifier; unique for the chat to which the message belongs
     public let id: Int64
+
+    /// Information about interactions with the message; may be null
+    public let interactionInfo: MessageInteractionInfo?
 
     /// True, if the message is a channel post. All messages to channels are channel posts, all other messages are not channel posts
     public let isChannelPost: Bool
@@ -55,6 +64,12 @@ public struct Message: Codable {
 
     /// Unique identifier of an album this message belongs to. Only photos and videos can be grouped together in albums
     public let mediaAlbumId: TdInt64
+
+    /// If non-zero, the identifier of the message thread the message belongs to; unique within the chat to which the message belongs
+    public let messageThreadId: Int64
+
+    /// If non-zero, the identifier of the chat to which the replied message belongs; Currently, only messages in the Replies chat can have different reply_in_chat_id and chat_id
+    public let replyInChatId: Int64
 
     /// Reply markup for the message; may be null
     public let replyMarkup: ReplyMarkup?
@@ -68,7 +83,10 @@ public struct Message: Codable {
     /// Information about the scheduling state of the message; may be null
     public let schedulingState: MessageSchedulingState?
 
-    /// Identifier of the user who sent the message; 0 if unknown. Currently, it is unknown for channel posts and for channel posts automatically forwarded to discussion group
+    /// Identifier of the chat on behalf of which the message was sent; 0 if none
+    public let senderChatId: Int64
+
+    /// Identifier of the user who sent the message; 0 if unknown. Currently, it is unknown for channel posts, for channel posts automatically forwarded to discussion group and for anonymously sent supergroup messages
     public let senderUserId: Int
 
     /// Information about the sending state of the message; may be null
@@ -83,9 +101,6 @@ public struct Message: Codable {
     /// If non-zero, the user identifier of the bot through which this message was sent
     public let viaBotUserId: Int
 
-    /// Number of times this message was viewed
-    public let views: Int
-
 
     public init (
         authorSignature: String,
@@ -93,6 +108,8 @@ public struct Message: Codable {
         canBeDeletedOnlyForSelf: Bool,
         canBeEdited: Bool,
         canBeForwarded: Bool,
+        canGetMessageThread: Bool,
+        canGetStatistics: Bool,
         chatId: Int64,
         containsUnreadMention: Bool,
         content: MessageContent,
@@ -100,25 +117,30 @@ public struct Message: Codable {
         editDate: Int,
         forwardInfo: MessageForwardInfo?,
         id: Int64,
+        interactionInfo: MessageInteractionInfo?,
         isChannelPost: Bool,
         isOutgoing: Bool,
         mediaAlbumId: TdInt64,
+        messageThreadId: Int64,
+        replyInChatId: Int64,
         replyMarkup: ReplyMarkup?,
         replyToMessageId: Int64,
         restrictionReason: String,
         schedulingState: MessageSchedulingState?,
+        senderChatId: Int64,
         senderUserId: Int,
         sendingState: MessageSendingState?,
         ttl: Int,
         ttlExpiresIn: Double,
-        viaBotUserId: Int,
-        views: Int) {
+        viaBotUserId: Int) {
 
         self.authorSignature = authorSignature
         self.canBeDeletedForAllUsers = canBeDeletedForAllUsers
         self.canBeDeletedOnlyForSelf = canBeDeletedOnlyForSelf
         self.canBeEdited = canBeEdited
         self.canBeForwarded = canBeForwarded
+        self.canGetMessageThread = canGetMessageThread
+        self.canGetStatistics = canGetStatistics
         self.chatId = chatId
         self.containsUnreadMention = containsUnreadMention
         self.content = content
@@ -126,19 +148,22 @@ public struct Message: Codable {
         self.editDate = editDate
         self.forwardInfo = forwardInfo
         self.id = id
+        self.interactionInfo = interactionInfo
         self.isChannelPost = isChannelPost
         self.isOutgoing = isOutgoing
         self.mediaAlbumId = mediaAlbumId
+        self.messageThreadId = messageThreadId
+        self.replyInChatId = replyInChatId
         self.replyMarkup = replyMarkup
         self.replyToMessageId = replyToMessageId
         self.restrictionReason = restrictionReason
         self.schedulingState = schedulingState
+        self.senderChatId = senderChatId
         self.senderUserId = senderUserId
         self.sendingState = sendingState
         self.ttl = ttl
         self.ttlExpiresIn = ttlExpiresIn
         self.viaBotUserId = viaBotUserId
-        self.views = views
     }
 }
 

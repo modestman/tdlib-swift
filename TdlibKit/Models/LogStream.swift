@@ -64,13 +64,18 @@ public struct LogStreamFile: Codable {
     /// Path to the file to where the internal TDLib log will be written
     public let path: String
 
+    /// Pass true to additionally redirect stderr to the log file. Ignored on Windows
+    public let redirectStderr: Bool
+
 
     public init (
         maxFileSize: Int64,
-        path: String) {
+        path: String,
+        redirectStderr: Bool) {
 
         self.maxFileSize = maxFileSize
         self.path = path
+        self.redirectStderr = redirectStderr
     }
 }
 

@@ -17,10 +17,13 @@ public enum InlineKeyboardButtonType: Codable {
     /// A button that opens a specified URL and automatically logs in in current user if they allowed to do that
     case inlineKeyboardButtonTypeLoginUrl(InlineKeyboardButtonTypeLoginUrl)
 
-    /// A button that sends a special callback query to a bot
+    /// A button that sends a callback query to a bot
     case inlineKeyboardButtonTypeCallback(InlineKeyboardButtonTypeCallback)
 
-    /// A button with a game that sends a special callback query to a bot. This button must be in the first column and row of the keyboard and can be attached only to a message with content of the type messageGame
+    /// A button that asks for password of the current user and then sends a callback query to a bot
+    case inlineKeyboardButtonTypeCallbackWithPassword(InlineKeyboardButtonTypeCallbackWithPassword)
+
+    /// A button with a game that sends a callback query to a bot. This button must be in the first column and row of the keyboard and can be attached only to a message with content of the type messageGame
     case inlineKeyboardButtonTypeCallbackGame
 
     /// A button that forces an inline query to the bot to be inserted in the input field
@@ -34,6 +37,7 @@ public enum InlineKeyboardButtonType: Codable {
         case inlineKeyboardButtonTypeUrl
         case inlineKeyboardButtonTypeLoginUrl
         case inlineKeyboardButtonTypeCallback
+        case inlineKeyboardButtonTypeCallbackWithPassword
         case inlineKeyboardButtonTypeCallbackGame
         case inlineKeyboardButtonTypeSwitchInline
         case inlineKeyboardButtonTypeBuy
@@ -52,6 +56,9 @@ public enum InlineKeyboardButtonType: Codable {
         case .inlineKeyboardButtonTypeCallback:
             let value = try InlineKeyboardButtonTypeCallback(from: decoder)
             self = .inlineKeyboardButtonTypeCallback(value)
+        case .inlineKeyboardButtonTypeCallbackWithPassword:
+            let value = try InlineKeyboardButtonTypeCallbackWithPassword(from: decoder)
+            self = .inlineKeyboardButtonTypeCallbackWithPassword(value)
         case .inlineKeyboardButtonTypeCallbackGame:
             self = .inlineKeyboardButtonTypeCallbackGame
         case .inlineKeyboardButtonTypeSwitchInline:
@@ -73,6 +80,9 @@ public enum InlineKeyboardButtonType: Codable {
             try value.encode(to: encoder)
         case .inlineKeyboardButtonTypeCallback(let value):
             try container.encode(Kind.inlineKeyboardButtonTypeCallback, forKey: .type)
+            try value.encode(to: encoder)
+        case .inlineKeyboardButtonTypeCallbackWithPassword(let value):
+            try container.encode(Kind.inlineKeyboardButtonTypeCallbackWithPassword, forKey: .type)
             try value.encode(to: encoder)
         case .inlineKeyboardButtonTypeCallbackGame:
             try container.encode(Kind.inlineKeyboardButtonTypeCallbackGame, forKey: .type)
@@ -121,8 +131,20 @@ public struct InlineKeyboardButtonTypeLoginUrl: Codable {
     }
 }
 
-/// A button that sends a special callback query to a bot
+/// A button that sends a callback query to a bot
 public struct InlineKeyboardButtonTypeCallback: Codable {
+
+    /// Data to be sent to the bot via a callback query
+    public let data: Data
+
+
+    public init (data: Data) {
+        self.data = data
+    }
+}
+
+/// A button that asks for password of the current user and then sends a callback query to a bot
+public struct InlineKeyboardButtonTypeCallbackWithPassword: Codable {
 
     /// Data to be sent to the bot via a callback query
     public let data: Data

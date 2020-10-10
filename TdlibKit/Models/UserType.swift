@@ -72,7 +72,7 @@ public struct UserTypeBot: Codable {
     /// True, if the bot can read all messages in basic group or supergroup chats and not just those addressed to the bot. In private and channel chats a bot can always read all messages
     public let canReadAllGroupMessages: Bool
 
-    /// Placeholder for inline queries (displayed on the client input field)
+    /// Placeholder for inline queries (displayed on the application input field)
     public let inlineQueryPlaceholder: String
 
     /// True, if the bot supports inline queries

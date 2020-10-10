@@ -14,7 +14,7 @@ public struct SetStickerSetThumbnail: Codable {
     /// Sticker set name
     public let name: String
 
-    /// Thumbnail to set in PNG or TGS format. Animated thumbnail must be set for animated sticker sets and only for them. You can use a zero InputFileId to delete the thumbnail
+    /// Thumbnail to set in PNG or TGS format. Animated thumbnail must be set for animated sticker sets and only for them. Pass a zero InputFileId to delete the thumbnail
     public let thumbnail: InputFile
 
     /// Sticker set owner

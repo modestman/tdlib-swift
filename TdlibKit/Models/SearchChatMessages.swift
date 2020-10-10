@@ -23,6 +23,9 @@ public struct SearchChatMessages: Codable {
     /// The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than -offset. Fewer messages may be returned than specified by the limit, even if the end of the message history has not been reached
     public let limit: Int
 
+    /// If not 0, only messages in the specified thread will be returned; supergroups only
+    public let messageThreadId: Int64
+
     /// Specify 0 to get results from exactly the from_message_id or a negative offset to get the specified message and some newer messages
     public let offset: Int
 
@@ -38,6 +41,7 @@ public struct SearchChatMessages: Codable {
         filter: SearchMessagesFilter,
         fromMessageId: Int64,
         limit: Int,
+        messageThreadId: Int64,
         offset: Int,
         query: String,
         senderUserId: Int) {
@@ -46,6 +50,7 @@ public struct SearchChatMessages: Codable {
         self.filter = filter
         self.fromMessageId = fromMessageId
         self.limit = limit
+        self.messageThreadId = messageThreadId
         self.offset = offset
         self.query = query
         self.senderUserId = senderUserId

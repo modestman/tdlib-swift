@@ -17,13 +17,18 @@ public struct SendChatAction: Codable {
     /// Chat identifier
     public let chatId: Int64
 
+    /// If not 0, a message thread identifier in which the action was performed
+    public let messageThreadId: Int64
+
 
     public init (
         action: ChatAction,
-        chatId: Int64) {
+        chatId: Int64,
+        messageThreadId: Int64) {
 
         self.action = action
         self.chatId = chatId
+        self.messageThreadId = messageThreadId
     }
 }
 

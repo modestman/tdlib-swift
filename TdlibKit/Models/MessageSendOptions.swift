@@ -1,5 +1,5 @@
 //
-//  SendMessageOptions.swift
+//  MessageSendOptions.swift
 //  tl2swift
 //
 //  Created by Code Generator
@@ -8,10 +8,10 @@
 import Foundation
 
 
-/// Options to be used when a message is send
-public struct SendMessageOptions: Codable {
+/// Options to be used when a message is sent
+public struct MessageSendOptions: Codable {
 
-    /// Pass true to disable notification for the message. Must be false if the message is sent to a secret chat
+    /// Pass true to disable notification for the message
     public let disableNotification: Bool
 
     /// Pass true if the message is sent from the background

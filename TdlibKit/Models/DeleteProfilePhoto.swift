@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Deletes a profile photo. If something changes, updateUser will be sent
+/// Deletes a profile photo
 public struct DeleteProfilePhoto: Codable {
 
     /// Identifier of the profile photo to delete

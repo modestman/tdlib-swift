@@ -1,5 +1,5 @@
 //
-//  GetChatStatisticsGraph.swift
+//  GetStatisticsGraph.swift
 //  tl2swift
 //
 //  Created by Code Generator
@@ -8,8 +8,8 @@
 import Foundation
 
 
-/// Loads asynchronous or zoomed in chat statistics graph
-public struct GetChatStatisticsGraph: Codable {
+/// Loads asynchronous or zoomed in chat or message statistics graph
+public struct GetStatisticsGraph: Codable {
 
     /// Chat identifier
     public let chatId: Int64

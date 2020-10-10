@@ -8,19 +8,19 @@
 import Foundation
 
 
-/// Changes the photo of a chat. Supported only for basic groups, supergroups and channels. Requires can_change_info rights. The photo will not be changed before request to the server has been completed
+/// Changes the photo of a chat. Supported only for basic groups, supergroups and channels. Requires can_change_info rights
 public struct SetChatPhoto: Codable {
 
     /// Chat identifier
     public let chatId: Int64
 
-    /// New chat photo. You can use a zero InputFileId to delete the chat photo. Files that are accessible only by HTTP URL are not acceptable
-    public let photo: InputFile
+    /// New chat photo. Pass null to delete the chat photo
+    public let photo: InputChatPhoto
 
 
     public init (
         chatId: Int64,
-        photo: InputFile) {
+        photo: InputChatPhoto) {
 
         self.chatId = chatId
         self.photo = photo

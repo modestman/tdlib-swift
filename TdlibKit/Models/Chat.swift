@@ -23,7 +23,7 @@ public struct Chat: Codable {
     /// True, if the chat can be reported to Telegram moderators through reportChat
     public let canBeReported: Bool
 
-    /// Contains client-specific data associated with the chat. (For example, the chat scroll position or local chat notification settings can be stored here.) Persistent if the message database is used
+    /// Contains application-specific data associated with the chat. (For example, the chat scroll position or local chat notification settings can be stored here.) Persistent if the message database is used
     public let clientData: String
 
     /// Default value of the disable_notification parameter, used when a message is sent to the chat
@@ -37,6 +37,9 @@ public struct Chat: Codable {
 
     /// Chat unique identifier
     public let id: Int64
+
+    /// True, if the chat is blocked by the current user and private messages from the chat can't be received
+    public let isBlocked: Bool
 
     /// True, if the chat is marked as unread
     public let isMarkedAsUnread: Bool
@@ -57,7 +60,7 @@ public struct Chat: Codable {
     public let permissions: ChatPermissions
 
     /// Chat photo; may be null
-    public let photo: ChatPhoto?
+    public let photo: ChatPhotoInfo?
 
     /// Identifier of the pinned message in the chat; 0 if none
     public let pinnedMessageId: Int64
@@ -91,13 +94,14 @@ public struct Chat: Codable {
         draftMessage: DraftMessage?,
         hasScheduledMessages: Bool,
         id: Int64,
+        isBlocked: Bool,
         isMarkedAsUnread: Bool,
         lastMessage: Message?,
         lastReadInboxMessageId: Int64,
         lastReadOutboxMessageId: Int64,
         notificationSettings: ChatNotificationSettings,
         permissions: ChatPermissions,
-        photo: ChatPhoto?,
+        photo: ChatPhotoInfo?,
         pinnedMessageId: Int64,
         positions: [ChatPosition],
         replyMarkupMessageId: Int64,
@@ -115,6 +119,7 @@ public struct Chat: Codable {
         self.draftMessage = draftMessage
         self.hasScheduledMessages = hasScheduledMessages
         self.id = id
+        self.isBlocked = isBlocked
         self.isMarkedAsUnread = isMarkedAsUnread
         self.lastMessage = lastMessage
         self.lastReadInboxMessageId = lastReadInboxMessageId

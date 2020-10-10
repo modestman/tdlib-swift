@@ -14,6 +14,9 @@ public enum MessageForwardOrigin: Codable {
     /// The message was originally written by a known user
     case messageForwardOriginUser(MessageForwardOriginUser)
 
+    /// The message was originally written by an anonymous chat administrator on behalf of the chat
+    case messageForwardOriginChat(MessageForwardOriginChat)
+
     /// The message was originally written by a user, which is hidden by their privacy settings
     case messageForwardOriginHiddenUser(MessageForwardOriginHiddenUser)
 
@@ -23,6 +26,7 @@ public enum MessageForwardOrigin: Codable {
 
     private enum Kind: String, Codable {
         case messageForwardOriginUser
+        case messageForwardOriginChat
         case messageForwardOriginHiddenUser
         case messageForwardOriginChannel
     }
@@ -34,6 +38,9 @@ public enum MessageForwardOrigin: Codable {
         case .messageForwardOriginUser:
             let value = try MessageForwardOriginUser(from: decoder)
             self = .messageForwardOriginUser(value)
+        case .messageForwardOriginChat:
+            let value = try MessageForwardOriginChat(from: decoder)
+            self = .messageForwardOriginChat(value)
         case .messageForwardOriginHiddenUser:
             let value = try MessageForwardOriginHiddenUser(from: decoder)
             self = .messageForwardOriginHiddenUser(value)
@@ -48,6 +55,9 @@ public enum MessageForwardOrigin: Codable {
         switch self {
         case .messageForwardOriginUser(let value):
             try container.encode(Kind.messageForwardOriginUser, forKey: .type)
+            try value.encode(to: encoder)
+        case .messageForwardOriginChat(let value):
+            try container.encode(Kind.messageForwardOriginChat, forKey: .type)
             try value.encode(to: encoder)
         case .messageForwardOriginHiddenUser(let value):
             try container.encode(Kind.messageForwardOriginHiddenUser, forKey: .type)
@@ -68,6 +78,18 @@ public struct MessageForwardOriginUser: Codable {
 
     public init (senderUserId: Int) {
         self.senderUserId = senderUserId
+    }
+}
+
+/// The message was originally written by an anonymous chat administrator on behalf of the chat
+public struct MessageForwardOriginChat: Codable {
+
+    /// Identifier of the chat that originally sent the message
+    public let senderChatId: Int64
+
+
+    public init (senderChatId: Int64) {
+        self.senderChatId = senderChatId
     }
 }
 

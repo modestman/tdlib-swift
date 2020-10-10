@@ -445,15 +445,15 @@ public struct ChatEventUsernameChanged: Codable {
 public struct ChatEventPhotoChanged: Codable {
 
     /// New chat photo value; may be null
-    public let newPhoto: Photo?
+    public let newPhoto: ChatPhoto?
 
     /// Previous chat photo value; may be null
-    public let oldPhoto: Photo?
+    public let oldPhoto: ChatPhoto?
 
 
     public init (
-        newPhoto: Photo?,
-        oldPhoto: Photo?) {
+        newPhoto: ChatPhoto?,
+        oldPhoto: ChatPhoto?) {
 
         self.newPhoto = newPhoto
         self.oldPhoto = oldPhoto

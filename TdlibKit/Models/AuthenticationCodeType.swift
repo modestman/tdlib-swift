@@ -11,7 +11,7 @@ import Foundation
 /// Provides information about the method by which an authentication code is delivered to the user
 public enum AuthenticationCodeType: Codable {
 
-    /// An authentication code is delivered via a private Telegram message, which can be viewed in another client
+    /// An authentication code is delivered via a private Telegram message, which can be viewed from another active session
     case authenticationCodeTypeTelegramMessage(AuthenticationCodeTypeTelegramMessage)
 
     /// An authentication code is delivered via an SMS message to the specified phone number
@@ -69,7 +69,7 @@ public enum AuthenticationCodeType: Codable {
     }
 }
 
-/// An authentication code is delivered via a private Telegram message, which can be viewed in another client
+/// An authentication code is delivered via a private Telegram message, which can be viewed from another active session
 public struct AuthenticationCodeTypeTelegramMessage: Codable {
 
     /// Length of the code

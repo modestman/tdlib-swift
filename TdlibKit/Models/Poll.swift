@@ -29,7 +29,7 @@ public struct Poll: Codable {
     /// List of poll answer options
     public let options: [PollOption]
 
-    /// Poll question, 1-255 characters
+    /// Poll question, 1-300 characters
     public let question: String
 
     /// User identifiers of recent voters, if the poll is non-anonymous

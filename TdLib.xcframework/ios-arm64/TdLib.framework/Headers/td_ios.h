@@ -15,7 +15,3 @@ FOUNDATION_EXPORT double td_iosVersionNumber;
 
 //! Project version string for td_ios.
 FOUNDATION_EXPORT const unsigned char td_iosVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <td_ios/PublicHeader.h>
-
-

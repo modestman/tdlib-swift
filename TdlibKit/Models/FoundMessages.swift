@@ -14,16 +14,21 @@ public struct FoundMessages: Codable {
     /// List of messages
     public let messages: [Message]
 
-    /// Value to pass as from_search_id to get more results
-    public let nextFromSearchId: TdInt64
+    /// The offset for the next request. If empty, there are no more results
+    public let nextOffset: String
+
+    /// Approximate total count of messages found; -1 if unknown
+    public let totalCount: Int
 
 
     public init (
         messages: [Message],
-        nextFromSearchId: TdInt64) {
+        nextOffset: String,
+        totalCount: Int) {
 
         self.messages = messages
-        self.nextFromSearchId = nextFromSearchId
+        self.nextOffset = nextOffset
+        self.totalCount = totalCount
     }
 }
 

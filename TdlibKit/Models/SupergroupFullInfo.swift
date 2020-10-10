@@ -20,6 +20,9 @@ public struct SupergroupFullInfo: Codable {
     /// True, if members of the chat can be retrieved
     public let canGetMembers: Bool
 
+    /// True, if the supergroup or channel statistics are available
+    public let canGetStatistics: Bool
+
     /// True, if the supergroup location can be changed
     public let canSetLocation: Bool
 
@@ -28,9 +31,6 @@ public struct SupergroupFullInfo: Codable {
 
     /// True, if the chat username can be changed
     public let canSetUsername: Bool
-
-    /// True, if the channel statistics is available
-    public let canViewStatistics: Bool
 
     public let description: String
 
@@ -48,6 +48,9 @@ public struct SupergroupFullInfo: Codable {
 
     /// Number of members in the supergroup or channel; 0 if unknown
     public let memberCount: Int
+
+    /// Chat photo; may be null
+    public let photo: ChatPhoto?
 
     /// Number of restricted users in the supergroup; 0 if unknown
     public let restrictedCount: Int
@@ -72,16 +75,17 @@ public struct SupergroupFullInfo: Codable {
         administratorCount: Int,
         bannedCount: Int,
         canGetMembers: Bool,
+        canGetStatistics: Bool,
         canSetLocation: Bool,
         canSetStickerSet: Bool,
         canSetUsername: Bool,
-        canViewStatistics: Bool,
         description: String,
         inviteLink: String,
         isAllHistoryAvailable: Bool,
         linkedChatId: Int64,
         location: ChatLocation?,
         memberCount: Int,
+        photo: ChatPhoto?,
         restrictedCount: Int,
         slowModeDelay: Int,
         slowModeDelayExpiresIn: Double,
@@ -92,16 +96,17 @@ public struct SupergroupFullInfo: Codable {
         self.administratorCount = administratorCount
         self.bannedCount = bannedCount
         self.canGetMembers = canGetMembers
+        self.canGetStatistics = canGetStatistics
         self.canSetLocation = canSetLocation
         self.canSetStickerSet = canSetStickerSet
         self.canSetUsername = canSetUsername
-        self.canViewStatistics = canViewStatistics
         self.description = description
         self.inviteLink = inviteLink
         self.isAllHistoryAvailable = isAllHistoryAvailable
         self.linkedChatId = linkedChatId
         self.location = location
         self.memberCount = memberCount
+        self.photo = photo
         self.restrictedCount = restrictedCount
         self.slowModeDelay = slowModeDelay
         self.slowModeDelayExpiresIn = slowModeDelayExpiresIn

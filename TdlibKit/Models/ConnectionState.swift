@@ -20,7 +20,7 @@ public enum ConnectionState: Codable {
     /// Currently establishing a connection to the Telegram servers
     case connectionStateConnecting
 
-    /// Downloading data received while the client was offline
+    /// Downloading data received while the application was offline
     case connectionStateUpdating
 
     /// There is a working connection to the Telegram servers

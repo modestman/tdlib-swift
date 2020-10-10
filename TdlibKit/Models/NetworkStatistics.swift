@@ -14,7 +14,7 @@ public struct NetworkStatistics: Codable {
     /// Network statistics entries
     public let entries: [NetworkStatisticsEntry]
 
-    /// Point in time (Unix timestamp) when the app began collecting statistics
+    /// Point in time (Unix timestamp) from which the statistics are collected
     public let sinceDate: Int
 
 

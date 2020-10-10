@@ -17,8 +17,11 @@ public struct SendInlineQueryResultMessage: Codable {
     /// If true, there will be no mention of a bot, via which the message is sent. Can be used only for bots GetOption("animation_search_bot_username"), GetOption("photo_search_bot_username") and GetOption("venue_search_bot_username")
     public let hideViaBot: Bool
 
+    /// If not 0, a message thread identifier in which the message will be sent
+    public let messageThreadId: Int64
+
     /// Options to be used to send the message
-    public let options: SendMessageOptions
+    public let options: MessageSendOptions
 
     /// Identifier of the inline query
     public let queryId: TdInt64
@@ -33,13 +36,15 @@ public struct SendInlineQueryResultMessage: Codable {
     public init (
         chatId: Int64,
         hideViaBot: Bool,
-        options: SendMessageOptions,
+        messageThreadId: Int64,
+        options: MessageSendOptions,
         queryId: TdInt64,
         replyToMessageId: Int64,
         resultId: String) {
 
         self.chatId = chatId
         self.hideViaBot = hideViaBot
+        self.messageThreadId = messageThreadId
         self.options = options
         self.queryId = queryId
         self.replyToMessageId = replyToMessageId

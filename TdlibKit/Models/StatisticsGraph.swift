@@ -14,7 +14,7 @@ public enum StatisticsGraph: Codable {
     /// A graph data
     case statisticsGraphData(StatisticsGraphData)
 
-    /// The graph data to be asynchronously loaded through getChatStatisticsGraph
+    /// The graph data to be asynchronously loaded through getStatisticsGraph
     case statisticsGraphAsync(StatisticsGraphAsync)
 
     /// An error message to be shown to the user instead of the graph
@@ -78,7 +78,7 @@ public struct StatisticsGraphData: Codable {
     }
 }
 
-/// The graph data to be asynchronously loaded through getChatStatisticsGraph
+/// The graph data to be asynchronously loaded through getStatisticsGraph
 public struct StatisticsGraphAsync: Codable {
 
     /// The token to use for data loading

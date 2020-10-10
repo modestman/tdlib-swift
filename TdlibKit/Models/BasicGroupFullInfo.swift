@@ -22,17 +22,22 @@ public struct BasicGroupFullInfo: Codable {
     /// Group members
     public let members: [ChatMember]
 
+    /// Chat photo; may be null
+    public let photo: ChatPhoto?
+
 
     public init (
         creatorUserId: Int,
         description: String,
         inviteLink: String,
-        members: [ChatMember]) {
+        members: [ChatMember],
+        photo: ChatPhoto?) {
 
         self.creatorUserId = creatorUserId
         self.description = description
         self.inviteLink = inviteLink
         self.members = members
+        self.photo = photo
     }
 }
 

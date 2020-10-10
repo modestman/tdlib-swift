@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Succeeds after a specified amount of time has passed. Can be called before authorization. Can be called before initialization
+/// Succeeds after a specified amount of time has passed. Can be called before initialization
 public struct SetAlarm: Codable {
 
     /// Number of seconds before the function returns

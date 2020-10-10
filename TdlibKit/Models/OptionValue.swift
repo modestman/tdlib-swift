@@ -83,10 +83,10 @@ public struct OptionValueBoolean: Codable {
 public struct OptionValueInteger: Codable {
 
     /// The value of the option
-    public let value: Int
+    public let value: TdInt64
 
 
-    public init (value: Int) {
+    public init (value: TdInt64) {
         self.value = value
     }
 }

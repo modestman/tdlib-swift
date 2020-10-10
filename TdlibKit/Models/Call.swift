@@ -17,6 +17,9 @@ public struct Call: Codable {
     /// True, if the call is outgoing
     public let isOutgoing: Bool
 
+    /// True, if the call is a video call
+    public let isVideo: Bool
+
     /// Call state
     public let state: CallState
 
@@ -27,11 +30,13 @@ public struct Call: Codable {
     public init (
         id: Int,
         isOutgoing: Bool,
+        isVideo: Bool,
         state: CallState,
         userId: Int) {
 
         self.id = id
         self.isOutgoing = isOutgoing
+        self.isVideo = isVideo
         self.state = state
         self.userId = userId
     }

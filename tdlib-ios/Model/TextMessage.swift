@@ -59,6 +59,12 @@ extension TextMessage {
             
         case .messageVideo:
             return "<Video>"
+            
+        case .messagePoll:
+            return "<Poll>"
+            
+        case .messageCall:
+            return "<Call>"
         
         default:
             return nil

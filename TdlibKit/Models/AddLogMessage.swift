@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Adds a message to TDLib internal log. This is an offline method. Can be called before authorization. Can be called synchronously
+/// Adds a message to TDLib internal log. Can be called synchronously
 public struct AddLogMessage: Codable {
 
     /// Text of a message to log

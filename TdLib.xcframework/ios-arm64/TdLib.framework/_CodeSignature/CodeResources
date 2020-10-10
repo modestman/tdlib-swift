@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/td_ios.h</key>
 		<data>
-		4aGh/CTVbQ2WOHk9qTruA0724MM=
+		brw13WyVmSGXFeHGEzJArlNakUw=
 		</data>
 		<key>Headers/td_json_client.h</key>
 		<data>
@@ -22,7 +22,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		ksHPrIAMj3fHs/2e1G9NfVhp48c=
+		iOxAdMHiv4o2FSKHlQljoq1t9YQ=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -35,11 +35,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			4aGh/CTVbQ2WOHk9qTruA0724MM=
+			brw13WyVmSGXFeHGEzJArlNakUw=
 			</data>
 			<key>hash2</key>
 			<data>
-			oxu/vf3RXVcAsg/jhOp3X72YRpyuKXmWAY6K/I6bRUs=
+			pEimZzprLG8lMBGoRqG0RCceJNcfPJ2ZmrBwQymPbB4=
 			</data>
 		</dict>
 		<key>Headers/td_json_client.h</key>

@@ -8,13 +8,13 @@
 import Foundation
 
 
-/// Returns information about a message that is replied by given message
+/// Returns information about a message that is replied by a given message. Also returns the pinned message, the game message, and the invoice message for messages of the types messagePinMessage, messageGameScore, and messagePaymentSuccessful respectively
 public struct GetRepliedMessage: Codable {
 
     /// Identifier of the chat the message belongs to
     public let chatId: Int64
 
-    /// Identifier of the message reply to which get
+    /// Identifier of the message reply to which to get
     public let messageId: Int64
 
 

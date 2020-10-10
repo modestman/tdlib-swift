@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Converts a JsonValue object to corresponding JSON-serialized string. This is an offline method. Can be called before authorization. Can be called synchronously
+/// Converts a JsonValue object to corresponding JSON-serialized string. Can be called synchronously
 public struct GetJsonString: Codable {
 
     /// The JsonValue object

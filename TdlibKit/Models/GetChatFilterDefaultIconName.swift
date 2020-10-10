@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Returns default icon name for a filter. This is an offline method. Can be called before authorization. Can be called synchronously
+/// Returns default icon name for a filter. Can be called synchronously
 public struct GetChatFilterDefaultIconName: Codable {
 
     /// Chat filter

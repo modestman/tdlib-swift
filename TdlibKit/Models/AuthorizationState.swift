@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Represents the current authorization state of the client
+/// Represents the current authorization state of the TDLib client
 public enum AuthorizationState: Codable {
 
     /// TDLib needs TdlibParameters for initialization

@@ -113,9 +113,6 @@ public struct CallStateReady: Codable {
     /// A JSON-encoded call config
     public let config: String
 
-    /// Available UDP reflectors
-    public let connections: [CallConnection]
-
     /// Encryption key emojis fingerprint
     public let emojis: [String]
 
@@ -125,21 +122,24 @@ public struct CallStateReady: Codable {
     /// Call protocols supported by the peer
     public let `protocol`: CallProtocol
 
+    /// List of available call servers
+    public let servers: [CallServer]
+
 
     public init (
         allowP2p: Bool,
         config: String,
-        connections: [CallConnection],
         emojis: [String],
         encryptionKey: Data,
-        `protocol`: CallProtocol) {
+        `protocol`: CallProtocol,
+        servers: [CallServer]) {
 
         self.allowP2p = allowP2p
         self.config = config
-        self.connections = connections
         self.emojis = emojis
         self.encryptionKey = encryptionKey
         self.`protocol` = `protocol`
+        self.servers = servers
     }
 }
 

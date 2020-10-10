@@ -758,7 +758,7 @@ public struct PageBlockSlideshow: Codable {
 public struct PageBlockChatLink: Codable {
 
     /// Chat photo; may be null
-    public let photo: ChatPhoto?
+    public let photo: ChatPhotoInfo?
 
     /// Chat title
     public let title: String
@@ -768,7 +768,7 @@ public struct PageBlockChatLink: Codable {
 
 
     public init (
-        photo: ChatPhoto?,
+        photo: ChatPhotoInfo?,
         title: String,
         username: String) {
 

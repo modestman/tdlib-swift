@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Changes the username of the current user. If something changes, updateUser will be sent
+/// Changes the username of the current user
 public struct SetUsername: Codable {
 
     /// The new value of the username. Use an empty string to remove the username

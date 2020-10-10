@@ -8,14 +8,14 @@
 import Foundation
 
 
-/// Uploads a new profile photo for the current user. If something changes, updateUser will be sent
+/// Changes a profile photo for the current user
 public struct SetProfilePhoto: Codable {
 
-    /// Profile photo to set. inputFileId and inputFileRemote may still be unsupported
-    public let photo: InputFile
+    /// Profile photo to set
+    public let photo: InputChatPhoto
 
 
-    public init (photo: InputFile) {
+    public init (photo: InputChatPhoto) {
         self.photo = photo
     }
 }

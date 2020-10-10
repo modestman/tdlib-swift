@@ -15,7 +15,3 @@ FOUNDATION_EXPORT double td_macosVersionNumber;
 
 //! Project version string for td_macos.
 FOUNDATION_EXPORT const unsigned char td_macosVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <td_macos/PublicHeader.h>
-
-

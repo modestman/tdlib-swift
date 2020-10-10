@@ -11,7 +11,10 @@ import Foundation
 /// Contains information about a chat invite link
 public struct ChatInviteLinkInfo: Codable {
 
-    /// Chat identifier of the invite link; 0 if the user is not a member of this chat
+    /// If non-zero, the remaining time for which read access is granted to the chat, in seconds
+    public let accessibleFor: Int
+
+    /// Chat identifier of the invite link; 0 if the user has no access to the chat before joining
     public let chatId: Int64
 
     /// True, if the chat is a public supergroup or channel, i.e. it has a username or it is a location-based supergroup
@@ -24,7 +27,7 @@ public struct ChatInviteLinkInfo: Codable {
     public let memberUserIds: [Int]
 
     /// Chat photo; may be null
-    public let photo: ChatPhoto?
+    public let photo: ChatPhotoInfo?
 
     /// Title of the chat
     public let title: String
@@ -34,14 +37,16 @@ public struct ChatInviteLinkInfo: Codable {
 
 
     public init (
+        accessibleFor: Int,
         chatId: Int64,
         isPublic: Bool,
         memberCount: Int,
         memberUserIds: [Int],
-        photo: ChatPhoto?,
+        photo: ChatPhotoInfo?,
         title: String,
         type: ChatType) {
 
+        self.accessibleFor = accessibleFor
         self.chatId = chatId
         self.isPublic = isPublic
         self.memberCount = memberCount
