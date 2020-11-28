@@ -62,6 +62,9 @@ public enum SearchMessagesFilter: Codable {
     /// Returns only failed to send messages. This filter can be used only if the message database is used
     case searchMessagesFilterFailedToSend
 
+    /// Returns only pinned messages
+    case searchMessagesFilterPinned
+
 
     private enum Kind: String, Codable {
         case searchMessagesFilterEmpty
@@ -81,6 +84,7 @@ public enum SearchMessagesFilter: Codable {
         case searchMessagesFilterMention
         case searchMessagesFilterUnreadMention
         case searchMessagesFilterFailedToSend
+        case searchMessagesFilterPinned
     }
 
     public init(from decoder: Decoder) throws {
@@ -121,6 +125,8 @@ public enum SearchMessagesFilter: Codable {
             self = .searchMessagesFilterUnreadMention
         case .searchMessagesFilterFailedToSend:
             self = .searchMessagesFilterFailedToSend
+        case .searchMessagesFilterPinned:
+            self = .searchMessagesFilterPinned
         }
     }
 
@@ -161,6 +167,8 @@ public enum SearchMessagesFilter: Codable {
             try container.encode(Kind.searchMessagesFilterUnreadMention, forKey: .type)
         case .searchMessagesFilterFailedToSend:
             try container.encode(Kind.searchMessagesFilterFailedToSend, forKey: .type)
+        case .searchMessagesFilterPinned:
+            try container.encode(Kind.searchMessagesFilterPinned, forKey: .type)
         }
     }
 }

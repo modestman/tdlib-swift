@@ -23,8 +23,8 @@ public struct AddLocalMessage: Codable {
     /// Identifier of the message to reply to or 0
     public let replyToMessageId: Int64
 
-    /// Identifier of the user who will be shown as the sender of the message; may be 0 for channel posts
-    public let senderUserId: Int
+    /// The sender sender of the message
+    public let sender: MessageSender
 
 
     public init (
@@ -32,13 +32,13 @@ public struct AddLocalMessage: Codable {
         disableNotification: Bool,
         inputMessageContent: InputMessageContent,
         replyToMessageId: Int64,
-        senderUserId: Int) {
+        sender: MessageSender) {
 
         self.chatId = chatId
         self.disableNotification = disableNotification
         self.inputMessageContent = inputMessageContent
         self.replyToMessageId = replyToMessageId
-        self.senderUserId = senderUserId
+        self.sender = sender
     }
 }
 

@@ -103,30 +103,25 @@ public struct NotificationTypeNewPushMessage: Codable {
     /// The message identifier. The message will not be available in the chat history, but the ID can be used in viewMessages, or as reply_to_message_id
     public let messageId: Int64
 
-    /// Sender chat of the message; 0 if none
-    public let senderChatId: Int64
+    /// The sender of the message. Corresponding user or chat may be inaccessible
+    public let sender: MessageSender
 
-    /// Name of the sender; can be different from the name of the sender user
+    /// Name of the sender
     public let senderName: String
-
-    /// Sender of the message; 0 if unknown. Corresponding user may be inaccessible
-    public let senderUserId: Int
 
 
     public init (
         content: PushMessageContent,
         isOutgoing: Bool,
         messageId: Int64,
-        senderChatId: Int64,
-        senderName: String,
-        senderUserId: Int) {
+        sender: MessageSender,
+        senderName: String) {
 
         self.content = content
         self.isOutgoing = isOutgoing
         self.messageId = messageId
-        self.senderChatId = senderChatId
+        self.sender = sender
         self.senderName = senderName
-        self.senderUserId = senderUserId
     }
 }
 

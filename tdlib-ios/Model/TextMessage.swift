@@ -28,7 +28,12 @@ extension TextMessage {
         id = message.id
         chatId = message.chatId
         date = Foundation.Date(timeIntervalSince1970: TimeInterval(message.date))
-        senderUserId = message.senderUserId
+        switch message.sender {
+        case .messageSenderUser(let user):
+            senderUserId = user.userId
+        default:
+            senderUserId = 0
+        }
         isChannelPost = message.isChannelPost
         text = TextMessage.makeText(message.content)
     }
@@ -51,14 +56,14 @@ extension TextMessage {
         case .messageDocument:
             return "<Document>"
             
-        case .messagePhoto:
-            return "<Photo>"
+        case .messagePhoto(let photo):
+            return "<Photo>\n\(photo.caption.text)"
             
         case .messageSticker(let sticker):
             return sticker.sticker.emoji
             
-        case .messageVideo:
-            return "<Video>"
+        case .messageVideo(let video):
+            return "<Video>\n\(video.caption.text)"
             
         case .messagePoll:
             return "<Poll>"

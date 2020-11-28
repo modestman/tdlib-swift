@@ -14,7 +14,7 @@ public struct ChatFilter: Codable {
     /// True, if archived chats need to be excluded
     public let excludeArchived: Bool
 
-    /// True, if the muted chats need to be excluded
+    /// True, if muted chats need to be excluded
     public let excludeMuted: Bool
 
     /// True, if read chats need to be excluded

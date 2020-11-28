@@ -23,17 +23,22 @@ public struct MessageThreadInfo: Codable {
     /// The messages from which the thread starts. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id)
     public let messages: [Message]
 
+    /// Contains information about the message thread
+    public let replyInfo: MessageReplyInfo
+
 
     public init (
         chatId: Int64,
         draftMessage: DraftMessage?,
         messageThreadId: Int64,
-        messages: [Message]) {
+        messages: [Message],
+        replyInfo: MessageReplyInfo) {
 
         self.chatId = chatId
         self.draftMessage = draftMessage
         self.messageThreadId = messageThreadId
         self.messages = messages
+        self.replyInfo = replyInfo
     }
 }
 

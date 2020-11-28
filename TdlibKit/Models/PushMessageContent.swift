@@ -691,6 +691,12 @@ public struct PushMessageContentMessageForwards: Codable {
 /// A media album
 public struct PushMessageContentMediaAlbum: Codable {
 
+    /// True, if the album has at least one audio file
+    public let hasAudios: Bool
+
+    /// True, if the album has at least one document
+    public let hasDocuments: Bool
+
     /// True, if the album has at least one photo
     public let hasPhotos: Bool
 
@@ -702,10 +708,14 @@ public struct PushMessageContentMediaAlbum: Codable {
 
 
     public init (
+        hasAudios: Bool,
+        hasDocuments: Bool,
         hasPhotos: Bool,
         hasVideos: Bool,
         totalCount: Int) {
 
+        self.hasAudios = hasAudios
+        self.hasDocuments = hasDocuments
         self.hasPhotos = hasPhotos
         self.hasVideos = hasVideos
         self.totalCount = totalCount

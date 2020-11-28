@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Returns information about a pinned chat message
+/// Returns information about a newest pinned message in the chat
 public struct GetChatPinnedMessage: Codable {
 
     /// Identifier of the chat the message belongs to

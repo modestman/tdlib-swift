@@ -20,6 +20,9 @@ public enum ChatMembersFilter: Codable {
     /// Returns all chat members, including restricted chat members
     case chatMembersFilterMembers
 
+    /// Returns users which can be mentioned in the chat
+    case chatMembersFilterMention(ChatMembersFilterMention)
+
     /// Returns users under certain restrictions in the chat; can be used only by administrators in a supergroup
     case chatMembersFilterRestricted
 
@@ -34,6 +37,7 @@ public enum ChatMembersFilter: Codable {
         case chatMembersFilterContacts
         case chatMembersFilterAdministrators
         case chatMembersFilterMembers
+        case chatMembersFilterMention
         case chatMembersFilterRestricted
         case chatMembersFilterBanned
         case chatMembersFilterBots
@@ -49,6 +53,9 @@ public enum ChatMembersFilter: Codable {
             self = .chatMembersFilterAdministrators
         case .chatMembersFilterMembers:
             self = .chatMembersFilterMembers
+        case .chatMembersFilterMention:
+            let value = try ChatMembersFilterMention(from: decoder)
+            self = .chatMembersFilterMention(value)
         case .chatMembersFilterRestricted:
             self = .chatMembersFilterRestricted
         case .chatMembersFilterBanned:
@@ -67,6 +74,9 @@ public enum ChatMembersFilter: Codable {
             try container.encode(Kind.chatMembersFilterAdministrators, forKey: .type)
         case .chatMembersFilterMembers:
             try container.encode(Kind.chatMembersFilterMembers, forKey: .type)
+        case .chatMembersFilterMention(let value):
+            try container.encode(Kind.chatMembersFilterMention, forKey: .type)
+            try value.encode(to: encoder)
         case .chatMembersFilterRestricted:
             try container.encode(Kind.chatMembersFilterRestricted, forKey: .type)
         case .chatMembersFilterBanned:
@@ -74,6 +84,18 @@ public enum ChatMembersFilter: Codable {
         case .chatMembersFilterBots:
             try container.encode(Kind.chatMembersFilterBots, forKey: .type)
         }
+    }
+}
+
+/// Returns users which can be mentioned in the chat
+public struct ChatMembersFilterMention: Codable {
+
+    /// If non-zero, the identifier of the current message thread
+    public let messageThreadId: Int64
+
+
+    public init (messageThreadId: Int64) {
+        self.messageThreadId = messageThreadId
     }
 }
 

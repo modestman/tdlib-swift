@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Contains information about message replies
+/// Contains information about replies to a message
 public struct MessageReplyInfo: Codable {
 
     /// Identifier of the last reply to the message
@@ -20,8 +20,8 @@ public struct MessageReplyInfo: Codable {
     /// Identifier of the last read outgoing reply to the message
     public let lastReadOutboxMessageId: Int64
 
-    /// User identifiers of the recent repliers to the message; available in channels with a discussion supergroup
-    public let recentReplierUserIds: [Int]
+    /// Recent repliers to the message; available in channels with a discussion supergroup
+    public let recentRepliers: [MessageSender]
 
     /// Number of times the message was directly or indirectly replied
     public let replyCount: Int
@@ -31,13 +31,13 @@ public struct MessageReplyInfo: Codable {
         lastMessageId: Int64,
         lastReadInboxMessageId: Int64,
         lastReadOutboxMessageId: Int64,
-        recentReplierUserIds: [Int],
+        recentRepliers: [MessageSender],
         replyCount: Int) {
 
         self.lastMessageId = lastMessageId
         self.lastReadInboxMessageId = lastReadInboxMessageId
         self.lastReadOutboxMessageId = lastReadOutboxMessageId
-        self.recentReplierUserIds = recentReplierUserIds
+        self.recentRepliers = recentRepliers
         self.replyCount = replyCount
     }
 }

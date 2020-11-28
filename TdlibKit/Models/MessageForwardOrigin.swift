@@ -11,13 +11,13 @@ import Foundation
 /// Contains information about the origin of a forwarded message
 public enum MessageForwardOrigin: Codable {
 
-    /// The message was originally written by a known user
+    /// The message was originally sent by a known user
     case messageForwardOriginUser(MessageForwardOriginUser)
 
-    /// The message was originally written by an anonymous chat administrator on behalf of the chat
+    /// The message was originally sent by an anonymous chat administrator on behalf of the chat
     case messageForwardOriginChat(MessageForwardOriginChat)
 
-    /// The message was originally written by a user, which is hidden by their privacy settings
+    /// The message was originally sent by a user, which is hidden by their privacy settings
     case messageForwardOriginHiddenUser(MessageForwardOriginHiddenUser)
 
     /// The message was originally a post in a channel
@@ -69,7 +69,7 @@ public enum MessageForwardOrigin: Codable {
     }
 }
 
-/// The message was originally written by a known user
+/// The message was originally sent by a known user
 public struct MessageForwardOriginUser: Codable {
 
     /// Identifier of the user that originally sent the message
@@ -81,19 +81,26 @@ public struct MessageForwardOriginUser: Codable {
     }
 }
 
-/// The message was originally written by an anonymous chat administrator on behalf of the chat
+/// The message was originally sent by an anonymous chat administrator on behalf of the chat
 public struct MessageForwardOriginChat: Codable {
+
+    /// Original message author signature
+    public let authorSignature: String
 
     /// Identifier of the chat that originally sent the message
     public let senderChatId: Int64
 
 
-    public init (senderChatId: Int64) {
+    public init (
+        authorSignature: String,
+        senderChatId: Int64) {
+
+        self.authorSignature = authorSignature
         self.senderChatId = senderChatId
     }
 }
 
-/// The message was originally written by a user, which is hidden by their privacy settings
+/// The message was originally sent by a user, which is hidden by their privacy settings
 public struct MessageForwardOriginHiddenUser: Codable {
 
     /// Name of the sender
@@ -114,7 +121,7 @@ public struct MessageForwardOriginChannel: Codable {
     /// Identifier of the chat from which the message was originally forwarded
     public let chatId: Int64
 
-    /// Message identifier of the original message; 0 if unknown
+    /// Message identifier of the original message
     public let messageId: Int64
 
 

@@ -50,7 +50,7 @@ public indirect enum RichText: Codable {
     /// A small image inside the text
     case richTextIcon(RichTextIcon)
 
-    /// A rich text reference of a text on the same web page
+    /// A reference to a richTexts object on the same web page
     case richTextReference(RichTextReference)
 
     /// An anchor
@@ -393,11 +393,11 @@ public struct RichTextIcon: Codable {
     }
 }
 
-/// A rich text reference of a text on the same web page
+/// A reference to a richTexts object on the same web page
 public struct RichTextReference: Codable {
 
-    /// The text to show on click
-    public let referenceText: RichText
+    /// The name of a richTextAnchor object, which is the first element of the target richTexts object
+    public let anchorName: String
 
     /// The text
     public let text: RichText
@@ -407,11 +407,11 @@ public struct RichTextReference: Codable {
 
 
     public init (
-        referenceText: RichText,
+        anchorName: String,
         text: RichText,
         url: String) {
 
-        self.referenceText = referenceText
+        self.anchorName = anchorName
         self.text = text
         self.url = url
     }
@@ -433,7 +433,7 @@ public struct RichTextAnchor: Codable {
 public struct RichTextAnchorLink: Codable {
 
     /// The anchor name. If the name is empty, the link should bring back to top
-    public let name: String
+    public let anchorName: String
 
     /// The link text
     public let text: RichText
@@ -443,11 +443,11 @@ public struct RichTextAnchorLink: Codable {
 
 
     public init (
-        name: String,
+        anchorName: String,
         text: RichText,
         url: String) {
 
-        self.name = name
+        self.anchorName = anchorName
         self.text = text
         self.url = url
     }

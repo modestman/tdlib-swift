@@ -11,7 +11,7 @@ import Foundation
 /// Describes a message
 public struct Message: Codable {
 
-    /// For channel posts, optional author signature
+    /// For channel posts and anonymous group messages, optional author signature
     public let authorSignature: String
 
     /// True, if the message can be deleted for all users
@@ -62,6 +62,9 @@ public struct Message: Codable {
     /// True, if the message is outgoing
     public let isOutgoing: Bool
 
+    /// True, if the message is pinned
+    public let isPinned: Bool
+
     /// Unique identifier of an album this message belongs to. Only photos and videos can be grouped together in albums
     public let mediaAlbumId: TdInt64
 
@@ -83,11 +86,8 @@ public struct Message: Codable {
     /// Information about the scheduling state of the message; may be null
     public let schedulingState: MessageSchedulingState?
 
-    /// Identifier of the chat on behalf of which the message was sent; 0 if none
-    public let senderChatId: Int64
-
-    /// Identifier of the user who sent the message; 0 if unknown. Currently, it is unknown for channel posts, for channel posts automatically forwarded to discussion group and for anonymously sent supergroup messages
-    public let senderUserId: Int
+    /// The sender of the message
+    public let sender: MessageSender
 
     /// Information about the sending state of the message; may be null
     public let sendingState: MessageSendingState?
@@ -120,6 +120,7 @@ public struct Message: Codable {
         interactionInfo: MessageInteractionInfo?,
         isChannelPost: Bool,
         isOutgoing: Bool,
+        isPinned: Bool,
         mediaAlbumId: TdInt64,
         messageThreadId: Int64,
         replyInChatId: Int64,
@@ -127,8 +128,7 @@ public struct Message: Codable {
         replyToMessageId: Int64,
         restrictionReason: String,
         schedulingState: MessageSchedulingState?,
-        senderChatId: Int64,
-        senderUserId: Int,
+        sender: MessageSender,
         sendingState: MessageSendingState?,
         ttl: Int,
         ttlExpiresIn: Double,
@@ -151,6 +151,7 @@ public struct Message: Codable {
         self.interactionInfo = interactionInfo
         self.isChannelPost = isChannelPost
         self.isOutgoing = isOutgoing
+        self.isPinned = isPinned
         self.mediaAlbumId = mediaAlbumId
         self.messageThreadId = messageThreadId
         self.replyInChatId = replyInChatId
@@ -158,8 +159,7 @@ public struct Message: Codable {
         self.replyToMessageId = replyToMessageId
         self.restrictionReason = restrictionReason
         self.schedulingState = schedulingState
-        self.senderChatId = senderChatId
-        self.senderUserId = senderUserId
+        self.sender = sender
         self.sendingState = sendingState
         self.ttl = ttl
         self.ttlExpiresIn = ttlExpiresIn
