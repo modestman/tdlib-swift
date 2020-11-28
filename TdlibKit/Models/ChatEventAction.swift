@@ -24,7 +24,7 @@ public enum ChatEventAction: Codable {
     case chatEventMessagePinned(ChatEventMessagePinned)
 
     /// A message was unpinned
-    case chatEventMessageUnpinned
+    case chatEventMessageUnpinned(ChatEventMessageUnpinned)
 
     /// A new member joined the chat
     case chatEventMemberJoined
@@ -120,7 +120,8 @@ public enum ChatEventAction: Codable {
             let value = try ChatEventMessagePinned(from: decoder)
             self = .chatEventMessagePinned(value)
         case .chatEventMessageUnpinned:
-            self = .chatEventMessageUnpinned
+            let value = try ChatEventMessageUnpinned(from: decoder)
+            self = .chatEventMessageUnpinned(value)
         case .chatEventMemberJoined:
             self = .chatEventMemberJoined
         case .chatEventMemberLeft:
@@ -188,8 +189,9 @@ public enum ChatEventAction: Codable {
         case .chatEventMessagePinned(let value):
             try container.encode(Kind.chatEventMessagePinned, forKey: .type)
             try value.encode(to: encoder)
-        case .chatEventMessageUnpinned:
+        case .chatEventMessageUnpinned(let value):
             try container.encode(Kind.chatEventMessageUnpinned, forKey: .type)
+            try value.encode(to: encoder)
         case .chatEventMemberJoined:
             try container.encode(Kind.chatEventMemberJoined, forKey: .type)
         case .chatEventMemberLeft:
@@ -290,6 +292,18 @@ public struct ChatEventPollStopped: Codable {
 public struct ChatEventMessagePinned: Codable {
 
     /// Pinned message
+    public let message: Message
+
+
+    public init (message: Message) {
+        self.message = message
+    }
+}
+
+/// A message was unpinned
+public struct ChatEventMessageUnpinned: Codable {
+
+    /// Unpinned message
     public let message: Message
 
 

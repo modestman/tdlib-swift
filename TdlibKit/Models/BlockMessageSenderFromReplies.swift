@@ -1,5 +1,5 @@
 //
-//  BlockChatFromReplies.swift
+//  BlockMessageSenderFromReplies.swift
 //  tl2swift
 //
 //  Created by Code Generator
@@ -9,7 +9,7 @@ import Foundation
 
 
 /// Blocks an original sender of a message in the Replies chat
-public struct BlockChatFromReplies: Codable {
+public struct BlockMessageSenderFromReplies: Codable {
 
     /// Pass true if all messages from the same sender must be deleted
     public let deleteAllMessages: Bool

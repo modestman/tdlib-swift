@@ -11,7 +11,7 @@ import Foundation
 /// Contains information about a chat invite link
 public struct ChatInviteLinkInfo: Codable {
 
-    /// If non-zero, the remaining time for which read access is granted to the chat, in seconds
+    /// If non-zero, the amount of time for which read access to the chat will remain available, in seconds
     public let accessibleFor: Int
 
     /// Chat identifier of the invite link; 0 if the user has no access to the chat before joining

@@ -12,10 +12,10 @@ import Foundation
 public struct MessageStatistics: Codable {
 
     /// A graph containing number of message views and shares
-    public let messageInteractionGraph: StatisticsGraph
+    public let messageInteractionGraph: StatisticalGraph
 
 
-    public init (messageInteractionGraph: StatisticsGraph) {
+    public init (messageInteractionGraph: StatisticalGraph) {
         self.messageInteractionGraph = messageInteractionGraph
     }
 }

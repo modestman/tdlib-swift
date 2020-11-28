@@ -26,6 +26,9 @@ public struct UserFullInfo: Codable {
     /// True, if the user can't be called due to their privacy settings
     public let hasPrivateCalls: Bool
 
+    /// True, if the user is blocked by the current user
+    public let isBlocked: Bool
+
     /// True, if the current user needs to explicitly allow to share their phone number with the user when the method addContact is used
     public let needPhoneNumberPrivacyException: Bool
 
@@ -45,6 +48,7 @@ public struct UserFullInfo: Codable {
         canBeCalled: Bool,
         groupInCommonCount: Int,
         hasPrivateCalls: Bool,
+        isBlocked: Bool,
         needPhoneNumberPrivacyException: Bool,
         photo: ChatPhoto?,
         shareText: String,
@@ -55,6 +59,7 @@ public struct UserFullInfo: Codable {
         self.canBeCalled = canBeCalled
         self.groupInCommonCount = groupInCommonCount
         self.hasPrivateCalls = hasPrivateCalls
+        self.isBlocked = isBlocked
         self.needPhoneNumberPrivacyException = needPhoneNumberPrivacyException
         self.photo = photo
         self.shareText = shareText

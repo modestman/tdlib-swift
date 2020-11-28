@@ -131,6 +131,9 @@ public enum MessageContent: Codable {
     /// Telegram Passport data has been received; for bots only
     case messagePassportDataReceived(MessagePassportDataReceived)
 
+    /// A user in the chat came within proximity alert range
+    case messageProximityAlertTriggered(MessageProximityAlertTriggered)
+
     /// Message content that is not supported in the current TDLib version
     case messageUnsupported
 
@@ -176,6 +179,7 @@ public enum MessageContent: Codable {
         case messageWebsiteConnected
         case messagePassportDataSent
         case messagePassportDataReceived
+        case messageProximityAlertTriggered
         case messageUnsupported
     }
 
@@ -297,6 +301,9 @@ public enum MessageContent: Codable {
         case .messagePassportDataReceived:
             let value = try MessagePassportDataReceived(from: decoder)
             self = .messagePassportDataReceived(value)
+        case .messageProximityAlertTriggered:
+            let value = try MessageProximityAlertTriggered(from: decoder)
+            self = .messageProximityAlertTriggered(value)
         case .messageUnsupported:
             self = .messageUnsupported
         }
@@ -418,6 +425,9 @@ public enum MessageContent: Codable {
             try value.encode(to: encoder)
         case .messagePassportDataReceived(let value):
             try container.encode(Kind.messagePassportDataReceived, forKey: .type)
+            try value.encode(to: encoder)
+        case .messageProximityAlertTriggered(let value):
+            try container.encode(Kind.messageProximityAlertTriggered, forKey: .type)
             try value.encode(to: encoder)
         case .messageUnsupported:
             try container.encode(Kind.messageUnsupported, forKey: .type)
@@ -620,21 +630,31 @@ public struct MessageLocation: Codable {
     /// Left time for which the location can be updated, in seconds. updateMessageContent is not sent when this field changes
     public let expiresIn: Int
 
-    /// Time relative to the message sent date until which the location can be updated, in seconds
+    /// For live locations, a direction in which the location moves, in degrees; 1-360. If 0 the direction is unknown
+    public let heading: Int
+
+    /// Time relative to the message send date, for which the location can be updated, in seconds
     public let livePeriod: Int
 
     /// The location description
     public let location: Location
 
+    /// For live locations, a maximum distance to another chat member for proximity alerts, in meters (0-100000). 0 if the notification is disabled. Available only for the message sender
+    public let proximityAlertRadius: Int
+
 
     public init (
         expiresIn: Int,
+        heading: Int,
         livePeriod: Int,
-        location: Location) {
+        location: Location,
+        proximityAlertRadius: Int) {
 
         self.expiresIn = expiresIn
+        self.heading = heading
         self.livePeriod = livePeriod
         self.location = location
+        self.proximityAlertRadius = proximityAlertRadius
     }
 }
 
@@ -668,11 +688,11 @@ public struct MessageDice: Codable {
     /// Emoji on which the dice throw animation is based
     public let emoji: String
 
-    /// The animated sticker with the final dice animation; may be null if unknown. updateMessageContent will be sent when the sticker became known
-    public let finalStateSticker: Sticker?
+    /// The animated stickers with the final dice animation; may be null if unknown. updateMessageContent will be sent when the sticker became known
+    public let finalState: DiceStickers?
 
-    /// The animated sticker with the initial dice animation; may be null if unknown. updateMessageContent will be sent when the sticker became known
-    public let initialStateSticker: Sticker?
+    /// The animated stickers with the initial dice animation; may be null if unknown. updateMessageContent will be sent when the sticker became known
+    public let initialState: DiceStickers?
 
     /// Number of frame after which a success animation like a shower of confetti needs to be shown on updateMessageSendSucceeded
     public let successAnimationFrameNumber: Int
@@ -683,14 +703,14 @@ public struct MessageDice: Codable {
 
     public init (
         emoji: String,
-        finalStateSticker: Sticker?,
-        initialStateSticker: Sticker?,
+        finalState: DiceStickers?,
+        initialState: DiceStickers?,
         successAnimationFrameNumber: Int,
         value: Int) {
 
         self.emoji = emoji
-        self.finalStateSticker = finalStateSticker
-        self.initialStateSticker = initialStateSticker
+        self.finalState = finalState
+        self.initialState = initialState
         self.successAnimationFrameNumber = successAnimationFrameNumber
         self.value = value
     }
@@ -1080,6 +1100,30 @@ public struct MessagePassportDataReceived: Codable {
 
         self.credentials = credentials
         self.elements = elements
+    }
+}
+
+/// A user in the chat came within proximity alert range
+public struct MessageProximityAlertTriggered: Codable {
+
+    /// The distance between the users
+    public let distance: Int
+
+    /// The user or chat, which triggered the proximity alert
+    public let traveler: MessageSender
+
+    /// The user or chat, which subscribed for the proximity alert
+    public let watcher: MessageSender
+
+
+    public init (
+        distance: Int,
+        traveler: MessageSender,
+        watcher: MessageSender) {
+
+        self.distance = distance
+        self.traveler = traveler
+        self.watcher = watcher
     }
 }
 

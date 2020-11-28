@@ -91,7 +91,7 @@ public struct ChatMemberStatusCreator: Codable {
     /// A custom title of the owner; 0-16 characters without emojis; applicable to supergroups only
     public let customTitle: String
 
-    /// True, if the creator isn't shown in the chat member list and sends messages anonymously
+    /// True, if the creator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only
     public let isAnonymous: Bool
 
     /// True, if the user is a member of the chat
@@ -142,7 +142,7 @@ public struct ChatMemberStatusAdministrator: Codable {
     /// A custom title of the administrator; 0-16 characters without emojis; applicable to supergroups only
     public let customTitle: String
 
-    /// True, if the administrator isn't shown in the chat member list and sends messages anonymously
+    /// True, if the administrator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only
     public let isAnonymous: Bool
 
 

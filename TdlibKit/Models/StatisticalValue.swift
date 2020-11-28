@@ -1,5 +1,5 @@
 //
-//  StatisticsValue.swift
+//  StatisticalValue.swift
 //  tl2swift
 //
 //  Created by Code Generator
@@ -8,8 +8,8 @@
 import Foundation
 
 
-/// A statistics value
-public struct StatisticsValue: Codable {
+/// A value with information about its recent changes
+public struct StatisticalValue: Codable {
 
     /// The growth rate of the value, as a percentage
     public let growthRatePercentage: Double
@@ -17,7 +17,7 @@ public struct StatisticsValue: Codable {
     /// The value for the previous day
     public let previousValue: Double
 
-    /// The value
+    /// The current value
     public let value: Double
 
 

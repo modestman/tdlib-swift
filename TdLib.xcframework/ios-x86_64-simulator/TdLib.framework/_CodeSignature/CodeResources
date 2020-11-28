@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/td_json_client.h</key>
 		<data>
-		sQMdqo92JLpkjz6jtybdYs5Uyuw=
+		L8Ks0RQ6dXbyskp57Dhc33f/Zi0=
 		</data>
 		<key>Headers/td_log.h</key>
 		<data>
@@ -22,7 +22,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		0hoZIxydA/k+OLZnFDzBq2MBuTA=
+		5Zolz6/4jAyrjkpqmqR7VZp/rf8=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -35,11 +35,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			sQMdqo92JLpkjz6jtybdYs5Uyuw=
+			L8Ks0RQ6dXbyskp57Dhc33f/Zi0=
 			</data>
 			<key>hash2</key>
 			<data>
-			M/k/FJtSsP/RxDgoJ3AdE+s5pftE8uB0ozaDZ+RvT0A=
+			iL5JQOD4Q7VQAyM3MIP3NCEPbFZZVquTKR0Mkt2ELTA=
 			</data>
 		</dict>
 		<key>Headers/td_log.h</key>

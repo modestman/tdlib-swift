@@ -62,9 +62,6 @@ public struct Chat: Codable {
     /// Chat photo; may be null
     public let photo: ChatPhotoInfo?
 
-    /// Identifier of the pinned message in the chat; 0 if none
-    public let pinnedMessageId: Int64
-
     /// Positions of the chat in chat lists
     public let positions: [ChatPosition]
 
@@ -102,7 +99,6 @@ public struct Chat: Codable {
         notificationSettings: ChatNotificationSettings,
         permissions: ChatPermissions,
         photo: ChatPhotoInfo?,
-        pinnedMessageId: Int64,
         positions: [ChatPosition],
         replyMarkupMessageId: Int64,
         title: String,
@@ -127,7 +123,6 @@ public struct Chat: Codable {
         self.notificationSettings = notificationSettings
         self.permissions = permissions
         self.photo = photo
-        self.pinnedMessageId = pinnedMessageId
         self.positions = positions
         self.replyMarkupMessageId = replyMarkupMessageId
         self.title = title

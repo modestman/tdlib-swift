@@ -29,6 +29,9 @@ public enum SupergroupMembersFilter: Codable {
     /// Returns users banned from the supergroup or channel; can be used only by administrators
     case supergroupMembersFilterBanned(SupergroupMembersFilterBanned)
 
+    /// Returns users which can be mentioned in the supergroup
+    case supergroupMembersFilterMention(SupergroupMembersFilterMention)
+
     /// Returns bot members of the supergroup or channel
     case supergroupMembersFilterBots
 
@@ -40,6 +43,7 @@ public enum SupergroupMembersFilter: Codable {
         case supergroupMembersFilterSearch
         case supergroupMembersFilterRestricted
         case supergroupMembersFilterBanned
+        case supergroupMembersFilterMention
         case supergroupMembersFilterBots
     }
 
@@ -63,6 +67,9 @@ public enum SupergroupMembersFilter: Codable {
         case .supergroupMembersFilterBanned:
             let value = try SupergroupMembersFilterBanned(from: decoder)
             self = .supergroupMembersFilterBanned(value)
+        case .supergroupMembersFilterMention:
+            let value = try SupergroupMembersFilterMention(from: decoder)
+            self = .supergroupMembersFilterMention(value)
         case .supergroupMembersFilterBots:
             self = .supergroupMembersFilterBots
         }
@@ -86,6 +93,9 @@ public enum SupergroupMembersFilter: Codable {
             try value.encode(to: encoder)
         case .supergroupMembersFilterBanned(let value):
             try container.encode(Kind.supergroupMembersFilterBanned, forKey: .type)
+            try value.encode(to: encoder)
+        case .supergroupMembersFilterMention(let value):
+            try container.encode(Kind.supergroupMembersFilterMention, forKey: .type)
             try value.encode(to: encoder)
         case .supergroupMembersFilterBots:
             try container.encode(Kind.supergroupMembersFilterBots, forKey: .type)
@@ -137,6 +147,25 @@ public struct SupergroupMembersFilterBanned: Codable {
 
 
     public init (query: String) {
+        self.query = query
+    }
+}
+
+/// Returns users which can be mentioned in the supergroup
+public struct SupergroupMembersFilterMention: Codable {
+
+    /// If non-zero, the identifier of the current message thread
+    public let messageThreadId: Int64
+
+    /// Query to search for
+    public let query: String
+
+
+    public init (
+        messageThreadId: Int64,
+        query: String) {
+
+        self.messageThreadId = messageThreadId
         self.query = query
     }
 }

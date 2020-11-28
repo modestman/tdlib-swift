@@ -14,7 +14,7 @@ public struct ChatNearby: Codable {
     /// Chat identifier
     public let chatId: Int64
 
-    /// Distance to the chat location in meters
+    /// Distance to the chat location, in meters
     public let distance: Int
 
 

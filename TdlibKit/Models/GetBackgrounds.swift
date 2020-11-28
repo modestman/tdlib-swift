@@ -11,7 +11,7 @@ import Foundation
 /// Returns backgrounds installed by the user
 public struct GetBackgrounds: Codable {
 
-    /// True, if the backgrounds need to be ordered for dark theme
+    /// True, if the backgrounds must be ordered for dark theme
     public let forDarkTheme: Bool
 
 

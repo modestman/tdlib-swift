@@ -32,8 +32,8 @@ public struct SearchChatMessages: Codable {
     /// Query to search for
     public let query: String
 
-    /// If not 0, only messages sent by the specified user will be returned. Not supported in secret chats
-    public let senderUserId: Int
+    /// If not null, only messages sent by the specified sender will be returned. Not supported in secret chats
+    public let sender: MessageSender
 
 
     public init (
@@ -44,7 +44,7 @@ public struct SearchChatMessages: Codable {
         messageThreadId: Int64,
         offset: Int,
         query: String,
-        senderUserId: Int) {
+        sender: MessageSender) {
 
         self.chatId = chatId
         self.filter = filter
@@ -53,7 +53,7 @@ public struct SearchChatMessages: Codable {
         self.messageThreadId = messageThreadId
         self.offset = offset
         self.query = query
-        self.senderUserId = senderUserId
+        self.sender = sender
     }
 }
 

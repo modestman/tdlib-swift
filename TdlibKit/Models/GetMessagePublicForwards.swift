@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Returns forwarded copies of a channel message to another public channels. For optimal performance the number of returned messages is chosen by the library. The method is under development and may or may not work
+/// Returns forwarded copies of a channel message to different public channels. For optimal performance the number of returned messages is chosen by the library
 public struct GetMessagePublicForwards: Codable {
 
     /// Chat identifier of the message

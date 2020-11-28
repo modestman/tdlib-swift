@@ -523,19 +523,29 @@ public struct InputMessageVoiceNote: Codable {
 /// A message with a location
 public struct InputMessageLocation: Codable {
 
+    /// For live locations, a direction in which the location moves, in degrees; 1-360. Pass 0 if unknown
+    public let heading: Int
+
     /// Period for which the location can be updated, in seconds; should be between 60 and 86400 for a live location and 0 otherwise
     public let livePeriod: Int
 
     /// Location to be sent
     public let location: Location
 
+    /// For live locations, a maximum distance to another chat member for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled. Can't be enabled in channels and Saved Messages
+    public let proximityAlertRadius: Int
+
 
     public init (
+        heading: Int,
         livePeriod: Int,
-        location: Location) {
+        location: Location,
+        proximityAlertRadius: Int) {
 
+        self.heading = heading
         self.livePeriod = livePeriod
         self.location = location
+        self.proximityAlertRadius = proximityAlertRadius
     }
 }
 

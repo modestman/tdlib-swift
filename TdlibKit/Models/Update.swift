@@ -32,6 +32,9 @@ public enum Update: Codable {
     /// A message was edited. Changes in the message content will come in a separate updateMessageContent
     case updateMessageEdited(UpdateMessageEdited)
 
+    /// The message pinned state was changed
+    case updateMessageIsPinned(UpdateMessageIsPinned)
+
     /// The information about interactions with a message has changed
     case updateMessageInteractionInfo(UpdateMessageInteractionInfo)
 
@@ -91,9 +94,6 @@ public enum Update: Codable {
 
     /// The chat action bar was changed
     case updateChatActionBar(UpdateChatActionBar)
-
-    /// The chat pinned message was changed
-    case updateChatPinnedMessage(UpdateChatPinnedMessage)
 
     /// The default chat reply markup was changed. Can occur because new messages with reply markup were received or because an old reply markup was hidden by the user
     case updateChatReplyMarkup(UpdateChatReplyMarkup)
@@ -203,7 +203,7 @@ public enum Update: Codable {
     /// Some language pack strings have been updated
     case updateLanguagePackStrings(UpdateLanguagePackStrings)
 
-    /// The connection state has changed. This update must be used only to show the user a human-readable description of the connection state
+    /// The connection state has changed. This update must be used only to show a human-readable description of the connection state
     case updateConnectionState(UpdateConnectionState)
 
     /// New terms of service must be accepted by the user. If the terms of service are declined, then the deleteAccount method should be called with the reason "Decline ToS update"
@@ -260,6 +260,7 @@ public enum Update: Codable {
         case updateMessageSendFailed
         case updateMessageContent
         case updateMessageEdited
+        case updateMessageIsPinned
         case updateMessageInteractionInfo
         case updateMessageContentOpened
         case updateMessageMentionRead
@@ -280,7 +281,6 @@ public enum Update: Codable {
         case updateChatNotificationSettings
         case updateScopeNotificationSettings
         case updateChatActionBar
-        case updateChatPinnedMessage
         case updateChatReplyMarkup
         case updateChatDraftMessage
         case updateChatFilters
@@ -360,6 +360,9 @@ public enum Update: Codable {
         case .updateMessageEdited:
             let value = try UpdateMessageEdited(from: decoder)
             self = .updateMessageEdited(value)
+        case .updateMessageIsPinned:
+            let value = try UpdateMessageIsPinned(from: decoder)
+            self = .updateMessageIsPinned(value)
         case .updateMessageInteractionInfo:
             let value = try UpdateMessageInteractionInfo(from: decoder)
             self = .updateMessageInteractionInfo(value)
@@ -420,9 +423,6 @@ public enum Update: Codable {
         case .updateChatActionBar:
             let value = try UpdateChatActionBar(from: decoder)
             self = .updateChatActionBar(value)
-        case .updateChatPinnedMessage:
-            let value = try UpdateChatPinnedMessage(from: decoder)
-            self = .updateChatPinnedMessage(value)
         case .updateChatReplyMarkup:
             let value = try UpdateChatReplyMarkup(from: decoder)
             self = .updateChatReplyMarkup(value)
@@ -606,6 +606,9 @@ public enum Update: Codable {
         case .updateMessageEdited(let value):
             try container.encode(Kind.updateMessageEdited, forKey: .type)
             try value.encode(to: encoder)
+        case .updateMessageIsPinned(let value):
+            try container.encode(Kind.updateMessageIsPinned, forKey: .type)
+            try value.encode(to: encoder)
         case .updateMessageInteractionInfo(let value):
             try container.encode(Kind.updateMessageInteractionInfo, forKey: .type)
             try value.encode(to: encoder)
@@ -665,9 +668,6 @@ public enum Update: Codable {
             try value.encode(to: encoder)
         case .updateChatActionBar(let value):
             try container.encode(Kind.updateChatActionBar, forKey: .type)
-            try value.encode(to: encoder)
-        case .updateChatPinnedMessage(let value):
-            try container.encode(Kind.updateChatPinnedMessage, forKey: .type)
             try value.encode(to: encoder)
         case .updateChatReplyMarkup(let value):
             try container.encode(Kind.updateChatReplyMarkup, forKey: .type)
@@ -970,6 +970,30 @@ public struct UpdateMessageEdited: Codable {
         self.editDate = editDate
         self.messageId = messageId
         self.replyMarkup = replyMarkup
+    }
+}
+
+/// The message pinned state was changed
+public struct UpdateMessageIsPinned: Codable {
+
+    /// Chat identifier
+    public let chatId: Int64
+
+    /// True, if the message is pinned
+    public let isPinned: Bool
+
+    /// The message identifier
+    public let messageId: Int64
+
+
+    public init (
+        chatId: Int64,
+        isPinned: Bool,
+        messageId: Int64) {
+
+        self.chatId = chatId
+        self.isPinned = isPinned
+        self.messageId = messageId
     }
 }
 
@@ -1363,25 +1387,6 @@ public struct UpdateChatActionBar: Codable {
 
         self.actionBar = actionBar
         self.chatId = chatId
-    }
-}
-
-/// The chat pinned message was changed
-public struct UpdateChatPinnedMessage: Codable {
-
-    /// Chat identifier
-    public let chatId: Int64
-
-    /// The new identifier of the pinned message; 0 if there is no pinned message in the chat
-    public let pinnedMessageId: Int64
-
-
-    public init (
-        chatId: Int64,
-        pinnedMessageId: Int64) {
-
-        self.chatId = chatId
-        self.pinnedMessageId = pinnedMessageId
     }
 }
 
@@ -2073,7 +2078,7 @@ public struct UpdateLanguagePackStrings: Codable {
     }
 }
 
-/// The connection state has changed. This update must be used only to show the user a human-readable description of the connection state
+/// The connection state has changed. This update must be used only to show a human-readable description of the connection state
 public struct UpdateConnectionState: Codable {
 
     /// The new connection state
