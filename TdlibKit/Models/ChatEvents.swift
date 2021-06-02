@@ -15,7 +15,7 @@ public struct ChatEvents: Codable {
     public let events: [ChatEvent]
 
 
-    public init (events: [ChatEvent]) {
+    public init(events: [ChatEvent]) {
         self.events = events
     }
 }

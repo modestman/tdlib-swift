@@ -21,11 +21,11 @@ public struct EncryptedCredentials: Codable {
     public let secret: Data
 
 
-    public init (
+    public init(
         data: Data,
         hash: Data,
-        secret: Data) {
-
+        secret: Data
+    ) {
         self.data = data
         self.hash = hash
         self.secret = secret

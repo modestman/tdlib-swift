@@ -18,10 +18,10 @@ public struct AddChatToList: Codable {
     public let chatList: ChatList
 
 
-    public init (
+    public init(
         chatId: Int64,
-        chatList: ChatList) {
-
+        chatList: ChatList
+    ) {
         self.chatId = chatId
         self.chatList = chatList
     }

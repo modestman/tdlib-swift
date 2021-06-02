@@ -27,13 +27,13 @@ public struct GetPollVoters: Codable {
     public let optionId: Int
 
 
-    public init (
+    public init(
         chatId: Int64,
         limit: Int,
         messageId: Int64,
         offset: Int,
-        optionId: Int) {
-
+        optionId: Int
+    ) {
         self.chatId = chatId
         self.limit = limit
         self.messageId = messageId

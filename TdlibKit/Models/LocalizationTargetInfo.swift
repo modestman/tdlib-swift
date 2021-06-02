@@ -15,7 +15,7 @@ public struct LocalizationTargetInfo: Codable {
     public let languagePacks: [LanguagePackInfo]
 
 
-    public init (languagePacks: [LanguagePackInfo]) {
+    public init(languagePacks: [LanguagePackInfo]) {
         self.languagePacks = languagePacks
     }
 }

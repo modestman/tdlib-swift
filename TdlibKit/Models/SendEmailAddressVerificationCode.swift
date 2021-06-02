@@ -15,7 +15,7 @@ public struct SendEmailAddressVerificationCode: Codable {
     public let emailAddress: String
 
 
-    public init (emailAddress: String) {
+    public init(emailAddress: String) {
         self.emailAddress = emailAddress
     }
 }

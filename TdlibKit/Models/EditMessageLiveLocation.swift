@@ -30,14 +30,14 @@ public struct EditMessageLiveLocation: Codable {
     public let replyMarkup: ReplyMarkup
 
 
-    public init (
+    public init(
         chatId: Int64,
         heading: Int,
         location: Location?,
         messageId: Int64,
         proximityAlertRadius: Int,
-        replyMarkup: ReplyMarkup) {
-
+        replyMarkup: ReplyMarkup
+    ) {
         self.chatId = chatId
         self.heading = heading
         self.location = location

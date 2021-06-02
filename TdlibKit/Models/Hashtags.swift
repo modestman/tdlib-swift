@@ -15,7 +15,7 @@ public struct Hashtags: Codable {
     public let hashtags: [String]
 
 
-    public init (hashtags: [String]) {
+    public init(hashtags: [String]) {
         self.hashtags = hashtags
     }
 }

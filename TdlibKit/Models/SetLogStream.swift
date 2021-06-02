@@ -15,7 +15,7 @@ public struct SetLogStream: Codable {
     public let logStream: LogStream
 
 
-    public init (logStream: LogStream) {
+    public init(logStream: LogStream) {
         self.logStream = logStream
     }
 }

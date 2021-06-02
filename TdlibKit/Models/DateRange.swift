@@ -18,10 +18,10 @@ public struct DateRange: Codable {
     public let startDate: Int
 
 
-    public init (
+    public init(
         endDate: Int,
-        startDate: Int) {
-
+        startDate: Int
+    ) {
         self.endDate = endDate
         self.startDate = startDate
     }

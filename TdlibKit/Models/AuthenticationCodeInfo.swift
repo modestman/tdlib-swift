@@ -24,12 +24,12 @@ public struct AuthenticationCodeInfo: Codable {
     public let type: AuthenticationCodeType
 
 
-    public init (
+    public init(
         nextType: AuthenticationCodeType?,
         phoneNumber: String,
         timeout: Int,
-        type: AuthenticationCodeType) {
-
+        type: AuthenticationCodeType
+    ) {
         self.nextType = nextType
         self.phoneNumber = phoneNumber
         self.timeout = timeout

@@ -27,13 +27,13 @@ public struct StorageStatisticsFast: Codable {
     public let logSize: Int64
 
 
-    public init (
+    public init(
         databaseSize: Int64,
         fileCount: Int,
         filesSize: Int64,
         languagePackDatabaseSize: Int64,
-        logSize: Int64) {
-
+        logSize: Int64
+    ) {
         self.databaseSize = databaseSize
         self.fileCount = fileCount
         self.filesSize = filesSize

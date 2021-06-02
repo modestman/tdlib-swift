@@ -12,7 +12,6 @@ import Foundation
 public struct GetImportedContactCount: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

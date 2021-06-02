@@ -18,10 +18,10 @@ public struct RegisterDevice: Codable {
     public let otherUserIds: [Int]
 
 
-    public init (
+    public init(
         deviceToken: DeviceToken,
-        otherUserIds: [Int]) {
-
+        otherUserIds: [Int]
+    ) {
         self.deviceToken = deviceToken
         self.otherUserIds = otherUserIds
     }

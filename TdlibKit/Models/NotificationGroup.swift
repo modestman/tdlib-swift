@@ -27,13 +27,13 @@ public struct NotificationGroup: Codable {
     public let type: NotificationGroupType
 
 
-    public init (
+    public init(
         chatId: Int64,
         id: Int,
         notifications: [Notification],
         totalCount: Int,
-        type: NotificationGroupType) {
-
+        type: NotificationGroupType
+    ) {
         self.chatId = chatId
         self.id = id
         self.notifications = notifications

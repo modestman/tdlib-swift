@@ -21,11 +21,11 @@ public struct GetCallbackQueryAnswer: Codable {
     public let payload: CallbackQueryPayload
 
 
-    public init (
+    public init(
         chatId: Int64,
         messageId: Int64,
-        payload: CallbackQueryPayload) {
-
+        payload: CallbackQueryPayload
+    ) {
         self.chatId = chatId
         self.messageId = messageId
         self.payload = payload

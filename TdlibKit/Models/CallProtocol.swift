@@ -11,7 +11,7 @@ import Foundation
 /// Specifies the supported call protocols
 public struct CallProtocol: Codable {
 
-    /// List of supported libtgvoip versions
+    /// List of supported tgcalls versions
     public let libraryVersions: [String]
 
     /// The maximum supported API layer; use 65
@@ -27,13 +27,13 @@ public struct CallProtocol: Codable {
     public let udpReflector: Bool
 
 
-    public init (
+    public init(
         libraryVersions: [String],
         maxLayer: Int,
         minLayer: Int,
         udpP2p: Bool,
-        udpReflector: Bool) {
-
+        udpReflector: Bool
+    ) {
         self.libraryVersions = libraryVersions
         self.maxLayer = maxLayer
         self.minLayer = minLayer

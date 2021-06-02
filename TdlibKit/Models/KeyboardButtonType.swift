@@ -73,10 +73,10 @@ public struct KeyboardButtonTypeRequestPoll: Codable {
     public let forceRegular: Bool
 
 
-    public init (
+    public init(
         forceQuiz: Bool,
-        forceRegular: Bool) {
-
+        forceRegular: Bool
+    ) {
         self.forceQuiz = forceQuiz
         self.forceRegular = forceRegular
     }

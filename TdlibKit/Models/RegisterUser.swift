@@ -18,10 +18,10 @@ public struct RegisterUser: Codable {
     public let lastName: String
 
 
-    public init (
+    public init(
         firstName: String,
-        lastName: String) {
-
+        lastName: String
+    ) {
         self.firstName = firstName
         self.lastName = lastName
     }

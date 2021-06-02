@@ -15,7 +15,7 @@ public struct GetPreferredCountryLanguage: Codable {
     public let countryCode: String
 
 
-    public init (countryCode: String) {
+    public init(countryCode: String) {
         self.countryCode = countryCode
     }
 }

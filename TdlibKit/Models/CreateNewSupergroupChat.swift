@@ -13,7 +13,10 @@ public struct CreateNewSupergroupChat: Codable {
 
     public let description: String
 
-    /// True, if a channel chat should be created
+    /// True, if the supergroup is created for importing messages using importMessage
+    public let forImport: Bool
+
+    /// True, if a channel chat needs to be created
     public let isChannel: Bool
 
     /// Chat location if a location-based supergroup is being created
@@ -23,13 +26,15 @@ public struct CreateNewSupergroupChat: Codable {
     public let title: String
 
 
-    public init (
+    public init(
         description: String,
+        forImport: Bool,
         isChannel: Bool,
         location: ChatLocation,
-        title: String) {
-
+        title: String
+    ) {
         self.description = description
+        self.forImport = forImport
         self.isChannel = isChannel
         self.location = location
         self.title = title

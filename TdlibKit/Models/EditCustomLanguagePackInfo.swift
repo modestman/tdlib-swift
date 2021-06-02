@@ -15,7 +15,7 @@ public struct EditCustomLanguagePackInfo: Codable {
     public let info: LanguagePackInfo
 
 
-    public init (info: LanguagePackInfo) {
+    public init(info: LanguagePackInfo) {
         self.info = info
     }
 }

@@ -27,13 +27,13 @@ public struct File: Codable {
     public let size: Int
 
 
-    public init (
+    public init(
         expectedSize: Int,
         id: Int,
         local: LocalFile,
         remote: RemoteFile,
-        size: Int) {
-
+        size: Int
+    ) {
         self.expectedSize = expectedSize
         self.id = id
         self.local = local

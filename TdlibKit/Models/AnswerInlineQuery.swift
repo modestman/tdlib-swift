@@ -33,15 +33,15 @@ public struct AnswerInlineQuery: Codable {
     public let switchPmText: String
 
 
-    public init (
+    public init(
         cacheTime: Int,
         inlineQueryId: TdInt64,
         isPersonal: Bool,
         nextOffset: String,
         results: [InputInlineQueryResult],
         switchPmParameter: String,
-        switchPmText: String) {
-
+        switchPmText: String
+    ) {
         self.cacheTime = cacheTime
         self.inlineQueryId = inlineQueryId
         self.isPersonal = isPersonal

@@ -15,7 +15,7 @@ public struct Sessions: Codable {
     public let sessions: [Session]
 
 
-    public init (sessions: [Session]) {
+    public init(sessions: [Session]) {
         self.sessions = sessions
     }
 }

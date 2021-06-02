@@ -21,11 +21,11 @@ public struct ChangeStickerSet: Codable {
     public let setId: TdInt64
 
 
-    public init (
+    public init(
         isArchived: Bool,
         isInstalled: Bool,
-        setId: TdInt64) {
-
+        setId: TdInt64
+    ) {
         self.isArchived = isArchived
         self.isInstalled = isInstalled
         self.setId = setId

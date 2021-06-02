@@ -12,7 +12,6 @@ import Foundation
 public struct GetContacts: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

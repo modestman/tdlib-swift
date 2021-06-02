@@ -24,12 +24,12 @@ public struct GetChats: Codable {
     public let offsetOrder: TdInt64
 
 
-    public init (
+    public init(
         chatList: ChatList,
         limit: Int,
         offsetChatId: Int64,
-        offsetOrder: TdInt64) {
-
+        offsetOrder: TdInt64
+    ) {
         self.chatList = chatList
         self.limit = limit
         self.offsetChatId = offsetChatId

@@ -53,7 +53,7 @@ public enum InputMessageContent: Codable {
     /// A message with a game; not supported for channels or secret chats
     case inputMessageGame(InputMessageGame)
 
-    /// A message with an invoice; can be used only by bots and only in private chats
+    /// A message with an invoice; can be used only by bots
     case inputMessageInvoice(InputMessageInvoice)
 
     /// A message with a poll. Polls can't be sent to secret chats. Polls can be sent only to a private chat with a bot
@@ -212,11 +212,11 @@ public struct InputMessageText: Codable {
     public let text: FormattedText
 
 
-    public init (
+    public init(
         clearDraft: Bool,
         disableWebPagePreview: Bool,
-        text: FormattedText) {
-
+        text: FormattedText
+    ) {
         self.clearDraft = clearDraft
         self.disableWebPagePreview = disableWebPagePreview
         self.text = text
@@ -248,15 +248,15 @@ public struct InputMessageAnimation: Codable {
     public let width: Int
 
 
-    public init (
+    public init(
         addedStickerFileIds: [Int],
         animation: InputFile,
         caption: FormattedText,
         duration: Int,
         height: Int,
         thumbnail: InputThumbnail,
-        width: Int) {
-
+        width: Int
+    ) {
         self.addedStickerFileIds = addedStickerFileIds
         self.animation = animation
         self.caption = caption
@@ -289,14 +289,14 @@ public struct InputMessageAudio: Codable {
     public let title: String
 
 
-    public init (
+    public init(
         albumCoverThumbnail: InputThumbnail,
         audio: InputFile,
         caption: FormattedText,
         duration: Int,
         performer: String,
-        title: String) {
-
+        title: String
+    ) {
         self.albumCoverThumbnail = albumCoverThumbnail
         self.audio = audio
         self.caption = caption
@@ -322,12 +322,12 @@ public struct InputMessageDocument: Codable {
     public let thumbnail: InputThumbnail
 
 
-    public init (
+    public init(
         caption: FormattedText,
         disableContentTypeDetection: Bool,
         document: InputFile,
-        thumbnail: InputThumbnail) {
-
+        thumbnail: InputThumbnail
+    ) {
         self.caption = caption
         self.disableContentTypeDetection = disableContentTypeDetection
         self.document = document
@@ -360,15 +360,15 @@ public struct InputMessagePhoto: Codable {
     public let width: Int
 
 
-    public init (
+    public init(
         addedStickerFileIds: [Int],
         caption: FormattedText,
         height: Int,
         photo: InputFile,
         thumbnail: InputThumbnail,
         ttl: Int,
-        width: Int) {
-
+        width: Int
+    ) {
         self.addedStickerFileIds = addedStickerFileIds
         self.caption = caption
         self.height = height
@@ -381,6 +381,9 @@ public struct InputMessagePhoto: Codable {
 
 /// A sticker message
 public struct InputMessageSticker: Codable {
+
+    /// Emoji used to choose the sticker
+    public let emoji: String
 
     /// Sticker height
     public let height: Int
@@ -395,12 +398,14 @@ public struct InputMessageSticker: Codable {
     public let width: Int
 
 
-    public init (
+    public init(
+        emoji: String,
         height: Int,
         sticker: InputFile,
         thumbnail: InputThumbnail,
-        width: Int) {
-
+        width: Int
+    ) {
+        self.emoji = emoji
         self.height = height
         self.sticker = sticker
         self.thumbnail = thumbnail
@@ -439,7 +444,7 @@ public struct InputMessageVideo: Codable {
     public let width: Int
 
 
-    public init (
+    public init(
         addedStickerFileIds: [Int],
         caption: FormattedText,
         duration: Int,
@@ -448,8 +453,8 @@ public struct InputMessageVideo: Codable {
         thumbnail: InputThumbnail,
         ttl: Int,
         video: InputFile,
-        width: Int) {
-
+        width: Int
+    ) {
         self.addedStickerFileIds = addedStickerFileIds
         self.caption = caption
         self.duration = duration
@@ -478,12 +483,12 @@ public struct InputMessageVideoNote: Codable {
     public let videoNote: InputFile
 
 
-    public init (
+    public init(
         duration: Int,
         length: Int,
         thumbnail: InputThumbnail,
-        videoNote: InputFile) {
-
+        videoNote: InputFile
+    ) {
         self.duration = duration
         self.length = length
         self.thumbnail = thumbnail
@@ -507,12 +512,12 @@ public struct InputMessageVoiceNote: Codable {
     public let waveform: Data
 
 
-    public init (
+    public init(
         caption: FormattedText,
         duration: Int,
         voiceNote: InputFile,
-        waveform: Data) {
-
+        waveform: Data
+    ) {
         self.caption = caption
         self.duration = duration
         self.voiceNote = voiceNote
@@ -536,12 +541,12 @@ public struct InputMessageLocation: Codable {
     public let proximityAlertRadius: Int
 
 
-    public init (
+    public init(
         heading: Int,
         livePeriod: Int,
         location: Location,
-        proximityAlertRadius: Int) {
-
+        proximityAlertRadius: Int
+    ) {
         self.heading = heading
         self.livePeriod = livePeriod
         self.location = location
@@ -556,7 +561,7 @@ public struct InputMessageVenue: Codable {
     public let venue: Venue
 
 
-    public init (venue: Venue) {
+    public init(venue: Venue) {
         self.venue = venue
     }
 }
@@ -568,7 +573,7 @@ public struct InputMessageContact: Codable {
     public let contact: Contact
 
 
-    public init (contact: Contact) {
+    public init(contact: Contact) {
         self.contact = contact
     }
 }
@@ -583,10 +588,10 @@ public struct InputMessageDice: Codable {
     public let emoji: String
 
 
-    public init (
+    public init(
         clearDraft: Bool,
-        emoji: String) {
-
+        emoji: String
+    ) {
         self.clearDraft = clearDraft
         self.emoji = emoji
     }
@@ -602,16 +607,16 @@ public struct InputMessageGame: Codable {
     public let gameShortName: String
 
 
-    public init (
+    public init(
         botUserId: Int,
-        gameShortName: String) {
-
+        gameShortName: String
+    ) {
         self.botUserId = botUserId
         self.gameShortName = gameShortName
     }
 }
 
-/// A message with an invoice; can be used only by bots and only in private chats
+/// A message with an invoice; can be used only by bots
 public struct InputMessageInvoice: Codable {
 
     public let description: String
@@ -640,14 +645,14 @@ public struct InputMessageInvoice: Codable {
     /// Payment provider token
     public let providerToken: String
 
-    /// Unique invoice bot start_parameter for the generation of this invoice
+    /// Unique invoice bot deep link parameter for the generation of this invoice. If empty, it would be possible to pay directly from forwards of the invoice message
     public let startParameter: String
 
     /// Product title; 1-32 characters
     public let title: String
 
 
-    public init (
+    public init(
         description: String,
         invoice: Invoice,
         payload: Data,
@@ -658,8 +663,8 @@ public struct InputMessageInvoice: Codable {
         providerData: String,
         providerToken: String,
         startParameter: String,
-        title: String) {
-
+        title: String
+    ) {
         self.description = description
         self.invoice = invoice
         self.payload = payload
@@ -692,22 +697,22 @@ public struct InputMessagePoll: Codable {
     /// List of poll answer options, 2-10 strings 1-100 characters each
     public let options: [String]
 
-    /// Poll question, 1-255 characters (up to 300 characters for bots)
+    /// Poll question; 1-255 characters (up to 300 characters for bots)
     public let question: String
 
     /// Type of the poll
     public let type: PollType
 
 
-    public init (
+    public init(
         closeDate: Int,
         isAnonymous: Bool,
         isClosed: Bool,
         openPeriod: Int,
         options: [String],
         question: String,
-        type: PollType) {
-
+        type: PollType
+    ) {
         self.closeDate = closeDate
         self.isAnonymous = isAnonymous
         self.isClosed = isClosed
@@ -734,12 +739,12 @@ public struct InputMessageForwarded: Codable {
     public let messageId: Int64
 
 
-    public init (
+    public init(
         copyOptions: MessageCopyOptions,
         fromChatId: Int64,
         inGameShare: Bool,
-        messageId: Int64) {
-
+        messageId: Int64
+    ) {
         self.copyOptions = copyOptions
         self.fromChatId = fromChatId
         self.inGameShare = inGameShare

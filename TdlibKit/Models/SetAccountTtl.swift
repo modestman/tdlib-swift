@@ -15,7 +15,7 @@ public struct SetAccountTtl: Codable {
     public let ttl: AccountTtl
 
 
-    public init (ttl: AccountTtl) {
+    public init(ttl: AccountTtl) {
         self.ttl = ttl
     }
 }

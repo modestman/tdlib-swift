@@ -15,7 +15,7 @@ public struct RecoveryEmailAddress: Codable {
     public let recoveryEmailAddress: String
 
 
-    public init (recoveryEmailAddress: String) {
+    public init(recoveryEmailAddress: String) {
         self.recoveryEmailAddress = recoveryEmailAddress
     }
 }

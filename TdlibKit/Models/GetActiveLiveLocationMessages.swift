@@ -12,7 +12,6 @@ import Foundation
 public struct GetActiveLiveLocationMessages: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

@@ -14,16 +14,16 @@ public struct GetChatMember: Codable {
     /// Chat identifier
     public let chatId: Int64
 
-    /// User identifier
-    public let userId: Int
+    /// Member identifier
+    public let memberId: MessageSender
 
 
-    public init (
+    public init(
         chatId: Int64,
-        userId: Int) {
-
+        memberId: MessageSender
+    ) {
         self.chatId = chatId
-        self.userId = userId
+        self.memberId = memberId
     }
 }
 

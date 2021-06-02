@@ -12,7 +12,6 @@ import Foundation
 public struct GetLogTags: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

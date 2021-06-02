@@ -15,7 +15,7 @@ public struct ReorderChatFilters: Codable {
     public let chatFilterIds: [Int]
 
 
-    public init (chatFilterIds: [Int]) {
+    public init(chatFilterIds: [Int]) {
         self.chatFilterIds = chatFilterIds
     }
 }

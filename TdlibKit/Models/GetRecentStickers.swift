@@ -15,7 +15,7 @@ public struct GetRecentStickers: Codable {
     public let isAttached: Bool
 
 
-    public init (isAttached: Bool) {
+    public init(isAttached: Bool) {
         self.isAttached = isAttached
     }
 }

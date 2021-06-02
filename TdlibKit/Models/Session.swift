@@ -57,7 +57,7 @@ public struct Session: Codable {
     public let systemVersion: String
 
 
-    public init (
+    public init(
         apiId: Int,
         applicationName: String,
         applicationVersion: String,
@@ -72,8 +72,8 @@ public struct Session: Codable {
         logInDate: Int,
         platform: String,
         region: String,
-        systemVersion: String) {
-
+        systemVersion: String
+    ) {
         self.apiId = apiId
         self.applicationName = applicationName
         self.applicationVersion = applicationVersion

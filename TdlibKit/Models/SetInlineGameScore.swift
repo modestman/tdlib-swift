@@ -27,13 +27,13 @@ public struct SetInlineGameScore: Codable {
     public let userId: Int
 
 
-    public init (
+    public init(
         editMessage: Bool,
         force: Bool,
         inlineMessageId: String,
         score: Int,
-        userId: Int) {
-
+        userId: Int
+    ) {
         self.editMessage = editMessage
         self.force = force
         self.inlineMessageId = inlineMessageId

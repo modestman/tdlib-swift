@@ -21,11 +21,11 @@ public struct AnswerShippingQuery: Codable {
     public let shippingQueryId: TdInt64
 
 
-    public init (
+    public init(
         errorMessage: String,
         shippingOptions: [ShippingOption],
-        shippingQueryId: TdInt64) {
-
+        shippingQueryId: TdInt64
+    ) {
         self.errorMessage = errorMessage
         self.shippingOptions = shippingOptions
         self.shippingQueryId = shippingQueryId

@@ -29,7 +29,7 @@ public struct Poll: Codable {
     /// List of poll answer options
     public let options: [PollOption]
 
-    /// Poll question, 1-300 characters
+    /// Poll question; 1-300 characters
     public let question: String
 
     /// User identifiers of recent voters, if the poll is non-anonymous
@@ -42,7 +42,7 @@ public struct Poll: Codable {
     public let type: PollType
 
 
-    public init (
+    public init(
         closeDate: Int,
         id: TdInt64,
         isAnonymous: Bool,
@@ -52,8 +52,8 @@ public struct Poll: Codable {
         question: String,
         recentVoterUserIds: [Int],
         totalVoterCount: Int,
-        type: PollType) {
-
+        type: PollType
+    ) {
         self.closeDate = closeDate
         self.id = id
         self.isAnonymous = isAnonymous

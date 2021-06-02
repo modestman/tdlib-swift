@@ -21,11 +21,11 @@ public struct GetGameHighScores: Codable {
     public let userId: Int
 
 
-    public init (
+    public init(
         chatId: Int64,
         messageId: Int64,
-        userId: Int) {
-
+        userId: Int
+    ) {
         self.chatId = chatId
         self.messageId = messageId
         self.userId = userId

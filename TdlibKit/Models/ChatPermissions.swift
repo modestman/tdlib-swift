@@ -36,7 +36,7 @@ public struct ChatPermissions: Codable {
     public let canSendPolls: Bool
 
 
-    public init (
+    public init(
         canAddWebPagePreviews: Bool,
         canChangeInfo: Bool,
         canInviteUsers: Bool,
@@ -44,8 +44,8 @@ public struct ChatPermissions: Codable {
         canSendMediaMessages: Bool,
         canSendMessages: Bool,
         canSendOtherMessages: Bool,
-        canSendPolls: Bool) {
-
+        canSendPolls: Bool
+    ) {
         self.canAddWebPagePreviews = canAddWebPagePreviews
         self.canChangeInfo = canChangeInfo
         self.canInviteUsers = canInviteUsers

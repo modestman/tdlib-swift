@@ -18,10 +18,10 @@ public struct PageBlockCaption: Codable {
     public let text: RichText
 
 
-    public init (
+    public init(
         credit: RichText,
-        text: RichText) {
-
+        text: RichText
+    ) {
         self.credit = credit
         self.text = text
     }

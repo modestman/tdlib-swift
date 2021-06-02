@@ -21,11 +21,11 @@ public struct Location: Codable {
     public let longitude: Double
 
 
-    public init (
+    public init(
         horizontalAccuracy: Double,
         latitude: Double,
-        longitude: Double) {
-
+        longitude: Double
+    ) {
         self.horizontalAccuracy = horizontalAccuracy
         self.latitude = latitude
         self.longitude = longitude

@@ -15,7 +15,7 @@ public struct GetFileExtension: Codable {
     public let mimeType: String
 
 
-    public init (mimeType: String) {
+    public init(mimeType: String) {
         self.mimeType = mimeType
     }
 }

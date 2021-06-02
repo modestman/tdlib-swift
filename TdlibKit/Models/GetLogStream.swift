@@ -12,7 +12,6 @@ import Foundation
 public struct GetLogStream: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

@@ -15,7 +15,7 @@ public struct GetJsonValue: Codable {
     public let json: String
 
 
-    public init (json: String) {
+    public init(json: String) {
         self.json = json
     }
 }

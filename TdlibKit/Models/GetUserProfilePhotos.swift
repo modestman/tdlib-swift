@@ -21,11 +21,11 @@ public struct GetUserProfilePhotos: Codable {
     public let userId: Int
 
 
-    public init (
+    public init(
         limit: Int,
         offset: Int,
-        userId: Int) {
-
+        userId: Int
+    ) {
         self.limit = limit
         self.offset = offset
         self.userId = userId

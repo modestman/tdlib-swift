@@ -21,11 +21,11 @@ public struct SearchCallMessages: Codable {
     public let onlyMissed: Bool
 
 
-    public init (
+    public init(
         fromMessageId: Int64,
         limit: Int,
-        onlyMissed: Bool) {
-
+        onlyMissed: Bool
+    ) {
         self.fromMessageId = fromMessageId
         self.limit = limit
         self.onlyMissed = onlyMissed

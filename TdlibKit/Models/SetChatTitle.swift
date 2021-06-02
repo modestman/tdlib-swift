@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Changes the chat title. Supported only for basic groups, supergroups and channels. Requires can_change_info rights
+/// Changes the chat title. Supported only for basic groups, supergroups and channels. Requires can_change_info administrator right
 public struct SetChatTitle: Codable {
 
     /// Chat identifier
@@ -18,10 +18,10 @@ public struct SetChatTitle: Codable {
     public let title: String
 
 
-    public init (
+    public init(
         chatId: Int64,
-        title: String) {
-
+        title: String
+    ) {
         self.chatId = chatId
         self.title = title
     }

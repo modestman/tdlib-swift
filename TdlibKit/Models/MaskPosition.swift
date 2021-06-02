@@ -24,12 +24,12 @@ public struct MaskPosition: Codable {
     public let yShift: Double
 
 
-    public init (
+    public init(
         point: MaskPoint,
         scale: Double,
         xShift: Double,
-        yShift: Double) {
-
+        yShift: Double
+    ) {
         self.point = point
         self.scale = scale
         self.xShift = xShift

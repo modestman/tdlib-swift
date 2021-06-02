@@ -15,7 +15,7 @@ public struct AddCustomServerLanguagePack: Codable {
     public let languagePackId: String
 
 
-    public init (languagePackId: String) {
+    public init(languagePackId: String) {
         self.languagePackId = languagePackId
     }
 }

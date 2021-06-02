@@ -21,11 +21,11 @@ public struct TransferChatOwnership: Codable {
     public let userId: Int
 
 
-    public init (
+    public init(
         chatId: Int64,
         password: String,
-        userId: Int) {
-
+        userId: Int
+    ) {
         self.chatId = chatId
         self.password = password
         self.userId = userId

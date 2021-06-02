@@ -27,13 +27,13 @@ public struct GetInlineQueryResults: Codable {
     public let userLocation: Location
 
 
-    public init (
+    public init(
         botUserId: Int,
         chatId: Int64,
         offset: String,
         query: String,
-        userLocation: Location) {
-
+        userLocation: Location
+    ) {
         self.botUserId = botUserId
         self.chatId = chatId
         self.offset = offset

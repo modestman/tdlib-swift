@@ -101,7 +101,7 @@ public struct ChatStatisticsSupergroup: Codable {
     public let weekGraph: StatisticalGraph
 
 
-    public init (
+    public init(
         actionGraph: StatisticalGraph,
         dayGraph: StatisticalGraph,
         joinBySourceGraph: StatisticalGraph,
@@ -117,8 +117,8 @@ public struct ChatStatisticsSupergroup: Codable {
         topInviters: [ChatStatisticsInviterInfo],
         topSenders: [ChatStatisticsMessageSenderInfo],
         viewerCount: StatisticalValue,
-        weekGraph: StatisticalGraph) {
-
+        weekGraph: StatisticalGraph
+    ) {
         self.actionGraph = actionGraph
         self.dayGraph = dayGraph
         self.joinBySourceGraph = joinBySourceGraph
@@ -187,7 +187,7 @@ public struct ChatStatisticsChannel: Codable {
     public let viewCountBySourceGraph: StatisticalGraph
 
 
-    public init (
+    public init(
         enabledNotificationsPercentage: Double,
         instantViewInteractionGraph: StatisticalGraph,
         joinBySourceGraph: StatisticalGraph,
@@ -202,8 +202,8 @@ public struct ChatStatisticsChannel: Codable {
         period: DateRange,
         recentMessageInteractions: [ChatStatisticsMessageInteractionInfo],
         viewCountByHourGraph: StatisticalGraph,
-        viewCountBySourceGraph: StatisticalGraph) {
-
+        viewCountBySourceGraph: StatisticalGraph
+    ) {
         self.enabledNotificationsPercentage = enabledNotificationsPercentage
         self.instantViewInteractionGraph = instantViewInteractionGraph
         self.joinBySourceGraph = joinBySourceGraph

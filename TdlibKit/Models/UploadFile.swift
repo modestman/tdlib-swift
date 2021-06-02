@@ -21,11 +21,11 @@ public struct UploadFile: Codable {
     public let priority: Int
 
 
-    public init (
+    public init(
         file: InputFile,
         fileType: FileType,
-        priority: Int) {
-
+        priority: Int
+    ) {
         self.file = file
         self.fileType = fileType
         self.priority = priority

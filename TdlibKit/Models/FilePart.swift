@@ -15,7 +15,7 @@ public struct FilePart: Codable {
     public let data: Data
 
 
-    public init (data: Data) {
+    public init(data: Data) {
         self.data = data
     }
 }

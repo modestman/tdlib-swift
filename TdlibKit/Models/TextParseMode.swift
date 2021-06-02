@@ -54,7 +54,7 @@ public struct TextParseModeMarkdown: Codable {
     public let version: Int
 
 
-    public init (version: Int) {
+    public init(version: Int) {
         self.version = version
     }
 }

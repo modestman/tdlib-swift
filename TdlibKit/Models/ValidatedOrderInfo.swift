@@ -18,10 +18,10 @@ public struct ValidatedOrderInfo: Codable {
     public let shippingOptions: [ShippingOption]
 
 
-    public init (
+    public init(
         orderInfoId: String,
-        shippingOptions: [ShippingOption]) {
-
+        shippingOptions: [ShippingOption]
+    ) {
         self.orderInfoId = orderInfoId
         self.shippingOptions = shippingOptions
     }

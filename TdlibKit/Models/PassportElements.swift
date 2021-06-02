@@ -15,7 +15,7 @@ public struct PassportElements: Codable {
     public let elements: [PassportElement]
 
 
-    public init (elements: [PassportElement]) {
+    public init(elements: [PassportElement]) {
         self.elements = elements
     }
 }

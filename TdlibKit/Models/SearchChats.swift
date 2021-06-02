@@ -18,10 +18,10 @@ public struct SearchChats: Codable {
     public let query: String
 
 
-    public init (
+    public init(
         limit: Int,
-        query: String) {
-
+        query: String
+    ) {
         self.limit = limit
         self.query = query
     }

@@ -15,7 +15,7 @@ public struct GetLocalizationTargetInfo: Codable {
     public let onlyLocal: Bool
 
 
-    public init (onlyLocal: Bool) {
+    public init(onlyLocal: Bool) {
         self.onlyLocal = onlyLocal
     }
 }

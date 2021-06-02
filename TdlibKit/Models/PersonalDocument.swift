@@ -18,10 +18,10 @@ public struct PersonalDocument: Codable {
     public let translation: [DatedFile]
 
 
-    public init (
+    public init(
         files: [DatedFile],
-        translation: [DatedFile]) {
-
+        translation: [DatedFile]
+    ) {
         self.files = files
         self.translation = translation
     }

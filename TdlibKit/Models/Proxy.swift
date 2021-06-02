@@ -30,14 +30,14 @@ public struct Proxy: Codable {
     public let type: ProxyType
 
 
-    public init (
+    public init(
         id: Int,
         isEnabled: Bool,
         lastUsedDate: Int,
         port: Int,
         server: String,
-        type: ProxyType) {
-
+        type: ProxyType
+    ) {
         self.id = id
         self.isEnabled = isEnabled
         self.lastUsedDate = lastUsedDate

@@ -15,7 +15,7 @@ public struct TMeUrls: Codable {
     public let urls: [TMeUrl]
 
 
-    public init (urls: [TMeUrl]) {
+    public init(urls: [TMeUrl]) {
         self.urls = urls
     }
 }

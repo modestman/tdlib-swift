@@ -15,7 +15,7 @@ public struct SearchPublicChat: Codable {
     public let username: String
 
 
-    public init (username: String) {
+    public init(username: String) {
         self.username = username
     }
 }

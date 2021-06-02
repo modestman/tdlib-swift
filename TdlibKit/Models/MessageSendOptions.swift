@@ -21,11 +21,11 @@ public struct MessageSendOptions: Codable {
     public let schedulingState: MessageSchedulingState
 
 
-    public init (
+    public init(
         disableNotification: Bool,
         fromBackground: Bool,
-        schedulingState: MessageSchedulingState) {
-
+        schedulingState: MessageSchedulingState
+    ) {
         self.disableNotification = disableNotification
         self.fromBackground = fromBackground
         self.schedulingState = schedulingState

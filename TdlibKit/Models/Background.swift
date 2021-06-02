@@ -30,14 +30,14 @@ public struct Background: Codable {
     public let type: BackgroundType
 
 
-    public init (
+    public init(
         document: Document?,
         id: TdInt64,
         isDark: Bool,
         isDefault: Bool,
         name: String,
-        type: BackgroundType) {
-
+        type: BackgroundType
+    ) {
         self.document = document
         self.id = id
         self.isDark = isDark

@@ -18,10 +18,10 @@ public struct ChatPhotos: Codable {
     public let totalCount: Int
 
 
-    public init (
+    public init(
         photos: [ChatPhoto],
-        totalCount: Int) {
-
+        totalCount: Int
+    ) {
         self.photos = photos
         self.totalCount = totalCount
     }

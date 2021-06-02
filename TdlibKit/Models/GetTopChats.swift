@@ -18,10 +18,10 @@ public struct GetTopChats: Codable {
     public let limit: Int
 
 
-    public init (
+    public init(
         category: TopChatCategory,
-        limit: Int) {
-
+        limit: Int
+    ) {
         self.category = category
         self.limit = limit
     }

@@ -30,14 +30,14 @@ public struct IdentityDocument: Codable {
     public let translation: [DatedFile]
 
 
-    public init (
+    public init(
         expiryDate: Date?,
         frontSide: DatedFile,
         number: String,
         reverseSide: DatedFile,
         selfie: DatedFile?,
-        translation: [DatedFile]) {
-
+        translation: [DatedFile]
+    ) {
         self.expiryDate = expiryDate
         self.frontSide = frontSide
         self.number = number

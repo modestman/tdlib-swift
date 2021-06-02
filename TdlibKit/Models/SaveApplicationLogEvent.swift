@@ -21,11 +21,11 @@ public struct SaveApplicationLogEvent: Codable {
     public let type: String
 
 
-    public init (
+    public init(
         chatId: Int64,
         data: JsonValue,
-        type: String) {
-
+        type: String
+    ) {
         self.chatId = chatId
         self.data = data
         self.type = type

@@ -21,11 +21,11 @@ public struct GetLoginUrlInfo: Codable {
     public let messageId: Int64
 
 
-    public init (
+    public init(
         buttonId: Int,
         chatId: Int64,
-        messageId: Int64) {
-
+        messageId: Int64
+    ) {
         self.buttonId = buttonId
         self.chatId = chatId
         self.messageId = messageId

@@ -44,11 +44,14 @@ public struct StickerSet: Codable {
     /// Sticker set thumbnail in WEBP or TGS format with width and height 100; may be null. The file can be downloaded only before the thumbnail is changed
     public let thumbnail: Thumbnail?
 
+    /// Sticker set thumbnail's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner
+    public let thumbnailOutline: [ClosedVectorPath]
+
     /// Title of the sticker set
     public let title: String
 
 
-    public init (
+    public init(
         emojis: [Emojis],
         id: TdInt64,
         isAnimated: Bool,
@@ -60,8 +63,9 @@ public struct StickerSet: Codable {
         name: String,
         stickers: [Sticker],
         thumbnail: Thumbnail?,
-        title: String) {
-
+        thumbnailOutline: [ClosedVectorPath],
+        title: String
+    ) {
         self.emojis = emojis
         self.id = id
         self.isAnimated = isAnimated
@@ -73,6 +77,7 @@ public struct StickerSet: Codable {
         self.name = name
         self.stickers = stickers
         self.thumbnail = thumbnail
+        self.thumbnailOutline = thumbnailOutline
         self.title = title
     }
 }

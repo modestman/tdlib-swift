@@ -12,7 +12,6 @@ import Foundation
 public struct ResendEmailAddressVerificationCode: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

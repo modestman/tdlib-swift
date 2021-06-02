@@ -15,7 +15,7 @@ public struct SetDatabaseEncryptionKey: Codable {
     public let newEncryptionKey: Data
 
 
-    public init (newEncryptionKey: Data) {
+    public init(newEncryptionKey: Data) {
         self.newEncryptionKey = newEncryptionKey
     }
 }

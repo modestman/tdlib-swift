@@ -69,10 +69,10 @@ public struct StatisticalGraphData: Codable {
     public let zoomToken: String
 
 
-    public init (
+    public init(
         jsonData: String,
-        zoomToken: String) {
-
+        zoomToken: String
+    ) {
         self.jsonData = jsonData
         self.zoomToken = zoomToken
     }
@@ -85,7 +85,7 @@ public struct StatisticalGraphAsync: Codable {
     public let token: String
 
 
-    public init (token: String) {
+    public init(token: String) {
         self.token = token
     }
 }
@@ -97,7 +97,7 @@ public struct StatisticalGraphError: Codable {
     public let errorMessage: String
 
 
-    public init (errorMessage: String) {
+    public init(errorMessage: String) {
         self.errorMessage = errorMessage
     }
 }

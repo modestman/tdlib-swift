@@ -12,7 +12,6 @@ import Foundation
 public struct GetApplicationConfig: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

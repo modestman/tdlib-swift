@@ -15,7 +15,7 @@ public struct SetProfilePhoto: Codable {
     public let photo: InputChatPhoto
 
 
-    public init (photo: InputChatPhoto) {
+    public init(photo: InputChatPhoto) {
         self.photo = photo
     }
 }

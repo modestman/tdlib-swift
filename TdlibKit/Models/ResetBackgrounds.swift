@@ -12,7 +12,6 @@ import Foundation
 public struct ResetBackgrounds: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

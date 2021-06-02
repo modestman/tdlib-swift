@@ -15,7 +15,7 @@ public struct TestCallString: Codable {
     public let x: String
 
 
-    public init (x: String) {
+    public init(x: String) {
         self.x = x
     }
 }

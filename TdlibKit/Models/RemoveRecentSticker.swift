@@ -18,10 +18,10 @@ public struct RemoveRecentSticker: Codable {
     public let sticker: InputFile
 
 
-    public init (
+    public init(
         isAttached: Bool,
-        sticker: InputFile) {
-
+        sticker: InputFile
+    ) {
         self.isAttached = isAttached
         self.sticker = sticker
     }

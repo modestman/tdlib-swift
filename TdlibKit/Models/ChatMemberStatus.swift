@@ -14,7 +14,7 @@ public enum ChatMemberStatus: Codable {
     /// The user is the owner of a chat and has all the administrator privileges
     case chatMemberStatusCreator(ChatMemberStatusCreator)
 
-    /// The user is a member of a chat and has some additional privileges. In basic groups, administrators can edit and delete messages sent by others, add new members, and ban unprivileged members. In supergroups and channels, there are more detailed options for administrator privileges
+    /// The user is a member of a chat and has some additional privileges. In basic groups, administrators can edit and delete messages sent by others, add new members, ban unprivileged members, and manage voice chats. In supergroups and channels, there are more detailed options for administrator privileges
     case chatMemberStatusAdministrator(ChatMemberStatusAdministrator)
 
     /// The user is a member of a chat, without any additional privileges or restrictions
@@ -23,10 +23,10 @@ public enum ChatMemberStatus: Codable {
     /// The user is under certain restrictions in the chat. Not supported in basic groups and channels
     case chatMemberStatusRestricted(ChatMemberStatusRestricted)
 
-    /// The user is not a chat member
+    /// The user or the chat is not a chat member
     case chatMemberStatusLeft
 
-    /// The user was banned (and hence is not a member of the chat). Implies the user can't return to the chat or view messages
+    /// The user or the chat was banned (and hence is not a member of the chat). Implies the user can't return to the chat, view messages, or be used as a participant identifier to join a voice chat of the chat
     case chatMemberStatusBanned(ChatMemberStatusBanned)
 
 
@@ -98,18 +98,18 @@ public struct ChatMemberStatusCreator: Codable {
     public let isMember: Bool
 
 
-    public init (
+    public init(
         customTitle: String,
         isAnonymous: Bool,
-        isMember: Bool) {
-
+        isMember: Bool
+    ) {
         self.customTitle = customTitle
         self.isAnonymous = isAnonymous
         self.isMember = isMember
     }
 }
 
-/// The user is a member of a chat and has some additional privileges. In basic groups, administrators can edit and delete messages sent by others, add new members, and ban unprivileged members. In supergroups and channels, there are more detailed options for administrator privileges
+/// The user is a member of a chat and has some additional privileges. In basic groups, administrators can edit and delete messages sent by others, add new members, ban unprivileged members, and manage voice chats. In supergroups and channels, there are more detailed options for administrator privileges
 public struct ChatMemberStatusAdministrator: Codable {
 
     /// True, if the current user can edit the administrator privileges for the called user
@@ -127,7 +127,13 @@ public struct ChatMemberStatusAdministrator: Codable {
     /// True, if the administrator can invite new users to the chat
     public let canInviteUsers: Bool
 
-    /// True, if the administrator can pin messages; applicable to groups only
+    /// True, if the administrator can get chat event log, get chat statistics, get message statistics in channels, get channel members, see anonymous administrators in supergroups and ignore slow mode. Implied by any other privilege; applicable to supergroups and channels only
+    public let canManageChat: Bool
+
+    /// True, if the administrator can manage voice chats
+    public let canManageVoiceChats: Bool
+
+    /// True, if the administrator can pin messages; applicable to basic groups and supergroups only
     public let canPinMessages: Bool
 
     /// True, if the administrator can create channel posts; applicable to channels only
@@ -146,24 +152,28 @@ public struct ChatMemberStatusAdministrator: Codable {
     public let isAnonymous: Bool
 
 
-    public init (
+    public init(
         canBeEdited: Bool,
         canChangeInfo: Bool,
         canDeleteMessages: Bool,
         canEditMessages: Bool,
         canInviteUsers: Bool,
+        canManageChat: Bool,
+        canManageVoiceChats: Bool,
         canPinMessages: Bool,
         canPostMessages: Bool,
         canPromoteMembers: Bool,
         canRestrictMembers: Bool,
         customTitle: String,
-        isAnonymous: Bool) {
-
+        isAnonymous: Bool
+    ) {
         self.canBeEdited = canBeEdited
         self.canChangeInfo = canChangeInfo
         self.canDeleteMessages = canDeleteMessages
         self.canEditMessages = canEditMessages
         self.canInviteUsers = canInviteUsers
+        self.canManageChat = canManageChat
+        self.canManageVoiceChats = canManageVoiceChats
         self.canPinMessages = canPinMessages
         self.canPostMessages = canPostMessages
         self.canPromoteMembers = canPromoteMembers
@@ -186,25 +196,25 @@ public struct ChatMemberStatusRestricted: Codable {
     public let restrictedUntilDate: Int
 
 
-    public init (
+    public init(
         isMember: Bool,
         permissions: ChatPermissions,
-        restrictedUntilDate: Int) {
-
+        restrictedUntilDate: Int
+    ) {
         self.isMember = isMember
         self.permissions = permissions
         self.restrictedUntilDate = restrictedUntilDate
     }
 }
 
-/// The user was banned (and hence is not a member of the chat). Implies the user can't return to the chat or view messages
+/// The user or the chat was banned (and hence is not a member of the chat). Implies the user can't return to the chat, view messages, or be used as a participant identifier to join a voice chat of the chat
 public struct ChatMemberStatusBanned: Codable {
 
-    /// Point in time (Unix timestamp) when the user will be unbanned; 0 if never. If the user is banned for more than 366 days or for less than 30 seconds from the current time, the user is considered to be banned forever
+    /// Point in time (Unix timestamp) when the user will be unbanned; 0 if never. If the user is banned for more than 366 days or for less than 30 seconds from the current time, the user is considered to be banned forever. Always 0 in basic groups
     public let bannedUntilDate: Int
 
 
-    public init (bannedUntilDate: Int) {
+    public init(bannedUntilDate: Int) {
         self.bannedUntilDate = bannedUntilDate
     }
 }

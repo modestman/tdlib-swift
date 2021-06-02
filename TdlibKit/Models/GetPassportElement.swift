@@ -18,10 +18,10 @@ public struct GetPassportElement: Codable {
     public let type: PassportElementType
 
 
-    public init (
+    public init(
         password: String,
-        type: PassportElementType) {
-
+        type: PassportElementType
+    ) {
         self.password = password
         self.type = type
     }

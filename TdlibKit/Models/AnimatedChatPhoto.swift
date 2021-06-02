@@ -21,11 +21,11 @@ public struct AnimatedChatPhoto: Codable {
     public let mainFrameTimestamp: Double
 
 
-    public init (
+    public init(
         file: File,
         length: Int,
-        mainFrameTimestamp: Double) {
-
+        mainFrameTimestamp: Double
+    ) {
         self.file = file
         self.length = length
         self.mainFrameTimestamp = mainFrameTimestamp

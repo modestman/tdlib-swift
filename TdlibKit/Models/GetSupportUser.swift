@@ -12,7 +12,6 @@ import Foundation
 public struct GetSupportUser: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

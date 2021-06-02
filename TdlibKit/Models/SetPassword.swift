@@ -27,13 +27,13 @@ public struct SetPassword: Codable {
     public let setRecoveryEmailAddress: Bool
 
 
-    public init (
+    public init(
         newHint: String,
         newPassword: String,
         newRecoveryEmailAddress: String,
         oldPassword: String,
-        setRecoveryEmailAddress: Bool) {
-
+        setRecoveryEmailAddress: Bool
+    ) {
         self.newHint = newHint
         self.newPassword = newPassword
         self.newRecoveryEmailAddress = newRecoveryEmailAddress

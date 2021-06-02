@@ -15,7 +15,7 @@ public struct GetFile: Codable {
     public let fileId: Int
 
 
-    public init (fileId: Int) {
+    public init(fileId: Int) {
         self.fileId = fileId
     }
 }

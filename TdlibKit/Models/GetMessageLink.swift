@@ -24,12 +24,12 @@ public struct GetMessageLink: Codable {
     public let messageId: Int64
 
 
-    public init (
+    public init(
         chatId: Int64,
         forAlbum: Bool,
         forComment: Bool,
-        messageId: Int64) {
-
+        messageId: Int64
+    ) {
         self.chatId = chatId
         self.forAlbum = forAlbum
         self.forComment = forComment

@@ -68,6 +68,18 @@ public enum MessageContent: Codable {
     /// A message with information about an ended call
     case messageCall(MessageCall)
 
+    /// A new voice chat was scheduled
+    case messageVoiceChatScheduled(MessageVoiceChatScheduled)
+
+    /// A newly created voice chat
+    case messageVoiceChatStarted(MessageVoiceChatStarted)
+
+    /// A message with information about an ended voice chat
+    case messageVoiceChatEnded(MessageVoiceChatEnded)
+
+    /// A message with information about an invite to a voice chat
+    case messageInviteVoiceChatParticipants(MessageInviteVoiceChatParticipants)
+
     /// A newly created basic group
     case messageBasicGroupChatCreate(MessageBasicGroupChatCreate)
 
@@ -104,7 +116,7 @@ public enum MessageContent: Codable {
     /// A screenshot of a message in the chat has been taken
     case messageScreenshotTaken
 
-    /// The TTL (Time To Live) setting messages in a secret chat has been changed
+    /// The TTL (Time To Live) setting for messages in the chat has been changed
     case messageChatSetTtl(MessageChatSetTtl)
 
     /// A non-standard action has happened in the chat
@@ -158,6 +170,10 @@ public enum MessageContent: Codable {
         case messagePoll
         case messageInvoice
         case messageCall
+        case messageVoiceChatScheduled
+        case messageVoiceChatStarted
+        case messageVoiceChatEnded
+        case messageInviteVoiceChatParticipants
         case messageBasicGroupChatCreate
         case messageSupergroupChatCreate
         case messageChatChangeTitle
@@ -242,6 +258,18 @@ public enum MessageContent: Codable {
         case .messageCall:
             let value = try MessageCall(from: decoder)
             self = .messageCall(value)
+        case .messageVoiceChatScheduled:
+            let value = try MessageVoiceChatScheduled(from: decoder)
+            self = .messageVoiceChatScheduled(value)
+        case .messageVoiceChatStarted:
+            let value = try MessageVoiceChatStarted(from: decoder)
+            self = .messageVoiceChatStarted(value)
+        case .messageVoiceChatEnded:
+            let value = try MessageVoiceChatEnded(from: decoder)
+            self = .messageVoiceChatEnded(value)
+        case .messageInviteVoiceChatParticipants:
+            let value = try MessageInviteVoiceChatParticipants(from: decoder)
+            self = .messageInviteVoiceChatParticipants(value)
         case .messageBasicGroupChatCreate:
             let value = try MessageBasicGroupChatCreate(from: decoder)
             self = .messageBasicGroupChatCreate(value)
@@ -367,6 +395,18 @@ public enum MessageContent: Codable {
         case .messageCall(let value):
             try container.encode(Kind.messageCall, forKey: .type)
             try value.encode(to: encoder)
+        case .messageVoiceChatScheduled(let value):
+            try container.encode(Kind.messageVoiceChatScheduled, forKey: .type)
+            try value.encode(to: encoder)
+        case .messageVoiceChatStarted(let value):
+            try container.encode(Kind.messageVoiceChatStarted, forKey: .type)
+            try value.encode(to: encoder)
+        case .messageVoiceChatEnded(let value):
+            try container.encode(Kind.messageVoiceChatEnded, forKey: .type)
+            try value.encode(to: encoder)
+        case .messageInviteVoiceChatParticipants(let value):
+            try container.encode(Kind.messageInviteVoiceChatParticipants, forKey: .type)
+            try value.encode(to: encoder)
         case .messageBasicGroupChatCreate(let value):
             try container.encode(Kind.messageBasicGroupChatCreate, forKey: .type)
             try value.encode(to: encoder)
@@ -445,10 +485,10 @@ public struct MessageText: Codable {
     public let webPage: WebPage?
 
 
-    public init (
+    public init(
         text: FormattedText,
-        webPage: WebPage?) {
-
+        webPage: WebPage?
+    ) {
         self.text = text
         self.webPage = webPage
     }
@@ -467,11 +507,11 @@ public struct MessageAnimation: Codable {
     public let isSecret: Bool
 
 
-    public init (
+    public init(
         animation: Animation,
         caption: FormattedText,
-        isSecret: Bool) {
-
+        isSecret: Bool
+    ) {
         self.animation = animation
         self.caption = caption
         self.isSecret = isSecret
@@ -488,10 +528,10 @@ public struct MessageAudio: Codable {
     public let caption: FormattedText
 
 
-    public init (
+    public init(
         audio: Audio,
-        caption: FormattedText) {
-
+        caption: FormattedText
+    ) {
         self.audio = audio
         self.caption = caption
     }
@@ -507,10 +547,10 @@ public struct MessageDocument: Codable {
     public let document: Document
 
 
-    public init (
+    public init(
         caption: FormattedText,
-        document: Document) {
-
+        document: Document
+    ) {
         self.caption = caption
         self.document = document
     }
@@ -529,11 +569,11 @@ public struct MessagePhoto: Codable {
     public let photo: Photo
 
 
-    public init (
+    public init(
         caption: FormattedText,
         isSecret: Bool,
-        photo: Photo) {
-
+        photo: Photo
+    ) {
         self.caption = caption
         self.isSecret = isSecret
         self.photo = photo
@@ -547,7 +587,7 @@ public struct MessageSticker: Codable {
     public let sticker: Sticker
 
 
-    public init (sticker: Sticker) {
+    public init(sticker: Sticker) {
         self.sticker = sticker
     }
 }
@@ -565,11 +605,11 @@ public struct MessageVideo: Codable {
     public let video: Video
 
 
-    public init (
+    public init(
         caption: FormattedText,
         isSecret: Bool,
-        video: Video) {
-
+        video: Video
+    ) {
         self.caption = caption
         self.isSecret = isSecret
         self.video = video
@@ -589,11 +629,11 @@ public struct MessageVideoNote: Codable {
     public let videoNote: VideoNote
 
 
-    public init (
+    public init(
         isSecret: Bool,
         isViewed: Bool,
-        videoNote: VideoNote) {
-
+        videoNote: VideoNote
+    ) {
         self.isSecret = isSecret
         self.isViewed = isViewed
         self.videoNote = videoNote
@@ -613,11 +653,11 @@ public struct MessageVoiceNote: Codable {
     public let voiceNote: VoiceNote
 
 
-    public init (
+    public init(
         caption: FormattedText,
         isListened: Bool,
-        voiceNote: VoiceNote) {
-
+        voiceNote: VoiceNote
+    ) {
         self.caption = caption
         self.isListened = isListened
         self.voiceNote = voiceNote
@@ -643,13 +683,13 @@ public struct MessageLocation: Codable {
     public let proximityAlertRadius: Int
 
 
-    public init (
+    public init(
         expiresIn: Int,
         heading: Int,
         livePeriod: Int,
         location: Location,
-        proximityAlertRadius: Int) {
-
+        proximityAlertRadius: Int
+    ) {
         self.expiresIn = expiresIn
         self.heading = heading
         self.livePeriod = livePeriod
@@ -665,7 +705,7 @@ public struct MessageVenue: Codable {
     public let venue: Venue
 
 
-    public init (venue: Venue) {
+    public init(venue: Venue) {
         self.venue = venue
     }
 }
@@ -677,7 +717,7 @@ public struct MessageContact: Codable {
     public let contact: Contact
 
 
-    public init (contact: Contact) {
+    public init(contact: Contact) {
         self.contact = contact
     }
 }
@@ -701,13 +741,13 @@ public struct MessageDice: Codable {
     public let value: Int
 
 
-    public init (
+    public init(
         emoji: String,
         finalState: DiceStickers?,
         initialState: DiceStickers?,
         successAnimationFrameNumber: Int,
-        value: Int) {
-
+        value: Int
+    ) {
         self.emoji = emoji
         self.finalState = finalState
         self.initialState = initialState
@@ -723,7 +763,7 @@ public struct MessageGame: Codable {
     public let game: Game
 
 
-    public init (game: Game) {
+    public init(game: Game) {
         self.game = game
     }
 }
@@ -735,7 +775,7 @@ public struct MessagePoll: Codable {
     public let poll: Poll
 
 
-    public init (poll: Poll) {
+    public init(poll: Poll) {
         self.poll = poll
     }
 }
@@ -766,11 +806,11 @@ public struct MessageInvoice: Codable {
     /// Product title
     public let title: String
 
-    /// Product total price in the minimal quantity of the currency
+    /// Product total price in the smallest units of the currency
     public let totalAmount: Int64
 
 
-    public init (
+    public init(
         currency: String,
         description: String,
         isTest: Bool,
@@ -779,8 +819,8 @@ public struct MessageInvoice: Codable {
         receiptMessageId: Int64,
         startParameter: String,
         title: String,
-        totalAmount: Int64) {
-
+        totalAmount: Int64
+    ) {
         self.currency = currency
         self.description = description
         self.isTest = isTest
@@ -806,14 +846,76 @@ public struct MessageCall: Codable {
     public let isVideo: Bool
 
 
-    public init (
+    public init(
         discardReason: CallDiscardReason,
         duration: Int,
-        isVideo: Bool) {
-
+        isVideo: Bool
+    ) {
         self.discardReason = discardReason
         self.duration = duration
         self.isVideo = isVideo
+    }
+}
+
+/// A new voice chat was scheduled
+public struct MessageVoiceChatScheduled: Codable {
+
+    /// Identifier of the voice chat. The voice chat can be received through the method getGroupCall
+    public let groupCallId: Int
+
+    /// Point in time (Unix timestamp) when the group call is supposed to be started by an administrator
+    public let startDate: Int
+
+
+    public init(
+        groupCallId: Int,
+        startDate: Int
+    ) {
+        self.groupCallId = groupCallId
+        self.startDate = startDate
+    }
+}
+
+/// A newly created voice chat
+public struct MessageVoiceChatStarted: Codable {
+
+    /// Identifier of the voice chat. The voice chat can be received through the method getGroupCall
+    public let groupCallId: Int
+
+
+    public init(groupCallId: Int) {
+        self.groupCallId = groupCallId
+    }
+}
+
+/// A message with information about an ended voice chat
+public struct MessageVoiceChatEnded: Codable {
+
+    /// Call duration
+    public let duration: Int
+
+
+    public init(duration: Int) {
+        self.duration = duration
+    }
+}
+
+/// A message with information about an invite to a voice chat
+public struct MessageInviteVoiceChatParticipants: Codable {
+
+    /// Identifier of the voice chat. The voice chat can be received through the method getGroupCall
+    public let groupCallId: Int
+
+    /// Invited user identifiers
+    public let userIds: [Int]
+
+
+    public init(
+        groupCallId: Int,
+        userIds: [Int]
+    ) {
+        self.groupCallId = groupCallId
+        self.userIds = userIds
     }
 }
 
@@ -827,10 +929,10 @@ public struct MessageBasicGroupChatCreate: Codable {
     public let title: String
 
 
-    public init (
+    public init(
         memberUserIds: [Int],
-        title: String) {
-
+        title: String
+    ) {
         self.memberUserIds = memberUserIds
         self.title = title
     }
@@ -843,7 +945,7 @@ public struct MessageSupergroupChatCreate: Codable {
     public let title: String
 
 
-    public init (title: String) {
+    public init(title: String) {
         self.title = title
     }
 }
@@ -855,7 +957,7 @@ public struct MessageChatChangeTitle: Codable {
     public let title: String
 
 
-    public init (title: String) {
+    public init(title: String) {
         self.title = title
     }
 }
@@ -867,7 +969,7 @@ public struct MessageChatChangePhoto: Codable {
     public let photo: ChatPhoto
 
 
-    public init (photo: ChatPhoto) {
+    public init(photo: ChatPhoto) {
         self.photo = photo
     }
 }
@@ -879,7 +981,7 @@ public struct MessageChatAddMembers: Codable {
     public let memberUserIds: [Int]
 
 
-    public init (memberUserIds: [Int]) {
+    public init(memberUserIds: [Int]) {
         self.memberUserIds = memberUserIds
     }
 }
@@ -891,7 +993,7 @@ public struct MessageChatDeleteMember: Codable {
     public let userId: Int
 
 
-    public init (userId: Int) {
+    public init(userId: Int) {
         self.userId = userId
     }
 }
@@ -903,7 +1005,7 @@ public struct MessageChatUpgradeTo: Codable {
     public let supergroupId: Int
 
 
-    public init (supergroupId: Int) {
+    public init(supergroupId: Int) {
         self.supergroupId = supergroupId
     }
 }
@@ -918,10 +1020,10 @@ public struct MessageChatUpgradeFrom: Codable {
     public let title: String
 
 
-    public init (
+    public init(
         basicGroupId: Int,
-        title: String) {
-
+        title: String
+    ) {
         self.basicGroupId = basicGroupId
         self.title = title
     }
@@ -934,19 +1036,19 @@ public struct MessagePinMessage: Codable {
     public let messageId: Int64
 
 
-    public init (messageId: Int64) {
+    public init(messageId: Int64) {
         self.messageId = messageId
     }
 }
 
-/// The TTL (Time To Live) setting messages in a secret chat has been changed
+/// The TTL (Time To Live) setting for messages in the chat has been changed
 public struct MessageChatSetTtl: Codable {
 
-    /// New TTL
+    /// New message TTL setting
     public let ttl: Int
 
 
-    public init (ttl: Int) {
+    public init(ttl: Int) {
         self.ttl = ttl
     }
 }
@@ -958,7 +1060,7 @@ public struct MessageCustomServiceAction: Codable {
     public let text: String
 
 
-    public init (text: String) {
+    public init(text: String) {
         self.text = text
     }
 }
@@ -976,11 +1078,11 @@ public struct MessageGameScore: Codable {
     public let score: Int
 
 
-    public init (
+    public init(
         gameId: TdInt64,
         gameMessageId: Int64,
-        score: Int) {
-
+        score: Int
+    ) {
         self.gameId = gameId
         self.gameMessageId = gameMessageId
         self.score = score
@@ -993,19 +1095,24 @@ public struct MessagePaymentSuccessful: Codable {
     /// Currency for the price of the product
     public let currency: String
 
+    /// Identifier of the chat, containing the corresponding invoice message; 0 if unknown
+    public let invoiceChatId: Int64
+
     /// Identifier of the message with the corresponding invoice; can be an identifier of a deleted message
     public let invoiceMessageId: Int64
 
-    /// Total price for the product, in the minimal quantity of the currency
+    /// Total price for the product, in the smallest units of the currency
     public let totalAmount: Int64
 
 
-    public init (
+    public init(
         currency: String,
+        invoiceChatId: Int64,
         invoiceMessageId: Int64,
-        totalAmount: Int64) {
-
+        totalAmount: Int64
+    ) {
         self.currency = currency
+        self.invoiceChatId = invoiceChatId
         self.invoiceMessageId = invoiceMessageId
         self.totalAmount = totalAmount
     }
@@ -1016,9 +1123,6 @@ public struct MessagePaymentSuccessfulBot: Codable {
 
     /// Currency for price of the product
     public let currency: String
-
-    /// Identifier of the message with the corresponding invoice; can be an identifier of a deleted message
-    public let invoiceMessageId: Int64
 
     /// Invoice payload
     public let invoicePayload: Data
@@ -1035,22 +1139,20 @@ public struct MessagePaymentSuccessfulBot: Codable {
     /// Telegram payment identifier
     public let telegramPaymentChargeId: String
 
-    /// Total price for the product, in the minimal quantity of the currency
+    /// Total price for the product, in the smallest units of the currency
     public let totalAmount: Int64
 
 
-    public init (
+    public init(
         currency: String,
-        invoiceMessageId: Int64,
         invoicePayload: Data,
         orderInfo: OrderInfo?,
         providerPaymentChargeId: String,
         shippingOptionId: String,
         telegramPaymentChargeId: String,
-        totalAmount: Int64) {
-
+        totalAmount: Int64
+    ) {
         self.currency = currency
-        self.invoiceMessageId = invoiceMessageId
         self.invoicePayload = invoicePayload
         self.orderInfo = orderInfo
         self.providerPaymentChargeId = providerPaymentChargeId
@@ -1067,7 +1169,7 @@ public struct MessageWebsiteConnected: Codable {
     public let domainName: String
 
 
-    public init (domainName: String) {
+    public init(domainName: String) {
         self.domainName = domainName
     }
 }
@@ -1079,7 +1181,7 @@ public struct MessagePassportDataSent: Codable {
     public let types: [PassportElementType]
 
 
-    public init (types: [PassportElementType]) {
+    public init(types: [PassportElementType]) {
         self.types = types
     }
 }
@@ -1094,10 +1196,10 @@ public struct MessagePassportDataReceived: Codable {
     public let elements: [EncryptedPassportElement]
 
 
-    public init (
+    public init(
         credentials: EncryptedCredentials,
-        elements: [EncryptedPassportElement]) {
-
+        elements: [EncryptedPassportElement]
+    ) {
         self.credentials = credentials
         self.elements = elements
     }
@@ -1116,11 +1218,11 @@ public struct MessageProximityAlertTriggered: Codable {
     public let watcher: MessageSender
 
 
-    public init (
+    public init(
         distance: Int,
         traveler: MessageSender,
-        watcher: MessageSender) {
-
+        watcher: MessageSender
+    ) {
         self.distance = distance
         self.traveler = traveler
         self.watcher = watcher

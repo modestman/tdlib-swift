@@ -23,12 +23,16 @@ public enum MessageForwardOrigin: Codable {
     /// The message was originally a post in a channel
     case messageForwardOriginChannel(MessageForwardOriginChannel)
 
+    /// The message was imported from an exported message history
+    case messageForwardOriginMessageImport(MessageForwardOriginMessageImport)
+
 
     private enum Kind: String, Codable {
         case messageForwardOriginUser
         case messageForwardOriginChat
         case messageForwardOriginHiddenUser
         case messageForwardOriginChannel
+        case messageForwardOriginMessageImport
     }
 
     public init(from decoder: Decoder) throws {
@@ -47,6 +51,9 @@ public enum MessageForwardOrigin: Codable {
         case .messageForwardOriginChannel:
             let value = try MessageForwardOriginChannel(from: decoder)
             self = .messageForwardOriginChannel(value)
+        case .messageForwardOriginMessageImport:
+            let value = try MessageForwardOriginMessageImport(from: decoder)
+            self = .messageForwardOriginMessageImport(value)
         }
     }
 
@@ -65,6 +72,9 @@ public enum MessageForwardOrigin: Codable {
         case .messageForwardOriginChannel(let value):
             try container.encode(Kind.messageForwardOriginChannel, forKey: .type)
             try value.encode(to: encoder)
+        case .messageForwardOriginMessageImport(let value):
+            try container.encode(Kind.messageForwardOriginMessageImport, forKey: .type)
+            try value.encode(to: encoder)
         }
     }
 }
@@ -76,7 +86,7 @@ public struct MessageForwardOriginUser: Codable {
     public let senderUserId: Int
 
 
-    public init (senderUserId: Int) {
+    public init(senderUserId: Int) {
         self.senderUserId = senderUserId
     }
 }
@@ -91,10 +101,10 @@ public struct MessageForwardOriginChat: Codable {
     public let senderChatId: Int64
 
 
-    public init (
+    public init(
         authorSignature: String,
-        senderChatId: Int64) {
-
+        senderChatId: Int64
+    ) {
         self.authorSignature = authorSignature
         self.senderChatId = senderChatId
     }
@@ -107,7 +117,7 @@ public struct MessageForwardOriginHiddenUser: Codable {
     public let senderName: String
 
 
-    public init (senderName: String) {
+    public init(senderName: String) {
         self.senderName = senderName
     }
 }
@@ -125,14 +135,26 @@ public struct MessageForwardOriginChannel: Codable {
     public let messageId: Int64
 
 
-    public init (
+    public init(
         authorSignature: String,
         chatId: Int64,
-        messageId: Int64) {
-
+        messageId: Int64
+    ) {
         self.authorSignature = authorSignature
         self.chatId = chatId
         self.messageId = messageId
+    }
+}
+
+/// The message was imported from an exported message history
+public struct MessageForwardOriginMessageImport: Codable {
+
+    /// Name of the sender
+    public let senderName: String
+
+
+    public init(senderName: String) {
+        self.senderName = senderName
     }
 }
 

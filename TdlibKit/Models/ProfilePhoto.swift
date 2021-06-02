@@ -20,19 +20,24 @@ public struct ProfilePhoto: Codable {
     /// Photo identifier; 0 for an empty photo. Can be used to find a photo in a list of user profile photos
     public let id: TdInt64
 
+    /// User profile photo minithumbnail; may be null
+    public let minithumbnail: Minithumbnail?
+
     /// A small (160x160) user profile photo. The file can be downloaded only before the photo is changed
     public let small: File
 
 
-    public init (
+    public init(
         big: File,
         hasAnimation: Bool,
         id: TdInt64,
-        small: File) {
-
+        minithumbnail: Minithumbnail?,
+        small: File
+    ) {
         self.big = big
         self.hasAnimation = hasAnimation
         self.id = id
+        self.minithumbnail = minithumbnail
         self.small = small
     }
 }

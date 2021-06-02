@@ -166,7 +166,7 @@ public struct InputPassportElementPersonalDetails: Codable {
     public let personalDetails: PersonalDetails
 
 
-    public init (personalDetails: PersonalDetails) {
+    public init(personalDetails: PersonalDetails) {
         self.personalDetails = personalDetails
     }
 }
@@ -178,7 +178,7 @@ public struct InputPassportElementPassport: Codable {
     public let passport: InputIdentityDocument
 
 
-    public init (passport: InputIdentityDocument) {
+    public init(passport: InputIdentityDocument) {
         self.passport = passport
     }
 }
@@ -190,7 +190,7 @@ public struct InputPassportElementDriverLicense: Codable {
     public let driverLicense: InputIdentityDocument
 
 
-    public init (driverLicense: InputIdentityDocument) {
+    public init(driverLicense: InputIdentityDocument) {
         self.driverLicense = driverLicense
     }
 }
@@ -202,7 +202,7 @@ public struct InputPassportElementIdentityCard: Codable {
     public let identityCard: InputIdentityDocument
 
 
-    public init (identityCard: InputIdentityDocument) {
+    public init(identityCard: InputIdentityDocument) {
         self.identityCard = identityCard
     }
 }
@@ -214,7 +214,7 @@ public struct InputPassportElementInternalPassport: Codable {
     public let internalPassport: InputIdentityDocument
 
 
-    public init (internalPassport: InputIdentityDocument) {
+    public init(internalPassport: InputIdentityDocument) {
         self.internalPassport = internalPassport
     }
 }
@@ -226,7 +226,7 @@ public struct InputPassportElementAddress: Codable {
     public let address: Address
 
 
-    public init (address: Address) {
+    public init(address: Address) {
         self.address = address
     }
 }
@@ -238,7 +238,7 @@ public struct InputPassportElementUtilityBill: Codable {
     public let utilityBill: InputPersonalDocument
 
 
-    public init (utilityBill: InputPersonalDocument) {
+    public init(utilityBill: InputPersonalDocument) {
         self.utilityBill = utilityBill
     }
 }
@@ -250,7 +250,7 @@ public struct InputPassportElementBankStatement: Codable {
     public let bankStatement: InputPersonalDocument
 
 
-    public init (bankStatement: InputPersonalDocument) {
+    public init(bankStatement: InputPersonalDocument) {
         self.bankStatement = bankStatement
     }
 }
@@ -262,7 +262,7 @@ public struct InputPassportElementRentalAgreement: Codable {
     public let rentalAgreement: InputPersonalDocument
 
 
-    public init (rentalAgreement: InputPersonalDocument) {
+    public init(rentalAgreement: InputPersonalDocument) {
         self.rentalAgreement = rentalAgreement
     }
 }
@@ -274,7 +274,7 @@ public struct InputPassportElementPassportRegistration: Codable {
     public let passportRegistration: InputPersonalDocument
 
 
-    public init (passportRegistration: InputPersonalDocument) {
+    public init(passportRegistration: InputPersonalDocument) {
         self.passportRegistration = passportRegistration
     }
 }
@@ -286,7 +286,7 @@ public struct InputPassportElementTemporaryRegistration: Codable {
     public let temporaryRegistration: InputPersonalDocument
 
 
-    public init (temporaryRegistration: InputPersonalDocument) {
+    public init(temporaryRegistration: InputPersonalDocument) {
         self.temporaryRegistration = temporaryRegistration
     }
 }
@@ -298,7 +298,7 @@ public struct InputPassportElementPhoneNumber: Codable {
     public let phoneNumber: String
 
 
-    public init (phoneNumber: String) {
+    public init(phoneNumber: String) {
         self.phoneNumber = phoneNumber
     }
 }
@@ -310,7 +310,7 @@ public struct InputPassportElementEmailAddress: Codable {
     public let emailAddress: String
 
 
-    public init (emailAddress: String) {
+    public init(emailAddress: String) {
         self.emailAddress = emailAddress
     }
 }

@@ -24,12 +24,12 @@ public struct GetMessagePublicForwards: Codable {
     public let offset: String
 
 
-    public init (
+    public init(
         chatId: Int64,
         limit: Int,
         messageId: Int64,
-        offset: String) {
-
+        offset: String
+    ) {
         self.chatId = chatId
         self.limit = limit
         self.messageId = messageId

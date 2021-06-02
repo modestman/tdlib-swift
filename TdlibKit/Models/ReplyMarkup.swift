@@ -76,7 +76,7 @@ public struct ReplyMarkupRemoveKeyboard: Codable {
     public let isPersonal: Bool
 
 
-    public init (isPersonal: Bool) {
+    public init(isPersonal: Bool) {
         self.isPersonal = isPersonal
     }
 }
@@ -88,7 +88,7 @@ public struct ReplyMarkupForceReply: Codable {
     public let isPersonal: Bool
 
 
-    public init (isPersonal: Bool) {
+    public init(isPersonal: Bool) {
         self.isPersonal = isPersonal
     }
 }
@@ -109,12 +109,12 @@ public struct ReplyMarkupShowKeyboard: Codable {
     public let rows: [[KeyboardButton]]
 
 
-    public init (
+    public init(
         isPersonal: Bool,
         oneTime: Bool,
         resizeKeyboard: Bool,
-        rows: [[KeyboardButton]]) {
-
+        rows: [[KeyboardButton]]
+    ) {
         self.isPersonal = isPersonal
         self.oneTime = oneTime
         self.resizeKeyboard = resizeKeyboard
@@ -129,7 +129,7 @@ public struct ReplyMarkupInlineKeyboard: Codable {
     public let rows: [[InlineKeyboardButton]]
 
 
-    public init (rows: [[InlineKeyboardButton]]) {
+    public init(rows: [[InlineKeyboardButton]]) {
         self.rows = rows
     }
 }

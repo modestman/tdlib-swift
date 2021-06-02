@@ -74,7 +74,7 @@ public struct WebPage: Codable {
     public let voiceNote: VoiceNote?
 
 
-    public init (
+    public init(
         animation: Animation?,
         audio: Audio?,
         author: String,
@@ -95,8 +95,8 @@ public struct WebPage: Codable {
         url: String,
         video: Video?,
         videoNote: VideoNote?,
-        voiceNote: VoiceNote?) {
-
+        voiceNote: VoiceNote?
+    ) {
         self.animation = animation
         self.audio = audio
         self.author = author

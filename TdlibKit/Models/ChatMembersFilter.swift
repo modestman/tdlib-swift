@@ -94,7 +94,7 @@ public struct ChatMembersFilterMention: Codable {
     public let messageThreadId: Int64
 
 
-    public init (messageThreadId: Int64) {
+    public init(messageThreadId: Int64) {
         self.messageThreadId = messageThreadId
     }
 }

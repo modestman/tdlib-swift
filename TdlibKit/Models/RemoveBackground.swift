@@ -15,7 +15,7 @@ public struct RemoveBackground: Codable {
     public let backgroundId: TdInt64
 
 
-    public init (backgroundId: TdInt64) {
+    public init(backgroundId: TdInt64) {
         self.backgroundId = backgroundId
     }
 }

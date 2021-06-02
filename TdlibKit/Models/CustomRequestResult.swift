@@ -15,7 +15,7 @@ public struct CustomRequestResult: Codable {
     public let result: String
 
 
-    public init (result: String) {
+    public init(result: String) {
         self.result = result
     }
 }

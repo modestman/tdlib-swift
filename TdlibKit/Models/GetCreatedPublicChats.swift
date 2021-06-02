@@ -15,7 +15,7 @@ public struct GetCreatedPublicChats: Codable {
     public let type: PublicChatType
 
 
-    public init (type: PublicChatType) {
+    public init(type: PublicChatType) {
         self.type = type
     }
 }

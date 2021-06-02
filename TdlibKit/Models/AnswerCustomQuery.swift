@@ -18,10 +18,10 @@ public struct AnswerCustomQuery: Codable {
     public let data: String
 
 
-    public init (
+    public init(
         customQueryId: TdInt64,
-        data: String) {
-
+        data: String
+    ) {
         self.customQueryId = customQueryId
         self.data = data
     }

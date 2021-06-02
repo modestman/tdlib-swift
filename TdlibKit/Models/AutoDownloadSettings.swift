@@ -36,7 +36,7 @@ public struct AutoDownloadSettings: Codable {
     public let videoUploadBitrate: Int
 
 
-    public init (
+    public init(
         isAutoDownloadEnabled: Bool,
         maxOtherFileSize: Int,
         maxPhotoFileSize: Int,
@@ -44,8 +44,8 @@ public struct AutoDownloadSettings: Codable {
         preloadLargeVideos: Bool,
         preloadNextAudio: Bool,
         useLessDataForCalls: Bool,
-        videoUploadBitrate: Int) {
-
+        videoUploadBitrate: Int
+    ) {
         self.isAutoDownloadEnabled = isAutoDownloadEnabled
         self.maxOtherFileSize = maxOtherFileSize
         self.maxPhotoFileSize = maxPhotoFileSize

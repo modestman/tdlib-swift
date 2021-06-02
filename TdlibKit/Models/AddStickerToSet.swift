@@ -21,11 +21,11 @@ public struct AddStickerToSet: Codable {
     public let userId: Int
 
 
-    public init (
+    public init(
         name: String,
         sticker: InputSticker,
-        userId: Int) {
-
+        userId: Int
+    ) {
         self.name = name
         self.sticker = sticker
         self.userId = userId

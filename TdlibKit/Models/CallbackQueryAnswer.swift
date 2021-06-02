@@ -21,11 +21,11 @@ public struct CallbackQueryAnswer: Codable {
     public let url: String
 
 
-    public init (
+    public init(
         showAlert: Bool,
         text: String,
-        url: String) {
-
+        url: String
+    ) {
         self.showAlert = showAlert
         self.text = text
         self.url = url

@@ -27,13 +27,13 @@ public struct EditProxy: Codable {
     public let type: ProxyType
 
 
-    public init (
+    public init(
         enable: Bool,
         port: Int,
         proxyId: Int,
         server: String,
-        type: ProxyType) {
-
+        type: ProxyType
+    ) {
         self.enable = enable
         self.port = port
         self.proxyId = proxyId

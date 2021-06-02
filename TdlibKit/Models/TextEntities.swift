@@ -15,7 +15,7 @@ public struct TextEntities: Codable {
     public let entities: [TextEntity]
 
 
-    public init (entities: [TextEntity]) {
+    public init(entities: [TextEntity]) {
         self.entities = entities
     }
 }

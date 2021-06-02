@@ -15,7 +15,7 @@ public struct GameHighScores: Codable {
     public let scores: [GameHighScore]
 
 
-    public init (scores: [GameHighScore]) {
+    public init(scores: [GameHighScore]) {
         self.scores = scores
     }
 }

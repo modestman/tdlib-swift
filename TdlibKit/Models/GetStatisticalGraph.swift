@@ -21,11 +21,11 @@ public struct GetStatisticalGraph: Codable {
     public let x: Int64
 
 
-    public init (
+    public init(
         chatId: Int64,
         token: String,
-        x: Int64) {
-
+        x: Int64
+    ) {
         self.chatId = chatId
         self.token = token
         self.x = x

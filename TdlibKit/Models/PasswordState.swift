@@ -27,13 +27,13 @@ public struct PasswordState: Codable {
     public let recoveryEmailAddressCodeInfo: EmailAddressAuthenticationCodeInfo?
 
 
-    public init (
+    public init(
         hasPassportData: Bool,
         hasPassword: Bool,
         hasRecoveryEmailAddress: Bool,
         passwordHint: String,
-        recoveryEmailAddressCodeInfo: EmailAddressAuthenticationCodeInfo?) {
-
+        recoveryEmailAddressCodeInfo: EmailAddressAuthenticationCodeInfo?
+    ) {
         self.hasPassportData = hasPassportData
         self.hasPassword = hasPassword
         self.hasRecoveryEmailAddress = hasRecoveryEmailAddress

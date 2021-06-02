@@ -24,12 +24,12 @@ public struct Thumbnail: Codable {
     public let width: Int
 
 
-    public init (
+    public init(
         file: File,
         format: ThumbnailFormat,
         height: Int,
-        width: Int) {
-
+        width: Int
+    ) {
         self.file = file
         self.format = format
         self.height = height

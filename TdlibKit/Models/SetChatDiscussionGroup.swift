@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Changes the discussion group of a channel chat; requires can_change_info rights in the channel if it is specified
+/// Changes the discussion group of a channel chat; requires can_change_info administrator right in the channel if it is specified
 public struct SetChatDiscussionGroup: Codable {
 
     /// Identifier of the channel chat. Pass 0 to remove a link from the supergroup passed in the second argument to a linked channel chat (requires can_pin_messages rights in the supergroup)
@@ -18,10 +18,10 @@ public struct SetChatDiscussionGroup: Codable {
     public let discussionChatId: Int64
 
 
-    public init (
+    public init(
         chatId: Int64,
-        discussionChatId: Int64) {
-
+        discussionChatId: Int64
+    ) {
         self.chatId = chatId
         self.discussionChatId = discussionChatId
     }

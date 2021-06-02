@@ -18,10 +18,10 @@ public struct ImportedContacts: Codable {
     public let userIds: [Int]
 
 
-    public init (
+    public init(
         importerCount: [Int],
-        userIds: [Int]) {
-
+        userIds: [Int]
+    ) {
         self.importerCount = importerCount
         self.userIds = userIds
     }

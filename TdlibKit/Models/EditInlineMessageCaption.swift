@@ -21,11 +21,11 @@ public struct EditInlineMessageCaption: Codable {
     public let replyMarkup: ReplyMarkup
 
 
-    public init (
+    public init(
         caption: FormattedText,
         inlineMessageId: String,
-        replyMarkup: ReplyMarkup) {
-
+        replyMarkup: ReplyMarkup
+    ) {
         self.caption = caption
         self.inlineMessageId = inlineMessageId
         self.replyMarkup = replyMarkup

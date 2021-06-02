@@ -15,7 +15,7 @@ public struct TestSquareInt: Codable {
     public let x: Int
 
 
-    public init (x: Int) {
+    public init(x: Int) {
         self.x = x
     }
 }

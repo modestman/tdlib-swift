@@ -24,12 +24,12 @@ public struct GetLanguagePackString: Codable {
     public let localizationTarget: String
 
 
-    public init (
+    public init(
         key: String,
         languagePackDatabasePath: String,
         languagePackId: String,
-        localizationTarget: String) {
-
+        localizationTarget: String
+    ) {
         self.key = key
         self.languagePackDatabasePath = languagePackDatabasePath
         self.languagePackId = languagePackId

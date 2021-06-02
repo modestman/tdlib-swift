@@ -18,10 +18,10 @@ public struct CreateTemporaryPassword: Codable {
     public let validFor: Int
 
 
-    public init (
+    public init(
         password: String,
-        validFor: Int) {
-
+        validFor: Int
+    ) {
         self.password = password
         self.validFor = validFor
     }

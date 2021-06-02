@@ -21,11 +21,11 @@ public struct Minithumbnail: Codable {
     public let width: Int
 
 
-    public init (
+    public init(
         data: Data,
         height: Int,
-        width: Int) {
-
+        width: Int
+    ) {
         self.data = data
         self.height = height
         self.width = width

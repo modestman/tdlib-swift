@@ -59,10 +59,10 @@ public struct LoginUrlInfoOpen: Codable {
     public let url: String
 
 
-    public init (
+    public init(
         skipConfirm: Bool,
-        url: String) {
-
+        url: String
+    ) {
         self.skipConfirm = skipConfirm
         self.url = url
     }
@@ -84,12 +84,12 @@ public struct LoginUrlInfoRequestConfirmation: Codable {
     public let url: String
 
 
-    public init (
+    public init(
         botUserId: Int,
         domain: String,
         requestWriteAccess: Bool,
-        url: String) {
-
+        url: String
+    ) {
         self.botUserId = botUserId
         self.domain = domain
         self.requestWriteAccess = requestWriteAccess

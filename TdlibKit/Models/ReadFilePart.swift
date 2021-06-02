@@ -21,11 +21,11 @@ public struct ReadFilePart: Codable {
     public let offset: Int
 
 
-    public init (
+    public init(
         count: Int,
         fileId: Int,
-        offset: Int) {
-
+        offset: Int
+    ) {
         self.count = count
         self.fileId = fileId
         self.offset = offset

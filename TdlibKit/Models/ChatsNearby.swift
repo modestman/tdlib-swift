@@ -18,10 +18,10 @@ public struct ChatsNearby: Codable {
     public let usersNearby: [ChatNearby]
 
 
-    public init (
+    public init(
         supergroupsNearby: [ChatNearby],
-        usersNearby: [ChatNearby]) {
-
+        usersNearby: [ChatNearby]
+    ) {
         self.supergroupsNearby = supergroupsNearby
         self.usersNearby = usersNearby
     }

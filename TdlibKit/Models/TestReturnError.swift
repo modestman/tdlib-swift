@@ -15,7 +15,7 @@ public struct TestReturnError: Codable {
     public let error: Error
 
 
-    public init (error: Error) {
+    public init(error: Error) {
         self.error = error
     }
 }

@@ -21,11 +21,11 @@ public struct DeleteChatHistory: Codable {
     public let revoke: Bool
 
 
-    public init (
+    public init(
         chatId: Int64,
         removeFromChatList: Bool,
-        revoke: Bool) {
-
+        revoke: Bool
+    ) {
         self.chatId = chatId
         self.removeFromChatList = removeFromChatList
         self.revoke = revoke

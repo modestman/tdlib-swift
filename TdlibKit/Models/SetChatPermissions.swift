@@ -18,10 +18,10 @@ public struct SetChatPermissions: Codable {
     public let permissions: ChatPermissions
 
 
-    public init (
+    public init(
         chatId: Int64,
-        permissions: ChatPermissions) {
-
+        permissions: ChatPermissions
+    ) {
         self.chatId = chatId
         self.permissions = permissions
     }

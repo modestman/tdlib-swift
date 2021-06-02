@@ -18,10 +18,10 @@ public struct FormattedText: Codable {
     public let text: String
 
 
-    public init (
+    public init(
         entities: [TextEntity],
-        text: String) {
-
+        text: String
+    ) {
         self.entities = entities
         self.text = text
     }

@@ -15,7 +15,7 @@ public struct HideSuggestedAction: Codable {
     public let action: SuggestedAction
 
 
-    public init (action: SuggestedAction) {
+    public init(action: SuggestedAction) {
         self.action = action
     }
 }

@@ -21,11 +21,11 @@ public struct ChatFilterInfo: Codable {
     public let title: String
 
 
-    public init (
+    public init(
         iconName: String,
         id: Int,
-        title: String) {
-
+        title: String
+    ) {
         self.iconName = iconName
         self.id = id
         self.title = title

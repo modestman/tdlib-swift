@@ -15,7 +15,7 @@ public struct ChatAdministrators: Codable {
     public let administrators: [ChatAdministrator]
 
 
-    public init (administrators: [ChatAdministrator]) {
+    public init(administrators: [ChatAdministrator]) {
         self.administrators = administrators
     }
 }

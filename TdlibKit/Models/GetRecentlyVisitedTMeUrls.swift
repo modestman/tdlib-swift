@@ -15,7 +15,7 @@ public struct GetRecentlyVisitedTMeUrls: Codable {
     public let referrer: String
 
 
-    public init (referrer: String) {
+    public init(referrer: String) {
         self.referrer = referrer
     }
 }

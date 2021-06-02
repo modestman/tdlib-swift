@@ -12,7 +12,6 @@ import Foundation
 public struct RequestAuthenticationPasswordRecovery: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

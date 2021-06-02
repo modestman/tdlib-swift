@@ -39,7 +39,7 @@ public struct Animation: Codable {
     public let width: Int
 
 
-    public init (
+    public init(
         animation: File,
         duration: Int,
         fileName: String,
@@ -48,8 +48,8 @@ public struct Animation: Codable {
         mimeType: String,
         minithumbnail: Minithumbnail?,
         thumbnail: Thumbnail?,
-        width: Int) {
-
+        width: Int
+    ) {
         self.animation = animation
         self.duration = duration
         self.fileName = fileName

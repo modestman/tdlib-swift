@@ -27,13 +27,13 @@ public struct BasicGroup: Codable {
     public let upgradedToSupergroupId: Int
 
 
-    public init (
+    public init(
         id: Int,
         isActive: Bool,
         memberCount: Int,
         status: ChatMemberStatus,
-        upgradedToSupergroupId: Int) {
-
+        upgradedToSupergroupId: Int
+    ) {
         self.id = id
         self.isActive = isActive
         self.memberCount = memberCount

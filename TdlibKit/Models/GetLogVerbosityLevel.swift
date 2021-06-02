@@ -12,7 +12,6 @@ import Foundation
 public struct GetLogVerbosityLevel: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

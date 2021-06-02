@@ -21,11 +21,11 @@ public struct StopPoll: Codable {
     public let replyMarkup: ReplyMarkup
 
 
-    public init (
+    public init(
         chatId: Int64,
         messageId: Int64,
-        replyMarkup: ReplyMarkup) {
-
+        replyMarkup: ReplyMarkup
+    ) {
         self.chatId = chatId
         self.messageId = messageId
         self.replyMarkup = replyMarkup

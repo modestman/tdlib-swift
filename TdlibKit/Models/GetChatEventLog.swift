@@ -30,14 +30,14 @@ public struct GetChatEventLog: Codable {
     public let userIds: [Int]
 
 
-    public init (
+    public init(
         chatId: Int64,
         filters: ChatEventLogFilters,
         fromEventId: TdInt64,
         limit: Int,
         query: String,
-        userIds: [Int]) {
-
+        userIds: [Int]
+    ) {
         self.chatId = chatId
         self.filters = filters
         self.fromEventId = fromEventId

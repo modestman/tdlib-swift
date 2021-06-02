@@ -51,7 +51,7 @@ public struct LanguagePackInfo: Codable {
     public let translationUrl: String
 
 
-    public init (
+    public init(
         baseLanguagePackId: String,
         id: String,
         isBeta: Bool,
@@ -64,8 +64,8 @@ public struct LanguagePackInfo: Codable {
         pluralCode: String,
         totalStringCount: Int,
         translatedStringCount: Int,
-        translationUrl: String) {
-
+        translationUrl: String
+    ) {
         self.baseLanguagePackId = baseLanguagePackId
         self.id = id
         self.isBeta = isBeta

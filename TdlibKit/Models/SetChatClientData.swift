@@ -18,10 +18,10 @@ public struct SetChatClientData: Codable {
     public let clientData: String
 
 
-    public init (
+    public init(
         chatId: Int64,
-        clientData: String) {
-
+        clientData: String
+    ) {
         self.chatId = chatId
         self.clientData = clientData
     }

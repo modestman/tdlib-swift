@@ -18,10 +18,10 @@ public struct RemoveNotificationGroup: Codable {
     public let notificationGroupId: Int
 
 
-    public init (
+    public init(
         maxNotificationId: Int,
-        notificationGroupId: Int) {
-
+        notificationGroupId: Int
+    ) {
         self.maxNotificationId = maxNotificationId
         self.notificationGroupId = notificationGroupId
     }

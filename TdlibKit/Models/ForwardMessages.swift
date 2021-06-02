@@ -17,7 +17,7 @@ public struct ForwardMessages: Codable {
     /// Identifier of the chat from which to forward messages
     public let fromChatId: Int64
 
-    /// Identifiers of the messages to forward. Message identifiers must be in a strictly increasing order
+    /// Identifiers of the messages to forward. Message identifiers must be in a strictly increasing order. At most 100 messages can be forwarded simultaneously
     public let messageIds: [Int64]
 
     /// Options to be used to send the messages
@@ -30,14 +30,14 @@ public struct ForwardMessages: Codable {
     public let sendCopy: Bool
 
 
-    public init (
+    public init(
         chatId: Int64,
         fromChatId: Int64,
         messageIds: [Int64],
         options: MessageSendOptions,
         removeCaption: Bool,
-        sendCopy: Bool) {
-
+        sendCopy: Bool
+    ) {
         self.chatId = chatId
         self.fromChatId = fromChatId
         self.messageIds = messageIds

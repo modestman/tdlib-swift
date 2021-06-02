@@ -15,7 +15,7 @@ public struct LanguagePackStrings: Codable {
     public let strings: [LanguagePackString]
 
 
-    public init (strings: [LanguagePackString]) {
+    public init(strings: [LanguagePackString]) {
         self.strings = strings
     }
 }

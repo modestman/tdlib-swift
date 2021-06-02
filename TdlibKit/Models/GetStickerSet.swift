@@ -15,7 +15,7 @@ public struct GetStickerSet: Codable {
     public let setId: TdInt64
 
 
-    public init (setId: TdInt64) {
+    public init(setId: TdInt64) {
         self.setId = setId
     }
 }

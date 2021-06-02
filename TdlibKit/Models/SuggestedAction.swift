@@ -17,10 +17,18 @@ public enum SuggestedAction: Codable {
     /// Suggests the user to check authorization phone number and change the phone number if it is inaccessible
     case suggestedActionCheckPhoneNumber
 
+    /// Suggests the user to see a hint about meaning of one and two ticks on sent message
+    case suggestedActionSeeTicksHint
+
+    /// Suggests the user to convert specified supergroup to a broadcast group
+    case suggestedActionConvertToBroadcastGroup(SuggestedActionConvertToBroadcastGroup)
+
 
     private enum Kind: String, Codable {
         case suggestedActionEnableArchiveAndMuteNewChats
         case suggestedActionCheckPhoneNumber
+        case suggestedActionSeeTicksHint
+        case suggestedActionConvertToBroadcastGroup
     }
 
     public init(from decoder: Decoder) throws {
@@ -31,6 +39,11 @@ public enum SuggestedAction: Codable {
             self = .suggestedActionEnableArchiveAndMuteNewChats
         case .suggestedActionCheckPhoneNumber:
             self = .suggestedActionCheckPhoneNumber
+        case .suggestedActionSeeTicksHint:
+            self = .suggestedActionSeeTicksHint
+        case .suggestedActionConvertToBroadcastGroup:
+            let value = try SuggestedActionConvertToBroadcastGroup(from: decoder)
+            self = .suggestedActionConvertToBroadcastGroup(value)
         }
     }
 
@@ -41,7 +54,24 @@ public enum SuggestedAction: Codable {
             try container.encode(Kind.suggestedActionEnableArchiveAndMuteNewChats, forKey: .type)
         case .suggestedActionCheckPhoneNumber:
             try container.encode(Kind.suggestedActionCheckPhoneNumber, forKey: .type)
+        case .suggestedActionSeeTicksHint:
+            try container.encode(Kind.suggestedActionSeeTicksHint, forKey: .type)
+        case .suggestedActionConvertToBroadcastGroup(let value):
+            try container.encode(Kind.suggestedActionConvertToBroadcastGroup, forKey: .type)
+            try value.encode(to: encoder)
         }
+    }
+}
+
+/// Suggests the user to convert specified supergroup to a broadcast group
+public struct SuggestedActionConvertToBroadcastGroup: Codable {
+
+    /// Supergroup identifier
+    public let supergroupId: Int
+
+
+    public init(supergroupId: Int) {
+        self.supergroupId = supergroupId
     }
 }
 

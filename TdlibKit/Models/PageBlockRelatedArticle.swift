@@ -29,14 +29,14 @@ public struct PageBlockRelatedArticle: Codable {
     public let url: String
 
 
-    public init (
+    public init(
         author: String,
         description: String,
         photo: Photo?,
         publishDate: Int,
         title: String,
-        url: String) {
-
+        url: String
+    ) {
         self.author = author
         self.description = description
         self.photo = photo

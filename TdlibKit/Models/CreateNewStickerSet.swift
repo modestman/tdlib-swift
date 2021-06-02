@@ -27,13 +27,13 @@ public struct CreateNewStickerSet: Codable {
     public let userId: Int
 
 
-    public init (
+    public init(
         isMasks: Bool,
         name: String,
         stickers: [InputSticker],
         title: String,
-        userId: Int) {
-
+        userId: Int
+    ) {
         self.isMasks = isMasks
         self.name = name
         self.stickers = stickers

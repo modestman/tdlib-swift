@@ -18,10 +18,10 @@ public struct SetBotUpdatesStatus: Codable {
     public let pendingUpdateCount: Int
 
 
-    public init (
+    public init(
         errorMessage: String,
-        pendingUpdateCount: Int) {
-
+        pendingUpdateCount: Int
+    ) {
         self.errorMessage = errorMessage
         self.pendingUpdateCount = pendingUpdateCount
     }

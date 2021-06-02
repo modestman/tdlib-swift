@@ -12,7 +12,6 @@ import Foundation
 public struct GetRecentInlineBots: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

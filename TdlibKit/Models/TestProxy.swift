@@ -27,13 +27,13 @@ public struct TestProxy: Codable {
     public let type: ProxyType
 
 
-    public init (
+    public init(
         dcId: Int,
         port: Int,
         server: String,
         timeout: Double,
-        type: ProxyType) {
-
+        type: ProxyType
+    ) {
         self.dcId = dcId
         self.port = port
         self.server = server

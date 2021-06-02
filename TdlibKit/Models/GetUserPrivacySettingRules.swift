@@ -15,7 +15,7 @@ public struct GetUserPrivacySettingRules: Codable {
     public let setting: UserPrivacySetting
 
 
-    public init (setting: UserPrivacySetting) {
+    public init(setting: UserPrivacySetting) {
         self.setting = setting
     }
 }

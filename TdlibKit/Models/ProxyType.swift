@@ -69,10 +69,10 @@ public struct ProxyTypeSocks5: Codable {
     public let username: String
 
 
-    public init (
+    public init(
         password: String,
-        username: String) {
-
+        username: String
+    ) {
         self.password = password
         self.username = username
     }
@@ -91,11 +91,11 @@ public struct ProxyTypeHttp: Codable {
     public let username: String
 
 
-    public init (
+    public init(
         httpOnly: Bool,
         password: String,
-        username: String) {
-
+        username: String
+    ) {
         self.httpOnly = httpOnly
         self.password = password
         self.username = username
@@ -109,7 +109,7 @@ public struct ProxyTypeMtproto: Codable {
     public let secret: String
 
 
-    public init (secret: String) {
+    public init(secret: String) {
         self.secret = secret
     }
 }

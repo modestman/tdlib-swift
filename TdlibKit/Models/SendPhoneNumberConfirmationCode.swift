@@ -21,11 +21,11 @@ public struct SendPhoneNumberConfirmationCode: Codable {
     public let settings: PhoneNumberAuthenticationSettings
 
 
-    public init (
+    public init(
         hash: String,
         phoneNumber: String,
-        settings: PhoneNumberAuthenticationSettings) {
-
+        settings: PhoneNumberAuthenticationSettings
+    ) {
         self.hash = hash
         self.phoneNumber = phoneNumber
         self.settings = settings

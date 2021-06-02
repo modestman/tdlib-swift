@@ -54,7 +54,7 @@ public struct MessageSchedulingStateSendAtDate: Codable {
     public let sendDate: Int
 
 
-    public init (sendDate: Int) {
+    public init(sendDate: Int) {
         self.sendDate = sendDate
     }
 }

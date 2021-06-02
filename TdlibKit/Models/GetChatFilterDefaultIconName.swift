@@ -15,7 +15,7 @@ public struct GetChatFilterDefaultIconName: Codable {
     public let filter: ChatFilter
 
 
-    public init (filter: ChatFilter) {
+    public init(filter: ChatFilter) {
         self.filter = filter
     }
 }

@@ -18,10 +18,10 @@ public struct SendPassportAuthorizationForm: Codable {
     public let types: [PassportElementType]
 
 
-    public init (
+    public init(
         autorizationFormId: Int,
-        types: [PassportElementType]) {
-
+        types: [PassportElementType]
+    ) {
         self.autorizationFormId = autorizationFormId
         self.types = types
     }

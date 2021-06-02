@@ -10,7 +10,7 @@ import Foundation
 import TdlibKit
 
 
-public protocol UpdateListener: class {
+public protocol UpdateListener: AnyObject {
     func onUpdate(_ update: Update)
 }
 

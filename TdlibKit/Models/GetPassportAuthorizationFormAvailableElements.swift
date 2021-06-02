@@ -18,10 +18,10 @@ public struct GetPassportAuthorizationFormAvailableElements: Codable {
     public let password: String
 
 
-    public init (
+    public init(
         autorizationFormId: Int,
-        password: String) {
-
+        password: String
+    ) {
         self.autorizationFormId = autorizationFormId
         self.password = password
     }

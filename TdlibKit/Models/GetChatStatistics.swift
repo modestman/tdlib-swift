@@ -18,10 +18,10 @@ public struct GetChatStatistics: Codable {
     public let isDark: Bool
 
 
-    public init (
+    public init(
         chatId: Int64,
-        isDark: Bool) {
-
+        isDark: Bool
+    ) {
         self.chatId = chatId
         self.isDark = isDark
     }

@@ -12,7 +12,6 @@ import Foundation
 public struct GetRecommendedChatFilters: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

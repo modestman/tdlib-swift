@@ -21,11 +21,11 @@ public struct GetArchivedStickerSets: Codable {
     public let offsetStickerSetId: TdInt64
 
 
-    public init (
+    public init(
         isMasks: Bool,
         limit: Int,
-        offsetStickerSetId: TdInt64) {
-
+        offsetStickerSetId: TdInt64
+    ) {
         self.isMasks = isMasks
         self.limit = limit
         self.offsetStickerSetId = offsetStickerSetId

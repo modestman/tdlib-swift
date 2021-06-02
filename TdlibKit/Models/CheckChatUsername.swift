@@ -18,10 +18,10 @@ public struct CheckChatUsername: Codable {
     public let username: String
 
 
-    public init (
+    public init(
         chatId: Int64,
-        username: String) {
-
+        username: String
+    ) {
         self.chatId = chatId
         self.username = username
     }

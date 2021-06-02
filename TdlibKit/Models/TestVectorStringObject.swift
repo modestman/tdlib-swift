@@ -15,7 +15,7 @@ public struct TestVectorStringObject: Codable {
     public let value: [TestString]
 
 
-    public init (value: [TestString]) {
+    public init(value: [TestString]) {
         self.value = value
     }
 }

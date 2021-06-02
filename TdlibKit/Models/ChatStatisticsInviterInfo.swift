@@ -18,10 +18,10 @@ public struct ChatStatisticsInviterInfo: Codable {
     public let userId: Int
 
 
-    public init (
+    public init(
         addedMemberCount: Int,
-        userId: Int) {
-
+        userId: Int
+    ) {
         self.addedMemberCount = addedMemberCount
         self.userId = userId
     }

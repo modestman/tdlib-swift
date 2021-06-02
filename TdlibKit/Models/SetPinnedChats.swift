@@ -18,10 +18,10 @@ public struct SetPinnedChats: Codable {
     public let chatList: ChatList
 
 
-    public init (
+    public init(
         chatIds: [Int64],
-        chatList: ChatList) {
-
+        chatList: ChatList
+    ) {
         self.chatIds = chatIds
         self.chatList = chatList
     }

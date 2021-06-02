@@ -23,6 +23,9 @@ public struct User: Codable {
     /// The user is a contact of the current user
     public let isContact: Bool
 
+    /// True, if many users reported this user as a fake account
+    public let isFake: Bool
+
     /// The user is a contact of the current user and the current user is a contact of the user
     public let isMutualContact: Bool
 
@@ -60,11 +63,12 @@ public struct User: Codable {
     public let username: String
 
 
-    public init (
+    public init(
         firstName: String,
         haveAccess: Bool,
         id: Int,
         isContact: Bool,
+        isFake: Bool,
         isMutualContact: Bool,
         isScam: Bool,
         isSupport: Bool,
@@ -76,12 +80,13 @@ public struct User: Codable {
         restrictionReason: String,
         status: UserStatus,
         type: UserType,
-        username: String) {
-
+        username: String
+    ) {
         self.firstName = firstName
         self.haveAccess = haveAccess
         self.id = id
         self.isContact = isContact
+        self.isFake = isFake
         self.isMutualContact = isMutualContact
         self.isScam = isScam
         self.isSupport = isSupport

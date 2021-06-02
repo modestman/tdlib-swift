@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Changes the photo of a chat. Supported only for basic groups, supergroups and channels. Requires can_change_info rights
+/// Changes the photo of a chat. Supported only for basic groups, supergroups and channels. Requires can_change_info administrator right
 public struct SetChatPhoto: Codable {
 
     /// Chat identifier
@@ -18,10 +18,10 @@ public struct SetChatPhoto: Codable {
     public let photo: InputChatPhoto
 
 
-    public init (
+    public init(
         chatId: Int64,
-        photo: InputChatPhoto) {
-
+        photo: InputChatPhoto
+    ) {
         self.chatId = chatId
         self.photo = photo
     }

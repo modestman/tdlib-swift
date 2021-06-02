@@ -15,7 +15,7 @@ public struct ClearAllDraftMessages: Codable {
     public let excludeSecretChats: Bool
 
 
-    public init (excludeSecretChats: Bool) {
+    public init(excludeSecretChats: Bool) {
         self.excludeSecretChats = excludeSecretChats
     }
 }

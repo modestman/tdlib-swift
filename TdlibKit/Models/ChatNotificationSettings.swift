@@ -42,7 +42,7 @@ public struct ChatNotificationSettings: Codable {
     public let useDefaultSound: Bool
 
 
-    public init (
+    public init(
         disableMentionNotifications: Bool,
         disablePinnedMessageNotifications: Bool,
         muteFor: Int,
@@ -52,8 +52,8 @@ public struct ChatNotificationSettings: Codable {
         useDefaultDisablePinnedMessageNotifications: Bool,
         useDefaultMuteFor: Bool,
         useDefaultShowPreview: Bool,
-        useDefaultSound: Bool) {
-
+        useDefaultSound: Bool
+    ) {
         self.disableMentionNotifications = disableMentionNotifications
         self.disablePinnedMessageNotifications = disablePinnedMessageNotifications
         self.muteFor = muteFor

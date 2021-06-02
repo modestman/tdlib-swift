@@ -17,6 +17,9 @@ public enum ChatActionBar: Codable {
     /// The chat is a location-based supergroup, which can be reported as having unrelated location using the method reportChat with the reason chatReportReasonUnrelatedLocation
     case chatActionBarReportUnrelatedLocation
 
+    /// The chat is a recently created group chat, to which new members can be invited
+    case chatActionBarInviteMembers
+
     /// The chat is a private or secret chat, which can be reported using the method reportChat, or the other user can be blocked using the method blockUser, or the other user can be added to the contact list using the method addContact
     case chatActionBarReportAddBlock(ChatActionBarReportAddBlock)
 
@@ -30,6 +33,7 @@ public enum ChatActionBar: Codable {
     private enum Kind: String, Codable {
         case chatActionBarReportSpam
         case chatActionBarReportUnrelatedLocation
+        case chatActionBarInviteMembers
         case chatActionBarReportAddBlock
         case chatActionBarAddContact
         case chatActionBarSharePhoneNumber
@@ -44,6 +48,8 @@ public enum ChatActionBar: Codable {
             self = .chatActionBarReportSpam(value)
         case .chatActionBarReportUnrelatedLocation:
             self = .chatActionBarReportUnrelatedLocation
+        case .chatActionBarInviteMembers:
+            self = .chatActionBarInviteMembers
         case .chatActionBarReportAddBlock:
             let value = try ChatActionBarReportAddBlock(from: decoder)
             self = .chatActionBarReportAddBlock(value)
@@ -62,6 +68,8 @@ public enum ChatActionBar: Codable {
             try value.encode(to: encoder)
         case .chatActionBarReportUnrelatedLocation:
             try container.encode(Kind.chatActionBarReportUnrelatedLocation, forKey: .type)
+        case .chatActionBarInviteMembers:
+            try container.encode(Kind.chatActionBarInviteMembers, forKey: .type)
         case .chatActionBarReportAddBlock(let value):
             try container.encode(Kind.chatActionBarReportAddBlock, forKey: .type)
             try value.encode(to: encoder)
@@ -80,7 +88,7 @@ public struct ChatActionBarReportSpam: Codable {
     public let canUnarchive: Bool
 
 
-    public init (canUnarchive: Bool) {
+    public init(canUnarchive: Bool) {
         self.canUnarchive = canUnarchive
     }
 }
@@ -95,10 +103,10 @@ public struct ChatActionBarReportAddBlock: Codable {
     public let distance: Int
 
 
-    public init (
+    public init(
         canUnarchive: Bool,
-        distance: Int) {
-
+        distance: Int
+    ) {
         self.canUnarchive = canUnarchive
         self.distance = distance
     }

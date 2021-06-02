@@ -12,7 +12,6 @@ import Foundation
 public struct GetAuthorizationState: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

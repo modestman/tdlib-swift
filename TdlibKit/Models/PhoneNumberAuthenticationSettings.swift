@@ -21,11 +21,11 @@ public struct PhoneNumberAuthenticationSettings: Codable {
     public let isCurrentPhoneNumber: Bool
 
 
-    public init (
+    public init(
         allowFlashCall: Bool,
         allowSmsRetrieverApi: Bool,
-        isCurrentPhoneNumber: Bool) {
-
+        isCurrentPhoneNumber: Bool
+    ) {
         self.allowFlashCall = allowFlashCall
         self.allowSmsRetrieverApi = allowSmsRetrieverApi
         self.isCurrentPhoneNumber = isCurrentPhoneNumber

@@ -27,13 +27,13 @@ public struct RemoteFile: Codable {
     public let uploadedSize: Int
 
 
-    public init (
+    public init(
         id: String,
         isUploadingActive: Bool,
         isUploadingCompleted: Bool,
         uniqueId: String,
-        uploadedSize: Int) {
-
+        uploadedSize: Int
+    ) {
         self.id = id
         self.isUploadingActive = isUploadingActive
         self.isUploadingCompleted = isUploadingCompleted

@@ -24,12 +24,12 @@ public struct ChatEvent: Codable {
     public let userId: Int
 
 
-    public init (
+    public init(
         action: ChatEventAction,
         date: Int,
         id: TdInt64,
-        userId: Int) {
-
+        userId: Int
+    ) {
         self.action = action
         self.date = date
         self.id = id

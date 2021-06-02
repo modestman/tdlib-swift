@@ -15,7 +15,7 @@ public struct SetNetworkType: Codable {
     public let type: NetworkType
 
 
-    public init (type: NetworkType) {
+    public init(type: NetworkType) {
         self.type = type
     }
 }

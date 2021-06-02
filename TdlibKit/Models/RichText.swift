@@ -206,7 +206,7 @@ public struct RichTextPlain: Codable {
     public let text: String
 
 
-    public init (text: String) {
+    public init(text: String) {
         self.text = text
     }
 }
@@ -218,7 +218,7 @@ public struct RichTextBold: Codable {
     public let text: RichText
 
 
-    public init (text: RichText) {
+    public init(text: RichText) {
         self.text = text
     }
 }
@@ -230,7 +230,7 @@ public struct RichTextItalic: Codable {
     public let text: RichText
 
 
-    public init (text: RichText) {
+    public init(text: RichText) {
         self.text = text
     }
 }
@@ -242,7 +242,7 @@ public struct RichTextUnderline: Codable {
     public let text: RichText
 
 
-    public init (text: RichText) {
+    public init(text: RichText) {
         self.text = text
     }
 }
@@ -254,7 +254,7 @@ public struct RichTextStrikethrough: Codable {
     public let text: RichText
 
 
-    public init (text: RichText) {
+    public init(text: RichText) {
         self.text = text
     }
 }
@@ -266,7 +266,7 @@ public struct RichTextFixed: Codable {
     public let text: RichText
 
 
-    public init (text: RichText) {
+    public init(text: RichText) {
         self.text = text
     }
 }
@@ -284,11 +284,11 @@ public struct RichTextUrl: Codable {
     public let url: String
 
 
-    public init (
+    public init(
         isCached: Bool,
         text: RichText,
-        url: String) {
-
+        url: String
+    ) {
         self.isCached = isCached
         self.text = text
         self.url = url
@@ -305,10 +305,10 @@ public struct RichTextEmailAddress: Codable {
     public let text: RichText
 
 
-    public init (
+    public init(
         emailAddress: String,
-        text: RichText) {
-
+        text: RichText
+    ) {
         self.emailAddress = emailAddress
         self.text = text
     }
@@ -321,7 +321,7 @@ public struct RichTextSubscript: Codable {
     public let text: RichText
 
 
-    public init (text: RichText) {
+    public init(text: RichText) {
         self.text = text
     }
 }
@@ -333,7 +333,7 @@ public struct RichTextSuperscript: Codable {
     public let text: RichText
 
 
-    public init (text: RichText) {
+    public init(text: RichText) {
         self.text = text
     }
 }
@@ -345,7 +345,7 @@ public struct RichTextMarked: Codable {
     public let text: RichText
 
 
-    public init (text: RichText) {
+    public init(text: RichText) {
         self.text = text
     }
 }
@@ -360,10 +360,10 @@ public struct RichTextPhoneNumber: Codable {
     public let text: RichText
 
 
-    public init (
+    public init(
         phoneNumber: String,
-        text: RichText) {
-
+        text: RichText
+    ) {
         self.phoneNumber = phoneNumber
         self.text = text
     }
@@ -382,11 +382,11 @@ public struct RichTextIcon: Codable {
     public let width: Int
 
 
-    public init (
+    public init(
         document: Document,
         height: Int,
-        width: Int) {
-
+        width: Int
+    ) {
         self.document = document
         self.height = height
         self.width = width
@@ -406,11 +406,11 @@ public struct RichTextReference: Codable {
     public let url: String
 
 
-    public init (
+    public init(
         anchorName: String,
         text: RichText,
-        url: String) {
-
+        url: String
+    ) {
         self.anchorName = anchorName
         self.text = text
         self.url = url
@@ -424,7 +424,7 @@ public struct RichTextAnchor: Codable {
     public let name: String
 
 
-    public init (name: String) {
+    public init(name: String) {
         self.name = name
     }
 }
@@ -442,11 +442,11 @@ public struct RichTextAnchorLink: Codable {
     public let url: String
 
 
-    public init (
+    public init(
         anchorName: String,
         text: RichText,
-        url: String) {
-
+        url: String
+    ) {
         self.anchorName = anchorName
         self.text = text
         self.url = url
@@ -460,7 +460,7 @@ public struct RichTexts: Codable {
     public let texts: [RichText]
 
 
-    public init (texts: [RichText]) {
+    public init(texts: [RichText]) {
         self.texts = texts
     }
 }

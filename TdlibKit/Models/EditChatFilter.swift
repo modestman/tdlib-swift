@@ -18,10 +18,10 @@ public struct EditChatFilter: Codable {
     public let filter: ChatFilter
 
 
-    public init (
+    public init(
         chatFilterId: Int,
-        filter: ChatFilter) {
-
+        filter: ChatFilter
+    ) {
         self.chatFilterId = chatFilterId
         self.filter = filter
     }

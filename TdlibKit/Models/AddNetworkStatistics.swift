@@ -15,7 +15,7 @@ public struct AddNetworkStatistics: Codable {
     public let entry: NetworkStatisticsEntry
 
 
-    public init (entry: NetworkStatisticsEntry) {
+    public init(entry: NetworkStatisticsEntry) {
         self.entry = entry
     }
 }

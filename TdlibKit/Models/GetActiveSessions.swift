@@ -12,7 +12,6 @@ import Foundation
 public struct GetActiveSessions: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

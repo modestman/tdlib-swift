@@ -18,10 +18,10 @@ public struct TMeUrl: Codable {
     public let url: String
 
 
-    public init (
+    public init(
         type: TMeUrlType,
-        url: String) {
-
+        url: String
+    ) {
         self.type = type
         self.url = url
     }

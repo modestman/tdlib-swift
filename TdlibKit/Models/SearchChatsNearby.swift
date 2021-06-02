@@ -15,7 +15,7 @@ public struct SearchChatsNearby: Codable {
     public let location: Location
 
 
-    public init (location: Location) {
+    public init(location: Location) {
         self.location = location
     }
 }

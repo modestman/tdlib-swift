@@ -18,10 +18,10 @@ public struct GetBlockedMessageSenders: Codable {
     public let offset: Int
 
 
-    public init (
+    public init(
         limit: Int,
-        offset: Int) {
-
+        offset: Int
+    ) {
         self.limit = limit
         self.offset = offset
     }

@@ -15,7 +15,7 @@ public struct GetStorageStatistics: Codable {
     public let chatLimit: Int
 
 
-    public init (chatLimit: Int) {
+    public init(chatLimit: Int) {
         self.chatLimit = chatLimit
     }
 }

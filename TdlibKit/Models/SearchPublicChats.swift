@@ -15,7 +15,7 @@ public struct SearchPublicChats: Codable {
     public let query: String
 
 
-    public init (query: String) {
+    public init(query: String) {
         self.query = query
     }
 }

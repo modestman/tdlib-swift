@@ -57,10 +57,10 @@ public struct ChatSourcePublicServiceAnnouncement: Codable {
     public let type: String
 
 
-    public init (
+    public init(
         text: String,
-        type: String) {
-
+        type: String
+    ) {
         self.text = text
         self.type = type
     }

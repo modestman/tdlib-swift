@@ -15,7 +15,7 @@ public struct TestString: Codable {
     public let value: String
 
 
-    public init (value: String) {
+    public init(value: String) {
         self.value = value
     }
 }

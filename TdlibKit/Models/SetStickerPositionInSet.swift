@@ -18,10 +18,10 @@ public struct SetStickerPositionInSet: Codable {
     public let sticker: InputFile
 
 
-    public init (
+    public init(
         position: Int,
-        sticker: InputFile) {
-
+        sticker: InputFile
+    ) {
         self.position = position
         self.sticker = sticker
     }

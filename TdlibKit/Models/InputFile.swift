@@ -76,7 +76,7 @@ public struct InputFileId: Codable {
     public let id: Int
 
 
-    public init (id: Int) {
+    public init(id: Int) {
         self.id = id
     }
 }
@@ -88,7 +88,7 @@ public struct InputFileRemote: Codable {
     public let id: String
 
 
-    public init (id: String) {
+    public init(id: String) {
         self.id = id
     }
 }
@@ -100,7 +100,7 @@ public struct InputFileLocal: Codable {
     public let path: String
 
 
-    public init (path: String) {
+    public init(path: String) {
         self.path = path
     }
 }
@@ -118,11 +118,11 @@ public struct InputFileGenerated: Codable {
     public let originalPath: String
 
 
-    public init (
+    public init(
         conversion: String,
         expectedSize: Int,
-        originalPath: String) {
-
+        originalPath: String
+    ) {
         self.conversion = conversion
         self.expectedSize = expectedSize
         self.originalPath = originalPath

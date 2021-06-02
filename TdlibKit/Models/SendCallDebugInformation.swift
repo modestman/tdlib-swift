@@ -18,10 +18,10 @@ public struct SendCallDebugInformation: Codable {
     public let debugInformation: String
 
 
-    public init (
+    public init(
         callId: Int,
-        debugInformation: String) {
-
+        debugInformation: String
+    ) {
         self.callId = callId
         self.debugInformation = debugInformation
     }

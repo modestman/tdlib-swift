@@ -21,11 +21,11 @@ public struct ToggleChatIsPinned: Codable {
     public let isPinned: Bool
 
 
-    public init (
+    public init(
         chatId: Int64,
         chatList: ChatList,
-        isPinned: Bool) {
-
+        isPinned: Bool
+    ) {
         self.chatId = chatId
         self.chatList = chatList
         self.isPinned = isPinned

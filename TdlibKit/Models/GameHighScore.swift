@@ -21,11 +21,11 @@ public struct GameHighScore: Codable {
     public let userId: Int
 
 
-    public init (
+    public init(
         position: Int,
         score: Int,
-        userId: Int) {
-
+        userId: Int
+    ) {
         self.position = position
         self.score = score
         self.userId = userId

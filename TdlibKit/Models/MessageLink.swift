@@ -18,10 +18,10 @@ public struct MessageLink: Codable {
     public let link: String
 
 
-    public init (
+    public init(
         isPublic: Bool,
-        link: String) {
-
+        link: String
+    ) {
         self.isPublic = isPublic
         self.link = link
     }

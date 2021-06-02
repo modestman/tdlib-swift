@@ -21,11 +21,11 @@ public struct GetChatStatisticsUrl: Codable {
     public let parameters: String
 
 
-    public init (
+    public init(
         chatId: Int64,
         isDark: Bool,
-        parameters: String) {
-
+        parameters: String
+    ) {
         self.chatId = chatId
         self.isDark = isDark
         self.parameters = parameters

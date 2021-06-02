@@ -15,7 +15,7 @@ public struct GetChatFilter: Codable {
     public let chatFilterId: Int
 
 
-    public init (chatFilterId: Int) {
+    public init(chatFilterId: Int) {
         self.chatFilterId = chatFilterId
     }
 }

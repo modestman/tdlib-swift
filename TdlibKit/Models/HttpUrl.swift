@@ -15,7 +15,7 @@ public struct HttpUrl: Codable {
     public let url: String
 
 
-    public init (url: String) {
+    public init(url: String) {
         self.url = url
     }
 }

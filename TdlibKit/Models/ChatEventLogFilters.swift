@@ -14,6 +14,9 @@ public struct ChatEventLogFilters: Codable {
     /// True, if changes in chat information should be returned
     public let infoChanges: Bool
 
+    /// True, if changes to invite links should be returned
+    public let inviteLinkChanges: Bool
+
     /// True, if invited member events should be returned
     public let memberInvites: Bool
 
@@ -41,9 +44,13 @@ public struct ChatEventLogFilters: Codable {
     /// True, if changes in chat settings should be returned
     public let settingChanges: Bool
 
+    /// True, if voice chat actions should be returned
+    public let voiceChatChanges: Bool
 
-    public init (
+
+    public init(
         infoChanges: Bool,
+        inviteLinkChanges: Bool,
         memberInvites: Bool,
         memberJoins: Bool,
         memberLeaves: Bool,
@@ -52,9 +59,11 @@ public struct ChatEventLogFilters: Codable {
         messageDeletions: Bool,
         messageEdits: Bool,
         messagePins: Bool,
-        settingChanges: Bool) {
-
+        settingChanges: Bool,
+        voiceChatChanges: Bool
+    ) {
         self.infoChanges = infoChanges
+        self.inviteLinkChanges = inviteLinkChanges
         self.memberInvites = memberInvites
         self.memberJoins = memberJoins
         self.memberLeaves = memberLeaves
@@ -64,6 +73,7 @@ public struct ChatEventLogFilters: Codable {
         self.messageEdits = messageEdits
         self.messagePins = messagePins
         self.settingChanges = settingChanges
+        self.voiceChatChanges = voiceChatChanges
     }
 }
 

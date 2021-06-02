@@ -15,7 +15,7 @@ public struct Animations: Codable {
     public let animations: [Animation]
 
 
-    public init (animations: [Animation]) {
+    public init(animations: [Animation]) {
         self.animations = animations
     }
 }

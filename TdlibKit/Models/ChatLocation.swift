@@ -18,10 +18,10 @@ public struct ChatLocation: Codable {
     public let location: Location
 
 
-    public init (
+    public init(
         address: String,
-        location: Location) {
-
+        location: Location
+    ) {
         self.address = address
         self.location = location
     }

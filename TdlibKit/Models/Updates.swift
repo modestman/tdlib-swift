@@ -15,7 +15,7 @@ public struct Updates: Codable {
     public let updates: [Update]
 
 
-    public init (updates: [Update]) {
+    public init(updates: [Update]) {
         self.updates = updates
     }
 }

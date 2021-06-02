@@ -30,14 +30,14 @@ public struct Address: Codable {
     public let streetLine2: String
 
 
-    public init (
+    public init(
         city: String,
         countryCode: String,
         postalCode: String,
         state: String,
         streetLine1: String,
-        streetLine2: String) {
-
+        streetLine2: String
+    ) {
         self.city = city
         self.countryCode = countryCode
         self.postalCode = postalCode

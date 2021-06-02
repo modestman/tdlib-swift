@@ -21,11 +21,11 @@ public struct PhoneNumberInfo: Codable {
     public let formattedPhoneNumber: String
 
 
-    public init (
+    public init(
         country: CountryInfo?,
         countryCallingCode: String,
-        formattedPhoneNumber: String) {
-
+        formattedPhoneNumber: String
+    ) {
         self.country = country
         self.countryCallingCode = countryCallingCode
         self.formattedPhoneNumber = formattedPhoneNumber

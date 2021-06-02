@@ -15,7 +15,7 @@ public struct RemoveContacts: Codable {
     public let userIds: [Int]
 
 
-    public init (userIds: [Int]) {
+    public init(userIds: [Int]) {
         self.userIds = userIds
     }
 }

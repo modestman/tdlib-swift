@@ -12,7 +12,6 @@ import Foundation
 public struct TerminateAllOtherSessions: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

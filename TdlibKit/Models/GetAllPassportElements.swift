@@ -15,7 +15,7 @@ public struct GetAllPassportElements: Codable {
     public let password: String
 
 
-    public init (password: String) {
+    public init(password: String) {
         self.password = password
     }
 }

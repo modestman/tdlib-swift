@@ -29,8 +29,11 @@ public enum ChatReportReason: Codable {
     /// The location-based chat is unrelated to its stated location
     case chatReportReasonUnrelatedLocation
 
+    /// The chat represents a fake account
+    case chatReportReasonFake
+
     /// A custom reason provided by the user
-    case chatReportReasonCustom(ChatReportReasonCustom)
+    case chatReportReasonCustom
 
 
     private enum Kind: String, Codable {
@@ -40,6 +43,7 @@ public enum ChatReportReason: Codable {
         case chatReportReasonChildAbuse
         case chatReportReasonCopyright
         case chatReportReasonUnrelatedLocation
+        case chatReportReasonFake
         case chatReportReasonCustom
     }
 
@@ -59,9 +63,10 @@ public enum ChatReportReason: Codable {
             self = .chatReportReasonCopyright
         case .chatReportReasonUnrelatedLocation:
             self = .chatReportReasonUnrelatedLocation
+        case .chatReportReasonFake:
+            self = .chatReportReasonFake
         case .chatReportReasonCustom:
-            let value = try ChatReportReasonCustom(from: decoder)
-            self = .chatReportReasonCustom(value)
+            self = .chatReportReasonCustom
         }
     }
 
@@ -80,22 +85,11 @@ public enum ChatReportReason: Codable {
             try container.encode(Kind.chatReportReasonCopyright, forKey: .type)
         case .chatReportReasonUnrelatedLocation:
             try container.encode(Kind.chatReportReasonUnrelatedLocation, forKey: .type)
-        case .chatReportReasonCustom(let value):
+        case .chatReportReasonFake:
+            try container.encode(Kind.chatReportReasonFake, forKey: .type)
+        case .chatReportReasonCustom:
             try container.encode(Kind.chatReportReasonCustom, forKey: .type)
-            try value.encode(to: encoder)
         }
-    }
-}
-
-/// A custom reason provided by the user
-public struct ChatReportReasonCustom: Codable {
-
-    /// Report text
-    public let text: String
-
-
-    public init (text: String) {
-        self.text = text
     }
 }
 

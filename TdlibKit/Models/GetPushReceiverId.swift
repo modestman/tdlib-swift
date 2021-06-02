@@ -15,7 +15,7 @@ public struct GetPushReceiverId: Codable {
     public let payload: String
 
 
-    public init (payload: String) {
+    public init(payload: String) {
         self.payload = payload
     }
 }

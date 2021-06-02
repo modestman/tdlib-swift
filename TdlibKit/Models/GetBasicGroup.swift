@@ -15,7 +15,7 @@ public struct GetBasicGroup: Codable {
     public let basicGroupId: Int
 
 
-    public init (basicGroupId: Int) {
+    public init(basicGroupId: Int) {
         self.basicGroupId = basicGroupId
     }
 }

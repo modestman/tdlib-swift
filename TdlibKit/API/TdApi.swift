@@ -846,6 +846,18 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
+    /// Deletes a chat along with all messages in the corresponding chat for all chat members; requires owner privileges. For group chats this will release the username and remove all members. Chats with more than 1000 members can't be deleted using this method
+    /// - Parameter chatId: Chat identifier
+    public func deleteChat(
+        chatId: Int64,
+        completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
+
+        let query = DeleteChat(
+            chatId: chatId
+        )
+        execute(query: query, completion: completion)
+    }
+
     /// Searches for messages with given words in the chat. Returns the results in reverse chronological order, i.e. in order of decreasing message_id. Cannot be used in secret chats with a non-empty query (searchSecretMessages should be used instead), or without an enabled message database. For optimal performance the number of returned messages is chosen by the library
     /// - Parameter chatId: Identifier of the chat in which to search messages
     /// - Parameter filter: Filter for message content in the search results
@@ -880,7 +892,7 @@ public final class TdApi {
     }
 
     /// Searches for messages in all chats except secret chats. Returns the results in reverse chronological order (i.e., in order of decreasing (date, chat_id, message_id)). For optimal performance the number of returned messages is chosen by the library
-    /// - Parameter chatList: Chat list in which to search messages; pass null to search in all chats regardless of their chat list
+    /// - Parameter chatList: Chat list in which to search messages; pass null to search in all chats regardless of their chat list. Only Main and Archive chat lists are supported
     /// - Parameter filter: Filter for message content in the search results; searchMessagesFilterCall, searchMessagesFilterMissedCall, searchMessagesFilterMention, searchMessagesFilterUnreadMention, searchMessagesFilterFailedToSend and searchMessagesFilterPinned are unsupported in this function
     /// - Parameter limit: The maximum number of messages to be returned; up to 100. Fewer messages may be returned than specified by the limit, even if the end of the message history has not been reached
     /// - Parameter maxDate: If not 0, the maximum date of the messages to return
@@ -953,6 +965,18 @@ public final class TdApi {
             fromMessageId: fromMessageId,
             limit: limit,
             onlyMissed: onlyMissed
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Deletes all call messages
+    /// - Parameter revoke: Pass true to delete the messages for all users
+    public func deleteAllCallMessages(
+        revoke: Bool,
+        completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
+
+        let query = DeleteAllCallMessages(
+            revoke: revoke
         )
         execute(query: query, completion: completion)
     }
@@ -1153,9 +1177,9 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Sends messages grouped together into an album. Currently only audio, document, photo and video messages can be grouped into an album. Documents and audio files can be only grouped in an album with messages of the same type. Returns sent messages
+    /// Sends 2-10 messages grouped together into an album. Currently only audio, document, photo and video messages can be grouped into an album. Documents and audio files can be only grouped in an album with messages of the same type. Returns sent messages
     /// - Parameter chatId: Target chat
-    /// - Parameter inputMessageContents: Contents of messages to be sent
+    /// - Parameter inputMessageContents: Contents of messages to be sent. At most 10 messages can be added to an album
     /// - Parameter messageThreadId: If not 0, a message thread identifier in which the messages will be sent
     /// - Parameter options: Options to be used to send the messages
     /// - Parameter replyToMessageId: Identifier of a message to reply to or 0
@@ -1228,7 +1252,7 @@ public final class TdApi {
     /// Forwards previously sent messages. Returns the forwarded messages in the same order as the message identifiers passed in message_ids. If a message can't be forwarded, null will be returned instead of the message
     /// - Parameter chatId: Identifier of the chat to which to forward messages
     /// - Parameter fromChatId: Identifier of the chat from which to forward messages
-    /// - Parameter messageIds: Identifiers of the messages to forward. Message identifiers must be in a strictly increasing order
+    /// - Parameter messageIds: Identifiers of the messages to forward. Message identifiers must be in a strictly increasing order. At most 100 messages can be forwarded simultaneously
     /// - Parameter options: Options to be used to send the messages
     /// - Parameter removeCaption: True, if media caption of message copies needs to be removed. Ignored if send_copy is false
     /// - Parameter sendCopy: True, if content of the messages needs to be copied without links to the original messages. Always true if the messages are forwarded to a secret chat
@@ -1263,21 +1287,6 @@ public final class TdApi {
         let query = ResendMessages(
             chatId: chatId,
             messageIds: messageIds
-        )
-        execute(query: query, completion: completion)
-    }
-
-    /// Changes the current TTL setting (sets a new self-destruct timer) in a secret chat and sends the corresponding message
-    /// - Parameter chatId: Chat identifier
-    /// - Parameter ttl: New TTL value, in seconds
-    public func sendChatSetTtlMessage(
-        chatId: Int64,
-        ttl: Int,
-        completion: @escaping (Result<Message, Swift.Error>) -> Void) throws {
-
-        let query = SendChatSetTtlMessage(
-            chatId: chatId,
-            ttl: ttl
         )
         execute(query: query, completion: completion)
     }
@@ -1353,7 +1362,7 @@ public final class TdApi {
 
     /// Edits the text of a message (or a text of a game message). Returns the edited message after the edit is completed on the server side
     /// - Parameter chatId: The chat the message belongs to
-    /// - Parameter inputMessageContent: New text content of the message. Should be of type InputMessageText
+    /// - Parameter inputMessageContent: New text content of the message. Should be of type inputMessageText
     /// - Parameter messageId: Identifier of the message
     /// - Parameter replyMarkup: The new message reply markup; for bots only
     public func editMessageText(
@@ -1401,7 +1410,7 @@ public final class TdApi {
 
     /// Edits the content of a message with an animation, an audio, a document, a photo or a video. The media in the message can't be replaced if the message was set to self-destruct. Media can't be replaced by self-destructing media. Media in an album can be edited only to contain a photo or a video. Returns the edited message after the edit is completed on the server side
     /// - Parameter chatId: The chat the message belongs to
-    /// - Parameter inputMessageContent: New content of the message. Must be one of the following types: InputMessageAnimation, InputMessageAudio, InputMessageDocument, InputMessagePhoto or InputMessageVideo
+    /// - Parameter inputMessageContent: New content of the message. Must be one of the following types: inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto or inputMessageVideo
     /// - Parameter messageId: Identifier of the message
     /// - Parameter replyMarkup: The new message reply markup; for bots only
     public func editMessageMedia(
@@ -1461,7 +1470,7 @@ public final class TdApi {
 
     /// Edits the text of an inline text or game message sent via a bot; for bots only
     /// - Parameter inlineMessageId: Inline message identifier
-    /// - Parameter inputMessageContent: New text content of the message. Should be of type InputMessageText
+    /// - Parameter inputMessageContent: New text content of the message. Should be of type inputMessageText
     /// - Parameter replyMarkup: The new message reply markup
     public func editInlineMessageText(
         inlineMessageId: String,
@@ -1503,7 +1512,7 @@ public final class TdApi {
 
     /// Edits the content of a message with an animation, an audio, a document, a photo or a video in an inline message sent via a bot; for bots only
     /// - Parameter inlineMessageId: Inline message identifier
-    /// - Parameter inputMessageContent: New content of the message. Must be one of the following types: InputMessageAnimation, InputMessageAudio, InputMessageDocument, InputMessagePhoto or InputMessageVideo
+    /// - Parameter inputMessageContent: New content of the message. Must be one of the following types: inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto or inputMessageVideo
     /// - Parameter replyMarkup: The new message reply markup; for bots only
     public func editInlineMessageMedia(
         inlineMessageId: String,
@@ -2119,6 +2128,33 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
+    /// Returns information about an action to be done when the current user clicks an HTTP link. This method can be used to automatically authorize the current user on a website. Don't use this method for links from secret chats if link preview is disabled in secret chats
+    /// - Parameter link: The HTTP link
+    public func getExternalLinkInfo(
+        link: String,
+        completion: @escaping (Result<LoginUrlInfo, Swift.Error>) -> Void) throws {
+
+        let query = GetExternalLinkInfo(
+            link: link
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Returns an HTTP URL which can be used to automatically authorize the current user on a website after clicking an HTTP link. Use the method getExternalLinkInfo to find whether a prior user confirmation is needed
+    /// - Parameter allowWriteAccess: True, if the current user allowed the bot, returned in getExternalLinkInfo, to send them messages
+    /// - Parameter link: The HTTP link
+    public func getExternalLink(
+        allowWriteAccess: Bool,
+        link: String,
+        completion: @escaping (Result<HttpUrl, Swift.Error>) -> Void) throws {
+
+        let query = GetExternalLink(
+            allowWriteAccess: allowWriteAccess,
+            link: link
+        )
+        execute(query: query, completion: completion)
+    }
+
     /// Marks all mentions in a chat as read
     /// - Parameter chatId: Chat identifier
     public func readAllChatMentions(
@@ -2205,11 +2241,13 @@ public final class TdApi {
 
     /// Creates a new supergroup or channel and sends a corresponding messageSupergroupChatCreate. Returns the newly created chat
     /// - Parameter description: 
-    /// - Parameter isChannel: True, if a channel chat should be created
+    /// - Parameter forImport: True, if the supergroup is created for importing messages using importMessage
+    /// - Parameter isChannel: True, if a channel chat needs to be created
     /// - Parameter location: Chat location if a location-based supergroup is being created
     /// - Parameter title: Title of the new chat; 1-128 characters
     public func createNewSupergroupChat(
         description: String,
+        forImport: Bool,
         isChannel: Bool,
         location: ChatLocation,
         title: String,
@@ -2217,6 +2255,7 @@ public final class TdApi {
 
         let query = CreateNewSupergroupChat(
             description: description,
+            forImport: forImport,
             isChannel: isChannel,
             location: location,
             title: title
@@ -2357,7 +2396,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Changes the chat title. Supported only for basic groups, supergroups and channels. Requires can_change_info rights
+    /// Changes the chat title. Supported only for basic groups, supergroups and channels. Requires can_change_info administrator right
     /// - Parameter chatId: Chat identifier
     /// - Parameter title: New title of the chat; 1-128 characters
     public func setChatTitle(
@@ -2372,7 +2411,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Changes the photo of a chat. Supported only for basic groups, supergroups and channels. Requires can_change_info rights
+    /// Changes the photo of a chat. Supported only for basic groups, supergroups and channels. Requires can_change_info administrator right
     /// - Parameter chatId: Chat identifier
     /// - Parameter photo: New chat photo. Pass null to delete the chat photo
     public func setChatPhoto(
@@ -2383,6 +2422,21 @@ public final class TdApi {
         let query = SetChatPhoto(
             chatId: chatId,
             photo: photo
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Changes the message TTL setting (sets a new self-destruct timer) in a chat. Requires can_delete_messages administrator right in basic groups, supergroups and channels Message TTL setting of a chat with the current user (Saved Messages) and the chat 777000 (Telegram) can't be changed
+    /// - Parameter chatId: Chat identifier
+    /// - Parameter ttl: New TTL value, in seconds; must be one of 0, 86400, 604800 unless chat is secret
+    public func setChatMessageTtlSetting(
+        chatId: Int64,
+        ttl: Int,
+        completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
+
+        let query = SetChatMessageTtlSetting(
+            chatId: chatId,
+            ttl: ttl
         )
         execute(query: query, completion: completion)
     }
@@ -2480,7 +2534,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Changes information about a chat. Available for basic groups, supergroups, and channels. Requires can_change_info rights
+    /// Changes information about a chat. Available for basic groups, supergroups, and channels. Requires can_change_info administrator right
     /// - Parameter chatId: Identifier of the chat
     /// - Parameter description: 
     public func setChatDescription(
@@ -2495,7 +2549,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Changes the discussion group of a channel chat; requires can_change_info rights in the channel if it is specified
+    /// Changes the discussion group of a channel chat; requires can_change_info administrator right in the channel if it is specified
     /// - Parameter chatId: Identifier of the channel chat. Pass 0 to remove a link from the supergroup passed in the second argument to a linked channel chat (requires can_pin_messages rights in the supergroup)
     /// - Parameter discussionChatId: Identifier of a new channel's discussion group. Use 0 to remove the discussion group.//-Use the method getSuitableDiscussionChats to find all suitable groups. Basic group chats must be first upgraded to supergroup chats. If new chat members don't have access to old messages in the supergroup, then toggleSupergroupIsAllHistoryAvailable must be used first to change that
     public func setChatDiscussionGroup(
@@ -2588,7 +2642,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Adds current user as a new member to a chat. Private and secret chats can't be joined using this method
+    /// Adds the current user as a new member to a chat. Private and secret chats can't be joined using this method
     /// - Parameter chatId: Chat identifier
     public func joinChat(
         chatId: Int64,
@@ -2600,7 +2654,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Removes current user from chat members. Private and secret chats can't be left using this method
+    /// Removes the current user from chat members. Private and secret chats can't be left using this method
     /// - Parameter chatId: Chat identifier
     public func leaveChat(
         chatId: Int64,
@@ -2612,7 +2666,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Adds a new member to a chat. Members can't be added to private or secret chats. Members will not be added until the chat state has been synchronized with the server
+    /// Adds a new member to a chat. Members can't be added to private or secret chats
     /// - Parameter chatId: Chat identifier
     /// - Parameter forwardLimit: The number of earlier messages from the chat to be forwarded to the new member; up to 100. Ignored for supergroups and channels
     /// - Parameter userId: Identifier of the user
@@ -2630,9 +2684,9 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Adds multiple new members to a chat. Currently this option is only available for supergroups and channels. This option can't be used to join a chat. Members can't be added to a channel if it has more than 200 members. Members will not be added until the chat state has been synchronized with the server
+    /// Adds multiple new members to a chat. Currently this method is only available for supergroups and channels. This method can't be used to join a chat. Members can't be added to a channel if it has more than 200 members
     /// - Parameter chatId: Chat identifier
-    /// - Parameter userIds: Identifiers of the users to be added to the chat
+    /// - Parameter userIds: Identifiers of the users to be added to the chat. The maximum number of added users is 20 for supergroups and 100 for channels
     public func addChatMembers(
         chatId: Int64,
         userIds: [Int],
@@ -2645,20 +2699,41 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Changes the status of a chat member, needs appropriate privileges. This function is currently not suitable for adding new members to the chat and transferring chat ownership; instead, use addChatMember or transferChatOwnership. The chat member status will not be changed until it has been synchronized with the server
+    /// Changes the status of a chat member, needs appropriate privileges. This function is currently not suitable for adding new members to the chat and transferring chat ownership; instead, use addChatMember or transferChatOwnership
     /// - Parameter chatId: Chat identifier
+    /// - Parameter memberId: Member identifier. Chats can be only banned and unbanned in supergroups and channels
     /// - Parameter status: The new status of the member in the chat
-    /// - Parameter userId: User identifier
     public func setChatMemberStatus(
         chatId: Int64,
+        memberId: MessageSender,
         status: ChatMemberStatus,
-        userId: Int,
         completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
 
         let query = SetChatMemberStatus(
             chatId: chatId,
-            status: status,
-            userId: userId
+            memberId: memberId,
+            status: status
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Bans a member in a chat. Members can't be banned in private or secret chats. In supergroups and channels, the user will not be able to return to the group on their own using invite links, etc., unless unbanned first
+    /// - Parameter bannedUntilDate: Point in time (Unix timestamp) when the user will be unbanned; 0 if never. If the user is banned for more than 366 days or for less than 30 seconds from the current time, the user is considered to be banned forever. Ignored in basic groups
+    /// - Parameter chatId: Chat identifier
+    /// - Parameter memberId: Member identifier
+    /// - Parameter revokeMessages: Pass true to delete all messages in the chat for the user. Always true for supergroups and channels
+    public func banChatMember(
+        bannedUntilDate: Int,
+        chatId: Int64,
+        memberId: MessageSender,
+        revokeMessages: Bool,
+        completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
+
+        let query = BanChatMember(
+            bannedUntilDate: bannedUntilDate,
+            chatId: chatId,
+            memberId: memberId,
+            revokeMessages: revokeMessages
         )
         execute(query: query, completion: completion)
     }
@@ -2690,15 +2765,15 @@ public final class TdApi {
 
     /// Returns information about a single member of a chat
     /// - Parameter chatId: Chat identifier
-    /// - Parameter userId: User identifier
+    /// - Parameter memberId: Member identifier
     public func getChatMember(
         chatId: Int64,
-        userId: Int,
+        memberId: MessageSender,
         completion: @escaping (Result<ChatMember, Swift.Error>) -> Void) throws {
 
         let query = GetChatMember(
             chatId: chatId,
-            userId: userId
+            memberId: memberId
         )
         execute(query: query, completion: completion)
     }
@@ -2995,20 +3070,221 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Generates a new invite link for a chat; the previously generated link is revoked. Available for basic groups, supergroups, and channels. Requires administrator privileges and can_invite_users right
-    /// - Parameter chatId: Chat identifier
-    public func generateChatInviteLink(
-        chatId: Int64,
-        completion: @escaping (Result<ChatInviteLink, Swift.Error>) -> Void) throws {
+    /// Returns information about a file with messages exported from another app
+    /// - Parameter messageFileHead: Beginning of the message file; up to 100 first lines
+    public func getMessageFileType(
+        messageFileHead: String,
+        completion: @escaping (Result<MessageFileType, Swift.Error>) -> Void) throws {
 
-        let query = GenerateChatInviteLink(
+        let query = GetMessageFileType(
+            messageFileHead: messageFileHead
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Returns a confirmation text to be shown to the user before starting message import
+    /// - Parameter chatId: Identifier of a chat to which the messages will be imported. It must be an identifier of a private chat with a mutual contact or an identifier of a supergroup chat with can_change_info administrator right
+    public func getMessageImportConfirmationText(
+        chatId: Int64,
+        completion: @escaping (Result<Text, Swift.Error>) -> Void) throws {
+
+        let query = GetMessageImportConfirmationText(
             chatId: chatId
         )
         execute(query: query, completion: completion)
     }
 
+    /// Imports messages exported from another app
+    /// - Parameter attachedFiles: Files used in the imported messages. Only inputFileLocal and inputFileGenerated are supported. The files must not be previously uploaded
+    /// - Parameter chatId: Identifier of a chat to which the messages will be imported. It must be an identifier of a private chat with a mutual contact or an identifier of a supergroup chat with can_change_info administrator right
+    /// - Parameter messageFile: File with messages to import. Only inputFileLocal and inputFileGenerated are supported. The file must not be previously uploaded
+    public func importMessages(
+        attachedFiles: [InputFile],
+        chatId: Int64,
+        messageFile: InputFile,
+        completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
+
+        let query = ImportMessages(
+            attachedFiles: attachedFiles,
+            chatId: chatId,
+            messageFile: messageFile
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Replaces current primary invite link for a chat with a new primary invite link. Available for basic groups, supergroups, and channels. Requires administrator privileges and can_invite_users right
+    /// - Parameter chatId: Chat identifier
+    public func replacePrimaryChatInviteLink(
+        chatId: Int64,
+        completion: @escaping (Result<ChatInviteLink, Swift.Error>) -> Void) throws {
+
+        let query = ReplacePrimaryChatInviteLink(
+            chatId: chatId
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Creates a new invite link for a chat. Available for basic groups, supergroups, and channels. Requires administrator privileges and can_invite_users right in the chat
+    /// - Parameter chatId: Chat identifier
+    /// - Parameter expireDate: Point in time (Unix timestamp) when the link will expire; pass 0 if never
+    /// - Parameter memberLimit: The maximum number of chat members that can join the chat by the link simultaneously; 0-99999; pass 0 if not limited
+    public func createChatInviteLink(
+        chatId: Int64,
+        expireDate: Int,
+        memberLimit: Int,
+        completion: @escaping (Result<ChatInviteLink, Swift.Error>) -> Void) throws {
+
+        let query = CreateChatInviteLink(
+            chatId: chatId,
+            expireDate: expireDate,
+            memberLimit: memberLimit
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Edits a non-primary invite link for a chat. Available for basic groups, supergroups, and channels. Requires administrator privileges and can_invite_users right in the chat for own links and owner privileges for other links
+    /// - Parameter chatId: Chat identifier
+    /// - Parameter expireDate: Point in time (Unix timestamp) when the link will expire; pass 0 if never
+    /// - Parameter inviteLink: Invite link to be edited
+    /// - Parameter memberLimit: The maximum number of chat members that can join the chat by the link simultaneously; 0-99999; pass 0 if not limited
+    public func editChatInviteLink(
+        chatId: Int64,
+        expireDate: Int,
+        inviteLink: String,
+        memberLimit: Int,
+        completion: @escaping (Result<ChatInviteLink, Swift.Error>) -> Void) throws {
+
+        let query = EditChatInviteLink(
+            chatId: chatId,
+            expireDate: expireDate,
+            inviteLink: inviteLink,
+            memberLimit: memberLimit
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Returns information about an invite link. Requires administrator privileges and can_invite_users right in the chat to get own links and owner privileges to get other links
+    /// - Parameter chatId: Chat identifier
+    /// - Parameter inviteLink: Invite link to get
+    public func getChatInviteLink(
+        chatId: Int64,
+        inviteLink: String,
+        completion: @escaping (Result<ChatInviteLink, Swift.Error>) -> Void) throws {
+
+        let query = GetChatInviteLink(
+            chatId: chatId,
+            inviteLink: inviteLink
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Returns list of chat administrators with number of their invite links. Requires owner privileges in the chat
+    /// - Parameter chatId: Chat identifier
+    public func getChatInviteLinkCounts(
+        chatId: Int64,
+        completion: @escaping (Result<ChatInviteLinkCounts, Swift.Error>) -> Void) throws {
+
+        let query = GetChatInviteLinkCounts(
+            chatId: chatId
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Returns invite links for a chat created by specified administrator. Requires administrator privileges and can_invite_users right in the chat to get own links and owner privileges to get other links
+    /// - Parameter chatId: Chat identifier
+    /// - Parameter creatorUserId: User identifier of a chat administrator. Must be an identifier of the current user for non-owner
+    /// - Parameter isRevoked: Pass true if revoked links needs to be returned instead of active or expired
+    /// - Parameter limit: The maximum number of invite links to return
+    /// - Parameter offsetDate: Creation date of an invite link starting after which to return invite links; use 0 to get results from the beginning
+    /// - Parameter offsetInviteLink: Invite link starting after which to return invite links; use empty string to get results from the beginning
+    public func getChatInviteLinks(
+        chatId: Int64,
+        creatorUserId: Int,
+        isRevoked: Bool,
+        limit: Int,
+        offsetDate: Int,
+        offsetInviteLink: String,
+        completion: @escaping (Result<ChatInviteLinks, Swift.Error>) -> Void) throws {
+
+        let query = GetChatInviteLinks(
+            chatId: chatId,
+            creatorUserId: creatorUserId,
+            isRevoked: isRevoked,
+            limit: limit,
+            offsetDate: offsetDate,
+            offsetInviteLink: offsetInviteLink
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Returns chat members joined a chat by an invite link. Requires administrator privileges and can_invite_users right in the chat for own links and owner privileges for other links
+    /// - Parameter chatId: Chat identifier
+    /// - Parameter inviteLink: Invite link for which to return chat members
+    /// - Parameter limit: The maximum number of chat members to return
+    /// - Parameter offsetMember: A chat member from which to return next chat members; use null to get results from the beginning
+    public func getChatInviteLinkMembers(
+        chatId: Int64,
+        inviteLink: String,
+        limit: Int,
+        offsetMember: ChatInviteLinkMember,
+        completion: @escaping (Result<ChatInviteLinkMembers, Swift.Error>) -> Void) throws {
+
+        let query = GetChatInviteLinkMembers(
+            chatId: chatId,
+            inviteLink: inviteLink,
+            limit: limit,
+            offsetMember: offsetMember
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Revokes invite link for a chat. Available for basic groups, supergroups, and channels. Requires administrator privileges and can_invite_users right in the chat for own links and owner privileges for other links. If a primary link is revoked, then additionally to the revoked link returns new primary link
+    /// - Parameter chatId: Chat identifier
+    /// - Parameter inviteLink: Invite link to be revoked
+    public func revokeChatInviteLink(
+        chatId: Int64,
+        inviteLink: String,
+        completion: @escaping (Result<ChatInviteLinks, Swift.Error>) -> Void) throws {
+
+        let query = RevokeChatInviteLink(
+            chatId: chatId,
+            inviteLink: inviteLink
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Deletes revoked chat invite links. Requires administrator privileges and can_invite_users right in the chat for own links and owner privileges for other links
+    /// - Parameter chatId: Chat identifier
+    /// - Parameter inviteLink: Invite link to revoke
+    public func deleteRevokedChatInviteLink(
+        chatId: Int64,
+        inviteLink: String,
+        completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
+
+        let query = DeleteRevokedChatInviteLink(
+            chatId: chatId,
+            inviteLink: inviteLink
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Deletes all revoked chat invite links created by a given chat administrator. Requires administrator privileges and can_invite_users right in the chat for own links and owner privileges for other links
+    /// - Parameter chatId: Chat identifier
+    /// - Parameter creatorUserId: User identifier of a chat administrator, which links will be deleted. Must be an identifier of the current user for non-owner
+    public func deleteAllRevokedChatInviteLinks(
+        chatId: Int64,
+        creatorUserId: Int,
+        completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
+
+        let query = DeleteAllRevokedChatInviteLinks(
+            chatId: chatId,
+            creatorUserId: creatorUserId
+        )
+        execute(query: query, completion: completion)
+    }
+
     /// Checks the validity of an invite link for a chat and returns information about the corresponding chat
-    /// - Parameter inviteLink: Invite link to be checked; should begin with "https://t.me/joinchat/", "https://telegram.me/joinchat/", or "https://telegram.dog/joinchat/"
+    /// - Parameter inviteLink: Invite link to be checked; must have URL "t.me", "telegram.me", or "telegram.dog" and query beginning with "/joinchat/" or "/+"
     public func checkChatInviteLink(
         inviteLink: String,
         completion: @escaping (Result<ChatInviteLinkInfo, Swift.Error>) -> Void) throws {
@@ -3019,8 +3295,8 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Uses an invite link to add the current user to the chat if possible. The new member will not be added until the chat state has been synchronized with the server
-    /// - Parameter inviteLink: Invite link to import; should begin with "https://t.me/joinchat/", "https://telegram.me/joinchat/", or "https://telegram.dog/joinchat/"
+    /// Uses an invite link to add the current user to the chat if possible
+    /// - Parameter inviteLink: Invite link to import; must have URL "t.me", "telegram.me", or "telegram.dog" and query beginning with "/joinchat/" or "/+"
     public func joinChatByInviteLink(
         inviteLink: String,
         completion: @escaping (Result<Chat, Swift.Error>) -> Void) throws {
@@ -3135,6 +3411,345 @@ public final class TdApi {
         let query = SendCallDebugInformation(
             callId: callId,
             debugInformation: debugInformation
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Returns list of participant identifiers, which can be used to join voice chats in a chat
+    /// - Parameter chatId: Chat identifier
+    public func getVoiceChatAvailableParticipants(
+        chatId: Int64,
+        completion: @escaping (Result<MessageSenders, Swift.Error>) -> Void) throws {
+
+        let query = GetVoiceChatAvailableParticipants(
+            chatId: chatId
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Changes default participant identifier, which can be used to join voice chats in a chat
+    /// - Parameter chatId: Chat identifier
+    /// - Parameter defaultParticipantId: Default group call participant identifier to join the voice chats
+    public func setVoiceChatDefaultParticipant(
+        chatId: Int64,
+        defaultParticipantId: MessageSender,
+        completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
+
+        let query = SetVoiceChatDefaultParticipant(
+            chatId: chatId,
+            defaultParticipantId: defaultParticipantId
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Creates a voice chat (a group call bound to a chat). Available only for basic groups, supergroups and channels; requires can_manage_voice_chats rights
+    /// - Parameter chatId: Chat identifier, in which the voice chat will be created
+    /// - Parameter startDate: Point in time (Unix timestamp) when the group call is supposed to be started by an administrator; 0 to start the voice chat immediately. The date must be at least 10 seconds and at most 8 days in the future
+    /// - Parameter title: Group call title; if empty, chat title will be used
+    public func createVoiceChat(
+        chatId: Int64,
+        startDate: Int,
+        title: String,
+        completion: @escaping (Result<GroupCallId, Swift.Error>) -> Void) throws {
+
+        let query = CreateVoiceChat(
+            chatId: chatId,
+            startDate: startDate,
+            title: title
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Returns information about a group call
+    /// - Parameter groupCallId: Group call identifier
+    public func getGroupCall(
+        groupCallId: Int,
+        completion: @escaping (Result<GroupCall, Swift.Error>) -> Void) throws {
+
+        let query = GetGroupCall(
+            groupCallId: groupCallId
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Starts a scheduled group call
+    /// - Parameter groupCallId: Group call identifier
+    public func startScheduledGroupCall(
+        groupCallId: Int,
+        completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
+
+        let query = StartScheduledGroupCall(
+            groupCallId: groupCallId
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Toggles whether the current user will receive a notification when the group call will start; scheduled group calls only
+    /// - Parameter enabledStartNotification: New value of the enabled_start_notification setting
+    /// - Parameter groupCallId: Group call identifier
+    public func toggleGroupCallEnabledStartNotification(
+        enabledStartNotification: Bool,
+        groupCallId: Int,
+        completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
+
+        let query = ToggleGroupCallEnabledStartNotification(
+            enabledStartNotification: enabledStartNotification,
+            groupCallId: groupCallId
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Joins an active group call
+    /// - Parameter groupCallId: Group call identifier
+    /// - Parameter inviteHash: If non-empty, invite hash to be used to join the group call without being muted by administrators
+    /// - Parameter isMuted: True, if the user's microphone is muted
+    /// - Parameter participantId: Identifier of a group call participant, which will be used to join the call; voice chats only
+    /// - Parameter payload: Group join payload; received from tgcalls
+    /// - Parameter source: Caller synchronization source identifier; received from tgcalls
+    public func joinGroupCall(
+        groupCallId: Int,
+        inviteHash: String,
+        isMuted: Bool,
+        participantId: MessageSender,
+        payload: GroupCallPayload,
+        source: Int,
+        completion: @escaping (Result<GroupCallJoinResponse, Swift.Error>) -> Void) throws {
+
+        let query = JoinGroupCall(
+            groupCallId: groupCallId,
+            inviteHash: inviteHash,
+            isMuted: isMuted,
+            participantId: participantId,
+            payload: payload,
+            source: source
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Sets group call title. Requires groupCall.can_be_managed group call flag
+    /// - Parameter groupCallId: Group call identifier
+    /// - Parameter title: New group call title; 1-64 characters
+    public func setGroupCallTitle(
+        groupCallId: Int,
+        title: String,
+        completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
+
+        let query = SetGroupCallTitle(
+            groupCallId: groupCallId,
+            title: title
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Toggles whether new participants of a group call can be unmuted only by administrators of the group call. Requires groupCall.can_change_mute_new_participants group call flag
+    /// - Parameter groupCallId: Group call identifier
+    /// - Parameter muteNewParticipants: New value of the mute_new_participants setting
+    public func toggleGroupCallMuteNewParticipants(
+        groupCallId: Int,
+        muteNewParticipants: Bool,
+        completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
+
+        let query = ToggleGroupCallMuteNewParticipants(
+            groupCallId: groupCallId,
+            muteNewParticipants: muteNewParticipants
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Revokes invite link for a group call. Requires groupCall.can_be_managed group call flag
+    /// - Parameter groupCallId: Group call identifier
+    public func revokeGroupCallInviteLink(
+        groupCallId: Int,
+        completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
+
+        let query = RevokeGroupCallInviteLink(
+            groupCallId: groupCallId
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Invites users to an active group call. Sends a service message of type messageInviteToGroupCall for voice chats
+    /// - Parameter groupCallId: Group call identifier
+    /// - Parameter userIds: User identifiers. At most 10 users can be invited simultaneously
+    public func inviteGroupCallParticipants(
+        groupCallId: Int,
+        userIds: [Int],
+        completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
+
+        let query = InviteGroupCallParticipants(
+            groupCallId: groupCallId,
+            userIds: userIds
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Returns invite link to a voice chat in a public chat
+    /// - Parameter canSelfUnmute: Pass true if the invite_link should contain an invite hash, passing which to joinGroupCall would allow the invited user to unmute themself. Requires groupCall.can_be_managed group call flag
+    /// - Parameter groupCallId: Group call identifier
+    public func getGroupCallInviteLink(
+        canSelfUnmute: Bool,
+        groupCallId: Int,
+        completion: @escaping (Result<HttpUrl, Swift.Error>) -> Void) throws {
+
+        let query = GetGroupCallInviteLink(
+            canSelfUnmute: canSelfUnmute,
+            groupCallId: groupCallId
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Starts recording of an active group call. Requires groupCall.can_be_managed group call flag
+    /// - Parameter groupCallId: Group call identifier
+    /// - Parameter title: Group call recording title; 0-64 characters
+    public func startGroupCallRecording(
+        groupCallId: Int,
+        title: String,
+        completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
+
+        let query = StartGroupCallRecording(
+            groupCallId: groupCallId,
+            title: title
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Ends recording of an active group call. Requires groupCall.can_be_managed group call flag
+    /// - Parameter groupCallId: Group call identifier
+    public func endGroupCallRecording(
+        groupCallId: Int,
+        completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
+
+        let query = EndGroupCallRecording(
+            groupCallId: groupCallId
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Informs TDLib that a participant of an active group call speaking state has changed
+    /// - Parameter groupCallId: Group call identifier
+    /// - Parameter isSpeaking: True, if the user is speaking
+    /// - Parameter source: Group call participant's synchronization source identifier, or 0 for the current user
+    public func setGroupCallParticipantIsSpeaking(
+        groupCallId: Int,
+        isSpeaking: Bool,
+        source: Int,
+        completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
+
+        let query = SetGroupCallParticipantIsSpeaking(
+            groupCallId: groupCallId,
+            isSpeaking: isSpeaking,
+            source: source
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Toggles whether a participant of an active group call is muted, unmuted, or allowed to unmute themself
+    /// - Parameter groupCallId: Group call identifier
+    /// - Parameter isMuted: Pass true if the user must be muted and false otherwise
+    /// - Parameter participantId: Participant identifier
+    public func toggleGroupCallParticipantIsMuted(
+        groupCallId: Int,
+        isMuted: Bool,
+        participantId: MessageSender,
+        completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
+
+        let query = ToggleGroupCallParticipantIsMuted(
+            groupCallId: groupCallId,
+            isMuted: isMuted,
+            participantId: participantId
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Changes volume level of a participant of an active group call. If the current user can manage the group call, then the participant's volume level will be changed for all users with default volume level
+    /// - Parameter groupCallId: Group call identifier
+    /// - Parameter participantId: Participant identifier
+    /// - Parameter volumeLevel: New participant's volume level; 1-20000 in hundreds of percents
+    public func setGroupCallParticipantVolumeLevel(
+        groupCallId: Int,
+        participantId: MessageSender,
+        volumeLevel: Int,
+        completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
+
+        let query = SetGroupCallParticipantVolumeLevel(
+            groupCallId: groupCallId,
+            participantId: participantId,
+            volumeLevel: volumeLevel
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Toggles whether a group call participant hand is rased
+    /// - Parameter groupCallId: Group call identifier
+    /// - Parameter isHandRaised: Pass true if the user's hand should be raised. Only self hand can be raised. Requires groupCall.can_be_managed group call flag to lower other's hand
+    /// - Parameter participantId: Participant identifier
+    public func toggleGroupCallParticipantIsHandRaised(
+        groupCallId: Int,
+        isHandRaised: Bool,
+        participantId: MessageSender,
+        completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
+
+        let query = ToggleGroupCallParticipantIsHandRaised(
+            groupCallId: groupCallId,
+            isHandRaised: isHandRaised,
+            participantId: participantId
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Loads more participants of a group call. The loaded participants will be received through updates. Use the field groupCall.loaded_all_participants to check whether all participants has already been loaded
+    /// - Parameter groupCallId: Group call identifier. The group call must be previously received through getGroupCall and must be joined or being joined
+    /// - Parameter limit: The maximum number of participants to load
+    public func loadGroupCallParticipants(
+        groupCallId: Int,
+        limit: Int,
+        completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
+
+        let query = LoadGroupCallParticipants(
+            groupCallId: groupCallId,
+            limit: limit
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Leaves a group call
+    /// - Parameter groupCallId: Group call identifier
+    public func leaveGroupCall(
+        groupCallId: Int,
+        completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
+
+        let query = LeaveGroupCall(
+            groupCallId: groupCallId
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Discards a group call. Requires groupCall.can_be_managed
+    /// - Parameter groupCallId: Group call identifier
+    public func discardGroupCall(
+        groupCallId: Int,
+        completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
+
+        let query = DiscardGroupCall(
+            groupCallId: groupCallId
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Returns a file with a segment of a group call stream in a modified OGG format
+    /// - Parameter groupCallId: Group call identifier
+    /// - Parameter scale: Segment duration scale; 0-1. Segment's duration is 1000/(2**scale) milliseconds
+    /// - Parameter timeOffset: Point in time when the stream segment begins; Unix timestamp in milliseconds
+    public func getGroupCallStreamSegment(
+        groupCallId: Int,
+        scale: Int,
+        timeOffset: Int64,
+        completion: @escaping (Result<FilePart, Swift.Error>) -> Void) throws {
+
+        let query = GetGroupCallStreamSegment(
+            groupCallId: groupCallId,
+            scale: scale,
+            timeOffset: timeOffset
         )
         execute(query: query, completion: completion)
     }
@@ -3258,7 +3873,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Changes imported contacts using the list of current user contacts saved on the device. Imports newly added contacts and, if at least the file database is enabled, deletes recently deleted contacts. Query result depends on the result of the previous query, so only one query is possible at the same time
+    /// Changes imported contacts using the list of contacts saved on the device. Imports newly added contacts and, if at least the file database is enabled, deletes recently deleted contacts. Query result depends on the result of the previous query, so only one query is possible at the same time
     /// - Parameter contacts: The new list of contacts, contact's vCard are ignored and are not imported
     public func changeImportedContacts(
         contacts: [Contact],
@@ -3900,7 +4515,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Changes the sticker set of a supergroup; requires can_change_info rights
+    /// Changes the sticker set of a supergroup; requires can_change_info administrator right
     /// - Parameter stickerSetId: New value of the supergroup sticker set identifier. Use 0 to remove the supergroup sticker set
     /// - Parameter supergroupId: Identifier of the supergroup
     public func setSupergroupStickerSet(
@@ -3915,7 +4530,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Toggles sender signatures messages sent in a channel; requires can_change_info rights
+    /// Toggles sender signatures messages sent in a channel; requires can_change_info administrator right
     /// - Parameter signMessages: New value of sign_messages
     /// - Parameter supergroupId: Identifier of the channel
     public func toggleSupergroupSignMessages(
@@ -3930,7 +4545,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Toggles whether the message history of a supergroup is available to new members; requires can_change_info rights
+    /// Toggles whether the message history of a supergroup is available to new members; requires can_change_info administrator right
     /// - Parameter isAllHistoryAvailable: The new value of is_all_history_available
     /// - Parameter supergroupId: The identifier of the supergroup
     public func toggleSupergroupIsAllHistoryAvailable(
@@ -3940,6 +4555,18 @@ public final class TdApi {
 
         let query = ToggleSupergroupIsAllHistoryAvailable(
             isAllHistoryAvailable: isAllHistoryAvailable,
+            supergroupId: supergroupId
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Upgrades supergroup to a broadcast group; requires owner privileges in the supergroup
+    /// - Parameter supergroupId: Identifier of the supergroup
+    public func toggleSupergroupIsBroadcastGroup(
+        supergroupId: Int,
+        completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
+
+        let query = ToggleSupergroupIsBroadcastGroup(
             supergroupId: supergroupId
         )
         execute(query: query, completion: completion)
@@ -3979,18 +4606,6 @@ public final class TdApi {
             filter: filter,
             limit: limit,
             offset: offset,
-            supergroupId: supergroupId
-        )
-        execute(query: query, completion: completion)
-    }
-
-    /// Deletes a supergroup or channel along with all messages in the corresponding chat. This will release the supergroup or channel username and remove all members; requires owner privileges in the supergroup or channel. Chats with more than 1000 members can't be deleted using this method
-    /// - Parameter supergroupId: Identifier of the supergroup or channel
-    public func deleteSupergroup(
-        supergroupId: Int,
-        completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
-
-        let query = DeleteSupergroup(
             supergroupId: supergroupId
         )
         execute(query: query, completion: completion)
@@ -4038,14 +4653,17 @@ public final class TdApi {
     /// Returns an invoice payment form. This method should be called when the user presses inlineKeyboardButtonBuy
     /// - Parameter chatId: Chat identifier of the Invoice message
     /// - Parameter messageId: Message identifier
+    /// - Parameter theme: Preferred payment form theme
     public func getPaymentForm(
         chatId: Int64,
         messageId: Int64,
+        theme: PaymentFormTheme,
         completion: @escaping (Result<PaymentForm, Swift.Error>) -> Void) throws {
 
         let query = GetPaymentForm(
             chatId: chatId,
-            messageId: messageId
+            messageId: messageId,
+            theme: theme
         )
         execute(query: query, completion: completion)
     }
@@ -4075,14 +4693,18 @@ public final class TdApi {
     /// - Parameter chatId: Chat identifier of the Invoice message
     /// - Parameter credentials: The credentials chosen by user for payment
     /// - Parameter messageId: Message identifier
-    /// - Parameter orderInfoId: Identifier returned by ValidateOrderInfo, or an empty string
+    /// - Parameter orderInfoId: Identifier returned by validateOrderInfo, or an empty string
+    /// - Parameter paymentFormId: Payment form identifier returned by getPaymentForm
     /// - Parameter shippingOptionId: Identifier of a chosen shipping option, if applicable
+    /// - Parameter tipAmount: Chosen by the user amount of tip in the smallest units of the currency
     public func sendPaymentForm(
         chatId: Int64,
         credentials: InputCredentials,
         messageId: Int64,
         orderInfoId: String,
+        paymentFormId: TdInt64,
         shippingOptionId: String,
+        tipAmount: Int64,
         completion: @escaping (Result<PaymentResult, Swift.Error>) -> Void) throws {
 
         let query = SendPaymentForm(
@@ -4090,7 +4712,9 @@ public final class TdApi {
             credentials: credentials,
             messageId: messageId,
             orderInfoId: orderInfoId,
-            shippingOptionId: shippingOptionId
+            paymentFormId: paymentFormId,
+            shippingOptionId: shippingOptionId,
+            tipAmount: tipAmount
         )
         execute(query: query, completion: completion)
     }
@@ -4479,20 +5103,44 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Reports a chat to the Telegram moderators. A chat can be reported only from the chat action bar, or if this is a private chats with a bot, a private chat with a user sharing their location, a supergroup, or a channel, since other chats can't be checked by moderators
+    /// Reports a chat to the Telegram moderators. A chat can be reported only from the chat action bar, or if this is a private chat with a bot, a private chat with a user sharing their location, a supergroup, or a channel, since other chats can't be checked by moderators
     /// - Parameter chatId: Chat identifier
     /// - Parameter messageIds: Identifiers of reported messages, if any
     /// - Parameter reason: The reason for reporting the chat
+    /// - Parameter text: Additional report details; 0-1024 characters
     public func reportChat(
         chatId: Int64,
         messageIds: [Int64],
         reason: ChatReportReason,
+        text: String,
         completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
 
         let query = ReportChat(
             chatId: chatId,
             messageIds: messageIds,
-            reason: reason
+            reason: reason,
+            text: text
+        )
+        execute(query: query, completion: completion)
+    }
+
+    /// Reports a chat photo to the Telegram moderators. A chat photo can be reported only if this is a private chat with a bot, a private chat with a user sharing their location, a supergroup, or a channel, since other chats can't be checked by moderators
+    /// - Parameter chatId: Chat identifier
+    /// - Parameter fileId: Identifier of the photo to report. Only full photos from chatPhoto can be reported
+    /// - Parameter reason: The reason for reporting the chat photo
+    /// - Parameter text: Additional report details; 0-1024 characters
+    public func reportChatPhoto(
+        chatId: Int64,
+        fileId: Int,
+        reason: ChatReportReason,
+        text: String,
+        completion: @escaping (Result<Ok, Swift.Error>) -> Void) throws {
+
+        let query = ReportChatPhoto(
+            chatId: chatId,
+            fileId: fileId,
+            reason: reason,
+            text: text
         )
         execute(query: query, completion: completion)
     }
@@ -5144,7 +5792,7 @@ public final class TdApi {
         execute(query: query, completion: completion)
     }
 
-    /// Uses current user IP address to find their country. Returns two-letter ISO 3166-1 alpha-2 country code. Can be called before authorization
+    /// Uses the current IP address to find the current country. Returns two-letter ISO 3166-1 alpha-2 country code. Can be called before authorization
     public func getCountryCode(completion: @escaping (Result<Text, Swift.Error>) -> Void) throws {
 
         let query = GetCountryCode()
@@ -5294,7 +5942,7 @@ public final class TdApi {
     /// - Parameter proxyId: Proxy identifier
     public func getProxyLink(
         proxyId: Int,
-        completion: @escaping (Result<Text, Swift.Error>) -> Void) throws {
+        completion: @escaping (Result<HttpUrl, Swift.Error>) -> Void) throws {
 
         let query = GetProxyLink(
             proxyId: proxyId
@@ -5388,7 +6036,7 @@ public final class TdApi {
 
     /// Adds a message to TDLib internal log. Can be called synchronously
     /// - Parameter text: Text of a message to log
-    /// - Parameter verbosityLevel: The minimum verbosity level needed for the message to be logged, 0-1023
+    /// - Parameter verbosityLevel: The minimum verbosity level needed for the message to be logged; 0-1023
     public func addLogMessage(
         text: String,
         verbosityLevel: Int,

@@ -15,7 +15,7 @@ public struct ConnectedWebsites: Codable {
     public let websites: [ConnectedWebsite]
 
 
-    public init (websites: [ConnectedWebsite]) {
+    public init(websites: [ConnectedWebsite]) {
         self.websites = websites
     }
 }

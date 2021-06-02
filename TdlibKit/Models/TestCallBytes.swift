@@ -15,7 +15,7 @@ public struct TestCallBytes: Codable {
     public let x: Data
 
 
-    public init (x: Data) {
+    public init(x: Data) {
         self.x = x
     }
 }

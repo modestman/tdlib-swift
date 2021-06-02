@@ -74,7 +74,7 @@ public struct NotificationTypeNewMessage: Codable {
     public let message: Message
 
 
-    public init (message: Message) {
+    public init(message: Message) {
         self.message = message
     }
 }
@@ -86,7 +86,7 @@ public struct NotificationTypeNewCall: Codable {
     public let callId: Int
 
 
-    public init (callId: Int) {
+    public init(callId: Int) {
         self.callId = callId
     }
 }
@@ -110,13 +110,13 @@ public struct NotificationTypeNewPushMessage: Codable {
     public let senderName: String
 
 
-    public init (
+    public init(
         content: PushMessageContent,
         isOutgoing: Bool,
         messageId: Int64,
         sender: MessageSender,
-        senderName: String) {
-
+        senderName: String
+    ) {
         self.content = content
         self.isOutgoing = isOutgoing
         self.messageId = messageId

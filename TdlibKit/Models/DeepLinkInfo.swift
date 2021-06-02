@@ -18,10 +18,10 @@ public struct DeepLinkInfo: Codable {
     public let text: FormattedText
 
 
-    public init (
+    public init(
         needUpdateApplication: Bool,
-        text: FormattedText) {
-
+        text: FormattedText
+    ) {
         self.needUpdateApplication = needUpdateApplication
         self.text = text
     }

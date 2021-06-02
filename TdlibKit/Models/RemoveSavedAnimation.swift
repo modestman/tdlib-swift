@@ -15,7 +15,7 @@ public struct RemoveSavedAnimation: Codable {
     public let animation: InputFile
 
 
-    public init (animation: InputFile) {
+    public init(animation: InputFile) {
         self.animation = animation
     }
 }

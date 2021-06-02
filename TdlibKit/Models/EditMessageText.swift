@@ -14,7 +14,7 @@ public struct EditMessageText: Codable {
     /// The chat the message belongs to
     public let chatId: Int64
 
-    /// New text content of the message. Should be of type InputMessageText
+    /// New text content of the message. Should be of type inputMessageText
     public let inputMessageContent: InputMessageContent
 
     /// Identifier of the message
@@ -24,12 +24,12 @@ public struct EditMessageText: Codable {
     public let replyMarkup: ReplyMarkup
 
 
-    public init (
+    public init(
         chatId: Int64,
         inputMessageContent: InputMessageContent,
         messageId: Int64,
-        replyMarkup: ReplyMarkup) {
-
+        replyMarkup: ReplyMarkup
+    ) {
         self.chatId = chatId
         self.inputMessageContent = inputMessageContent
         self.messageId = messageId

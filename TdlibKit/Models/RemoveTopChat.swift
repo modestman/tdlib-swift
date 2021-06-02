@@ -18,10 +18,10 @@ public struct RemoveTopChat: Codable {
     public let chatId: Int64
 
 
-    public init (
+    public init(
         category: TopChatCategory,
-        chatId: Int64) {
-
+        chatId: Int64
+    ) {
         self.category = category
         self.chatId = chatId
     }

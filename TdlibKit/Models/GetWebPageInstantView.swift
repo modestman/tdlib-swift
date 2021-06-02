@@ -18,10 +18,10 @@ public struct GetWebPageInstantView: Codable {
     public let url: String
 
 
-    public init (
+    public init(
         forceFull: Bool,
-        url: String) {
-
+        url: String
+    ) {
         self.forceFull = forceFull
         self.url = url
     }

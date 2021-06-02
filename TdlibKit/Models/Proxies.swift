@@ -15,7 +15,7 @@ public struct Proxies: Codable {
     public let proxies: [Proxy]
 
 
-    public init (proxies: [Proxy]) {
+    public init(proxies: [Proxy]) {
         self.proxies = proxies
     }
 }

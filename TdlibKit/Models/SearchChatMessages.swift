@@ -33,10 +33,10 @@ public struct SearchChatMessages: Codable {
     public let query: String
 
     /// If not null, only messages sent by the specified sender will be returned. Not supported in secret chats
-    public let sender: MessageSender
+    public let sender: MessageSender?
 
 
-    public init (
+    public init(
         chatId: Int64,
         filter: SearchMessagesFilter,
         fromMessageId: Int64,
@@ -44,8 +44,8 @@ public struct SearchChatMessages: Codable {
         messageThreadId: Int64,
         offset: Int,
         query: String,
-        sender: MessageSender) {
-
+        sender: MessageSender?
+    ) {
         self.chatId = chatId
         self.filter = filter
         self.fromMessageId = fromMessageId

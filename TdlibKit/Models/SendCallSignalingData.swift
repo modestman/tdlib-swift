@@ -18,10 +18,10 @@ public struct SendCallSignalingData: Codable {
     public let data: Data
 
 
-    public init (
+    public init(
         callId: Int,
-        data: Data) {
-
+        data: Data
+    ) {
         self.callId = callId
         self.data = data
     }

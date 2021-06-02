@@ -18,10 +18,10 @@ public struct EmailAddressAuthenticationCodeInfo: Codable {
     public let length: Int
 
 
-    public init (
+    public init(
         emailAddressPattern: String,
-        length: Int) {
-
+        length: Int
+    ) {
         self.emailAddressPattern = emailAddressPattern
         self.length = length
     }

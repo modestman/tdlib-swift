@@ -15,7 +15,7 @@ public struct TerminateSession: Codable {
     public let sessionId: TdInt64
 
 
-    public init (sessionId: TdInt64) {
+    public init(sessionId: TdInt64) {
         self.sessionId = sessionId
     }
 }

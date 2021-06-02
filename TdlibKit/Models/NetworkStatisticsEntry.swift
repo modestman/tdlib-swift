@@ -65,12 +65,12 @@ public struct NetworkStatisticsEntryFile: Codable {
     public let sentBytes: Int64
 
 
-    public init (
+    public init(
         fileType: FileType,
         networkType: NetworkType,
         receivedBytes: Int64,
-        sentBytes: Int64) {
-
+        sentBytes: Int64
+    ) {
         self.fileType = fileType
         self.networkType = networkType
         self.receivedBytes = receivedBytes
@@ -94,12 +94,12 @@ public struct NetworkStatisticsEntryCall: Codable {
     public let sentBytes: Int64
 
 
-    public init (
+    public init(
         duration: Double,
         networkType: NetworkType,
         receivedBytes: Int64,
-        sentBytes: Int64) {
-
+        sentBytes: Int64
+    ) {
         self.duration = duration
         self.networkType = networkType
         self.receivedBytes = receivedBytes

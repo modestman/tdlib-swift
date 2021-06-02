@@ -15,7 +15,7 @@ public struct GetChatAdministrators: Codable {
     public let chatId: Int64
 
 
-    public init (chatId: Int64) {
+    public init(chatId: Int64) {
         self.chatId = chatId
     }
 }

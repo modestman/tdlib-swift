@@ -18,10 +18,10 @@ public struct CreateNewBasicGroupChat: Codable {
     public let userIds: [Int]
 
 
-    public init (
+    public init(
         title: String,
-        userIds: [Int]) {
-
+        userIds: [Int]
+    ) {
         self.title = title
         self.userIds = userIds
     }

@@ -15,7 +15,7 @@ public struct DeleteAccount: Codable {
     public let reason: String
 
 
-    public init (reason: String) {
+    public init(reason: String) {
         self.reason = reason
     }
 }

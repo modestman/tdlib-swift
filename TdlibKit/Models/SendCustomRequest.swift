@@ -18,10 +18,10 @@ public struct SendCustomRequest: Codable {
     public let parameters: String
 
 
-    public init (
+    public init(
         method: String,
-        parameters: String) {
-
+        parameters: String
+    ) {
         self.method = method
         self.parameters = parameters
     }

@@ -10,7 +10,7 @@ import Foundation
 import TdlibKit
 
 
-protocol ConversationServiceDelegate: class {
+protocol ConversationServiceDelegate: AnyObject {
     func messagesUpdated()
     func onError(_ error: Swift.Error)
 }

@@ -21,11 +21,11 @@ public struct AutoDownloadSettingsPresets: Codable {
     public let medium: AutoDownloadSettings
 
 
-    public init (
+    public init(
         high: AutoDownloadSettings,
         low: AutoDownloadSettings,
-        medium: AutoDownloadSettings) {
-
+        medium: AutoDownloadSettings
+    ) {
         self.high = high
         self.low = low
         self.medium = medium

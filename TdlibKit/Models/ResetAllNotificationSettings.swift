@@ -12,7 +12,6 @@ import Foundation
 public struct ResetAllNotificationSettings: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

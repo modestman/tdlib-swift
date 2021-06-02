@@ -21,11 +21,11 @@ public struct ShippingOption: Codable {
     public let title: String
 
 
-    public init (
+    public init(
         id: String,
         priceParts: [LabeledPricePart],
-        title: String) {
-
+        title: String
+    ) {
         self.id = id
         self.priceParts = priceParts
         self.title = title

@@ -21,11 +21,11 @@ public struct StorageStatistics: Codable {
     public let size: Int64
 
 
-    public init (
+    public init(
         byChat: [StorageStatisticsByChat],
         count: Int,
-        size: Int64) {
-
+        size: Int64
+    ) {
         self.byChat = byChat
         self.count = count
         self.size = size

@@ -15,7 +15,7 @@ public struct LogVerbosityLevel: Codable {
     public let verbosityLevel: Int
 
 
-    public init (verbosityLevel: Int) {
+    public init(verbosityLevel: Int) {
         self.verbosityLevel = verbosityLevel
     }
 }

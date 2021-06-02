@@ -20,6 +20,9 @@ public struct Invoice: Codable {
     /// True, if the payment is a test payment
     public let isTest: Bool
 
+    /// The maximum allowed amount of tip in the smallest units of the currency
+    public let maxTipAmount: Int64
+
     /// True, if the user's email address is needed for payment
     public let needEmailAddress: Bool
 
@@ -41,22 +44,28 @@ public struct Invoice: Codable {
     /// True, if the user's phone number will be sent to the provider
     public let sendPhoneNumberToProvider: Bool
 
+    /// Suggested amounts of tip in the smallest units of the currency
+    public let suggestedTipAmounts: [Int64]
 
-    public init (
+
+    public init(
         currency: String,
         isFlexible: Bool,
         isTest: Bool,
+        maxTipAmount: Int64,
         needEmailAddress: Bool,
         needName: Bool,
         needPhoneNumber: Bool,
         needShippingAddress: Bool,
         priceParts: [LabeledPricePart],
         sendEmailAddressToProvider: Bool,
-        sendPhoneNumberToProvider: Bool) {
-
+        sendPhoneNumberToProvider: Bool,
+        suggestedTipAmounts: [Int64]
+    ) {
         self.currency = currency
         self.isFlexible = isFlexible
         self.isTest = isTest
+        self.maxTipAmount = maxTipAmount
         self.needEmailAddress = needEmailAddress
         self.needName = needName
         self.needPhoneNumber = needPhoneNumber
@@ -64,6 +73,7 @@ public struct Invoice: Codable {
         self.priceParts = priceParts
         self.sendEmailAddressToProvider = sendEmailAddressToProvider
         self.sendPhoneNumberToProvider = sendPhoneNumberToProvider
+        self.suggestedTipAmounts = suggestedTipAmounts
     }
 }
 

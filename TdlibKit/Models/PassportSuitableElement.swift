@@ -24,12 +24,12 @@ public struct PassportSuitableElement: Codable {
     public let type: PassportElementType
 
 
-    public init (
+    public init(
         isNativeNameRequired: Bool,
         isSelfieRequired: Bool,
         isTranslationRequired: Bool,
-        type: PassportElementType) {
-
+        type: PassportElementType
+    ) {
         self.isNativeNameRequired = isNativeNameRequired
         self.isSelfieRequired = isSelfieRequired
         self.isTranslationRequired = isTranslationRequired

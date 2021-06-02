@@ -18,10 +18,10 @@ public struct PageBlockListItem: Codable {
     public let pageBlocks: [PageBlock]
 
 
-    public init (
+    public init(
         label: String,
-        pageBlocks: [PageBlock]) {
-
+        pageBlocks: [PageBlock]
+    ) {
         self.label = label
         self.pageBlocks = pageBlocks
     }

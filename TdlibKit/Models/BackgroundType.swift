@@ -69,10 +69,10 @@ public struct BackgroundTypeWallpaper: Codable {
     public let isMoving: Bool
 
 
-    public init (
+    public init(
         isBlurred: Bool,
-        isMoving: Bool) {
-
+        isMoving: Bool
+    ) {
         self.isBlurred = isBlurred
         self.isMoving = isMoving
     }
@@ -84,18 +84,18 @@ public struct BackgroundTypePattern: Codable {
     /// Description of the background fill
     public let fill: BackgroundFill
 
-    /// Intensity of the pattern when it is shown above the filled background, 0-100
+    /// Intensity of the pattern when it is shown above the filled background; 0-100
     public let intensity: Int
 
     /// True, if the background needs to be slightly moved when device is tilted
     public let isMoving: Bool
 
 
-    public init (
+    public init(
         fill: BackgroundFill,
         intensity: Int,
-        isMoving: Bool) {
-
+        isMoving: Bool
+    ) {
         self.fill = fill
         self.intensity = intensity
         self.isMoving = isMoving
@@ -109,7 +109,7 @@ public struct BackgroundTypeFill: Codable {
     public let fill: BackgroundFill
 
 
-    public init (fill: BackgroundFill) {
+    public init(fill: BackgroundFill) {
         self.fill = fill
     }
 }

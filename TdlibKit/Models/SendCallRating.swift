@@ -24,12 +24,12 @@ public struct SendCallRating: Codable {
     public let rating: Int
 
 
-    public init (
+    public init(
         callId: Int,
         comment: String,
         problems: [CallProblem],
-        rating: Int) {
-
+        rating: Int
+    ) {
         self.callId = callId
         self.comment = comment
         self.problems = problems

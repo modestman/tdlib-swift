@@ -27,13 +27,13 @@ public struct AnswerCallbackQuery: Codable {
     public let url: String
 
 
-    public init (
+    public init(
         cacheTime: Int,
         callbackQueryId: TdInt64,
         showAlert: Bool,
         text: String,
-        url: String) {
-
+        url: String
+    ) {
         self.cacheTime = cacheTime
         self.callbackQueryId = callbackQueryId
         self.showAlert = showAlert

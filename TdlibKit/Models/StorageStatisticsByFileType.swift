@@ -21,11 +21,11 @@ public struct StorageStatisticsByFileType: Codable {
     public let size: Int64
 
 
-    public init (
+    public init(
         count: Int,
         fileType: FileType,
-        size: Int64) {
-
+        size: Int64
+    ) {
         self.count = count
         self.fileType = fileType
         self.size = size

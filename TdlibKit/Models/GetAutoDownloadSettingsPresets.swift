@@ -12,7 +12,6 @@ import Foundation
 public struct GetAutoDownloadSettingsPresets: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

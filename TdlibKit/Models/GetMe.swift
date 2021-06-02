@@ -12,7 +12,6 @@ import Foundation
 public struct GetMe: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

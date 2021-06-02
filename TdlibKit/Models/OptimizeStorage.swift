@@ -39,7 +39,7 @@ public struct OptimizeStorage: Codable {
     public let ttl: Int
 
 
-    public init (
+    public init(
         chatIds: [Int64],
         chatLimit: Int,
         count: Int,
@@ -48,8 +48,8 @@ public struct OptimizeStorage: Codable {
         immunityDelay: Int,
         returnDeletedFileStatistics: Bool,
         size: Int64,
-        ttl: Int) {
-
+        ttl: Int
+    ) {
         self.chatIds = chatIds
         self.chatLimit = chatLimit
         self.count = count

@@ -18,10 +18,10 @@ public struct SetCustomLanguagePack: Codable {
     public let strings: [LanguagePackString]
 
 
-    public init (
+    public init(
         info: LanguagePackInfo,
-        strings: [LanguagePackString]) {
-
+        strings: [LanguagePackString]
+    ) {
         self.info = info
         self.strings = strings
     }

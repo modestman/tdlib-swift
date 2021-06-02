@@ -18,10 +18,10 @@ public struct ResendMessages: Codable {
     public let messageIds: [Int64]
 
 
-    public init (
+    public init(
         chatId: Int64,
-        messageIds: [Int64]) {
-
+        messageIds: [Int64]
+    ) {
         self.chatId = chatId
         self.messageIds = messageIds
     }

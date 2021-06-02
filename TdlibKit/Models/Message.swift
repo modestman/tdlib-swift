@@ -65,7 +65,7 @@ public struct Message: Codable {
     /// True, if the message is pinned
     public let isPinned: Bool
 
-    /// Unique identifier of an album this message belongs to. Only photos and videos can be grouped together in albums
+    /// Unique identifier of an album this message belongs to. Only audios, documents, photos and videos can be grouped together in albums
     public let mediaAlbumId: TdInt64
 
     /// If non-zero, the identifier of the message thread the message belongs to; unique within the chat to which the message belongs
@@ -102,7 +102,7 @@ public struct Message: Codable {
     public let viaBotUserId: Int
 
 
-    public init (
+    public init(
         authorSignature: String,
         canBeDeletedForAllUsers: Bool,
         canBeDeletedOnlyForSelf: Bool,
@@ -132,8 +132,8 @@ public struct Message: Codable {
         sendingState: MessageSendingState?,
         ttl: Int,
         ttlExpiresIn: Double,
-        viaBotUserId: Int) {
-
+        viaBotUserId: Int
+    ) {
         self.authorSignature = authorSignature
         self.canBeDeletedForAllUsers = canBeDeletedForAllUsers
         self.canBeDeletedOnlyForSelf = canBeDeletedOnlyForSelf

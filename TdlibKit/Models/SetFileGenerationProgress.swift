@@ -21,11 +21,11 @@ public struct SetFileGenerationProgress: Codable {
     public let localPrefixSize: Int
 
 
-    public init (
+    public init(
         expectedSize: Int,
         generationId: TdInt64,
-        localPrefixSize: Int) {
-
+        localPrefixSize: Int
+    ) {
         self.expectedSize = expectedSize
         self.generationId = generationId
         self.localPrefixSize = localPrefixSize

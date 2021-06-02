@@ -18,10 +18,10 @@ public struct GetChatNotificationSettingsExceptions: Codable {
     public let scope: NotificationSettingsScope
 
 
-    public init (
+    public init(
         compareSound: Bool,
-        scope: NotificationSettingsScope) {
-
+        scope: NotificationSettingsScope
+    ) {
         self.compareSound = compareSound
         self.scope = scope
     }

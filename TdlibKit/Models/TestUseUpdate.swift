@@ -12,7 +12,6 @@ import Foundation
 public struct TestUseUpdate: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

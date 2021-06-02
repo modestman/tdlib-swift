@@ -27,13 +27,13 @@ public struct WebPageInstantView: Codable {
     public let viewCount: Int
 
 
-    public init (
+    public init(
         isFull: Bool,
         isRtl: Bool,
         pageBlocks: [PageBlock],
         version: Int,
-        viewCount: Int) {
-
+        viewCount: Int
+    ) {
         self.isFull = isFull
         self.isRtl = isRtl
         self.pageBlocks = pageBlocks

@@ -18,10 +18,10 @@ public struct GetLanguagePackStrings: Codable {
     public let languagePackId: String
 
 
-    public init (
+    public init(
         keys: [String],
-        languagePackId: String) {
-
+        languagePackId: String
+    ) {
         self.keys = keys
         self.languagePackId = languagePackId
     }

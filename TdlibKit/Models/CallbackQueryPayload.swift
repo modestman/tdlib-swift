@@ -66,7 +66,7 @@ public struct CallbackQueryPayloadData: Codable {
     public let data: Data
 
 
-    public init (data: Data) {
+    public init(data: Data) {
         self.data = data
     }
 }
@@ -81,10 +81,10 @@ public struct CallbackQueryPayloadDataWithPassword: Codable {
     public let password: String
 
 
-    public init (
+    public init(
         data: Data,
-        password: String) {
-
+        password: String
+    ) {
         self.data = data
         self.password = password
     }
@@ -97,7 +97,7 @@ public struct CallbackQueryPayloadGame: Codable {
     public let gameShortName: String
 
 
-    public init (gameShortName: String) {
+    public init(gameShortName: String) {
         self.gameShortName = gameShortName
     }
 }

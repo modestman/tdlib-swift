@@ -21,11 +21,11 @@ public struct FoundMessages: Codable {
     public let totalCount: Int
 
 
-    public init (
+    public init(
         messages: [Message],
         nextOffset: String,
-        totalCount: Int) {
-
+        totalCount: Int
+    ) {
         self.messages = messages
         self.nextOffset = nextOffset
         self.totalCount = totalCount

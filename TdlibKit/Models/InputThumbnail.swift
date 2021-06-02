@@ -21,11 +21,11 @@ public struct InputThumbnail: Codable {
     public let width: Int
 
 
-    public init (
+    public init(
         height: Int,
         thumbnail: InputFile,
-        width: Int) {
-
+        width: Int
+    ) {
         self.height = height
         self.thumbnail = thumbnail
         self.width = width

@@ -27,13 +27,13 @@ public struct MessageForwardInfo: Codable {
     public let publicServiceAnnouncementType: String
 
 
-    public init (
+    public init(
         date: Int,
         fromChatId: Int64,
         fromMessageId: Int64,
         origin: MessageForwardOrigin,
-        publicServiceAnnouncementType: String) {
-
+        publicServiceAnnouncementType: String
+    ) {
         self.date = date
         self.fromChatId = fromChatId
         self.fromMessageId = fromMessageId

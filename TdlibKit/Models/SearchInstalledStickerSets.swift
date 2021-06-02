@@ -21,11 +21,11 @@ public struct SearchInstalledStickerSets: Codable {
     public let query: String
 
 
-    public init (
+    public init(
         isMasks: Bool,
         limit: Int,
-        query: String) {
-
+        query: String
+    ) {
         self.isMasks = isMasks
         self.limit = limit
         self.query = query

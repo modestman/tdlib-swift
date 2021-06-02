@@ -42,7 +42,7 @@ public struct PersonalDetails: Codable {
     public let residenceCountryCode: String
 
 
-    public init (
+    public init(
         birthdate: Date,
         countryCode: String,
         firstName: String,
@@ -52,8 +52,8 @@ public struct PersonalDetails: Codable {
         nativeFirstName: String,
         nativeLastName: String,
         nativeMiddleName: String,
-        residenceCountryCode: String) {
-
+        residenceCountryCode: String
+    ) {
         self.birthdate = birthdate
         self.countryCode = countryCode
         self.firstName = firstName

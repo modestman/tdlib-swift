@@ -24,12 +24,12 @@ public struct BlockMessageSenderFromReplies: Codable {
     public let reportSpam: Bool
 
 
-    public init (
+    public init(
         deleteAllMessages: Bool,
         deleteMessage: Bool,
         messageId: Int64,
-        reportSpam: Bool) {
-
+        reportSpam: Bool
+    ) {
         self.deleteAllMessages = deleteAllMessages
         self.deleteMessage = deleteMessage
         self.messageId = messageId

@@ -21,11 +21,11 @@ public struct ChatStatisticsMessageInteractionInfo: Codable {
     public let viewCount: Int
 
 
-    public init (
+    public init(
         forwardCount: Int,
         messageId: Int64,
-        viewCount: Int) {
-
+        viewCount: Int
+    ) {
         self.forwardCount = forwardCount
         self.messageId = messageId
         self.viewCount = viewCount

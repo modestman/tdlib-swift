@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Adds a new member to a chat. Members can't be added to private or secret chats. Members will not be added until the chat state has been synchronized with the server
+/// Adds a new member to a chat. Members can't be added to private or secret chats
 public struct AddChatMember: Codable {
 
     /// Chat identifier
@@ -21,11 +21,11 @@ public struct AddChatMember: Codable {
     public let userId: Int
 
 
-    public init (
+    public init(
         chatId: Int64,
         forwardLimit: Int,
-        userId: Int) {
-
+        userId: Int
+    ) {
         self.chatId = chatId
         self.forwardLimit = forwardLimit
         self.userId = userId

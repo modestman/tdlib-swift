@@ -15,7 +15,7 @@ public struct TestCallVectorStringObject: Codable {
     public let x: [TestString]
 
 
-    public init (x: [TestString]) {
+    public init(x: [TestString]) {
         self.x = x
     }
 }

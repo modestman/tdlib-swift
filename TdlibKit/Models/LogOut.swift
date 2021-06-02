@@ -12,7 +12,6 @@ import Foundation
 public struct LogOut: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

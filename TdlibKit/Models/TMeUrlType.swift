@@ -76,7 +76,7 @@ public struct TMeUrlTypeUser: Codable {
     public let userId: Int
 
 
-    public init (userId: Int) {
+    public init(userId: Int) {
         self.userId = userId
     }
 }
@@ -88,7 +88,7 @@ public struct TMeUrlTypeSupergroup: Codable {
     public let supergroupId: Int64
 
 
-    public init (supergroupId: Int64) {
+    public init(supergroupId: Int64) {
         self.supergroupId = supergroupId
     }
 }
@@ -100,7 +100,7 @@ public struct TMeUrlTypeChatInvite: Codable {
     public let info: ChatInviteLinkInfo
 
 
-    public init (info: ChatInviteLinkInfo) {
+    public init(info: ChatInviteLinkInfo) {
         self.info = info
     }
 }
@@ -112,7 +112,7 @@ public struct TMeUrlTypeStickerSet: Codable {
     public let stickerSetId: TdInt64
 
 
-    public init (stickerSetId: TdInt64) {
+    public init(stickerSetId: TdInt64) {
         self.stickerSetId = stickerSetId
     }
 }

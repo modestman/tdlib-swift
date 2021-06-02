@@ -32,15 +32,15 @@ public struct Game: Codable {
     public let title: String
 
 
-    public init (
+    public init(
         animation: Animation?,
         description: String,
         id: TdInt64,
         photo: Photo,
         shortName: String,
         text: FormattedText,
-        title: String) {
-
+        title: String
+    ) {
         self.animation = animation
         self.description = description
         self.id = id

@@ -12,7 +12,6 @@ import Foundation
 public struct GetCountries: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

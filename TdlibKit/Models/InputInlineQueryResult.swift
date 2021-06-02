@@ -155,7 +155,7 @@ public struct InputInlineQueryResultAnimation: Codable {
     /// Unique identifier of the query result
     public let id: String
 
-    /// The content of the message to be sent. Must be one of the following types: InputMessageText, InputMessageAnimation, InputMessageLocation, InputMessageVenue or InputMessageContact
+    /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageAnimation, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
     public let inputMessageContent: InputMessageContent
 
     /// The message reply markup. Must be of type replyMarkupInlineKeyboard or null
@@ -186,7 +186,7 @@ public struct InputInlineQueryResultAnimation: Codable {
     public let videoWidth: Int
 
 
-    public init (
+    public init(
         id: String,
         inputMessageContent: InputMessageContent,
         replyMarkup: ReplyMarkup,
@@ -197,8 +197,8 @@ public struct InputInlineQueryResultAnimation: Codable {
         videoHeight: Int,
         videoMimeType: String,
         videoUrl: String,
-        videoWidth: Int) {
-
+        videoWidth: Int
+    ) {
         self.id = id
         self.inputMessageContent = inputMessageContent
         self.replyMarkup = replyMarkup
@@ -224,7 +224,7 @@ public struct InputInlineQueryResultArticle: Codable {
     /// Unique identifier of the query result
     public let id: String
 
-    /// The content of the message to be sent. Must be one of the following types: InputMessageText, InputMessageLocation, InputMessageVenue or InputMessageContact
+    /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
     public let inputMessageContent: InputMessageContent
 
     /// The message reply markup. Must be of type replyMarkupInlineKeyboard or null
@@ -246,7 +246,7 @@ public struct InputInlineQueryResultArticle: Codable {
     public let url: String
 
 
-    public init (
+    public init(
         description: String,
         hideUrl: Bool,
         id: String,
@@ -256,8 +256,8 @@ public struct InputInlineQueryResultArticle: Codable {
         thumbnailUrl: String,
         thumbnailWidth: Int,
         title: String,
-        url: String) {
-
+        url: String
+    ) {
         self.description = description
         self.hideUrl = hideUrl
         self.id = id
@@ -283,7 +283,7 @@ public struct InputInlineQueryResultAudio: Codable {
     /// Unique identifier of the query result
     public let id: String
 
-    /// The content of the message to be sent. Must be one of the following types: InputMessageText, InputMessageAudio, InputMessageLocation, InputMessageVenue or InputMessageContact
+    /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageAudio, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
     public let inputMessageContent: InputMessageContent
 
     /// Performer of the audio file
@@ -296,15 +296,15 @@ public struct InputInlineQueryResultAudio: Codable {
     public let title: String
 
 
-    public init (
+    public init(
         audioDuration: Int,
         audioUrl: String,
         id: String,
         inputMessageContent: InputMessageContent,
         performer: String,
         replyMarkup: ReplyMarkup,
-        title: String) {
-
+        title: String
+    ) {
         self.audioDuration = audioDuration
         self.audioUrl = audioUrl
         self.id = id
@@ -324,7 +324,7 @@ public struct InputInlineQueryResultContact: Codable {
     /// Unique identifier of the query result
     public let id: String
 
-    /// The content of the message to be sent. Must be one of the following types: InputMessageText, InputMessageLocation, InputMessageVenue or InputMessageContact
+    /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
     public let inputMessageContent: InputMessageContent
 
     /// The message reply markup. Must be of type replyMarkupInlineKeyboard or null
@@ -340,15 +340,15 @@ public struct InputInlineQueryResultContact: Codable {
     public let thumbnailWidth: Int
 
 
-    public init (
+    public init(
         contact: Contact,
         id: String,
         inputMessageContent: InputMessageContent,
         replyMarkup: ReplyMarkup,
         thumbnailHeight: Int,
         thumbnailUrl: String,
-        thumbnailWidth: Int) {
-
+        thumbnailWidth: Int
+    ) {
         self.contact = contact
         self.id = id
         self.inputMessageContent = inputMessageContent
@@ -370,7 +370,7 @@ public struct InputInlineQueryResultDocument: Codable {
     /// Unique identifier of the query result
     public let id: String
 
-    /// The content of the message to be sent. Must be one of the following types: InputMessageText, InputMessageDocument, InputMessageLocation, InputMessageVenue or InputMessageContact
+    /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageDocument, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
     public let inputMessageContent: InputMessageContent
 
     /// MIME type of the file content; only "application/pdf" and "application/zip" are currently allowed
@@ -392,7 +392,7 @@ public struct InputInlineQueryResultDocument: Codable {
     public let title: String
 
 
-    public init (
+    public init(
         description: String,
         documentUrl: String,
         id: String,
@@ -402,8 +402,8 @@ public struct InputInlineQueryResultDocument: Codable {
         thumbnailHeight: Int,
         thumbnailUrl: String,
         thumbnailWidth: Int,
-        title: String) {
-
+        title: String
+    ) {
         self.description = description
         self.documentUrl = documentUrl
         self.id = id
@@ -430,11 +430,11 @@ public struct InputInlineQueryResultGame: Codable {
     public let replyMarkup: ReplyMarkup
 
 
-    public init (
+    public init(
         gameShortName: String,
         id: String,
-        replyMarkup: ReplyMarkup) {
-
+        replyMarkup: ReplyMarkup
+    ) {
         self.gameShortName = gameShortName
         self.id = id
         self.replyMarkup = replyMarkup
@@ -447,7 +447,7 @@ public struct InputInlineQueryResultLocation: Codable {
     /// Unique identifier of the query result
     public let id: String
 
-    /// The content of the message to be sent. Must be one of the following types: InputMessageText, InputMessageLocation, InputMessageVenue or InputMessageContact
+    /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
     public let inputMessageContent: InputMessageContent
 
     /// Amount of time relative to the message sent time until the location can be updated, in seconds
@@ -472,7 +472,7 @@ public struct InputInlineQueryResultLocation: Codable {
     public let title: String
 
 
-    public init (
+    public init(
         id: String,
         inputMessageContent: InputMessageContent,
         livePeriod: Int,
@@ -481,8 +481,8 @@ public struct InputInlineQueryResultLocation: Codable {
         thumbnailHeight: Int,
         thumbnailUrl: String,
         thumbnailWidth: Int,
-        title: String) {
-
+        title: String
+    ) {
         self.id = id
         self.inputMessageContent = inputMessageContent
         self.livePeriod = livePeriod
@@ -503,7 +503,7 @@ public struct InputInlineQueryResultPhoto: Codable {
     /// Unique identifier of the query result
     public let id: String
 
-    /// The content of the message to be sent. Must be one of the following types: InputMessageText, InputMessagePhoto, InputMessageLocation, InputMessageVenue or InputMessageContact
+    /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessagePhoto, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
     public let inputMessageContent: InputMessageContent
 
     /// Height of the photo
@@ -525,7 +525,7 @@ public struct InputInlineQueryResultPhoto: Codable {
     public let title: String
 
 
-    public init (
+    public init(
         description: String,
         id: String,
         inputMessageContent: InputMessageContent,
@@ -534,8 +534,8 @@ public struct InputInlineQueryResultPhoto: Codable {
         photoWidth: Int,
         replyMarkup: ReplyMarkup,
         thumbnailUrl: String,
-        title: String) {
-
+        title: String
+    ) {
         self.description = description
         self.id = id
         self.inputMessageContent = inputMessageContent
@@ -554,7 +554,7 @@ public struct InputInlineQueryResultSticker: Codable {
     /// Unique identifier of the query result
     public let id: String
 
-    /// The content of the message to be sent. Must be one of the following types: InputMessageText, inputMessageSticker, InputMessageLocation, InputMessageVenue or InputMessageContact
+    /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageSticker, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
     public let inputMessageContent: InputMessageContent
 
     /// The message reply markup. Must be of type replyMarkupInlineKeyboard or null
@@ -573,15 +573,15 @@ public struct InputInlineQueryResultSticker: Codable {
     public let thumbnailUrl: String
 
 
-    public init (
+    public init(
         id: String,
         inputMessageContent: InputMessageContent,
         replyMarkup: ReplyMarkup,
         stickerHeight: Int,
         stickerUrl: String,
         stickerWidth: Int,
-        thumbnailUrl: String) {
-
+        thumbnailUrl: String
+    ) {
         self.id = id
         self.inputMessageContent = inputMessageContent
         self.replyMarkup = replyMarkup
@@ -598,7 +598,7 @@ public struct InputInlineQueryResultVenue: Codable {
     /// Unique identifier of the query result
     public let id: String
 
-    /// The content of the message to be sent. Must be one of the following types: InputMessageText, InputMessageLocation, InputMessageVenue or InputMessageContact
+    /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
     public let inputMessageContent: InputMessageContent
 
     /// The message reply markup. Must be of type replyMarkupInlineKeyboard or null
@@ -617,15 +617,15 @@ public struct InputInlineQueryResultVenue: Codable {
     public let venue: Venue
 
 
-    public init (
+    public init(
         id: String,
         inputMessageContent: InputMessageContent,
         replyMarkup: ReplyMarkup,
         thumbnailHeight: Int,
         thumbnailUrl: String,
         thumbnailWidth: Int,
-        venue: Venue) {
-
+        venue: Venue
+    ) {
         self.id = id
         self.inputMessageContent = inputMessageContent
         self.replyMarkup = replyMarkup
@@ -644,7 +644,7 @@ public struct InputInlineQueryResultVideo: Codable {
     /// Unique identifier of the query result
     public let id: String
 
-    /// The content of the message to be sent. Must be one of the following types: InputMessageText, InputMessageVideo, InputMessageLocation, InputMessageVenue or InputMessageContact
+    /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageVideo, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
     public let inputMessageContent: InputMessageContent
 
     /// MIME type of the content of the video URL, only "text/html" or "video/mp4" are currently supported
@@ -672,7 +672,7 @@ public struct InputInlineQueryResultVideo: Codable {
     public let videoWidth: Int
 
 
-    public init (
+    public init(
         description: String,
         id: String,
         inputMessageContent: InputMessageContent,
@@ -683,8 +683,8 @@ public struct InputInlineQueryResultVideo: Codable {
         videoDuration: Int,
         videoHeight: Int,
         videoUrl: String,
-        videoWidth: Int) {
-
+        videoWidth: Int
+    ) {
         self.description = description
         self.id = id
         self.inputMessageContent = inputMessageContent
@@ -705,7 +705,7 @@ public struct InputInlineQueryResultVoiceNote: Codable {
     /// Unique identifier of the query result
     public let id: String
 
-    /// The content of the message to be sent. Must be one of the following types: InputMessageText, InputMessageVoiceNote, InputMessageLocation, InputMessageVenue or InputMessageContact
+    /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageVoiceNote, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
     public let inputMessageContent: InputMessageContent
 
     /// The message reply markup. Must be of type replyMarkupInlineKeyboard or null
@@ -721,14 +721,14 @@ public struct InputInlineQueryResultVoiceNote: Codable {
     public let voiceNoteUrl: String
 
 
-    public init (
+    public init(
         id: String,
         inputMessageContent: InputMessageContent,
         replyMarkup: ReplyMarkup,
         title: String,
         voiceNoteDuration: Int,
-        voiceNoteUrl: String) {
-
+        voiceNoteUrl: String
+    ) {
         self.id = id
         self.inputMessageContent = inputMessageContent
         self.replyMarkup = replyMarkup

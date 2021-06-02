@@ -12,7 +12,6 @@ import Foundation
 public struct ResendRecoveryEmailAddressCode: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

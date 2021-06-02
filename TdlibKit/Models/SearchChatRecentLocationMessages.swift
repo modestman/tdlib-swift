@@ -18,10 +18,10 @@ public struct SearchChatRecentLocationMessages: Codable {
     public let limit: Int
 
 
-    public init (
+    public init(
         chatId: Int64,
-        limit: Int) {
-
+        limit: Int
+    ) {
         self.chatId = chatId
         self.limit = limit
     }

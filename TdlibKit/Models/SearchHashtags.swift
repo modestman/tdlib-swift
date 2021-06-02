@@ -18,10 +18,10 @@ public struct SearchHashtags: Codable {
     public let prefix: String
 
 
-    public init (
+    public init(
         limit: Int,
-        prefix: String) {
-
+        prefix: String
+    ) {
         self.limit = limit
         self.prefix = prefix
     }

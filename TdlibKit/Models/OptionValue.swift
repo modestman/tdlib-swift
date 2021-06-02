@@ -74,7 +74,7 @@ public struct OptionValueBoolean: Codable {
     public let value: Bool
 
 
-    public init (value: Bool) {
+    public init(value: Bool) {
         self.value = value
     }
 }
@@ -86,7 +86,7 @@ public struct OptionValueInteger: Codable {
     public let value: TdInt64
 
 
-    public init (value: TdInt64) {
+    public init(value: TdInt64) {
         self.value = value
     }
 }
@@ -98,7 +98,7 @@ public struct OptionValueString: Codable {
     public let value: String
 
 
-    public init (value: String) {
+    public init(value: String) {
         self.value = value
     }
 }

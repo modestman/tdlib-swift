@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Changes the sticker set of a supergroup; requires can_change_info rights
+/// Changes the sticker set of a supergroup; requires can_change_info administrator right
 public struct SetSupergroupStickerSet: Codable {
 
     /// New value of the supergroup sticker set identifier. Use 0 to remove the supergroup sticker set
@@ -18,10 +18,10 @@ public struct SetSupergroupStickerSet: Codable {
     public let supergroupId: Int
 
 
-    public init (
+    public init(
         stickerSetId: TdInt64,
-        supergroupId: Int) {
-
+        supergroupId: Int
+    ) {
         self.stickerSetId = stickerSetId
         self.supergroupId = supergroupId
     }

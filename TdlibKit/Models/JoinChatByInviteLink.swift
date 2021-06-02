@@ -8,14 +8,14 @@
 import Foundation
 
 
-/// Uses an invite link to add the current user to the chat if possible. The new member will not be added until the chat state has been synchronized with the server
+/// Uses an invite link to add the current user to the chat if possible
 public struct JoinChatByInviteLink: Codable {
 
-    /// Invite link to import; should begin with "https://t.me/joinchat/", "https://telegram.me/joinchat/", or "https://telegram.dog/joinchat/"
+    /// Invite link to import; must have URL "t.me", "telegram.me", or "telegram.dog" and query beginning with "/joinchat/" or "/+"
     public let inviteLink: String
 
 
-    public init (inviteLink: String) {
+    public init(inviteLink: String) {
         self.inviteLink = inviteLink
     }
 }

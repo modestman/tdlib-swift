@@ -16,8 +16,8 @@ public struct BasicGroupFullInfo: Codable {
 
     public let description: String
 
-    /// Invite link for this group; available only after it has been generated at least once and only for the group creator
-    public let inviteLink: String
+    /// Primary invite link for this group; may be null. For chat administrators with can_invite_users right only. Updated only after the basic group is opened
+    public let inviteLink: ChatInviteLink?
 
     /// Group members
     public let members: [ChatMember]
@@ -26,13 +26,13 @@ public struct BasicGroupFullInfo: Codable {
     public let photo: ChatPhoto?
 
 
-    public init (
+    public init(
         creatorUserId: Int,
         description: String,
-        inviteLink: String,
+        inviteLink: ChatInviteLink?,
         members: [ChatMember],
-        photo: ChatPhoto?) {
-
+        photo: ChatPhoto?
+    ) {
         self.creatorUserId = creatorUserId
         self.description = description
         self.inviteLink = inviteLink

@@ -18,10 +18,10 @@ public struct NetworkStatistics: Codable {
     public let sinceDate: Int
 
 
-    public init (
+    public init(
         entries: [NetworkStatisticsEntry],
-        sinceDate: Int) {
-
+        sinceDate: Int
+    ) {
         self.entries = entries
         self.sinceDate = sinceDate
     }

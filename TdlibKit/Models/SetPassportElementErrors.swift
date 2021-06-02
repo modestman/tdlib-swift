@@ -18,10 +18,10 @@ public struct SetPassportElementErrors: Codable {
     public let userId: Int
 
 
-    public init (
+    public init(
         errors: [InputPassportElementError],
-        userId: Int) {
-
+        userId: Int
+    ) {
         self.errors = errors
         self.userId = userId
     }

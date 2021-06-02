@@ -18,10 +18,10 @@ public struct SetScopeNotificationSettings: Codable {
     public let scope: NotificationSettingsScope
 
 
-    public init (
+    public init(
         notificationSettings: ScopeNotificationSettings,
-        scope: NotificationSettingsScope) {
-
+        scope: NotificationSettingsScope
+    ) {
         self.notificationSettings = notificationSettings
         self.scope = scope
     }

@@ -18,10 +18,10 @@ public struct AcceptCall: Codable {
     public let `protocol`: CallProtocol
 
 
-    public init (
+    public init(
         callId: Int,
-        `protocol`: CallProtocol) {
-
+        `protocol`: CallProtocol
+    ) {
         self.callId = callId
         self.`protocol` = `protocol`
     }

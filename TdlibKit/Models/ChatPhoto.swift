@@ -27,13 +27,13 @@ public struct ChatPhoto: Codable {
     public let sizes: [PhotoSize]
 
 
-    public init (
+    public init(
         addedDate: Int,
         animation: AnimatedChatPhoto?,
         id: TdInt64,
         minithumbnail: Minithumbnail?,
-        sizes: [PhotoSize]) {
-
+        sizes: [PhotoSize]
+    ) {
         self.addedDate = addedDate
         self.animation = animation
         self.id = id

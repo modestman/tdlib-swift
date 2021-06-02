@@ -30,14 +30,14 @@ public struct SetGameScore: Codable {
     public let userId: Int
 
 
-    public init (
+    public init(
         chatId: Int64,
         editMessage: Bool,
         force: Bool,
         messageId: Int64,
         score: Int,
-        userId: Int) {
-
+        userId: Int
+    ) {
         self.chatId = chatId
         self.editMessage = editMessage
         self.force = force

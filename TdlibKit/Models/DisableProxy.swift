@@ -12,7 +12,6 @@ import Foundation
 public struct DisableProxy: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

@@ -18,10 +18,10 @@ public struct AnswerPreCheckoutQuery: Codable {
     public let preCheckoutQueryId: TdInt64
 
 
-    public init (
+    public init(
         errorMessage: String,
-        preCheckoutQueryId: TdInt64) {
-
+        preCheckoutQueryId: TdInt64
+    ) {
         self.errorMessage = errorMessage
         self.preCheckoutQueryId = preCheckoutQueryId
     }

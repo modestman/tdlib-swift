@@ -15,7 +15,7 @@ public struct GetScopeNotificationSettings: Codable {
     public let scope: NotificationSettingsScope
 
 
-    public init (scope: NotificationSettingsScope) {
+    public init(scope: NotificationSettingsScope) {
         self.scope = scope
     }
 }

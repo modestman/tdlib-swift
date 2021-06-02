@@ -18,10 +18,10 @@ public struct SetPassportElement: Codable {
     public let password: String
 
 
-    public init (
+    public init(
         element: InputPassportElement,
-        password: String) {
-
+        password: String
+    ) {
         self.element = element
         self.password = password
     }

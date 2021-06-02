@@ -76,7 +76,7 @@ public struct AuthenticationCodeTypeTelegramMessage: Codable {
     public let length: Int
 
 
-    public init (length: Int) {
+    public init(length: Int) {
         self.length = length
     }
 }
@@ -88,7 +88,7 @@ public struct AuthenticationCodeTypeSms: Codable {
     public let length: Int
 
 
-    public init (length: Int) {
+    public init(length: Int) {
         self.length = length
     }
 }
@@ -100,7 +100,7 @@ public struct AuthenticationCodeTypeCall: Codable {
     public let length: Int
 
 
-    public init (length: Int) {
+    public init(length: Int) {
         self.length = length
     }
 }
@@ -112,7 +112,7 @@ public struct AuthenticationCodeTypeFlashCall: Codable {
     public let pattern: String
 
 
-    public init (pattern: String) {
+    public init(pattern: String) {
         self.pattern = pattern
     }
 }

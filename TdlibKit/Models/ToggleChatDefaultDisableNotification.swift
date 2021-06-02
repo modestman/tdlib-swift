@@ -18,10 +18,10 @@ public struct ToggleChatDefaultDisableNotification: Codable {
     public let defaultDisableNotification: Bool
 
 
-    public init (
+    public init(
         chatId: Int64,
-        defaultDisableNotification: Bool) {
-
+        defaultDisableNotification: Bool
+    ) {
         self.chatId = chatId
         self.defaultDisableNotification = defaultDisableNotification
     }

@@ -18,10 +18,10 @@ public struct ToggleMessageSenderIsBlocked: Codable {
     public let sender: MessageSender
 
 
-    public init (
+    public init(
         isBlocked: Bool,
-        sender: MessageSender) {
-
+        sender: MessageSender
+    ) {
         self.isBlocked = isBlocked
         self.sender = sender
     }

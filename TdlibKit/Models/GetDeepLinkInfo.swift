@@ -15,7 +15,7 @@ public struct GetDeepLinkInfo: Codable {
     public let link: String
 
 
-    public init (link: String) {
+    public init(link: String) {
         self.link = link
     }
 }

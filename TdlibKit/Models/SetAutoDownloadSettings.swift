@@ -18,10 +18,10 @@ public struct SetAutoDownloadSettings: Codable {
     public let type: NetworkType
 
 
-    public init (
+    public init(
         settings: AutoDownloadSettings,
-        type: NetworkType) {
-
+        type: NetworkType
+    ) {
         self.settings = settings
         self.type = type
     }

@@ -21,11 +21,11 @@ public struct SetBackground: Codable {
     public let type: BackgroundType
 
 
-    public init (
+    public init(
         background: InputBackground,
         forDarkTheme: Bool,
-        type: BackgroundType) {
-
+        type: BackgroundType
+    ) {
         self.background = background
         self.forDarkTheme = forDarkTheme
         self.type = type

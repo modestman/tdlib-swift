@@ -24,12 +24,12 @@ public struct GetPassportAuthorizationForm: Codable {
     public let scope: String
 
 
-    public init (
+    public init(
         botUserId: Int,
         nonce: String,
         publicKey: String,
-        scope: String) {
-
+        scope: String
+    ) {
         self.botUserId = botUserId
         self.nonce = nonce
         self.publicKey = publicKey

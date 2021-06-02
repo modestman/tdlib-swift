@@ -27,13 +27,13 @@ public struct MessageLinkInfo: Codable {
     public let message: Message?
 
 
-    public init (
+    public init(
         chatId: Int64,
         forAlbum: Bool,
         forComment: Bool,
         isPublic: Bool,
-        message: Message?) {
-
+        message: Message?
+    ) {
         self.chatId = chatId
         self.forAlbum = forAlbum
         self.forComment = forComment

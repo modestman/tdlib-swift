@@ -12,7 +12,6 @@ import Foundation
 public struct GetStorageStatisticsFast: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

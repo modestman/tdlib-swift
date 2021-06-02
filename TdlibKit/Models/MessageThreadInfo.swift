@@ -27,13 +27,13 @@ public struct MessageThreadInfo: Codable {
     public let replyInfo: MessageReplyInfo
 
 
-    public init (
+    public init(
         chatId: Int64,
         draftMessage: DraftMessage?,
         messageThreadId: Int64,
         messages: [Message],
-        replyInfo: MessageReplyInfo) {
-
+        replyInfo: MessageReplyInfo
+    ) {
         self.chatId = chatId
         self.draftMessage = draftMessage
         self.messageThreadId = messageThreadId

@@ -24,12 +24,12 @@ public struct ChatPosition: Codable {
     public let source: ChatSource?
 
 
-    public init (
+    public init(
         isPinned: Bool,
         list: ChatList,
         order: TdInt64,
-        source: ChatSource?) {
-
+        source: ChatSource?
+    ) {
         self.isPinned = isPinned
         self.list = list
         self.order = order

@@ -12,7 +12,6 @@ import Foundation
 public struct ResendChangePhoneNumberCode: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

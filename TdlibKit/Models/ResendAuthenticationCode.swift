@@ -12,7 +12,6 @@ import Foundation
 public struct ResendAuthenticationCode: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

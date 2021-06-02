@@ -12,7 +12,6 @@ import Foundation
 public struct DeleteSavedOrderInfo: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

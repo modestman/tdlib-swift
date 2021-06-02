@@ -21,11 +21,11 @@ public struct EditMessageSchedulingState: Codable {
     public let schedulingState: MessageSchedulingState
 
 
-    public init (
+    public init(
         chatId: Int64,
         messageId: Int64,
-        schedulingState: MessageSchedulingState) {
-
+        schedulingState: MessageSchedulingState
+    ) {
         self.chatId = chatId
         self.messageId = messageId
         self.schedulingState = schedulingState

@@ -27,13 +27,13 @@ public struct GetChatHistory: Codable {
     public let onlyLocal: Bool
 
 
-    public init (
+    public init(
         chatId: Int64,
         fromMessageId: Int64,
         limit: Int,
         offset: Int,
-        onlyLocal: Bool) {
-
+        onlyLocal: Bool
+    ) {
         self.chatId = chatId
         self.fromMessageId = fromMessageId
         self.limit = limit

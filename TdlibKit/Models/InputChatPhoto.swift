@@ -62,11 +62,11 @@ public enum InputChatPhoto: Codable {
 /// A previously used profile photo of the current user
 public struct InputChatPhotoPrevious: Codable {
 
-    /// Identifier of the profile photo to reuse
+    /// Identifier of the current user's profile photo to reuse
     public let chatPhotoId: TdInt64
 
 
-    public init (chatPhotoId: TdInt64) {
+    public init(chatPhotoId: TdInt64) {
         self.chatPhotoId = chatPhotoId
     }
 }
@@ -78,7 +78,7 @@ public struct InputChatPhotoStatic: Codable {
     public let photo: InputFile
 
 
-    public init (photo: InputFile) {
+    public init(photo: InputFile) {
         self.photo = photo
     }
 }
@@ -93,10 +93,10 @@ public struct InputChatPhotoAnimation: Codable {
     public let mainFrameTimestamp: Double
 
 
-    public init (
+    public init(
         animation: InputFile,
-        mainFrameTimestamp: Double) {
-
+        mainFrameTimestamp: Double
+    ) {
         self.animation = animation
         self.mainFrameTimestamp = mainFrameTimestamp
     }

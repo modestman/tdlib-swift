@@ -15,7 +15,7 @@ public struct Emojis: Codable {
     public let emojis: [String]
 
 
-    public init (emojis: [String]) {
+    public init(emojis: [String]) {
         self.emojis = emojis
     }
 }

@@ -21,11 +21,11 @@ public struct MessageInteractionInfo: Codable {
     public let viewCount: Int
 
 
-    public init (
+    public init(
         forwardCount: Int,
         replyInfo: MessageReplyInfo?,
-        viewCount: Int) {
-
+        viewCount: Int
+    ) {
         self.forwardCount = forwardCount
         self.replyInfo = replyInfo
         self.viewCount = viewCount

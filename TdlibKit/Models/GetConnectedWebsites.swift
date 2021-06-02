@@ -12,7 +12,6 @@ import Foundation
 public struct GetConnectedWebsites: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

@@ -12,7 +12,6 @@ import Foundation
 public struct TestNetwork: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

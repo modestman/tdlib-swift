@@ -21,11 +21,11 @@ public struct SendChatAction: Codable {
     public let messageThreadId: Int64
 
 
-    public init (
+    public init(
         action: ChatAction,
         chatId: Int64,
-        messageThreadId: Int64) {
-
+        messageThreadId: Int64
+    ) {
         self.action = action
         self.chatId = chatId
         self.messageThreadId = messageThreadId

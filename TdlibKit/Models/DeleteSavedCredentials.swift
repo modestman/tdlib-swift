@@ -12,7 +12,6 @@ import Foundation
 public struct DeleteSavedCredentials: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

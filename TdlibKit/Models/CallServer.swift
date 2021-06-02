@@ -27,13 +27,13 @@ public struct CallServer: Codable {
     public let type: CallServerType
 
 
-    public init (
+    public init(
         id: TdInt64,
         ipAddress: String,
         ipv6Address: String,
         port: Int,
-        type: CallServerType) {
-
+        type: CallServerType
+    ) {
         self.id = id
         self.ipAddress = ipAddress
         self.ipv6Address = ipv6Address

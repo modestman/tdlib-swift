@@ -21,11 +21,11 @@ public struct PassportElementError: Codable {
     public let type: PassportElementType
 
 
-    public init (
+    public init(
         message: String,
         source: PassportElementErrorSource,
-        type: PassportElementType) {
-
+        type: PassportElementType
+    ) {
         self.message = message
         self.source = source
         self.type = type

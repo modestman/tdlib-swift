@@ -18,10 +18,10 @@ public struct Users: Codable {
     public let userIds: [Int]
 
 
-    public init (
+    public init(
         totalCount: Int,
-        userIds: [Int]) {
-
+        userIds: [Int]
+    ) {
         self.totalCount = totalCount
         self.userIds = userIds
     }

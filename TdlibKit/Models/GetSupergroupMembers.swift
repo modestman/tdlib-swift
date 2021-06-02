@@ -24,12 +24,12 @@ public struct GetSupergroupMembers: Codable {
     public let supergroupId: Int
 
 
-    public init (
+    public init(
         filter: SupergroupMembersFilter,
         limit: Int,
         offset: Int,
-        supergroupId: Int) {
-
+        supergroupId: Int
+    ) {
         self.filter = filter
         self.limit = limit
         self.offset = offset

@@ -56,7 +56,7 @@ public struct CallServerTypeTelegramReflector: Codable {
     public let peerTag: Data
 
 
-    public init (peerTag: Data) {
+    public init(peerTag: Data) {
         self.peerTag = peerTag
     }
 }
@@ -77,12 +77,12 @@ public struct CallServerTypeWebrtc: Codable {
     public let username: String
 
 
-    public init (
+    public init(
         password: String,
         supportsStun: Bool,
         supportsTurn: Bool,
-        username: String) {
-
+        username: String
+    ) {
         self.password = password
         self.supportsStun = supportsStun
         self.supportsTurn = supportsTurn

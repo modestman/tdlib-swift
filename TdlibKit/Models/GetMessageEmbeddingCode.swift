@@ -21,11 +21,11 @@ public struct GetMessageEmbeddingCode: Codable {
     public let messageId: Int64
 
 
-    public init (
+    public init(
         chatId: Int64,
         forAlbum: Bool,
-        messageId: Int64) {
-
+        messageId: Int64
+    ) {
         self.chatId = chatId
         self.forAlbum = forAlbum
         self.messageId = messageId

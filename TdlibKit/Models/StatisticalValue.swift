@@ -21,11 +21,11 @@ public struct StatisticalValue: Codable {
     public let value: Double
 
 
-    public init (
+    public init(
         growthRatePercentage: Double,
         previousValue: Double,
-        value: Double) {
-
+        value: Double
+    ) {
         self.growthRatePercentage = growthRatePercentage
         self.previousValue = previousValue
         self.value = value

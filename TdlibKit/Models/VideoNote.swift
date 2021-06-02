@@ -27,13 +27,13 @@ public struct VideoNote: Codable {
     public let video: File
 
 
-    public init (
+    public init(
         duration: Int,
         length: Int,
         minithumbnail: Minithumbnail?,
         thumbnail: Thumbnail?,
-        video: File) {
-
+        video: File
+    ) {
         self.duration = duration
         self.length = length
         self.minithumbnail = minithumbnail

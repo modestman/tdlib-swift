@@ -15,7 +15,7 @@ public struct RecoverAuthenticationPassword: Codable {
     public let recoveryCode: String
 
 
-    public init (recoveryCode: String) {
+    public init(recoveryCode: String) {
         self.recoveryCode = recoveryCode
     }
 }

@@ -18,10 +18,10 @@ public struct ChatNearby: Codable {
     public let distance: Int
 
 
-    public init (
+    public init(
         chatId: Int64,
-        distance: Int) {
-
+        distance: Int
+    ) {
         self.chatId = chatId
         self.distance = distance
     }

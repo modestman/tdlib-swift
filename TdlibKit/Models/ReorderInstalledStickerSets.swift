@@ -18,10 +18,10 @@ public struct ReorderInstalledStickerSets: Codable {
     public let stickerSetIds: [TdInt64]
 
 
-    public init (
+    public init(
         isMasks: Bool,
-        stickerSetIds: [TdInt64]) {
-
+        stickerSetIds: [TdInt64]
+    ) {
         self.isMasks = isMasks
         self.stickerSetIds = stickerSetIds
     }

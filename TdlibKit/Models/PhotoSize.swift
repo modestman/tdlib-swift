@@ -27,13 +27,13 @@ public struct PhotoSize: Codable {
     public let width: Int
 
 
-    public init (
+    public init(
         height: Int,
         photo: File,
         progressiveSizes: [Int],
         type: String,
-        width: Int) {
-
+        width: Int
+    ) {
         self.height = height
         self.photo = photo
         self.progressiveSizes = progressiveSizes

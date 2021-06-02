@@ -18,10 +18,10 @@ public struct ToggleChatIsMarkedAsUnread: Codable {
     public let isMarkedAsUnread: Bool
 
 
-    public init (
+    public init(
         chatId: Int64,
-        isMarkedAsUnread: Bool) {
-
+        isMarkedAsUnread: Bool
+    ) {
         self.chatId = chatId
         self.isMarkedAsUnread = isMarkedAsUnread
     }

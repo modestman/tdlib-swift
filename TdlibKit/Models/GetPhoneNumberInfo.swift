@@ -15,7 +15,7 @@ public struct GetPhoneNumberInfo: Codable {
     public let phoneNumberPrefix: String
 
 
-    public init (phoneNumberPrefix: String) {
+    public init(phoneNumberPrefix: String) {
         self.phoneNumberPrefix = phoneNumberPrefix
     }
 }

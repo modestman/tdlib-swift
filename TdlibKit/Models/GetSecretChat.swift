@@ -15,7 +15,7 @@ public struct GetSecretChat: Codable {
     public let secretChatId: Int
 
 
-    public init (secretChatId: Int) {
+    public init(secretChatId: Int) {
         self.secretChatId = secretChatId
     }
 }

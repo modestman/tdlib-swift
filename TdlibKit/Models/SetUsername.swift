@@ -15,7 +15,7 @@ public struct SetUsername: Codable {
     public let username: String
 
 
-    public init (username: String) {
+    public init(username: String) {
         self.username = username
     }
 }

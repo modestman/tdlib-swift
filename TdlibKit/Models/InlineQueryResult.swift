@@ -170,14 +170,14 @@ public struct InlineQueryResultArticle: Codable {
     public let url: String
 
 
-    public init (
+    public init(
         description: String,
         hideUrl: Bool,
         id: String,
         thumbnail: Thumbnail?,
         title: String,
-        url: String) {
-
+        url: String
+    ) {
         self.description = description
         self.hideUrl = hideUrl
         self.id = id
@@ -200,11 +200,11 @@ public struct InlineQueryResultContact: Codable {
     public let thumbnail: Thumbnail?
 
 
-    public init (
+    public init(
         contact: Contact,
         id: String,
-        thumbnail: Thumbnail?) {
-
+        thumbnail: Thumbnail?
+    ) {
         self.contact = contact
         self.id = id
         self.thumbnail = thumbnail
@@ -227,12 +227,12 @@ public struct InlineQueryResultLocation: Codable {
     public let title: String
 
 
-    public init (
+    public init(
         id: String,
         location: Location,
         thumbnail: Thumbnail?,
-        title: String) {
-
+        title: String
+    ) {
         self.id = id
         self.location = location
         self.thumbnail = thumbnail
@@ -253,11 +253,11 @@ public struct InlineQueryResultVenue: Codable {
     public let venue: Venue
 
 
-    public init (
+    public init(
         id: String,
         thumbnail: Thumbnail?,
-        venue: Venue) {
-
+        venue: Venue
+    ) {
         self.id = id
         self.thumbnail = thumbnail
         self.venue = venue
@@ -274,10 +274,10 @@ public struct InlineQueryResultGame: Codable {
     public let id: String
 
 
-    public init (
+    public init(
         game: Game,
-        id: String) {
-
+        id: String
+    ) {
         self.game = game
         self.id = id
     }
@@ -296,11 +296,11 @@ public struct InlineQueryResultAnimation: Codable {
     public let title: String
 
 
-    public init (
+    public init(
         animation: Animation,
         id: String,
-        title: String) {
-
+        title: String
+    ) {
         self.animation = animation
         self.id = id
         self.title = title
@@ -317,10 +317,10 @@ public struct InlineQueryResultAudio: Codable {
     public let id: String
 
 
-    public init (
+    public init(
         audio: Audio,
-        id: String) {
-
+        id: String
+    ) {
         self.audio = audio
         self.id = id
     }
@@ -341,12 +341,12 @@ public struct InlineQueryResultDocument: Codable {
     public let title: String
 
 
-    public init (
+    public init(
         description: String,
         document: Document,
         id: String,
-        title: String) {
-
+        title: String
+    ) {
         self.description = description
         self.document = document
         self.id = id
@@ -369,12 +369,12 @@ public struct InlineQueryResultPhoto: Codable {
     public let title: String
 
 
-    public init (
+    public init(
         description: String,
         id: String,
         photo: Photo,
-        title: String) {
-
+        title: String
+    ) {
         self.description = description
         self.id = id
         self.photo = photo
@@ -392,10 +392,10 @@ public struct InlineQueryResultSticker: Codable {
     public let sticker: Sticker
 
 
-    public init (
+    public init(
         id: String,
-        sticker: Sticker) {
-
+        sticker: Sticker
+    ) {
         self.id = id
         self.sticker = sticker
     }
@@ -416,12 +416,12 @@ public struct InlineQueryResultVideo: Codable {
     public let video: Video
 
 
-    public init (
+    public init(
         description: String,
         id: String,
         title: String,
-        video: Video) {
-
+        video: Video
+    ) {
         self.description = description
         self.id = id
         self.title = title
@@ -442,11 +442,11 @@ public struct InlineQueryResultVoiceNote: Codable {
     public let voiceNote: VoiceNote
 
 
-    public init (
+    public init(
         id: String,
         title: String,
-        voiceNote: VoiceNote) {
-
+        voiceNote: VoiceNote
+    ) {
         self.id = id
         self.title = title
         self.voiceNote = voiceNote

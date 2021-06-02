@@ -27,13 +27,13 @@ public struct MessageReplyInfo: Codable {
     public let replyCount: Int
 
 
-    public init (
+    public init(
         lastMessageId: Int64,
         lastReadInboxMessageId: Int64,
         lastReadOutboxMessageId: Int64,
         recentRepliers: [MessageSender],
-        replyCount: Int) {
-
+        replyCount: Int
+    ) {
         self.lastMessageId = lastMessageId
         self.lastReadInboxMessageId = lastReadInboxMessageId
         self.lastReadOutboxMessageId = lastReadOutboxMessageId

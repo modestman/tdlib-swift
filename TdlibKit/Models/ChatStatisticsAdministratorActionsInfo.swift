@@ -24,12 +24,12 @@ public struct ChatStatisticsAdministratorActionsInfo: Codable {
     public let userId: Int
 
 
-    public init (
+    public init(
         bannedUserCount: Int,
         deletedMessageCount: Int,
         restrictedUserCount: Int,
-        userId: Int) {
-
+        userId: Int
+    ) {
         self.bannedUserCount = bannedUserCount
         self.deletedMessageCount = deletedMessageCount
         self.restrictedUserCount = restrictedUserCount

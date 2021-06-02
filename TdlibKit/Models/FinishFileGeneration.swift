@@ -18,10 +18,10 @@ public struct FinishFileGeneration: Codable {
     public let generationId: TdInt64
 
 
-    public init (
+    public init(
         error: Error,
-        generationId: TdInt64) {
-
+        generationId: TdInt64
+    ) {
         self.error = error
         self.generationId = generationId
     }

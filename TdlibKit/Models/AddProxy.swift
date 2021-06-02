@@ -24,12 +24,12 @@ public struct AddProxy: Codable {
     public let type: ProxyType
 
 
-    public init (
+    public init(
         enable: Bool,
         port: Int,
         server: String,
-        type: ProxyType) {
-
+        type: ProxyType
+    ) {
         self.enable = enable
         self.port = port
         self.server = server

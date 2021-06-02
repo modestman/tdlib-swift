@@ -286,7 +286,7 @@ public struct PushMessageContentHidden: Codable {
     public let isPinned: Bool
 
 
-    public init (isPinned: Bool) {
+    public init(isPinned: Bool) {
         self.isPinned = isPinned
     }
 }
@@ -304,11 +304,11 @@ public struct PushMessageContentAnimation: Codable {
     public let isPinned: Bool
 
 
-    public init (
+    public init(
         animation: Animation?,
         caption: String,
-        isPinned: Bool) {
-
+        isPinned: Bool
+    ) {
         self.animation = animation
         self.caption = caption
         self.isPinned = isPinned
@@ -325,10 +325,10 @@ public struct PushMessageContentAudio: Codable {
     public let isPinned: Bool
 
 
-    public init (
+    public init(
         audio: Audio?,
-        isPinned: Bool) {
-
+        isPinned: Bool
+    ) {
         self.audio = audio
         self.isPinned = isPinned
     }
@@ -344,10 +344,10 @@ public struct PushMessageContentContact: Codable {
     public let name: String
 
 
-    public init (
+    public init(
         isPinned: Bool,
-        name: String) {
-
+        name: String
+    ) {
         self.isPinned = isPinned
         self.name = name
     }
@@ -363,10 +363,10 @@ public struct PushMessageContentDocument: Codable {
     public let isPinned: Bool
 
 
-    public init (
+    public init(
         document: Document?,
-        isPinned: Bool) {
-
+        isPinned: Bool
+    ) {
         self.document = document
         self.isPinned = isPinned
     }
@@ -382,10 +382,10 @@ public struct PushMessageContentGame: Codable {
     public let title: String
 
 
-    public init (
+    public init(
         isPinned: Bool,
-        title: String) {
-
+        title: String
+    ) {
         self.isPinned = isPinned
         self.title = title
     }
@@ -404,11 +404,11 @@ public struct PushMessageContentGameScore: Codable {
     public let title: String
 
 
-    public init (
+    public init(
         isPinned: Bool,
         score: Int,
-        title: String) {
-
+        title: String
+    ) {
         self.isPinned = isPinned
         self.score = score
         self.title = title
@@ -425,10 +425,10 @@ public struct PushMessageContentInvoice: Codable {
     public let price: String
 
 
-    public init (
+    public init(
         isPinned: Bool,
-        price: String) {
-
+        price: String
+    ) {
         self.isPinned = isPinned
         self.price = price
     }
@@ -444,10 +444,10 @@ public struct PushMessageContentLocation: Codable {
     public let isPinned: Bool
 
 
-    public init (
+    public init(
         isLive: Bool,
-        isPinned: Bool) {
-
+        isPinned: Bool
+    ) {
         self.isLive = isLive
         self.isPinned = isPinned
     }
@@ -469,12 +469,12 @@ public struct PushMessageContentPhoto: Codable {
     public let photo: Photo?
 
 
-    public init (
+    public init(
         caption: String,
         isPinned: Bool,
         isSecret: Bool,
-        photo: Photo?) {
-
+        photo: Photo?
+    ) {
         self.caption = caption
         self.isPinned = isPinned
         self.isSecret = isSecret
@@ -495,11 +495,11 @@ public struct PushMessageContentPoll: Codable {
     public let question: String
 
 
-    public init (
+    public init(
         isPinned: Bool,
         isRegular: Bool,
-        question: String) {
-
+        question: String
+    ) {
         self.isPinned = isPinned
         self.isRegular = isRegular
         self.question = question
@@ -519,11 +519,11 @@ public struct PushMessageContentSticker: Codable {
     public let sticker: Sticker?
 
 
-    public init (
+    public init(
         emoji: String,
         isPinned: Bool,
-        sticker: Sticker?) {
-
+        sticker: Sticker?
+    ) {
         self.emoji = emoji
         self.isPinned = isPinned
         self.sticker = sticker
@@ -540,10 +540,10 @@ public struct PushMessageContentText: Codable {
     public let text: String
 
 
-    public init (
+    public init(
         isPinned: Bool,
-        text: String) {
-
+        text: String
+    ) {
         self.isPinned = isPinned
         self.text = text
     }
@@ -565,12 +565,12 @@ public struct PushMessageContentVideo: Codable {
     public let video: Video?
 
 
-    public init (
+    public init(
         caption: String,
         isPinned: Bool,
         isSecret: Bool,
-        video: Video?) {
-
+        video: Video?
+    ) {
         self.caption = caption
         self.isPinned = isPinned
         self.isSecret = isSecret
@@ -588,10 +588,10 @@ public struct PushMessageContentVideoNote: Codable {
     public let videoNote: VideoNote?
 
 
-    public init (
+    public init(
         isPinned: Bool,
-        videoNote: VideoNote?) {
-
+        videoNote: VideoNote?
+    ) {
         self.isPinned = isPinned
         self.videoNote = videoNote
     }
@@ -607,10 +607,10 @@ public struct PushMessageContentVoiceNote: Codable {
     public let voiceNote: VoiceNote?
 
 
-    public init (
+    public init(
         isPinned: Bool,
-        voiceNote: VoiceNote?) {
-
+        voiceNote: VoiceNote?
+    ) {
         self.isPinned = isPinned
         self.voiceNote = voiceNote
     }
@@ -629,11 +629,11 @@ public struct PushMessageContentChatAddMembers: Codable {
     public let memberName: String
 
 
-    public init (
+    public init(
         isCurrentUser: Bool,
         isReturned: Bool,
-        memberName: String) {
-
+        memberName: String
+    ) {
         self.isCurrentUser = isCurrentUser
         self.isReturned = isReturned
         self.memberName = memberName
@@ -647,7 +647,7 @@ public struct PushMessageContentChatChangeTitle: Codable {
     public let title: String
 
 
-    public init (title: String) {
+    public init(title: String) {
         self.title = title
     }
 }
@@ -665,11 +665,11 @@ public struct PushMessageContentChatDeleteMember: Codable {
     public let memberName: String
 
 
-    public init (
+    public init(
         isCurrentUser: Bool,
         isLeft: Bool,
-        memberName: String) {
-
+        memberName: String
+    ) {
         self.isCurrentUser = isCurrentUser
         self.isLeft = isLeft
         self.memberName = memberName
@@ -683,7 +683,7 @@ public struct PushMessageContentMessageForwards: Codable {
     public let totalCount: Int
 
 
-    public init (totalCount: Int) {
+    public init(totalCount: Int) {
         self.totalCount = totalCount
     }
 }
@@ -707,13 +707,13 @@ public struct PushMessageContentMediaAlbum: Codable {
     public let totalCount: Int
 
 
-    public init (
+    public init(
         hasAudios: Bool,
         hasDocuments: Bool,
         hasPhotos: Bool,
         hasVideos: Bool,
-        totalCount: Int) {
-
+        totalCount: Int
+    ) {
         self.hasAudios = hasAudios
         self.hasDocuments = hasDocuments
         self.hasPhotos = hasPhotos

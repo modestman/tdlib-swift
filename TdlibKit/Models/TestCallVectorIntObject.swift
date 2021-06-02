@@ -15,7 +15,7 @@ public struct TestCallVectorIntObject: Codable {
     public let x: [TestInt]
 
 
-    public init (x: [TestInt]) {
+    public init(x: [TestInt]) {
         self.x = x
     }
 }

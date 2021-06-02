@@ -18,10 +18,10 @@ public struct KeyboardButton: Codable {
     public let type: KeyboardButtonType
 
 
-    public init (
+    public init(
         text: String,
-        type: KeyboardButtonType) {
-
+        type: KeyboardButtonType
+    ) {
         self.text = text
         self.type = type
     }

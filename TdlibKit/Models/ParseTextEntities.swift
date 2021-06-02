@@ -18,10 +18,10 @@ public struct ParseTextEntities: Codable {
     public let text: String
 
 
-    public init (
+    public init(
         parseMode: TextParseMode,
-        text: String) {
-
+        text: String
+    ) {
         self.parseMode = parseMode
         self.text = text
     }

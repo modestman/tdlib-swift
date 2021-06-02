@@ -30,14 +30,14 @@ public struct Venue: Codable {
     public let type: String
 
 
-    public init (
+    public init(
         address: String,
         id: String,
         location: Location,
         provider: String,
         title: String,
-        type: String) {
-
+        type: String
+    ) {
         self.address = address
         self.id = id
         self.location = location

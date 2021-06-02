@@ -15,7 +15,7 @@ public struct MessageStatistics: Codable {
     public let messageInteractionGraph: StatisticalGraph
 
 
-    public init (messageInteractionGraph: StatisticalGraph) {
+    public init(messageInteractionGraph: StatisticalGraph) {
         self.messageInteractionGraph = messageInteractionGraph
     }
 }

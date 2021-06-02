@@ -24,12 +24,12 @@ public struct OrderInfo: Codable {
     public let shippingAddress: Address?
 
 
-    public init (
+    public init(
         emailAddress: String,
         name: String,
         phoneNumber: String,
-        shippingAddress: Address?) {
-
+        shippingAddress: Address?
+    ) {
         self.emailAddress = emailAddress
         self.name = name
         self.phoneNumber = phoneNumber

@@ -15,7 +15,7 @@ public struct DatabaseStatistics: Codable {
     public let statistics: String
 
 
-    public init (statistics: String) {
+    public init(statistics: String) {
         self.statistics = statistics
     }
 }

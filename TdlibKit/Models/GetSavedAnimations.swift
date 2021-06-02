@@ -12,7 +12,6 @@ import Foundation
 public struct GetSavedAnimations: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

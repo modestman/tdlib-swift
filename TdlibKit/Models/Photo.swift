@@ -21,11 +21,11 @@ public struct Photo: Codable {
     public let sizes: [PhotoSize]
 
 
-    public init (
+    public init(
         hasStickers: Bool,
         minithumbnail: Minithumbnail?,
-        sizes: [PhotoSize]) {
-
+        sizes: [PhotoSize]
+    ) {
         self.hasStickers = hasStickers
         self.minithumbnail = minithumbnail
         self.sizes = sizes

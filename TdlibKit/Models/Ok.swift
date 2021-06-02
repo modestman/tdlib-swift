@@ -12,7 +12,6 @@ import Foundation
 public struct Ok: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

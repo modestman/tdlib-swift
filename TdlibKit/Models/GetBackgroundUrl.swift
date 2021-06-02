@@ -18,10 +18,10 @@ public struct GetBackgroundUrl: Codable {
     public let type: BackgroundType
 
 
-    public init (
+    public init(
         name: String,
-        type: BackgroundType) {
-
+        type: BackgroundType
+    ) {
         self.name = name
         self.type = type
     }

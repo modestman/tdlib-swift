@@ -27,13 +27,13 @@ public struct DownloadFile: Codable {
     public let synchronous: Bool
 
 
-    public init (
+    public init(
         fileId: Int,
         limit: Int,
         offset: Int,
         priority: Int,
-        synchronous: Bool) {
-
+        synchronous: Bool
+    ) {
         self.fileId = fileId
         self.limit = limit
         self.offset = offset

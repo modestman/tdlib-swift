@@ -12,7 +12,6 @@ import Foundation
 public struct GetFavoriteStickers: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

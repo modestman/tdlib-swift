@@ -27,13 +27,13 @@ public struct AddLocalMessage: Codable {
     public let sender: MessageSender
 
 
-    public init (
+    public init(
         chatId: Int64,
         disableNotification: Bool,
         inputMessageContent: InputMessageContent,
         replyToMessageId: Int64,
-        sender: MessageSender) {
-
+        sender: MessageSender
+    ) {
         self.chatId = chatId
         self.disableNotification = disableNotification
         self.inputMessageContent = inputMessageContent

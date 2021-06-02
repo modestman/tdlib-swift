@@ -21,11 +21,11 @@ public struct SendBotStartMessage: Codable {
     public let parameter: String
 
 
-    public init (
+    public init(
         botUserId: Int,
         chatId: Int64,
-        parameter: String) {
-
+        parameter: String
+    ) {
         self.botUserId = botUserId
         self.chatId = chatId
         self.parameter = parameter

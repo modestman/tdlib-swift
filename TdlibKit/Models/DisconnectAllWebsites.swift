@@ -12,7 +12,6 @@ import Foundation
 public struct DisconnectAllWebsites: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

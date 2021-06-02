@@ -76,7 +76,7 @@ public struct ChatTypePrivate: Codable {
     public let userId: Int
 
 
-    public init (userId: Int) {
+    public init(userId: Int) {
         self.userId = userId
     }
 }
@@ -88,7 +88,7 @@ public struct ChatTypeBasicGroup: Codable {
     public let basicGroupId: Int
 
 
-    public init (basicGroupId: Int) {
+    public init(basicGroupId: Int) {
         self.basicGroupId = basicGroupId
     }
 }
@@ -103,10 +103,10 @@ public struct ChatTypeSupergroup: Codable {
     public let supergroupId: Int
 
 
-    public init (
+    public init(
         isChannel: Bool,
-        supergroupId: Int) {
-
+        supergroupId: Int
+    ) {
         self.isChannel = isChannel
         self.supergroupId = supergroupId
     }
@@ -122,10 +122,10 @@ public struct ChatTypeSecret: Codable {
     public let userId: Int
 
 
-    public init (
+    public init(
         secretChatId: Int,
-        userId: Int) {
-
+        userId: Int
+    ) {
         self.secretChatId = secretChatId
         self.userId = userId
     }

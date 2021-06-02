@@ -11,21 +11,21 @@ import Foundation
 /// Represents a date according to the Gregorian calendar
 public struct Date: Codable {
 
-    /// Day of the month, 1-31
+    /// Day of the month; 1-31
     public let day: Int
 
-    /// Month, 1-12
+    /// Month; 1-12
     public let month: Int
 
-    /// Year, 1-9999
+    /// Year; 1-9999
     public let year: Int
 
 
-    public init (
+    public init(
         day: Int,
         month: Int,
-        year: Int) {
-
+        year: Int
+    ) {
         self.day = day
         self.month = month
         self.year = year

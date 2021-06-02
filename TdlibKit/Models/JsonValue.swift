@@ -94,7 +94,7 @@ public struct JsonValueBoolean: Codable {
     public let value: Bool
 
 
-    public init (value: Bool) {
+    public init(value: Bool) {
         self.value = value
     }
 }
@@ -106,7 +106,7 @@ public struct JsonValueNumber: Codable {
     public let value: Double
 
 
-    public init (value: Double) {
+    public init(value: Double) {
         self.value = value
     }
 }
@@ -118,7 +118,7 @@ public struct JsonValueString: Codable {
     public let value: String
 
 
-    public init (value: String) {
+    public init(value: String) {
         self.value = value
     }
 }
@@ -130,7 +130,7 @@ public struct JsonValueArray: Codable {
     public let values: [JsonValue]
 
 
-    public init (values: [JsonValue]) {
+    public init(values: [JsonValue]) {
         self.values = values
     }
 }
@@ -142,7 +142,7 @@ public struct JsonValueObject: Codable {
     public let members: [JsonObjectMember]
 
 
-    public init (members: [JsonObjectMember]) {
+    public init(members: [JsonObjectMember]) {
         self.members = members
     }
 }

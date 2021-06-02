@@ -18,10 +18,10 @@ public struct GetRemoteFile: Codable {
     public let remoteFileId: String
 
 
-    public init (
+    public init(
         fileType: FileType,
-        remoteFileId: String) {
-
+        remoteFileId: String
+    ) {
         self.fileType = fileType
         self.remoteFileId = remoteFileId
     }

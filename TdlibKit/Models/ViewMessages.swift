@@ -24,12 +24,12 @@ public struct ViewMessages: Codable {
     public let messageThreadId: Int64
 
 
-    public init (
+    public init(
         chatId: Int64,
         forceRead: Bool,
         messageIds: [Int64],
-        messageThreadId: Int64) {
-
+        messageThreadId: Int64
+    ) {
         self.chatId = chatId
         self.forceRead = forceRead
         self.messageIds = messageIds

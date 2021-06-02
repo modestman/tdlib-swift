@@ -30,14 +30,14 @@ public struct SendMessage: Codable {
     public let replyToMessageId: Int64
 
 
-    public init (
+    public init(
         chatId: Int64,
         inputMessageContent: InputMessageContent,
         messageThreadId: Int64,
         options: MessageSendOptions,
         replyMarkup: ReplyMarkup,
-        replyToMessageId: Int64) {
-
+        replyToMessageId: Int64
+    ) {
         self.chatId = chatId
         self.inputMessageContent = inputMessageContent
         self.messageThreadId = messageThreadId

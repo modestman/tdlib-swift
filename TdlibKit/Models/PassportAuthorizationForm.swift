@@ -21,11 +21,11 @@ public struct PassportAuthorizationForm: Codable {
     public let requiredElements: [PassportRequiredElement]
 
 
-    public init (
+    public init(
         id: Int,
         privacyPolicyUrl: String,
-        requiredElements: [PassportRequiredElement]) {
-
+        requiredElements: [PassportRequiredElement]
+    ) {
         self.id = id
         self.privacyPolicyUrl = privacyPolicyUrl
         self.requiredElements = requiredElements

@@ -110,7 +110,7 @@ public struct SupergroupMembersFilterContacts: Codable {
     public let query: String
 
 
-    public init (query: String) {
+    public init(query: String) {
         self.query = query
     }
 }
@@ -122,7 +122,7 @@ public struct SupergroupMembersFilterSearch: Codable {
     public let query: String
 
 
-    public init (query: String) {
+    public init(query: String) {
         self.query = query
     }
 }
@@ -134,7 +134,7 @@ public struct SupergroupMembersFilterRestricted: Codable {
     public let query: String
 
 
-    public init (query: String) {
+    public init(query: String) {
         self.query = query
     }
 }
@@ -146,7 +146,7 @@ public struct SupergroupMembersFilterBanned: Codable {
     public let query: String
 
 
-    public init (query: String) {
+    public init(query: String) {
         self.query = query
     }
 }
@@ -161,10 +161,10 @@ public struct SupergroupMembersFilterMention: Codable {
     public let query: String
 
 
-    public init (
+    public init(
         messageThreadId: Int64,
-        query: String) {
-
+        query: String
+    ) {
         self.messageThreadId = messageThreadId
         self.query = query
     }

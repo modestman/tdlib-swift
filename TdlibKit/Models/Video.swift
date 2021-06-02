@@ -42,7 +42,7 @@ public struct Video: Codable {
     public let width: Int
 
 
-    public init (
+    public init(
         duration: Int,
         fileName: String,
         hasStickers: Bool,
@@ -52,8 +52,8 @@ public struct Video: Codable {
         supportsStreaming: Bool,
         thumbnail: Thumbnail?,
         video: File,
-        width: Int) {
-
+        width: Int
+    ) {
         self.duration = duration
         self.fileName = fileName
         self.hasStickers = hasStickers

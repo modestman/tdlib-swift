@@ -62,7 +62,7 @@ public struct ChatListFilter: Codable {
     public let chatFilterId: Int
 
 
-    public init (chatFilterId: Int) {
+    public init(chatFilterId: Int) {
         self.chatFilterId = chatFilterId
     }
 }

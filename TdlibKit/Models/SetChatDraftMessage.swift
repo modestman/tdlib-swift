@@ -21,11 +21,11 @@ public struct SetChatDraftMessage: Codable {
     public let messageThreadId: Int64
 
 
-    public init (
+    public init(
         chatId: Int64,
         draftMessage: DraftMessage?,
-        messageThreadId: Int64) {
-
+        messageThreadId: Int64
+    ) {
         self.chatId = chatId
         self.draftMessage = draftMessage
         self.messageThreadId = messageThreadId

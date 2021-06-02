@@ -63,12 +63,12 @@ public struct MessageSendingStateFailed: Codable {
     public let retryAfter: Double
 
 
-    public init (
+    public init(
         canRetry: Bool,
         errorCode: Int,
         errorMessage: String,
-        retryAfter: Double) {
-
+        retryAfter: Double
+    ) {
         self.canRetry = canRetry
         self.errorCode = errorCode
         self.errorMessage = errorMessage

@@ -21,11 +21,11 @@ public struct TextEntity: Codable {
     public let type: TextEntityType
 
 
-    public init (
+    public init(
         length: Int,
         offset: Int,
-        type: TextEntityType) {
-
+        type: TextEntityType
+    ) {
         self.length = length
         self.offset = offset
         self.type = type

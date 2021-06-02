@@ -18,10 +18,10 @@ public struct SavedCredentials: Codable {
     public let title: String
 
 
-    public init (
+    public init(
         id: String,
-        title: String) {
-
+        title: String
+    ) {
         self.id = id
         self.title = title
     }

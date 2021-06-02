@@ -18,10 +18,10 @@ public struct InlineKeyboardButton: Codable {
     public let type: InlineKeyboardButtonType
 
 
-    public init (
+    public init(
         text: String,
-        type: InlineKeyboardButtonType) {
-
+        type: InlineKeyboardButtonType
+    ) {
         self.text = text
         self.type = type
     }

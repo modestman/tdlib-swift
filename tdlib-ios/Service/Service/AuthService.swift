@@ -10,7 +10,7 @@ import Foundation
 import TdlibKit
 
 
-protocol AuthServiceDelegate: class {
+protocol AuthServiceDelegate: AnyObject {
     func waitPhoneNumer()
     func waitCode()
     func waitPassword()

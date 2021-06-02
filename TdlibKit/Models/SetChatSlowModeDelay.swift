@@ -18,10 +18,10 @@ public struct SetChatSlowModeDelay: Codable {
     public let slowModeDelay: Int
 
 
-    public init (
+    public init(
         chatId: Int64,
-        slowModeDelay: Int) {
-
+        slowModeDelay: Int
+    ) {
         self.chatId = chatId
         self.slowModeDelay = slowModeDelay
     }

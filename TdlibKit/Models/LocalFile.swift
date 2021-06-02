@@ -36,7 +36,7 @@ public struct LocalFile: Codable {
     public let path: String
 
 
-    public init (
+    public init(
         canBeDeleted: Bool,
         canBeDownloaded: Bool,
         downloadOffset: Int,
@@ -44,8 +44,8 @@ public struct LocalFile: Codable {
         downloadedSize: Int,
         isDownloadingActive: Bool,
         isDownloadingCompleted: Bool,
-        path: String) {
-
+        path: String
+    ) {
         self.canBeDeleted = canBeDeleted
         self.canBeDownloaded = canBeDownloaded
         self.downloadOffset = downloadOffset

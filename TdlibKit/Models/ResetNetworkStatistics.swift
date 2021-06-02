@@ -12,7 +12,6 @@ import Foundation
 public struct ResetNetworkStatistics: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

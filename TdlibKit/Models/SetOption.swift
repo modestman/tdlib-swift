@@ -18,10 +18,10 @@ public struct SetOption: Codable {
     public let value: OptionValue
 
 
-    public init (
+    public init(
         name: String,
-        value: OptionValue) {
-
+        value: OptionValue
+    ) {
         self.name = name
         self.value = value
     }

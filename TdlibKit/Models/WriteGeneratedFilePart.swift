@@ -21,11 +21,11 @@ public struct WriteGeneratedFilePart: Codable {
     public let offset: Int
 
 
-    public init (
+    public init(
         data: Data,
         generationId: TdInt64,
-        offset: Int) {
-
+        offset: Int
+    ) {
         self.data = data
         self.generationId = generationId
         self.offset = offset

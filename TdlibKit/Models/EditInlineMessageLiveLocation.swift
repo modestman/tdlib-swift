@@ -27,13 +27,13 @@ public struct EditInlineMessageLiveLocation: Codable {
     public let replyMarkup: ReplyMarkup
 
 
-    public init (
+    public init(
         heading: Int,
         inlineMessageId: String,
         location: Location?,
         proximityAlertRadius: Int,
-        replyMarkup: ReplyMarkup) {
-
+        replyMarkup: ReplyMarkup
+    ) {
         self.heading = heading
         self.inlineMessageId = inlineMessageId
         self.location = location

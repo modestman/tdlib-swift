@@ -17,10 +17,10 @@ public struct RecommendedChatFilter: Codable {
     public let filter: ChatFilter
 
 
-    public init (
+    public init(
         description: String,
-        filter: ChatFilter) {
-
+        filter: ChatFilter
+    ) {
         self.description = description
         self.filter = filter
     }

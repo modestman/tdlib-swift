@@ -26,6 +26,9 @@ public struct Sticker: Codable {
     /// Position where the mask should be placed; may be null
     public let maskPosition: MaskPosition?
 
+    /// Sticker's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner
+    public let outline: [ClosedVectorPath]
+
     /// The identifier of the sticker set to which the sticker belongs; 0 if none
     public let setId: TdInt64
 
@@ -39,22 +42,24 @@ public struct Sticker: Codable {
     public let width: Int
 
 
-    public init (
+    public init(
         emoji: String,
         height: Int,
         isAnimated: Bool,
         isMask: Bool,
         maskPosition: MaskPosition?,
+        outline: [ClosedVectorPath],
         setId: TdInt64,
         sticker: File,
         thumbnail: Thumbnail?,
-        width: Int) {
-
+        width: Int
+    ) {
         self.emoji = emoji
         self.height = height
         self.isAnimated = isAnimated
         self.isMask = isMask
         self.maskPosition = maskPosition
+        self.outline = outline
         self.setId = setId
         self.sticker = sticker
         self.thumbnail = thumbnail

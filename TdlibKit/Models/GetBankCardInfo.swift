@@ -15,7 +15,7 @@ public struct GetBankCardInfo: Codable {
     public let bankCardNumber: String
 
 
-    public init (bankCardNumber: String) {
+    public init(bankCardNumber: String) {
         self.bankCardNumber = bankCardNumber
     }
 }

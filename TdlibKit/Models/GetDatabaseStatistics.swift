@@ -12,7 +12,6 @@ import Foundation
 public struct GetDatabaseStatistics: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

@@ -27,13 +27,13 @@ public struct GetMessageThreadHistory: Codable {
     public let offset: Int
 
 
-    public init (
+    public init(
         chatId: Int64,
         fromMessageId: Int64,
         limit: Int,
         messageId: Int64,
-        offset: Int) {
-
+        offset: Int
+    ) {
         self.chatId = chatId
         self.fromMessageId = fromMessageId
         self.limit = limit

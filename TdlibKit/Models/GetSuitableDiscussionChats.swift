@@ -12,7 +12,6 @@ import Foundation
 public struct GetSuitableDiscussionChats: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

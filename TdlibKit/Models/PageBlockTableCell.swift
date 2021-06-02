@@ -30,14 +30,14 @@ public struct PageBlockTableCell: Codable {
     public let valign: PageBlockVerticalAlignment
 
 
-    public init (
+    public init(
         align: PageBlockHorizontalAlignment,
         colspan: Int,
         isHeader: Bool,
         rowspan: Int,
         text: RichText?,
-        valign: PageBlockVerticalAlignment) {
-
+        valign: PageBlockVerticalAlignment
+    ) {
         self.align = align
         self.colspan = colspan
         self.isHeader = isHeader

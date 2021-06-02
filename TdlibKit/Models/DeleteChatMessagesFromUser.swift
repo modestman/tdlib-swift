@@ -18,10 +18,10 @@ public struct DeleteChatMessagesFromUser: Codable {
     public let userId: Int
 
 
-    public init (
+    public init(
         chatId: Int64,
-        userId: Int) {
-
+        userId: Int
+    ) {
         self.chatId = chatId
         self.userId = userId
     }

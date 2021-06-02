@@ -12,7 +12,6 @@ import Foundation
 public struct GetInactiveSupergroupChats: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

@@ -18,10 +18,10 @@ public struct BankCardActionOpenUrl: Codable {
     public let url: String
 
 
-    public init (
+    public init(
         text: String,
-        url: String) {
-
+        url: String
+    ) {
         self.text = text
         self.url = url
     }

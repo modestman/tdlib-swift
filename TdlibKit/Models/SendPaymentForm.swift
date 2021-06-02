@@ -20,25 +20,35 @@ public struct SendPaymentForm: Codable {
     /// Message identifier
     public let messageId: Int64
 
-    /// Identifier returned by ValidateOrderInfo, or an empty string
+    /// Identifier returned by validateOrderInfo, or an empty string
     public let orderInfoId: String
+
+    /// Payment form identifier returned by getPaymentForm
+    public let paymentFormId: TdInt64
 
     /// Identifier of a chosen shipping option, if applicable
     public let shippingOptionId: String
 
+    /// Chosen by the user amount of tip in the smallest units of the currency
+    public let tipAmount: Int64
 
-    public init (
+
+    public init(
         chatId: Int64,
         credentials: InputCredentials,
         messageId: Int64,
         orderInfoId: String,
-        shippingOptionId: String) {
-
+        paymentFormId: TdInt64,
+        shippingOptionId: String,
+        tipAmount: Int64
+    ) {
         self.chatId = chatId
         self.credentials = credentials
         self.messageId = messageId
         self.orderInfoId = orderInfoId
+        self.paymentFormId = paymentFormId
         self.shippingOptionId = shippingOptionId
+        self.tipAmount = tipAmount
     }
 }
 

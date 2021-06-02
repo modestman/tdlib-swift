@@ -30,14 +30,14 @@ public struct GetMapThumbnailFile: Codable {
     public let zoom: Int
 
 
-    public init (
+    public init(
         chatId: Int64,
         height: Int,
         location: Location,
         scale: Int,
         width: Int,
-        zoom: Int) {
-
+        zoom: Int
+    ) {
         self.chatId = chatId
         self.height = height
         self.location = location

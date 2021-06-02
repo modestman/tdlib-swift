@@ -21,11 +21,11 @@ public struct SearchEmojis: Codable {
     public let text: String
 
 
-    public init (
+    public init(
         exactMatch: Bool,
         inputLanguageCodes: [String],
-        text: String) {
-
+        text: String
+    ) {
         self.exactMatch = exactMatch
         self.inputLanguageCodes = inputLanguageCodes
         self.text = text

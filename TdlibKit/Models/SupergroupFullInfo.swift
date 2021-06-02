@@ -34,8 +34,8 @@ public struct SupergroupFullInfo: Codable {
 
     public let description: String
 
-    /// Invite link for this chat
-    public let inviteLink: String
+    /// Primary invite link for this chat; may be null. For chat administrators with can_invite_users right only
+    public let inviteLink: ChatInviteLink?
 
     /// True, if new chat members will have access to old messages. In public or discussion groups and both public and private channels, old messages are always available, so this option affects only private supergroups without a linked chat. The value of this field is only available for chat administrators
     public let isAllHistoryAvailable: Bool
@@ -71,7 +71,7 @@ public struct SupergroupFullInfo: Codable {
     public let upgradedFromMaxMessageId: Int64
 
 
-    public init (
+    public init(
         administratorCount: Int,
         bannedCount: Int,
         canGetMembers: Bool,
@@ -80,7 +80,7 @@ public struct SupergroupFullInfo: Codable {
         canSetStickerSet: Bool,
         canSetUsername: Bool,
         description: String,
-        inviteLink: String,
+        inviteLink: ChatInviteLink?,
         isAllHistoryAvailable: Bool,
         linkedChatId: Int64,
         location: ChatLocation?,
@@ -91,8 +91,8 @@ public struct SupergroupFullInfo: Codable {
         slowModeDelayExpiresIn: Double,
         stickerSetId: TdInt64,
         upgradedFromBasicGroupId: Int,
-        upgradedFromMaxMessageId: Int64) {
-
+        upgradedFromMaxMessageId: Int64
+    ) {
         self.administratorCount = administratorCount
         self.bannedCount = bannedCount
         self.canGetMembers = canGetMembers

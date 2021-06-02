@@ -15,7 +15,7 @@ public struct RemoveRecentHashtag: Codable {
     public let hashtag: String
 
 
-    public init (hashtag: String) {
+    public init(hashtag: String) {
         self.hashtag = hashtag
     }
 }

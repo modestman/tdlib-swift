@@ -18,10 +18,10 @@ public struct InputPersonalDocument: Codable {
     public let translation: [InputFile]
 
 
-    public init (
+    public init(
         files: [InputFile],
-        translation: [InputFile]) {
-
+        translation: [InputFile]
+    ) {
         self.files = files
         self.translation = translation
     }

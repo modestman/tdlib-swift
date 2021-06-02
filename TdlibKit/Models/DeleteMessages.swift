@@ -21,11 +21,11 @@ public struct DeleteMessages: Codable {
     public let revoke: Bool
 
 
-    public init (
+    public init(
         chatId: Int64,
         messageIds: [Int64],
-        revoke: Bool) {
-
+        revoke: Bool
+    ) {
         self.chatId = chatId
         self.messageIds = messageIds
         self.revoke = revoke

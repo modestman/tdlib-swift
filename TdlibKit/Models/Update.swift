@@ -74,6 +74,9 @@ public enum Update: Codable {
     /// A chat's has_scheduled_messages field has changed
     case updateChatHasScheduledMessages(UpdateChatHasScheduledMessages)
 
+    /// A chat voice chat state has changed
+    case updateChatVoiceChat(UpdateChatVoiceChat)
+
     /// The value of the default disable_notification parameter, used when a message is sent to the chat, was changed
     case updateChatDefaultDisableNotification(UpdateChatDefaultDisableNotification)
 
@@ -91,6 +94,9 @@ public enum Update: Codable {
 
     /// Notification settings for some type of chats were updated
     case updateScopeNotificationSettings(UpdateScopeNotificationSettings)
+
+    /// The message Time To Live setting for a chat was changed
+    case updateChatMessageTtlSetting(UpdateChatMessageTtlSetting)
 
     /// The chat action bar was changed
     case updateChatActionBar(UpdateChatActionBar)
@@ -163,6 +169,12 @@ public enum Update: Codable {
 
     /// New call was created or information about a call was updated
     case updateCall(UpdateCall)
+
+    /// Information about a group call was updated
+    case updateGroupCall(UpdateGroupCall)
+
+    /// Information about a group call participant was changed. The updates are sent only after the group call is received through getGroupCall and only if the call is joined or being joined
+    case updateGroupCallParticipant(UpdateGroupCallParticipant)
 
     /// New call signaling data arrived
     case updateNewCallSignalingData(UpdateNewCallSignalingData)
@@ -251,6 +263,9 @@ public enum Update: Codable {
     /// A user changed the answer to a poll; for bots only
     case updatePollAnswer(UpdatePollAnswer)
 
+    /// User rights changed in a chat; for bots only
+    case updateChatMember(UpdateChatMember)
+
 
     private enum Kind: String, Codable {
         case updateAuthorizationState
@@ -274,12 +289,14 @@ public enum Update: Codable {
         case updateChatIsMarkedAsUnread
         case updateChatIsBlocked
         case updateChatHasScheduledMessages
+        case updateChatVoiceChat
         case updateChatDefaultDisableNotification
         case updateChatReadInbox
         case updateChatReadOutbox
         case updateChatUnreadMentionCount
         case updateChatNotificationSettings
         case updateScopeNotificationSettings
+        case updateChatMessageTtlSetting
         case updateChatActionBar
         case updateChatReplyMarkup
         case updateChatDraftMessage
@@ -304,6 +321,8 @@ public enum Update: Codable {
         case updateFileGenerationStart
         case updateFileGenerationStop
         case updateCall
+        case updateGroupCall
+        case updateGroupCallParticipant
         case updateNewCallSignalingData
         case updateUserPrivacySettingRules
         case updateUnreadMessageCount
@@ -333,6 +352,7 @@ public enum Update: Codable {
         case updateNewCustomQuery
         case updatePoll
         case updatePollAnswer
+        case updateChatMember
     }
 
     public init(from decoder: Decoder) throws {
@@ -402,6 +422,9 @@ public enum Update: Codable {
         case .updateChatHasScheduledMessages:
             let value = try UpdateChatHasScheduledMessages(from: decoder)
             self = .updateChatHasScheduledMessages(value)
+        case .updateChatVoiceChat:
+            let value = try UpdateChatVoiceChat(from: decoder)
+            self = .updateChatVoiceChat(value)
         case .updateChatDefaultDisableNotification:
             let value = try UpdateChatDefaultDisableNotification(from: decoder)
             self = .updateChatDefaultDisableNotification(value)
@@ -420,6 +443,9 @@ public enum Update: Codable {
         case .updateScopeNotificationSettings:
             let value = try UpdateScopeNotificationSettings(from: decoder)
             self = .updateScopeNotificationSettings(value)
+        case .updateChatMessageTtlSetting:
+            let value = try UpdateChatMessageTtlSetting(from: decoder)
+            self = .updateChatMessageTtlSetting(value)
         case .updateChatActionBar:
             let value = try UpdateChatActionBar(from: decoder)
             self = .updateChatActionBar(value)
@@ -492,6 +518,12 @@ public enum Update: Codable {
         case .updateCall:
             let value = try UpdateCall(from: decoder)
             self = .updateCall(value)
+        case .updateGroupCall:
+            let value = try UpdateGroupCall(from: decoder)
+            self = .updateGroupCall(value)
+        case .updateGroupCallParticipant:
+            let value = try UpdateGroupCallParticipant(from: decoder)
+            self = .updateGroupCallParticipant(value)
         case .updateNewCallSignalingData:
             let value = try UpdateNewCallSignalingData(from: decoder)
             self = .updateNewCallSignalingData(value)
@@ -579,6 +611,9 @@ public enum Update: Codable {
         case .updatePollAnswer:
             let value = try UpdatePollAnswer(from: decoder)
             self = .updatePollAnswer(value)
+        case .updateChatMember:
+            let value = try UpdateChatMember(from: decoder)
+            self = .updateChatMember(value)
         }
     }
 
@@ -648,6 +683,9 @@ public enum Update: Codable {
         case .updateChatHasScheduledMessages(let value):
             try container.encode(Kind.updateChatHasScheduledMessages, forKey: .type)
             try value.encode(to: encoder)
+        case .updateChatVoiceChat(let value):
+            try container.encode(Kind.updateChatVoiceChat, forKey: .type)
+            try value.encode(to: encoder)
         case .updateChatDefaultDisableNotification(let value):
             try container.encode(Kind.updateChatDefaultDisableNotification, forKey: .type)
             try value.encode(to: encoder)
@@ -665,6 +703,9 @@ public enum Update: Codable {
             try value.encode(to: encoder)
         case .updateScopeNotificationSettings(let value):
             try container.encode(Kind.updateScopeNotificationSettings, forKey: .type)
+            try value.encode(to: encoder)
+        case .updateChatMessageTtlSetting(let value):
+            try container.encode(Kind.updateChatMessageTtlSetting, forKey: .type)
             try value.encode(to: encoder)
         case .updateChatActionBar(let value):
             try container.encode(Kind.updateChatActionBar, forKey: .type)
@@ -737,6 +778,12 @@ public enum Update: Codable {
             try value.encode(to: encoder)
         case .updateCall(let value):
             try container.encode(Kind.updateCall, forKey: .type)
+            try value.encode(to: encoder)
+        case .updateGroupCall(let value):
+            try container.encode(Kind.updateGroupCall, forKey: .type)
+            try value.encode(to: encoder)
+        case .updateGroupCallParticipant(let value):
+            try container.encode(Kind.updateGroupCallParticipant, forKey: .type)
             try value.encode(to: encoder)
         case .updateNewCallSignalingData(let value):
             try container.encode(Kind.updateNewCallSignalingData, forKey: .type)
@@ -825,6 +872,9 @@ public enum Update: Codable {
         case .updatePollAnswer(let value):
             try container.encode(Kind.updatePollAnswer, forKey: .type)
             try value.encode(to: encoder)
+        case .updateChatMember(let value):
+            try container.encode(Kind.updateChatMember, forKey: .type)
+            try value.encode(to: encoder)
         }
     }
 }
@@ -836,7 +886,7 @@ public struct UpdateAuthorizationState: Codable {
     public let authorizationState: AuthorizationState
 
 
-    public init (authorizationState: AuthorizationState) {
+    public init(authorizationState: AuthorizationState) {
         self.authorizationState = authorizationState
     }
 }
@@ -848,7 +898,7 @@ public struct UpdateNewMessage: Codable {
     public let message: Message
 
 
-    public init (message: Message) {
+    public init(message: Message) {
         self.message = message
     }
 }
@@ -863,10 +913,10 @@ public struct UpdateMessageSendAcknowledged: Codable {
     public let messageId: Int64
 
 
-    public init (
+    public init(
         chatId: Int64,
-        messageId: Int64) {
-
+        messageId: Int64
+    ) {
         self.chatId = chatId
         self.messageId = messageId
     }
@@ -882,10 +932,10 @@ public struct UpdateMessageSendSucceeded: Codable {
     public let oldMessageId: Int64
 
 
-    public init (
+    public init(
         message: Message,
-        oldMessageId: Int64) {
-
+        oldMessageId: Int64
+    ) {
         self.message = message
         self.oldMessageId = oldMessageId
     }
@@ -907,12 +957,12 @@ public struct UpdateMessageSendFailed: Codable {
     public let oldMessageId: Int64
 
 
-    public init (
+    public init(
         errorCode: Int,
         errorMessage: String,
         message: Message,
-        oldMessageId: Int64) {
-
+        oldMessageId: Int64
+    ) {
         self.errorCode = errorCode
         self.errorMessage = errorMessage
         self.message = message
@@ -933,11 +983,11 @@ public struct UpdateMessageContent: Codable {
     public let newContent: MessageContent
 
 
-    public init (
+    public init(
         chatId: Int64,
         messageId: Int64,
-        newContent: MessageContent) {
-
+        newContent: MessageContent
+    ) {
         self.chatId = chatId
         self.messageId = messageId
         self.newContent = newContent
@@ -960,12 +1010,12 @@ public struct UpdateMessageEdited: Codable {
     public let replyMarkup: ReplyMarkup?
 
 
-    public init (
+    public init(
         chatId: Int64,
         editDate: Int,
         messageId: Int64,
-        replyMarkup: ReplyMarkup?) {
-
+        replyMarkup: ReplyMarkup?
+    ) {
         self.chatId = chatId
         self.editDate = editDate
         self.messageId = messageId
@@ -986,11 +1036,11 @@ public struct UpdateMessageIsPinned: Codable {
     public let messageId: Int64
 
 
-    public init (
+    public init(
         chatId: Int64,
         isPinned: Bool,
-        messageId: Int64) {
-
+        messageId: Int64
+    ) {
         self.chatId = chatId
         self.isPinned = isPinned
         self.messageId = messageId
@@ -1010,11 +1060,11 @@ public struct UpdateMessageInteractionInfo: Codable {
     public let messageId: Int64
 
 
-    public init (
+    public init(
         chatId: Int64,
         interactionInfo: MessageInteractionInfo?,
-        messageId: Int64) {
-
+        messageId: Int64
+    ) {
         self.chatId = chatId
         self.interactionInfo = interactionInfo
         self.messageId = messageId
@@ -1031,10 +1081,10 @@ public struct UpdateMessageContentOpened: Codable {
     public let messageId: Int64
 
 
-    public init (
+    public init(
         chatId: Int64,
-        messageId: Int64) {
-
+        messageId: Int64
+    ) {
         self.chatId = chatId
         self.messageId = messageId
     }
@@ -1053,11 +1103,11 @@ public struct UpdateMessageMentionRead: Codable {
     public let unreadMentionCount: Int
 
 
-    public init (
+    public init(
         chatId: Int64,
         messageId: Int64,
-        unreadMentionCount: Int) {
-
+        unreadMentionCount: Int
+    ) {
         self.chatId = chatId
         self.messageId = messageId
         self.unreadMentionCount = unreadMentionCount
@@ -1074,10 +1124,10 @@ public struct UpdateMessageLiveLocationViewed: Codable {
     public let messageId: Int64
 
 
-    public init (
+    public init(
         chatId: Int64,
-        messageId: Int64) {
-
+        messageId: Int64
+    ) {
         self.chatId = chatId
         self.messageId = messageId
     }
@@ -1090,7 +1140,7 @@ public struct UpdateNewChat: Codable {
     public let chat: Chat
 
 
-    public init (chat: Chat) {
+    public init(chat: Chat) {
         self.chat = chat
     }
 }
@@ -1105,10 +1155,10 @@ public struct UpdateChatTitle: Codable {
     public let title: String
 
 
-    public init (
+    public init(
         chatId: Int64,
-        title: String) {
-
+        title: String
+    ) {
         self.chatId = chatId
         self.title = title
     }
@@ -1124,10 +1174,10 @@ public struct UpdateChatPhoto: Codable {
     public let photo: ChatPhotoInfo?
 
 
-    public init (
+    public init(
         chatId: Int64,
-        photo: ChatPhotoInfo?) {
-
+        photo: ChatPhotoInfo?
+    ) {
         self.chatId = chatId
         self.photo = photo
     }
@@ -1143,10 +1193,10 @@ public struct UpdateChatPermissions: Codable {
     public let permissions: ChatPermissions
 
 
-    public init (
+    public init(
         chatId: Int64,
-        permissions: ChatPermissions) {
-
+        permissions: ChatPermissions
+    ) {
         self.chatId = chatId
         self.permissions = permissions
     }
@@ -1165,11 +1215,11 @@ public struct UpdateChatLastMessage: Codable {
     public let positions: [ChatPosition]
 
 
-    public init (
+    public init(
         chatId: Int64,
         lastMessage: Message?,
-        positions: [ChatPosition]) {
-
+        positions: [ChatPosition]
+    ) {
         self.chatId = chatId
         self.lastMessage = lastMessage
         self.positions = positions
@@ -1186,10 +1236,10 @@ public struct UpdateChatPosition: Codable {
     public let position: ChatPosition
 
 
-    public init (
+    public init(
         chatId: Int64,
-        position: ChatPosition) {
-
+        position: ChatPosition
+    ) {
         self.chatId = chatId
         self.position = position
     }
@@ -1205,10 +1255,10 @@ public struct UpdateChatIsMarkedAsUnread: Codable {
     public let isMarkedAsUnread: Bool
 
 
-    public init (
+    public init(
         chatId: Int64,
-        isMarkedAsUnread: Bool) {
-
+        isMarkedAsUnread: Bool
+    ) {
         self.chatId = chatId
         self.isMarkedAsUnread = isMarkedAsUnread
     }
@@ -1224,10 +1274,10 @@ public struct UpdateChatIsBlocked: Codable {
     public let isBlocked: Bool
 
 
-    public init (
+    public init(
         chatId: Int64,
-        isBlocked: Bool) {
-
+        isBlocked: Bool
+    ) {
         self.chatId = chatId
         self.isBlocked = isBlocked
     }
@@ -1243,12 +1293,31 @@ public struct UpdateChatHasScheduledMessages: Codable {
     public let hasScheduledMessages: Bool
 
 
-    public init (
+    public init(
         chatId: Int64,
-        hasScheduledMessages: Bool) {
-
+        hasScheduledMessages: Bool
+    ) {
         self.chatId = chatId
         self.hasScheduledMessages = hasScheduledMessages
+    }
+}
+
+/// A chat voice chat state has changed
+public struct UpdateChatVoiceChat: Codable {
+
+    /// Chat identifier
+    public let chatId: Int64
+
+    /// New value of voice_chat
+    public let voiceChat: VoiceChat
+
+
+    public init(
+        chatId: Int64,
+        voiceChat: VoiceChat
+    ) {
+        self.chatId = chatId
+        self.voiceChat = voiceChat
     }
 }
 
@@ -1262,10 +1331,10 @@ public struct UpdateChatDefaultDisableNotification: Codable {
     public let defaultDisableNotification: Bool
 
 
-    public init (
+    public init(
         chatId: Int64,
-        defaultDisableNotification: Bool) {
-
+        defaultDisableNotification: Bool
+    ) {
         self.chatId = chatId
         self.defaultDisableNotification = defaultDisableNotification
     }
@@ -1284,11 +1353,11 @@ public struct UpdateChatReadInbox: Codable {
     public let unreadCount: Int
 
 
-    public init (
+    public init(
         chatId: Int64,
         lastReadInboxMessageId: Int64,
-        unreadCount: Int) {
-
+        unreadCount: Int
+    ) {
         self.chatId = chatId
         self.lastReadInboxMessageId = lastReadInboxMessageId
         self.unreadCount = unreadCount
@@ -1305,10 +1374,10 @@ public struct UpdateChatReadOutbox: Codable {
     public let lastReadOutboxMessageId: Int64
 
 
-    public init (
+    public init(
         chatId: Int64,
-        lastReadOutboxMessageId: Int64) {
-
+        lastReadOutboxMessageId: Int64
+    ) {
         self.chatId = chatId
         self.lastReadOutboxMessageId = lastReadOutboxMessageId
     }
@@ -1324,10 +1393,10 @@ public struct UpdateChatUnreadMentionCount: Codable {
     public let unreadMentionCount: Int
 
 
-    public init (
+    public init(
         chatId: Int64,
-        unreadMentionCount: Int) {
-
+        unreadMentionCount: Int
+    ) {
         self.chatId = chatId
         self.unreadMentionCount = unreadMentionCount
     }
@@ -1343,10 +1412,10 @@ public struct UpdateChatNotificationSettings: Codable {
     public let notificationSettings: ChatNotificationSettings
 
 
-    public init (
+    public init(
         chatId: Int64,
-        notificationSettings: ChatNotificationSettings) {
-
+        notificationSettings: ChatNotificationSettings
+    ) {
         self.chatId = chatId
         self.notificationSettings = notificationSettings
     }
@@ -1362,12 +1431,31 @@ public struct UpdateScopeNotificationSettings: Codable {
     public let scope: NotificationSettingsScope
 
 
-    public init (
+    public init(
         notificationSettings: ScopeNotificationSettings,
-        scope: NotificationSettingsScope) {
-
+        scope: NotificationSettingsScope
+    ) {
         self.notificationSettings = notificationSettings
         self.scope = scope
+    }
+}
+
+/// The message Time To Live setting for a chat was changed
+public struct UpdateChatMessageTtlSetting: Codable {
+
+    /// Chat identifier
+    public let chatId: Int64
+
+    /// New value of message_ttl_setting
+    public let messageTtlSetting: Int
+
+
+    public init(
+        chatId: Int64,
+        messageTtlSetting: Int
+    ) {
+        self.chatId = chatId
+        self.messageTtlSetting = messageTtlSetting
     }
 }
 
@@ -1381,10 +1469,10 @@ public struct UpdateChatActionBar: Codable {
     public let chatId: Int64
 
 
-    public init (
+    public init(
         actionBar: ChatActionBar?,
-        chatId: Int64) {
-
+        chatId: Int64
+    ) {
         self.actionBar = actionBar
         self.chatId = chatId
     }
@@ -1400,10 +1488,10 @@ public struct UpdateChatReplyMarkup: Codable {
     public let replyMarkupMessageId: Int64
 
 
-    public init (
+    public init(
         chatId: Int64,
-        replyMarkupMessageId: Int64) {
-
+        replyMarkupMessageId: Int64
+    ) {
         self.chatId = chatId
         self.replyMarkupMessageId = replyMarkupMessageId
     }
@@ -1422,11 +1510,11 @@ public struct UpdateChatDraftMessage: Codable {
     public let positions: [ChatPosition]
 
 
-    public init (
+    public init(
         chatId: Int64,
         draftMessage: DraftMessage?,
-        positions: [ChatPosition]) {
-
+        positions: [ChatPosition]
+    ) {
         self.chatId = chatId
         self.draftMessage = draftMessage
         self.positions = positions
@@ -1440,7 +1528,7 @@ public struct UpdateChatFilters: Codable {
     public let chatFilters: [ChatFilterInfo]
 
 
-    public init (chatFilters: [ChatFilterInfo]) {
+    public init(chatFilters: [ChatFilterInfo]) {
         self.chatFilters = chatFilters
     }
 }
@@ -1455,10 +1543,10 @@ public struct UpdateChatOnlineMemberCount: Codable {
     public let onlineMemberCount: Int
 
 
-    public init (
+    public init(
         chatId: Int64,
-        onlineMemberCount: Int) {
-
+        onlineMemberCount: Int
+    ) {
         self.chatId = chatId
         self.onlineMemberCount = onlineMemberCount
     }
@@ -1474,10 +1562,10 @@ public struct UpdateNotification: Codable {
     public let notificationGroupId: Int
 
 
-    public init (
+    public init(
         notification: Notification,
-        notificationGroupId: Int) {
-
+        notificationGroupId: Int
+    ) {
         self.notification = notification
         self.notificationGroupId = notificationGroupId
     }
@@ -1511,7 +1599,7 @@ public struct UpdateNotificationGroup: Codable {
     public let type: NotificationGroupType
 
 
-    public init (
+    public init(
         addedNotifications: [Notification],
         chatId: Int64,
         isSilent: Bool,
@@ -1519,8 +1607,8 @@ public struct UpdateNotificationGroup: Codable {
         notificationSettingsChatId: Int64,
         removedNotificationIds: [Int],
         totalCount: Int,
-        type: NotificationGroupType) {
-
+        type: NotificationGroupType
+    ) {
         self.addedNotifications = addedNotifications
         self.chatId = chatId
         self.isSilent = isSilent
@@ -1539,7 +1627,7 @@ public struct UpdateActiveNotifications: Codable {
     public let groups: [NotificationGroup]
 
 
-    public init (groups: [NotificationGroup]) {
+    public init(groups: [NotificationGroup]) {
         self.groups = groups
     }
 }
@@ -1554,10 +1642,10 @@ public struct UpdateHavePendingNotifications: Codable {
     public let haveUnreceivedNotifications: Bool
 
 
-    public init (
+    public init(
         haveDelayedNotifications: Bool,
-        haveUnreceivedNotifications: Bool) {
-
+        haveUnreceivedNotifications: Bool
+    ) {
         self.haveDelayedNotifications = haveDelayedNotifications
         self.haveUnreceivedNotifications = haveUnreceivedNotifications
     }
@@ -1579,12 +1667,12 @@ public struct UpdateDeleteMessages: Codable {
     public let messageIds: [Int64]
 
 
-    public init (
+    public init(
         chatId: Int64,
         fromCache: Bool,
         isPermanent: Bool,
-        messageIds: [Int64]) {
-
+        messageIds: [Int64]
+    ) {
         self.chatId = chatId
         self.fromCache = fromCache
         self.isPermanent = isPermanent
@@ -1608,12 +1696,12 @@ public struct UpdateUserChatAction: Codable {
     public let userId: Int
 
 
-    public init (
+    public init(
         action: ChatAction,
         chatId: Int64,
         messageThreadId: Int64,
-        userId: Int) {
-
+        userId: Int
+    ) {
         self.action = action
         self.chatId = chatId
         self.messageThreadId = messageThreadId
@@ -1631,10 +1719,10 @@ public struct UpdateUserStatus: Codable {
     public let userId: Int
 
 
-    public init (
+    public init(
         status: UserStatus,
-        userId: Int) {
-
+        userId: Int
+    ) {
         self.status = status
         self.userId = userId
     }
@@ -1647,7 +1735,7 @@ public struct UpdateUser: Codable {
     public let user: User
 
 
-    public init (user: User) {
+    public init(user: User) {
         self.user = user
     }
 }
@@ -1659,7 +1747,7 @@ public struct UpdateBasicGroup: Codable {
     public let basicGroup: BasicGroup
 
 
-    public init (basicGroup: BasicGroup) {
+    public init(basicGroup: BasicGroup) {
         self.basicGroup = basicGroup
     }
 }
@@ -1671,7 +1759,7 @@ public struct UpdateSupergroup: Codable {
     public let supergroup: Supergroup
 
 
-    public init (supergroup: Supergroup) {
+    public init(supergroup: Supergroup) {
         self.supergroup = supergroup
     }
 }
@@ -1683,7 +1771,7 @@ public struct UpdateSecretChat: Codable {
     public let secretChat: SecretChat
 
 
-    public init (secretChat: SecretChat) {
+    public init(secretChat: SecretChat) {
         self.secretChat = secretChat
     }
 }
@@ -1698,10 +1786,10 @@ public struct UpdateUserFullInfo: Codable {
     public let userId: Int
 
 
-    public init (
+    public init(
         userFullInfo: UserFullInfo,
-        userId: Int) {
-
+        userId: Int
+    ) {
         self.userFullInfo = userFullInfo
         self.userId = userId
     }
@@ -1717,10 +1805,10 @@ public struct UpdateBasicGroupFullInfo: Codable {
     public let basicGroupId: Int
 
 
-    public init (
+    public init(
         basicGroupFullInfo: BasicGroupFullInfo,
-        basicGroupId: Int) {
-
+        basicGroupId: Int
+    ) {
         self.basicGroupFullInfo = basicGroupFullInfo
         self.basicGroupId = basicGroupId
     }
@@ -1736,10 +1824,10 @@ public struct UpdateSupergroupFullInfo: Codable {
     public let supergroupId: Int
 
 
-    public init (
+    public init(
         supergroupFullInfo: SupergroupFullInfo,
-        supergroupId: Int) {
-
+        supergroupId: Int
+    ) {
         self.supergroupFullInfo = supergroupFullInfo
         self.supergroupId = supergroupId
     }
@@ -1755,10 +1843,10 @@ public struct UpdateServiceNotification: Codable {
     public let type: String
 
 
-    public init (
+    public init(
         content: MessageContent,
-        type: String) {
-
+        type: String
+    ) {
         self.content = content
         self.type = type
     }
@@ -1771,7 +1859,7 @@ public struct UpdateFile: Codable {
     public let file: File
 
 
-    public init (file: File) {
+    public init(file: File) {
         self.file = file
     }
 }
@@ -1792,12 +1880,12 @@ public struct UpdateFileGenerationStart: Codable {
     public let originalPath: String
 
 
-    public init (
+    public init(
         conversion: String,
         destinationPath: String,
         generationId: TdInt64,
-        originalPath: String) {
-
+        originalPath: String
+    ) {
         self.conversion = conversion
         self.destinationPath = destinationPath
         self.generationId = generationId
@@ -1812,7 +1900,7 @@ public struct UpdateFileGenerationStop: Codable {
     public let generationId: TdInt64
 
 
-    public init (generationId: TdInt64) {
+    public init(generationId: TdInt64) {
         self.generationId = generationId
     }
 }
@@ -1824,8 +1912,39 @@ public struct UpdateCall: Codable {
     public let call: Call
 
 
-    public init (call: Call) {
+    public init(call: Call) {
         self.call = call
+    }
+}
+
+/// Information about a group call was updated
+public struct UpdateGroupCall: Codable {
+
+    /// New data about a group call
+    public let groupCall: GroupCall
+
+
+    public init(groupCall: GroupCall) {
+        self.groupCall = groupCall
+    }
+}
+
+/// Information about a group call participant was changed. The updates are sent only after the group call is received through getGroupCall and only if the call is joined or being joined
+public struct UpdateGroupCallParticipant: Codable {
+
+    /// Identifier of group call
+    public let groupCallId: Int
+
+    /// New data about a participant
+    public let participant: GroupCallParticipant
+
+
+    public init(
+        groupCallId: Int,
+        participant: GroupCallParticipant
+    ) {
+        self.groupCallId = groupCallId
+        self.participant = participant
     }
 }
 
@@ -1839,10 +1958,10 @@ public struct UpdateNewCallSignalingData: Codable {
     public let data: Data
 
 
-    public init (
+    public init(
         callId: Int,
-        data: Data) {
-
+        data: Data
+    ) {
         self.callId = callId
         self.data = data
     }
@@ -1858,10 +1977,10 @@ public struct UpdateUserPrivacySettingRules: Codable {
     public let setting: UserPrivacySetting
 
 
-    public init (
+    public init(
         rules: UserPrivacySettingRules,
-        setting: UserPrivacySetting) {
-
+        setting: UserPrivacySetting
+    ) {
         self.rules = rules
         self.setting = setting
     }
@@ -1880,11 +1999,11 @@ public struct UpdateUnreadMessageCount: Codable {
     public let unreadUnmutedCount: Int
 
 
-    public init (
+    public init(
         chatList: ChatList,
         unreadCount: Int,
-        unreadUnmutedCount: Int) {
-
+        unreadUnmutedCount: Int
+    ) {
         self.chatList = chatList
         self.unreadCount = unreadCount
         self.unreadUnmutedCount = unreadUnmutedCount
@@ -1913,14 +2032,14 @@ public struct UpdateUnreadChatCount: Codable {
     public let unreadUnmutedCount: Int
 
 
-    public init (
+    public init(
         chatList: ChatList,
         markedAsUnreadCount: Int,
         markedAsUnreadUnmutedCount: Int,
         totalCount: Int,
         unreadCount: Int,
-        unreadUnmutedCount: Int) {
-
+        unreadUnmutedCount: Int
+    ) {
         self.chatList = chatList
         self.markedAsUnreadCount = markedAsUnreadCount
         self.markedAsUnreadUnmutedCount = markedAsUnreadUnmutedCount
@@ -1940,10 +2059,10 @@ public struct UpdateOption: Codable {
     public let value: OptionValue
 
 
-    public init (
+    public init(
         name: String,
-        value: OptionValue) {
-
+        value: OptionValue
+    ) {
         self.name = name
         self.value = value
     }
@@ -1956,7 +2075,7 @@ public struct UpdateStickerSet: Codable {
     public let stickerSet: StickerSet
 
 
-    public init (stickerSet: StickerSet) {
+    public init(stickerSet: StickerSet) {
         self.stickerSet = stickerSet
     }
 }
@@ -1971,10 +2090,10 @@ public struct UpdateInstalledStickerSets: Codable {
     public let stickerSetIds: [TdInt64]
 
 
-    public init (
+    public init(
         isMasks: Bool,
-        stickerSetIds: [TdInt64]) {
-
+        stickerSetIds: [TdInt64]
+    ) {
         self.isMasks = isMasks
         self.stickerSetIds = stickerSetIds
     }
@@ -1987,7 +2106,7 @@ public struct UpdateTrendingStickerSets: Codable {
     public let stickerSets: StickerSets
 
 
-    public init (stickerSets: StickerSets) {
+    public init(stickerSets: StickerSets) {
         self.stickerSets = stickerSets
     }
 }
@@ -2002,10 +2121,10 @@ public struct UpdateRecentStickers: Codable {
     public let stickerIds: [Int]
 
 
-    public init (
+    public init(
         isAttached: Bool,
-        stickerIds: [Int]) {
-
+        stickerIds: [Int]
+    ) {
         self.isAttached = isAttached
         self.stickerIds = stickerIds
     }
@@ -2018,7 +2137,7 @@ public struct UpdateFavoriteStickers: Codable {
     public let stickerIds: [Int]
 
 
-    public init (stickerIds: [Int]) {
+    public init(stickerIds: [Int]) {
         self.stickerIds = stickerIds
     }
 }
@@ -2030,7 +2149,7 @@ public struct UpdateSavedAnimations: Codable {
     public let animationIds: [Int]
 
 
-    public init (animationIds: [Int]) {
+    public init(animationIds: [Int]) {
         self.animationIds = animationIds
     }
 }
@@ -2045,10 +2164,10 @@ public struct UpdateSelectedBackground: Codable {
     public let forDarkTheme: Bool
 
 
-    public init (
+    public init(
         background: Background?,
-        forDarkTheme: Bool) {
-
+        forDarkTheme: Bool
+    ) {
         self.background = background
         self.forDarkTheme = forDarkTheme
     }
@@ -2067,11 +2186,11 @@ public struct UpdateLanguagePackStrings: Codable {
     public let strings: [LanguagePackString]
 
 
-    public init (
+    public init(
         languagePackId: String,
         localizationTarget: String,
-        strings: [LanguagePackString]) {
-
+        strings: [LanguagePackString]
+    ) {
         self.languagePackId = languagePackId
         self.localizationTarget = localizationTarget
         self.strings = strings
@@ -2085,7 +2204,7 @@ public struct UpdateConnectionState: Codable {
     public let state: ConnectionState
 
 
-    public init (state: ConnectionState) {
+    public init(state: ConnectionState) {
         self.state = state
     }
 }
@@ -2100,10 +2219,10 @@ public struct UpdateTermsOfService: Codable {
     public let termsOfServiceId: String
 
 
-    public init (
+    public init(
         termsOfService: TermsOfService,
-        termsOfServiceId: String) {
-
+        termsOfServiceId: String
+    ) {
         self.termsOfService = termsOfService
         self.termsOfServiceId = termsOfServiceId
     }
@@ -2116,7 +2235,7 @@ public struct UpdateUsersNearby: Codable {
     public let usersNearby: [ChatNearby]
 
 
-    public init (usersNearby: [ChatNearby]) {
+    public init(usersNearby: [ChatNearby]) {
         self.usersNearby = usersNearby
     }
 }
@@ -2128,7 +2247,7 @@ public struct UpdateDiceEmojis: Codable {
     public let emojis: [String]
 
 
-    public init (emojis: [String]) {
+    public init(emojis: [String]) {
         self.emojis = emojis
     }
 }
@@ -2143,10 +2262,10 @@ public struct UpdateAnimationSearchParameters: Codable {
     public let provider: String
 
 
-    public init (
+    public init(
         emojis: [String],
-        provider: String) {
-
+        provider: String
+    ) {
         self.emojis = emojis
         self.provider = provider
     }
@@ -2162,10 +2281,10 @@ public struct UpdateSuggestedActions: Codable {
     public let removedActions: [SuggestedAction]
 
 
-    public init (
+    public init(
         addedActions: [SuggestedAction],
-        removedActions: [SuggestedAction]) {
-
+        removedActions: [SuggestedAction]
+    ) {
         self.addedActions = addedActions
         self.removedActions = removedActions
     }
@@ -2173,6 +2292,9 @@ public struct UpdateSuggestedActions: Codable {
 
 /// A new incoming inline query; for bots only
 public struct UpdateNewInlineQuery: Codable {
+
+    /// Contains information about the type of the chat, from which the query originated; may be null if unknown
+    public let chatType: ChatType?
 
     /// Unique query identifier
     public let id: TdInt64
@@ -2190,13 +2312,15 @@ public struct UpdateNewInlineQuery: Codable {
     public let userLocation: Location?
 
 
-    public init (
+    public init(
+        chatType: ChatType?,
         id: TdInt64,
         offset: String,
         query: String,
         senderUserId: Int,
-        userLocation: Location?) {
-
+        userLocation: Location?
+    ) {
+        self.chatType = chatType
         self.id = id
         self.offset = offset
         self.query = query
@@ -2224,13 +2348,13 @@ public struct UpdateNewChosenInlineResult: Codable {
     public let userLocation: Location?
 
 
-    public init (
+    public init(
         inlineMessageId: String,
         query: String,
         resultId: String,
         senderUserId: Int,
-        userLocation: Location?) {
-
+        userLocation: Location?
+    ) {
         self.inlineMessageId = inlineMessageId
         self.query = query
         self.resultId = resultId
@@ -2261,14 +2385,14 @@ public struct UpdateNewCallbackQuery: Codable {
     public let senderUserId: Int
 
 
-    public init (
+    public init(
         chatId: Int64,
         chatInstance: TdInt64,
         id: TdInt64,
         messageId: Int64,
         payload: CallbackQueryPayload,
-        senderUserId: Int) {
-
+        senderUserId: Int
+    ) {
         self.chatId = chatId
         self.chatInstance = chatInstance
         self.id = id
@@ -2297,13 +2421,13 @@ public struct UpdateNewInlineCallbackQuery: Codable {
     public let senderUserId: Int
 
 
-    public init (
+    public init(
         chatInstance: TdInt64,
         id: TdInt64,
         inlineMessageId: String,
         payload: CallbackQueryPayload,
-        senderUserId: Int) {
-
+        senderUserId: Int
+    ) {
         self.chatInstance = chatInstance
         self.id = id
         self.inlineMessageId = inlineMessageId
@@ -2328,12 +2452,12 @@ public struct UpdateNewShippingQuery: Codable {
     public let shippingAddress: Address
 
 
-    public init (
+    public init(
         id: TdInt64,
         invoicePayload: String,
         senderUserId: Int,
-        shippingAddress: Address) {
-
+        shippingAddress: Address
+    ) {
         self.id = id
         self.invoicePayload = invoicePayload
         self.senderUserId = senderUserId
@@ -2362,19 +2486,19 @@ public struct UpdateNewPreCheckoutQuery: Codable {
     /// Identifier of a shipping option chosen by the user; may be empty if not applicable
     public let shippingOptionId: String
 
-    /// Total price for the product, in the minimal quantity of the currency
+    /// Total price for the product, in the smallest units of the currency
     public let totalAmount: Int64
 
 
-    public init (
+    public init(
         currency: String,
         id: TdInt64,
         invoicePayload: Data,
         orderInfo: OrderInfo?,
         senderUserId: Int,
         shippingOptionId: String,
-        totalAmount: Int64) {
-
+        totalAmount: Int64
+    ) {
         self.currency = currency
         self.id = id
         self.invoicePayload = invoicePayload
@@ -2392,7 +2516,7 @@ public struct UpdateNewCustomEvent: Codable {
     public let event: String
 
 
-    public init (event: String) {
+    public init(event: String) {
         self.event = event
     }
 }
@@ -2410,11 +2534,11 @@ public struct UpdateNewCustomQuery: Codable {
     public let timeout: Int
 
 
-    public init (
+    public init(
         data: String,
         id: TdInt64,
-        timeout: Int) {
-
+        timeout: Int
+    ) {
         self.data = data
         self.id = id
         self.timeout = timeout
@@ -2428,7 +2552,7 @@ public struct UpdatePoll: Codable {
     public let poll: Poll
 
 
-    public init (poll: Poll) {
+    public init(poll: Poll) {
         self.poll = poll
     }
 }
@@ -2446,14 +2570,53 @@ public struct UpdatePollAnswer: Codable {
     public let userId: Int
 
 
-    public init (
+    public init(
         optionIds: [Int],
         pollId: TdInt64,
-        userId: Int) {
-
+        userId: Int
+    ) {
         self.optionIds = optionIds
         self.pollId = pollId
         self.userId = userId
+    }
+}
+
+/// User rights changed in a chat; for bots only
+public struct UpdateChatMember: Codable {
+
+    /// Identifier of the user, changing the rights
+    public let actorUserId: Int
+
+    /// Chat identifier
+    public let chatId: Int64
+
+    /// Point in time (Unix timestamp) when the user rights was changed
+    public let date: Int
+
+    /// If user has joined the chat using an invite link, the invite link; may be null
+    public let inviteLink: ChatInviteLink?
+
+    /// New chat member
+    public let newChatMember: ChatMember
+
+    /// Previous chat member
+    public let oldChatMember: ChatMember
+
+
+    public init(
+        actorUserId: Int,
+        chatId: Int64,
+        date: Int,
+        inviteLink: ChatInviteLink?,
+        newChatMember: ChatMember,
+        oldChatMember: ChatMember
+    ) {
+        self.actorUserId = actorUserId
+        self.chatId = chatId
+        self.date = date
+        self.inviteLink = inviteLink
+        self.newChatMember = newChatMember
+        self.oldChatMember = oldChatMember
     }
 }
 

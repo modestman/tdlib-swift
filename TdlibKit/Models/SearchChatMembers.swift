@@ -24,12 +24,12 @@ public struct SearchChatMembers: Codable {
     public let query: String
 
 
-    public init (
+    public init(
         chatId: Int64,
         filter: ChatMembersFilter,
         limit: Int,
-        query: String) {
-
+        query: String
+    ) {
         self.chatId = chatId
         self.filter = filter
         self.limit = limit

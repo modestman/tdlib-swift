@@ -17,17 +17,22 @@ public struct ChatPhotoInfo: Codable {
     /// True, if the photo has animated variant
     public let hasAnimation: Bool
 
+    /// Chat photo minithumbnail; may be null
+    public let minithumbnail: Minithumbnail?
+
     /// A small (160x160) chat photo variant in JPEG format. The file can be downloaded only before the photo is changed
     public let small: File
 
 
-    public init (
+    public init(
         big: File,
         hasAnimation: Bool,
-        small: File) {
-
+        minithumbnail: Minithumbnail?,
+        small: File
+    ) {
         self.big = big
         self.hasAnimation = hasAnimation
+        self.minithumbnail = minithumbnail
         self.small = small
     }
 }

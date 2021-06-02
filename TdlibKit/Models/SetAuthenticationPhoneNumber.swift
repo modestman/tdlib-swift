@@ -18,10 +18,10 @@ public struct SetAuthenticationPhoneNumber: Codable {
     public let settings: PhoneNumberAuthenticationSettings
 
 
-    public init (
+    public init(
         phoneNumber: String,
-        settings: PhoneNumberAuthenticationSettings) {
-
+        settings: PhoneNumberAuthenticationSettings
+    ) {
         self.phoneNumber = phoneNumber
         self.settings = settings
     }

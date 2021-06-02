@@ -15,7 +15,7 @@ public struct AccountTtl: Codable {
     public let days: Int
 
 
-    public init (days: Int) {
+    public init(days: Int) {
         self.days = days
     }
 }

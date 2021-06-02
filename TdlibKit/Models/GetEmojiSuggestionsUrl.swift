@@ -15,7 +15,7 @@ public struct GetEmojiSuggestionsUrl: Codable {
     public let languageCode: String
 
 
-    public init (languageCode: String) {
+    public init(languageCode: String) {
         self.languageCode = languageCode
     }
 }

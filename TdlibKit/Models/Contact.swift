@@ -27,13 +27,13 @@ public struct Contact: Codable {
     public let vcard: String
 
 
-    public init (
+    public init(
         firstName: String,
         lastName: String,
         phoneNumber: String,
         userId: Int,
-        vcard: String) {
-
+        vcard: String
+    ) {
         self.firstName = firstName
         self.lastName = lastName
         self.phoneNumber = phoneNumber

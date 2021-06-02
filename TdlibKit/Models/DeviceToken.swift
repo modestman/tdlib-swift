@@ -149,10 +149,10 @@ public struct DeviceTokenFirebaseCloudMessaging: Codable {
     public let token: String
 
 
-    public init (
+    public init(
         encrypt: Bool,
-        token: String) {
-
+        token: String
+    ) {
         self.encrypt = encrypt
         self.token = token
     }
@@ -168,10 +168,10 @@ public struct DeviceTokenApplePush: Codable {
     public let isAppSandbox: Bool
 
 
-    public init (
+    public init(
         deviceToken: String,
-        isAppSandbox: Bool) {
-
+        isAppSandbox: Bool
+    ) {
         self.deviceToken = deviceToken
         self.isAppSandbox = isAppSandbox
     }
@@ -190,11 +190,11 @@ public struct DeviceTokenApplePushVoIP: Codable {
     public let isAppSandbox: Bool
 
 
-    public init (
+    public init(
         deviceToken: String,
         encrypt: Bool,
-        isAppSandbox: Bool) {
-
+        isAppSandbox: Bool
+    ) {
         self.deviceToken = deviceToken
         self.encrypt = encrypt
         self.isAppSandbox = isAppSandbox
@@ -208,7 +208,7 @@ public struct DeviceTokenWindowsPush: Codable {
     public let accessToken: String
 
 
-    public init (accessToken: String) {
+    public init(accessToken: String) {
         self.accessToken = accessToken
     }
 }
@@ -220,7 +220,7 @@ public struct DeviceTokenMicrosoftPush: Codable {
     public let channelUri: String
 
 
-    public init (channelUri: String) {
+    public init(channelUri: String) {
         self.channelUri = channelUri
     }
 }
@@ -232,7 +232,7 @@ public struct DeviceTokenMicrosoftPushVoIP: Codable {
     public let channelUri: String
 
 
-    public init (channelUri: String) {
+    public init(channelUri: String) {
         self.channelUri = channelUri
     }
 }
@@ -250,11 +250,11 @@ public struct DeviceTokenWebPush: Codable {
     public let p256dhBase64url: String
 
 
-    public init (
+    public init(
         authBase64url: String,
         endpoint: String,
-        p256dhBase64url: String) {
-
+        p256dhBase64url: String
+    ) {
         self.authBase64url = authBase64url
         self.endpoint = endpoint
         self.p256dhBase64url = p256dhBase64url
@@ -268,7 +268,7 @@ public struct DeviceTokenSimplePush: Codable {
     public let endpoint: String
 
 
-    public init (endpoint: String) {
+    public init(endpoint: String) {
         self.endpoint = endpoint
     }
 }
@@ -280,7 +280,7 @@ public struct DeviceTokenUbuntuPush: Codable {
     public let token: String
 
 
-    public init (token: String) {
+    public init(token: String) {
         self.token = token
     }
 }
@@ -292,7 +292,7 @@ public struct DeviceTokenBlackBerryPush: Codable {
     public let token: String
 
 
-    public init (token: String) {
+    public init(token: String) {
         self.token = token
     }
 }
@@ -304,7 +304,7 @@ public struct DeviceTokenTizenPush: Codable {
     public let regId: String
 
 
-    public init (regId: String) {
+    public init(regId: String) {
         self.regId = regId
     }
 }

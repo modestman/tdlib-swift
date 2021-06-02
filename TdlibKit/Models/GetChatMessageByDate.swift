@@ -18,10 +18,10 @@ public struct GetChatMessageByDate: Codable {
     public let date: Int
 
 
-    public init (
+    public init(
         chatId: Int64,
-        date: Int) {
-
+        date: Int
+    ) {
         self.chatId = chatId
         self.date = date
     }

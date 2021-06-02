@@ -23,7 +23,7 @@ public struct StickerSetInfo: Codable {
     /// True, if the sticker set has been archived. A sticker set can't be installed and archived simultaneously
     public let isArchived: Bool
 
-    /// True, if the sticker set has been installed by current user
+    /// True, if the sticker set has been installed by the current user
     public let isInstalled: Bool
 
     /// True, if the stickers in the set are masks
@@ -44,11 +44,14 @@ public struct StickerSetInfo: Codable {
     /// Sticker set thumbnail in WEBP or TGS format with width and height 100; may be null
     public let thumbnail: Thumbnail?
 
+    /// Sticker set thumbnail's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner
+    public let thumbnailOutline: [ClosedVectorPath]
+
     /// Title of the sticker set
     public let title: String
 
 
-    public init (
+    public init(
         covers: [Sticker],
         id: TdInt64,
         isAnimated: Bool,
@@ -60,8 +63,9 @@ public struct StickerSetInfo: Codable {
         name: String,
         size: Int,
         thumbnail: Thumbnail?,
-        title: String) {
-
+        thumbnailOutline: [ClosedVectorPath],
+        title: String
+    ) {
         self.covers = covers
         self.id = id
         self.isAnimated = isAnimated
@@ -73,6 +77,7 @@ public struct StickerSetInfo: Codable {
         self.name = name
         self.size = size
         self.thumbnail = thumbnail
+        self.thumbnailOutline = thumbnailOutline
         self.title = title
     }
 }

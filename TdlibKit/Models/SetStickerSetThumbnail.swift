@@ -21,11 +21,11 @@ public struct SetStickerSetThumbnail: Codable {
     public let userId: Int
 
 
-    public init (
+    public init(
         name: String,
         thumbnail: InputFile,
-        userId: Int) {
-
+        userId: Int
+    ) {
         self.name = name
         self.thumbnail = thumbnail
         self.userId = userId

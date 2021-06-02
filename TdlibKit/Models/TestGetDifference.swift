@@ -12,7 +12,6 @@ import Foundation
 public struct TestGetDifference: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

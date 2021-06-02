@@ -178,7 +178,7 @@ public struct TextEntityTypePreCode: Codable {
     public let language: String
 
 
-    public init (language: String) {
+    public init(language: String) {
         self.language = language
     }
 }
@@ -190,7 +190,7 @@ public struct TextEntityTypeTextUrl: Codable {
     public let url: String
 
 
-    public init (url: String) {
+    public init(url: String) {
         self.url = url
     }
 }
@@ -202,7 +202,7 @@ public struct TextEntityTypeMentionName: Codable {
     public let userId: Int
 
 
-    public init (userId: Int) {
+    public init(userId: Int) {
         self.userId = userId
     }
 }

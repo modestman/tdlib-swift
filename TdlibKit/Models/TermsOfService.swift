@@ -21,11 +21,11 @@ public struct TermsOfService: Codable {
     public let text: FormattedText
 
 
-    public init (
+    public init(
         minUserAge: Int,
         showPopup: Bool,
-        text: FormattedText) {
-
+        text: FormattedText
+    ) {
         self.minUserAge = minUserAge
         self.showPopup = showPopup
         self.text = text

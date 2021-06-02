@@ -15,7 +15,7 @@ public struct GetMarkdownText: Codable {
     public let text: FormattedText
 
 
-    public init (text: FormattedText) {
+    public init(text: FormattedText) {
         self.text = text
     }
 }

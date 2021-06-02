@@ -68,11 +68,11 @@ public struct LogStreamFile: Codable {
     public let redirectStderr: Bool
 
 
-    public init (
+    public init(
         maxFileSize: Int64,
         path: String,
-        redirectStderr: Bool) {
-
+        redirectStderr: Bool
+    ) {
         self.maxFileSize = maxFileSize
         self.path = path
         self.redirectStderr = redirectStderr

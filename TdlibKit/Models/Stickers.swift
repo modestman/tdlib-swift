@@ -15,7 +15,7 @@ public struct Stickers: Codable {
     public let stickers: [Sticker]
 
 
-    public init (stickers: [Sticker]) {
+    public init(stickers: [Sticker]) {
         self.stickers = stickers
     }
 }

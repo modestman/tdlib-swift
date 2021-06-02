@@ -15,7 +15,7 @@ public struct SetCommands: Codable {
     public let commands: [BotCommand]
 
 
-    public init (commands: [BotCommand]) {
+    public init(commands: [BotCommand]) {
         self.commands = commands
     }
 }

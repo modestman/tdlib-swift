@@ -21,11 +21,11 @@ public struct GetChatMessageCount: Codable {
     public let returnLocal: Bool
 
 
-    public init (
+    public init(
         chatId: Int64,
         filter: SearchMessagesFilter,
-        returnLocal: Bool) {
-
+        returnLocal: Bool
+    ) {
         self.chatId = chatId
         self.filter = filter
         self.returnLocal = returnLocal

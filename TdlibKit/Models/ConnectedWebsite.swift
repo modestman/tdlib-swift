@@ -39,7 +39,7 @@ public struct ConnectedWebsite: Codable {
     public let platform: String
 
 
-    public init (
+    public init(
         botUserId: Int,
         browser: String,
         domainName: String,
@@ -48,8 +48,8 @@ public struct ConnectedWebsite: Codable {
         lastActiveDate: Int,
         location: String,
         logInDate: Int,
-        platform: String) {
-
+        platform: String
+    ) {
         self.botUserId = botUserId
         self.browser = browser
         self.domainName = domainName

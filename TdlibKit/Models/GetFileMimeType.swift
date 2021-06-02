@@ -15,7 +15,7 @@ public struct GetFileMimeType: Codable {
     public let fileName: String
 
 
-    public init (fileName: String) {
+    public init(fileName: String) {
         self.fileName = fileName
     }
 }

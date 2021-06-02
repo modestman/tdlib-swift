@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Toggles sender signatures messages sent in a channel; requires can_change_info rights
+/// Toggles sender signatures messages sent in a channel; requires can_change_info administrator right
 public struct ToggleSupergroupSignMessages: Codable {
 
     /// New value of sign_messages
@@ -18,10 +18,10 @@ public struct ToggleSupergroupSignMessages: Codable {
     public let supergroupId: Int
 
 
-    public init (
+    public init(
         signMessages: Bool,
-        supergroupId: Int) {
-
+        supergroupId: Int
+    ) {
         self.signMessages = signMessages
         self.supergroupId = supergroupId
     }

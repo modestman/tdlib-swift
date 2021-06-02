@@ -18,10 +18,10 @@ public struct GetInlineGameHighScores: Codable {
     public let userId: Int
 
 
-    public init (
+    public init(
         inlineMessageId: String,
-        userId: Int) {
-
+        userId: Int
+    ) {
         self.inlineMessageId = inlineMessageId
         self.userId = userId
     }

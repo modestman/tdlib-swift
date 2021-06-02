@@ -12,7 +12,6 @@ import Foundation
 public struct ClearImportedContacts: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

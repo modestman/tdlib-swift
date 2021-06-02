@@ -18,10 +18,10 @@ public struct UploadStickerFile: Codable {
     public let userId: Int
 
 
-    public init (
+    public init(
         pngSticker: InputFile,
-        userId: Int) {
-
+        userId: Int
+    ) {
         self.pngSticker = pngSticker
         self.userId = userId
     }

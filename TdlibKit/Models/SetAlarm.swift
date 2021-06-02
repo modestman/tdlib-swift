@@ -15,7 +15,7 @@ public struct SetAlarm: Codable {
     public let seconds: Double
 
 
-    public init (seconds: Double) {
+    public init(seconds: Double) {
         self.seconds = seconds
     }
 }

@@ -150,7 +150,7 @@ public struct ChatActionUploadingVideo: Codable {
     public let progress: Int
 
 
-    public init (progress: Int) {
+    public init(progress: Int) {
         self.progress = progress
     }
 }
@@ -162,7 +162,7 @@ public struct ChatActionUploadingVoiceNote: Codable {
     public let progress: Int
 
 
-    public init (progress: Int) {
+    public init(progress: Int) {
         self.progress = progress
     }
 }
@@ -174,7 +174,7 @@ public struct ChatActionUploadingPhoto: Codable {
     public let progress: Int
 
 
-    public init (progress: Int) {
+    public init(progress: Int) {
         self.progress = progress
     }
 }
@@ -186,7 +186,7 @@ public struct ChatActionUploadingDocument: Codable {
     public let progress: Int
 
 
-    public init (progress: Int) {
+    public init(progress: Int) {
         self.progress = progress
     }
 }
@@ -198,7 +198,7 @@ public struct ChatActionUploadingVideoNote: Codable {
     public let progress: Int
 
 
-    public init (progress: Int) {
+    public init(progress: Int) {
         self.progress = progress
     }
 }

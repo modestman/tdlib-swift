@@ -24,12 +24,12 @@ public struct PinChatMessage: Codable {
     public let onlyForSelf: Bool
 
 
-    public init (
+    public init(
         chatId: Int64,
         disableNotification: Bool,
         messageId: Int64,
-        onlyForSelf: Bool) {
-
+        onlyForSelf: Bool
+    ) {
         self.chatId = chatId
         self.disableNotification = disableNotification
         self.messageId = messageId

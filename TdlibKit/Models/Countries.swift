@@ -15,7 +15,7 @@ public struct Countries: Codable {
     public let countries: [CountryInfo]
 
 
-    public init (countries: [CountryInfo]) {
+    public init(countries: [CountryInfo]) {
         self.countries = countries
     }
 }

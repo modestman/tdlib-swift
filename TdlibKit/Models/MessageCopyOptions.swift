@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Options to be used when a message content is copied without a link to the original message
+/// Options to be used when a message content is copied without a link to the original message. Service messages and messageInvoice can't be copied
 public struct MessageCopyOptions: Codable {
 
     /// New message caption. Ignored if replace_caption is false
@@ -21,11 +21,11 @@ public struct MessageCopyOptions: Codable {
     public let sendCopy: Bool
 
 
-    public init (
+    public init(
         newCaption: FormattedText,
         replaceCaption: Bool,
-        sendCopy: Bool) {
-
+        sendCopy: Bool
+    ) {
         self.newCaption = newCaption
         self.replaceCaption = replaceCaption
         self.sendCopy = sendCopy

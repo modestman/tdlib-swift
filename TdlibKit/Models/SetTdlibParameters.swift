@@ -15,7 +15,7 @@ public struct SetTdlibParameters: Codable {
     public let parameters: TdlibParameters
 
 
-    public init (parameters: TdlibParameters) {
+    public init(parameters: TdlibParameters) {
         self.parameters = parameters
     }
 }

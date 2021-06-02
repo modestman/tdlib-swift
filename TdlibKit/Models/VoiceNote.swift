@@ -24,12 +24,12 @@ public struct VoiceNote: Codable {
     public let waveform: Data
 
 
-    public init (
+    public init(
         duration: Int,
         mimeType: String,
         voice: File,
-        waveform: Data) {
-
+        waveform: Data
+    ) {
         self.duration = duration
         self.mimeType = mimeType
         self.voice = voice

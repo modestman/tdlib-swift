@@ -56,7 +56,7 @@ public struct DiceStickersRegular: Codable {
     public let sticker: Sticker
 
 
-    public init (sticker: Sticker) {
+    public init(sticker: Sticker) {
         self.sticker = sticker
     }
 }
@@ -80,13 +80,13 @@ public struct DiceStickersSlotMachine: Codable {
     public let rightReel: Sticker
 
 
-    public init (
+    public init(
         background: Sticker,
         centerReel: Sticker,
         leftReel: Sticker,
         lever: Sticker,
-        rightReel: Sticker) {
-
+        rightReel: Sticker
+    ) {
         self.background = background
         self.centerReel = centerReel
         self.leftReel = leftReel

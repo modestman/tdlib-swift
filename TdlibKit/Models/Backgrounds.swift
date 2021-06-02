@@ -15,7 +15,7 @@ public struct Backgrounds: Codable {
     public let backgrounds: [Background]
 
 
-    public init (backgrounds: [Background]) {
+    public init(backgrounds: [Background]) {
         self.backgrounds = backgrounds
     }
 }

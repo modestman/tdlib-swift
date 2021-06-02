@@ -12,7 +12,6 @@ import Foundation
 public struct GetTemporaryPasswordState: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

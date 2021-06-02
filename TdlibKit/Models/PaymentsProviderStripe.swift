@@ -24,12 +24,12 @@ public struct PaymentsProviderStripe: Codable {
     public let publishableKey: String
 
 
-    public init (
+    public init(
         needCardholderName: Bool,
         needCountry: Bool,
         needPostalCode: Bool,
-        publishableKey: String) {
-
+        publishableKey: String
+    ) {
         self.needCardholderName = needCardholderName
         self.needCountry = needCountry
         self.needPostalCode = needPostalCode

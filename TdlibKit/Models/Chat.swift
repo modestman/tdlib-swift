@@ -20,7 +20,7 @@ public struct Chat: Codable {
     /// True, if the chat messages can be deleted only for the current user while other users will continue to see the messages
     public let canBeDeletedOnlyForSelf: Bool
 
-    /// True, if the chat can be reported to Telegram moderators through reportChat
+    /// True, if the chat can be reported to Telegram moderators through reportChat or reportChatPhoto
     public let canBeReported: Bool
 
     /// Contains application-specific data associated with the chat. (For example, the chat scroll position or local chat notification settings can be stored here.) Persistent if the message database is used
@@ -53,6 +53,9 @@ public struct Chat: Codable {
     /// Identifier of the last read outgoing message
     public let lastReadOutboxMessageId: Int64
 
+    /// Current message Time To Live setting (self-destruct timer) for the chat; 0 if not defined. TTL is counted from the time message or its content is viewed in secret chats and from the send date in other chats
+    public let messageTtlSetting: Int
+
     /// Notification settings for this chat
     public let notificationSettings: ChatNotificationSettings
 
@@ -80,8 +83,11 @@ public struct Chat: Codable {
     /// Number of unread messages with a mention/reply in the chat
     public let unreadMentionCount: Int
 
+    /// Contains information about voice chat of the chat
+    public let voiceChat: VoiceChat
 
-    public init (
+
+    public init(
         actionBar: ChatActionBar?,
         canBeDeletedForAllUsers: Bool,
         canBeDeletedOnlyForSelf: Bool,
@@ -96,6 +102,7 @@ public struct Chat: Codable {
         lastMessage: Message?,
         lastReadInboxMessageId: Int64,
         lastReadOutboxMessageId: Int64,
+        messageTtlSetting: Int,
         notificationSettings: ChatNotificationSettings,
         permissions: ChatPermissions,
         photo: ChatPhotoInfo?,
@@ -104,8 +111,9 @@ public struct Chat: Codable {
         title: String,
         type: ChatType,
         unreadCount: Int,
-        unreadMentionCount: Int) {
-
+        unreadMentionCount: Int,
+        voiceChat: VoiceChat
+    ) {
         self.actionBar = actionBar
         self.canBeDeletedForAllUsers = canBeDeletedForAllUsers
         self.canBeDeletedOnlyForSelf = canBeDeletedOnlyForSelf
@@ -120,6 +128,7 @@ public struct Chat: Codable {
         self.lastMessage = lastMessage
         self.lastReadInboxMessageId = lastReadInboxMessageId
         self.lastReadOutboxMessageId = lastReadOutboxMessageId
+        self.messageTtlSetting = messageTtlSetting
         self.notificationSettings = notificationSettings
         self.permissions = permissions
         self.photo = photo
@@ -129,6 +138,7 @@ public struct Chat: Codable {
         self.type = type
         self.unreadCount = unreadCount
         self.unreadMentionCount = unreadMentionCount
+        self.voiceChat = voiceChat
     }
 }
 

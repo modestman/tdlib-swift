@@ -15,7 +15,7 @@ public struct ViewTrendingStickerSets: Codable {
     public let stickerSetIds: [TdInt64]
 
 
-    public init (stickerSetIds: [TdInt64]) {
+    public init(stickerSetIds: [TdInt64]) {
         self.stickerSetIds = stickerSetIds
     }
 }

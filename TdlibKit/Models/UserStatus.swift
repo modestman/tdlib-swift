@@ -88,7 +88,7 @@ public struct UserStatusOnline: Codable {
     public let expires: Int
 
 
-    public init (expires: Int) {
+    public init(expires: Int) {
         self.expires = expires
     }
 }
@@ -100,7 +100,7 @@ public struct UserStatusOffline: Codable {
     public let wasOnline: Int
 
 
-    public init (wasOnline: Int) {
+    public init(wasOnline: Int) {
         self.wasOnline = wasOnline
     }
 }

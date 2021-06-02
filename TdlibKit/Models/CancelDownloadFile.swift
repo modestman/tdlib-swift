@@ -18,10 +18,10 @@ public struct CancelDownloadFile: Codable {
     public let onlyIfPending: Bool
 
 
-    public init (
+    public init(
         fileId: Int,
-        onlyIfPending: Bool) {
-
+        onlyIfPending: Bool
+    ) {
         self.fileId = fileId
         self.onlyIfPending = onlyIfPending
     }

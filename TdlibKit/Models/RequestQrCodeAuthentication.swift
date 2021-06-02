@@ -15,7 +15,7 @@ public struct RequestQrCodeAuthentication: Codable {
     public let otherUserIds: [Int]
 
 
-    public init (otherUserIds: [Int]) {
+    public init(otherUserIds: [Int]) {
         self.otherUserIds = otherUserIds
     }
 }

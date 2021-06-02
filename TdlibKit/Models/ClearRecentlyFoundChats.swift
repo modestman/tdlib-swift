@@ -12,7 +12,6 @@ import Foundation
 public struct ClearRecentlyFoundChats: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

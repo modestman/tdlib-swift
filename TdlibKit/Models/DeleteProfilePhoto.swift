@@ -15,7 +15,7 @@ public struct DeleteProfilePhoto: Codable {
     public let profilePhotoId: TdInt64
 
 
-    public init (profilePhotoId: TdInt64) {
+    public init(profilePhotoId: TdInt64) {
         self.profilePhotoId = profilePhotoId
     }
 }

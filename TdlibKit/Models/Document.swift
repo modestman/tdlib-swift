@@ -27,13 +27,13 @@ public struct Document: Codable {
     public let thumbnail: Thumbnail?
 
 
-    public init (
+    public init(
         document: File,
         fileName: String,
         mimeType: String,
         minithumbnail: Minithumbnail?,
-        thumbnail: Thumbnail?) {
-
+        thumbnail: Thumbnail?
+    ) {
         self.document = document
         self.fileName = fileName
         self.mimeType = mimeType

@@ -21,11 +21,11 @@ public struct ChatAdministrator: Codable {
     public let userId: Int
 
 
-    public init (
+    public init(
         customTitle: String,
         isOwner: Bool,
-        userId: Int) {
-
+        userId: Int
+    ) {
         self.customTitle = customTitle
         self.isOwner = isOwner
         self.userId = userId

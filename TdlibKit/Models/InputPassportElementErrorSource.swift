@@ -126,7 +126,7 @@ public struct InputPassportElementErrorSourceUnspecified: Codable {
     public let elementHash: Data
 
 
-    public init (elementHash: Data) {
+    public init(elementHash: Data) {
         self.elementHash = elementHash
     }
 }
@@ -141,10 +141,10 @@ public struct InputPassportElementErrorSourceDataField: Codable {
     public let fieldName: String
 
 
-    public init (
+    public init(
         dataHash: Data,
-        fieldName: String) {
-
+        fieldName: String
+    ) {
         self.dataHash = dataHash
         self.fieldName = fieldName
     }
@@ -157,7 +157,7 @@ public struct InputPassportElementErrorSourceFrontSide: Codable {
     public let fileHash: Data
 
 
-    public init (fileHash: Data) {
+    public init(fileHash: Data) {
         self.fileHash = fileHash
     }
 }
@@ -169,7 +169,7 @@ public struct InputPassportElementErrorSourceReverseSide: Codable {
     public let fileHash: Data
 
 
-    public init (fileHash: Data) {
+    public init(fileHash: Data) {
         self.fileHash = fileHash
     }
 }
@@ -181,7 +181,7 @@ public struct InputPassportElementErrorSourceSelfie: Codable {
     public let fileHash: Data
 
 
-    public init (fileHash: Data) {
+    public init(fileHash: Data) {
         self.fileHash = fileHash
     }
 }
@@ -193,7 +193,7 @@ public struct InputPassportElementErrorSourceTranslationFile: Codable {
     public let fileHash: Data
 
 
-    public init (fileHash: Data) {
+    public init(fileHash: Data) {
         self.fileHash = fileHash
     }
 }
@@ -205,7 +205,7 @@ public struct InputPassportElementErrorSourceTranslationFiles: Codable {
     public let fileHashes: [Data]
 
 
-    public init (fileHashes: [Data]) {
+    public init(fileHashes: [Data]) {
         self.fileHashes = fileHashes
     }
 }
@@ -217,7 +217,7 @@ public struct InputPassportElementErrorSourceFile: Codable {
     public let fileHash: Data
 
 
-    public init (fileHash: Data) {
+    public init(fileHash: Data) {
         self.fileHash = fileHash
     }
 }
@@ -229,7 +229,7 @@ public struct InputPassportElementErrorSourceFiles: Codable {
     public let fileHashes: [Data]
 
 
-    public init (fileHashes: [Data]) {
+    public init(fileHashes: [Data]) {
         self.fileHashes = fileHashes
     }
 }

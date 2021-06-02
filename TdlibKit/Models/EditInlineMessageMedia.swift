@@ -14,18 +14,18 @@ public struct EditInlineMessageMedia: Codable {
     /// Inline message identifier
     public let inlineMessageId: String
 
-    /// New content of the message. Must be one of the following types: InputMessageAnimation, InputMessageAudio, InputMessageDocument, InputMessagePhoto or InputMessageVideo
+    /// New content of the message. Must be one of the following types: inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto or inputMessageVideo
     public let inputMessageContent: InputMessageContent
 
     /// The new message reply markup; for bots only
     public let replyMarkup: ReplyMarkup
 
 
-    public init (
+    public init(
         inlineMessageId: String,
         inputMessageContent: InputMessageContent,
-        replyMarkup: ReplyMarkup) {
-
+        replyMarkup: ReplyMarkup
+    ) {
         self.inlineMessageId = inlineMessageId
         self.inputMessageContent = inputMessageContent
         self.replyMarkup = replyMarkup

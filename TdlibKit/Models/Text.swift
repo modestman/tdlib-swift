@@ -15,7 +15,7 @@ public struct Text: Codable {
     public let text: String
 
 
-    public init (text: String) {
+    public init(text: String) {
         self.text = text
     }
 }

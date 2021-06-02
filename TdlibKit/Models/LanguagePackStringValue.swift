@@ -64,7 +64,7 @@ public struct LanguagePackStringValueOrdinary: Codable {
     public let value: String
 
 
-    public init (value: String) {
+    public init(value: String) {
         self.value = value
     }
 }
@@ -91,14 +91,14 @@ public struct LanguagePackStringValuePluralized: Codable {
     public let zeroValue: String
 
 
-    public init (
+    public init(
         fewValue: String,
         manyValue: String,
         oneValue: String,
         otherValue: String,
         twoValue: String,
-        zeroValue: String) {
-
+        zeroValue: String
+    ) {
         self.fewValue = fewValue
         self.manyValue = manyValue
         self.oneValue = oneValue

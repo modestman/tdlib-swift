@@ -15,7 +15,7 @@ public struct CancelUploadFile: Codable {
     public let fileId: Int
 
 
-    public init (fileId: Int) {
+    public init(fileId: Int) {
         self.fileId = fileId
     }
 }

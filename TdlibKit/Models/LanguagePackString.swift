@@ -18,10 +18,10 @@ public struct LanguagePackString: Codable {
     public let value: LanguagePackStringValue
 
 
-    public init (
+    public init(
         key: String,
-        value: LanguagePackStringValue) {
-
+        value: LanguagePackStringValue
+    ) {
         self.key = key
         self.value = value
     }

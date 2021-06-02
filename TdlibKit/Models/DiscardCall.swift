@@ -27,13 +27,13 @@ public struct DiscardCall: Codable {
     public let isVideo: Bool
 
 
-    public init (
+    public init(
         callId: Int,
         connectionId: TdInt64,
         duration: Int,
         isDisconnected: Bool,
-        isVideo: Bool) {
-
+        isVideo: Bool
+    ) {
         self.callId = callId
         self.connectionId = connectionId
         self.duration = duration

@@ -11,7 +11,7 @@ import Foundation
 /// Searches for messages in all chats except secret chats. Returns the results in reverse chronological order (i.e., in order of decreasing (date, chat_id, message_id)). For optimal performance the number of returned messages is chosen by the library
 public struct SearchMessages: Codable {
 
-    /// Chat list in which to search messages; pass null to search in all chats regardless of their chat list
+    /// Chat list in which to search messages; pass null to search in all chats regardless of their chat list. Only Main and Archive chat lists are supported
     public let chatList: ChatList
 
     /// Filter for message content in the search results; searchMessagesFilterCall, searchMessagesFilterMissedCall, searchMessagesFilterMention, searchMessagesFilterUnreadMention, searchMessagesFilterFailedToSend and searchMessagesFilterPinned are unsupported in this function
@@ -39,7 +39,7 @@ public struct SearchMessages: Codable {
     public let query: String
 
 
-    public init (
+    public init(
         chatList: ChatList,
         filter: SearchMessagesFilter,
         limit: Int,
@@ -48,8 +48,8 @@ public struct SearchMessages: Codable {
         offsetChatId: Int64,
         offsetDate: Int,
         offsetMessageId: Int64,
-        query: String) {
-
+        query: String
+    ) {
         self.chatList = chatList
         self.filter = filter
         self.limit = limit

@@ -18,10 +18,10 @@ public struct CreateSupergroupChat: Codable {
     public let supergroupId: Int
 
 
-    public init (
+    public init(
         force: Bool,
-        supergroupId: Int) {
-
+        supergroupId: Int
+    ) {
         self.force = force
         self.supergroupId = supergroupId
     }

@@ -18,10 +18,10 @@ public struct AddContact: Codable {
     public let sharePhoneNumber: Bool
 
 
-    public init (
+    public init(
         contact: Contact,
-        sharePhoneNumber: Bool) {
-
+        sharePhoneNumber: Bool
+    ) {
         self.contact = contact
         self.sharePhoneNumber = sharePhoneNumber
     }

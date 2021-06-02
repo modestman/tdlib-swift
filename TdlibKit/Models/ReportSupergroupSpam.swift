@@ -21,11 +21,11 @@ public struct ReportSupergroupSpam: Codable {
     public let userId: Int
 
 
-    public init (
+    public init(
         messageIds: [Int64],
         supergroupId: Int,
-        userId: Int) {
-
+        userId: Int
+    ) {
         self.messageIds = messageIds
         self.supergroupId = supergroupId
         self.userId = userId

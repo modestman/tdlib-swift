@@ -15,7 +15,7 @@ public struct SetLogVerbosityLevel: Codable {
     public let newVerbosityLevel: Int
 
 
-    public init (newVerbosityLevel: Int) {
+    public init(newVerbosityLevel: Int) {
         self.newVerbosityLevel = newVerbosityLevel
     }
 }

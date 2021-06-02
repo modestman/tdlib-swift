@@ -36,7 +36,7 @@ public struct ChatInviteLinkInfo: Codable {
     public let type: ChatType
 
 
-    public init (
+    public init(
         accessibleFor: Int,
         chatId: Int64,
         isPublic: Bool,
@@ -44,8 +44,8 @@ public struct ChatInviteLinkInfo: Codable {
         memberUserIds: [Int],
         photo: ChatPhotoInfo?,
         title: String,
-        type: ChatType) {
-
+        type: ChatType
+    ) {
         self.accessibleFor = accessibleFor
         self.chatId = chatId
         self.isPublic = isPublic

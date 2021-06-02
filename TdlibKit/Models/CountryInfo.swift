@@ -27,13 +27,13 @@ public struct CountryInfo: Codable {
     public let name: String
 
 
-    public init (
+    public init(
         callingCodes: [String],
         countryCode: String,
         englishName: String,
         isHidden: Bool,
-        name: String) {
-
+        name: String
+    ) {
         self.callingCodes = callingCodes
         self.countryCode = countryCode
         self.englishName = englishName

@@ -62,11 +62,11 @@ public struct InputStickerStatic: Codable {
     public let sticker: InputFile
 
 
-    public init (
+    public init(
         emojis: String,
         maskPosition: MaskPosition?,
-        sticker: InputFile) {
-
+        sticker: InputFile
+    ) {
         self.emojis = emojis
         self.maskPosition = maskPosition
         self.sticker = sticker
@@ -83,10 +83,10 @@ public struct InputStickerAnimated: Codable {
     public let sticker: InputFile
 
 
-    public init (
+    public init(
         emojis: String,
-        sticker: InputFile) {
-
+        sticker: InputFile
+    ) {
         self.emojis = emojis
         self.sticker = sticker
     }

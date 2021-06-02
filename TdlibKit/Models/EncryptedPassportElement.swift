@@ -39,7 +39,7 @@ public struct EncryptedPassportElement: Codable {
     public let value: String
 
 
-    public init (
+    public init(
         data: Data,
         files: [DatedFile],
         frontSide: DatedFile,
@@ -48,8 +48,8 @@ public struct EncryptedPassportElement: Codable {
         selfie: DatedFile?,
         translation: [DatedFile],
         type: PassportElementType,
-        value: String) {
-
+        value: String
+    ) {
         self.data = data
         self.files = files
         self.frontSide = frontSide

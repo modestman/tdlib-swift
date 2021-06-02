@@ -18,10 +18,10 @@ public struct SetRecoveryEmailAddress: Codable {
     public let password: String
 
 
-    public init (
+    public init(
         newRecoveryEmailAddress: String,
-        password: String) {
-
+        password: String
+    ) {
         self.newRecoveryEmailAddress = newRecoveryEmailAddress
         self.password = password
     }

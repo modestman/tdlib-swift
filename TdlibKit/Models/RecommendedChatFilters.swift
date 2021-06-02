@@ -15,7 +15,7 @@ public struct RecommendedChatFilters: Codable {
     public let chatFilters: [RecommendedChatFilter]
 
 
-    public init (chatFilters: [RecommendedChatFilter]) {
+    public init(chatFilters: [RecommendedChatFilter]) {
         self.chatFilters = chatFilters
     }
 }

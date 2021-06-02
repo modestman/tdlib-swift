@@ -18,10 +18,10 @@ public struct Error: Codable, Swift.Error {
     public let message: String
 
 
-    public init (
+    public init(
         code: Int,
-        message: String) {
-
+        message: String
+    ) {
         self.code = code
         self.message = message
     }

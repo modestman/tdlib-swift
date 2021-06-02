@@ -15,7 +15,7 @@ public struct GetInstalledStickerSets: Codable {
     public let isMasks: Bool
 
 
-    public init (isMasks: Bool) {
+    public init(isMasks: Bool) {
         self.isMasks = isMasks
     }
 }

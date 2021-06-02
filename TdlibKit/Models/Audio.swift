@@ -36,7 +36,7 @@ public struct Audio: Codable {
     public let title: String
 
 
-    public init (
+    public init(
         albumCoverMinithumbnail: Minithumbnail?,
         albumCoverThumbnail: Thumbnail?,
         audio: File,
@@ -44,8 +44,8 @@ public struct Audio: Codable {
         fileName: String,
         mimeType: String,
         performer: String,
-        title: String) {
-
+        title: String
+    ) {
         self.albumCoverMinithumbnail = albumCoverMinithumbnail
         self.albumCoverThumbnail = albumCoverThumbnail
         self.audio = audio

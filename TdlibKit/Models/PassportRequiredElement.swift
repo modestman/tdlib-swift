@@ -15,7 +15,7 @@ public struct PassportRequiredElement: Codable {
     public let suitableElements: [PassportSuitableElement]
 
 
-    public init (suitableElements: [PassportSuitableElement]) {
+    public init(suitableElements: [PassportSuitableElement]) {
         self.suitableElements = suitableElements
     }
 }

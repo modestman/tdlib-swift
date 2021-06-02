@@ -15,7 +15,7 @@ public struct ProcessPushNotification: Codable {
     public let payload: String
 
 
-    public init (payload: String) {
+    public init(payload: String) {
         self.payload = payload
     }
 }

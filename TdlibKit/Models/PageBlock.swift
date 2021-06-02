@@ -324,7 +324,7 @@ public struct PageBlockTitle: Codable {
     public let title: RichText
 
 
-    public init (title: RichText) {
+    public init(title: RichText) {
         self.title = title
     }
 }
@@ -336,7 +336,7 @@ public struct PageBlockSubtitle: Codable {
     public let subtitle: RichText
 
 
-    public init (subtitle: RichText) {
+    public init(subtitle: RichText) {
         self.subtitle = subtitle
     }
 }
@@ -351,10 +351,10 @@ public struct PageBlockAuthorDate: Codable {
     public let publishDate: Int
 
 
-    public init (
+    public init(
         author: RichText,
-        publishDate: Int) {
-
+        publishDate: Int
+    ) {
         self.author = author
         self.publishDate = publishDate
     }
@@ -367,7 +367,7 @@ public struct PageBlockHeader: Codable {
     public let header: RichText
 
 
-    public init (header: RichText) {
+    public init(header: RichText) {
         self.header = header
     }
 }
@@ -379,7 +379,7 @@ public struct PageBlockSubheader: Codable {
     public let subheader: RichText
 
 
-    public init (subheader: RichText) {
+    public init(subheader: RichText) {
         self.subheader = subheader
     }
 }
@@ -391,7 +391,7 @@ public struct PageBlockKicker: Codable {
     public let kicker: RichText
 
 
-    public init (kicker: RichText) {
+    public init(kicker: RichText) {
         self.kicker = kicker
     }
 }
@@ -403,7 +403,7 @@ public struct PageBlockParagraph: Codable {
     public let text: RichText
 
 
-    public init (text: RichText) {
+    public init(text: RichText) {
         self.text = text
     }
 }
@@ -418,10 +418,10 @@ public struct PageBlockPreformatted: Codable {
     public let text: RichText
 
 
-    public init (
+    public init(
         language: String,
-        text: RichText) {
-
+        text: RichText
+    ) {
         self.language = language
         self.text = text
     }
@@ -434,7 +434,7 @@ public struct PageBlockFooter: Codable {
     public let footer: RichText
 
 
-    public init (footer: RichText) {
+    public init(footer: RichText) {
         self.footer = footer
     }
 }
@@ -446,7 +446,7 @@ public struct PageBlockAnchor: Codable {
     public let name: String
 
 
-    public init (name: String) {
+    public init(name: String) {
         self.name = name
     }
 }
@@ -458,7 +458,7 @@ public struct PageBlockList: Codable {
     public let items: [PageBlockListItem]
 
 
-    public init (items: [PageBlockListItem]) {
+    public init(items: [PageBlockListItem]) {
         self.items = items
     }
 }
@@ -473,10 +473,10 @@ public struct PageBlockBlockQuote: Codable {
     public let text: RichText
 
 
-    public init (
+    public init(
         credit: RichText,
-        text: RichText) {
-
+        text: RichText
+    ) {
         self.credit = credit
         self.text = text
     }
@@ -492,10 +492,10 @@ public struct PageBlockPullQuote: Codable {
     public let text: RichText
 
 
-    public init (
+    public init(
         credit: RichText,
-        text: RichText) {
-
+        text: RichText
+    ) {
         self.credit = credit
         self.text = text
     }
@@ -514,11 +514,11 @@ public struct PageBlockAnimation: Codable {
     public let needAutoplay: Bool
 
 
-    public init (
+    public init(
         animation: Animation?,
         caption: PageBlockCaption,
-        needAutoplay: Bool) {
-
+        needAutoplay: Bool
+    ) {
         self.animation = animation
         self.caption = caption
         self.needAutoplay = needAutoplay
@@ -535,10 +535,10 @@ public struct PageBlockAudio: Codable {
     public let caption: PageBlockCaption
 
 
-    public init (
+    public init(
         audio: Audio?,
-        caption: PageBlockCaption) {
-
+        caption: PageBlockCaption
+    ) {
         self.audio = audio
         self.caption = caption
     }
@@ -557,11 +557,11 @@ public struct PageBlockPhoto: Codable {
     public let url: String
 
 
-    public init (
+    public init(
         caption: PageBlockCaption,
         photo: Photo?,
-        url: String) {
-
+        url: String
+    ) {
         self.caption = caption
         self.photo = photo
         self.url = url
@@ -584,12 +584,12 @@ public struct PageBlockVideo: Codable {
     public let video: Video?
 
 
-    public init (
+    public init(
         caption: PageBlockCaption,
         isLooped: Bool,
         needAutoplay: Bool,
-        video: Video?) {
-
+        video: Video?
+    ) {
         self.caption = caption
         self.isLooped = isLooped
         self.needAutoplay = needAutoplay
@@ -607,10 +607,10 @@ public struct PageBlockVoiceNote: Codable {
     public let voiceNote: VoiceNote?
 
 
-    public init (
+    public init(
         caption: PageBlockCaption,
-        voiceNote: VoiceNote?) {
-
+        voiceNote: VoiceNote?
+    ) {
         self.caption = caption
         self.voiceNote = voiceNote
     }
@@ -623,7 +623,7 @@ public struct PageBlockCover: Codable {
     public let cover: PageBlock
 
 
-    public init (cover: PageBlock) {
+    public init(cover: PageBlock) {
         self.cover = cover
     }
 }
@@ -656,7 +656,7 @@ public struct PageBlockEmbedded: Codable {
     public let width: Int
 
 
-    public init (
+    public init(
         allowScrolling: Bool,
         caption: PageBlockCaption,
         height: Int,
@@ -664,8 +664,8 @@ public struct PageBlockEmbedded: Codable {
         isFullWidth: Bool,
         posterPhoto: Photo?,
         url: String,
-        width: Int) {
-
+        width: Int
+    ) {
         self.allowScrolling = allowScrolling
         self.caption = caption
         self.height = height
@@ -699,14 +699,14 @@ public struct PageBlockEmbeddedPost: Codable {
     public let url: String
 
 
-    public init (
+    public init(
         author: String,
         authorPhoto: Photo?,
         caption: PageBlockCaption,
         date: Int,
         pageBlocks: [PageBlock],
-        url: String) {
-
+        url: String
+    ) {
         self.author = author
         self.authorPhoto = authorPhoto
         self.caption = caption
@@ -726,10 +726,10 @@ public struct PageBlockCollage: Codable {
     public let pageBlocks: [PageBlock]
 
 
-    public init (
+    public init(
         caption: PageBlockCaption,
-        pageBlocks: [PageBlock]) {
-
+        pageBlocks: [PageBlock]
+    ) {
         self.caption = caption
         self.pageBlocks = pageBlocks
     }
@@ -745,10 +745,10 @@ public struct PageBlockSlideshow: Codable {
     public let pageBlocks: [PageBlock]
 
 
-    public init (
+    public init(
         caption: PageBlockCaption,
-        pageBlocks: [PageBlock]) {
-
+        pageBlocks: [PageBlock]
+    ) {
         self.caption = caption
         self.pageBlocks = pageBlocks
     }
@@ -767,11 +767,11 @@ public struct PageBlockChatLink: Codable {
     public let username: String
 
 
-    public init (
+    public init(
         photo: ChatPhotoInfo?,
         title: String,
-        username: String) {
-
+        username: String
+    ) {
         self.photo = photo
         self.title = title
         self.username = username
@@ -794,12 +794,12 @@ public struct PageBlockTable: Codable {
     public let isStriped: Bool
 
 
-    public init (
+    public init(
         caption: RichText,
         cells: [[PageBlockTableCell]],
         isBordered: Bool,
-        isStriped: Bool) {
-
+        isStriped: Bool
+    ) {
         self.caption = caption
         self.cells = cells
         self.isBordered = isBordered
@@ -820,11 +820,11 @@ public struct PageBlockDetails: Codable {
     public let pageBlocks: [PageBlock]
 
 
-    public init (
+    public init(
         header: RichText,
         isOpen: Bool,
-        pageBlocks: [PageBlock]) {
-
+        pageBlocks: [PageBlock]
+    ) {
         self.header = header
         self.isOpen = isOpen
         self.pageBlocks = pageBlocks
@@ -841,10 +841,10 @@ public struct PageBlockRelatedArticles: Codable {
     public let header: RichText
 
 
-    public init (
+    public init(
         articles: [PageBlockRelatedArticle],
-        header: RichText) {
-
+        header: RichText
+    ) {
         self.articles = articles
         self.header = header
     }
@@ -869,13 +869,13 @@ public struct PageBlockMap: Codable {
     public let zoom: Int
 
 
-    public init (
+    public init(
         caption: PageBlockCaption,
         height: Int,
         location: Location,
         width: Int,
-        zoom: Int) {
-
+        zoom: Int
+    ) {
         self.caption = caption
         self.height = height
         self.location = location

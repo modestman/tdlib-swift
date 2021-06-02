@@ -18,10 +18,10 @@ public struct EditInlineMessageReplyMarkup: Codable {
     public let replyMarkup: ReplyMarkup
 
 
-    public init (
+    public init(
         inlineMessageId: String,
-        replyMarkup: ReplyMarkup) {
-
+        replyMarkup: ReplyMarkup
+    ) {
         self.inlineMessageId = inlineMessageId
         self.replyMarkup = replyMarkup
     }

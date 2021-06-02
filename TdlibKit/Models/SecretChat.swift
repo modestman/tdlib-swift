@@ -26,28 +26,23 @@ public struct SecretChat: Codable {
     /// State of the secret chat
     public let state: SecretChatState
 
-    /// Current message Time To Live setting (self-destruct timer) for the chat, in seconds
-    public let ttl: Int
-
     /// Identifier of the chat partner
     public let userId: Int
 
 
-    public init (
+    public init(
         id: Int,
         isOutbound: Bool,
         keyHash: Data,
         layer: Int,
         state: SecretChatState,
-        ttl: Int,
-        userId: Int) {
-
+        userId: Int
+    ) {
         self.id = id
         self.isOutbound = isOutbound
         self.keyHash = keyHash
         self.layer = layer
         self.state = state
-        self.ttl = ttl
         self.userId = userId
     }
 }

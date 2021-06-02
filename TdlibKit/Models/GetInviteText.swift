@@ -12,7 +12,6 @@ import Foundation
 public struct GetInviteText: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

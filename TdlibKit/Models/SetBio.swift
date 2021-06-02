@@ -15,7 +15,7 @@ public struct SetBio: Codable {
     public let bio: String
 
 
-    public init (bio: String) {
+    public init(bio: String) {
         self.bio = bio
     }
 }

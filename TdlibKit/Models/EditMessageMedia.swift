@@ -14,7 +14,7 @@ public struct EditMessageMedia: Codable {
     /// The chat the message belongs to
     public let chatId: Int64
 
-    /// New content of the message. Must be one of the following types: InputMessageAnimation, InputMessageAudio, InputMessageDocument, InputMessagePhoto or InputMessageVideo
+    /// New content of the message. Must be one of the following types: inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto or inputMessageVideo
     public let inputMessageContent: InputMessageContent
 
     /// Identifier of the message
@@ -24,12 +24,12 @@ public struct EditMessageMedia: Codable {
     public let replyMarkup: ReplyMarkup
 
 
-    public init (
+    public init(
         chatId: Int64,
         inputMessageContent: InputMessageContent,
         messageId: Int64,
-        replyMarkup: ReplyMarkup) {
-
+        replyMarkup: ReplyMarkup
+    ) {
         self.chatId = chatId
         self.inputMessageContent = inputMessageContent
         self.messageId = messageId

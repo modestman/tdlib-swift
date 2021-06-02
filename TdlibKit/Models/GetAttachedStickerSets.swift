@@ -15,7 +15,7 @@ public struct GetAttachedStickerSets: Codable {
     public let fileId: Int
 
 
-    public init (fileId: Int) {
+    public init(fileId: Int) {
         self.fileId = fileId
     }
 }

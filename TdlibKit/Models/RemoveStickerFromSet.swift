@@ -15,7 +15,7 @@ public struct RemoveStickerFromSet: Codable {
     public let sticker: InputFile
 
 
-    public init (sticker: InputFile) {
+    public init(sticker: InputFile) {
         self.sticker = sticker
     }
 }

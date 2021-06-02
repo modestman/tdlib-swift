@@ -24,12 +24,12 @@ public struct Notification: Codable {
     public let type: NotificationType
 
 
-    public init (
+    public init(
         date: Int,
         id: Int,
         isSilent: Bool,
-        type: NotificationType) {
-
+        type: NotificationType
+    ) {
         self.date = date
         self.id = id
         self.isSilent = isSilent

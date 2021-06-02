@@ -15,7 +15,7 @@ public struct DisconnectWebsite: Codable {
     public let websiteId: TdInt64
 
 
-    public init (websiteId: TdInt64) {
+    public init(websiteId: TdInt64) {
         self.websiteId = websiteId
     }
 }

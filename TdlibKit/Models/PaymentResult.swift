@@ -18,10 +18,10 @@ public struct PaymentResult: Codable {
     public let verificationUrl: String
 
 
-    public init (
+    public init(
         success: Bool,
-        verificationUrl: String) {
-
+        verificationUrl: String
+    ) {
         self.success = success
         self.verificationUrl = verificationUrl
     }

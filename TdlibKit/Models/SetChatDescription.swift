@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Changes information about a chat. Available for basic groups, supergroups, and channels. Requires can_change_info rights
+/// Changes information about a chat. Available for basic groups, supergroups, and channels. Requires can_change_info administrator right
 public struct SetChatDescription: Codable {
 
     /// Identifier of the chat
@@ -17,10 +17,10 @@ public struct SetChatDescription: Codable {
     public let description: String
 
 
-    public init (
+    public init(
         chatId: Int64,
-        description: String) {
-
+        description: String
+    ) {
         self.chatId = chatId
         self.description = description
     }

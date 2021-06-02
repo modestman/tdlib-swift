@@ -15,7 +15,7 @@ public struct PushReceiverId: Codable {
     public let id: TdInt64
 
 
-    public init (id: TdInt64) {
+    public init(id: TdInt64) {
         self.id = id
     }
 }

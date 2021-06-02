@@ -15,7 +15,7 @@ public struct GetLogTagVerbosityLevel: Codable {
     public let tag: String
 
 
-    public init (tag: String) {
+    public init(tag: String) {
         self.tag = tag
     }
 }

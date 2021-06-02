@@ -18,10 +18,10 @@ public struct RemoveNotification: Codable {
     public let notificationId: Int
 
 
-    public init (
+    public init(
         notificationGroupId: Int,
-        notificationId: Int) {
-
+        notificationId: Int
+    ) {
         self.notificationGroupId = notificationGroupId
         self.notificationId = notificationId
     }

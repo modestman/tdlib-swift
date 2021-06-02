@@ -18,10 +18,10 @@ public struct StickerSets: Codable {
     public let totalCount: Int
 
 
-    public init (
+    public init(
         sets: [StickerSetInfo],
-        totalCount: Int) {
-
+        totalCount: Int
+    ) {
         self.sets = sets
         self.totalCount = totalCount
     }

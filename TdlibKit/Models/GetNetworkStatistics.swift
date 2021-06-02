@@ -15,7 +15,7 @@ public struct GetNetworkStatistics: Codable {
     public let onlyCurrent: Bool
 
 
-    public init (onlyCurrent: Bool) {
+    public init(onlyCurrent: Bool) {
         self.onlyCurrent = onlyCurrent
     }
 }

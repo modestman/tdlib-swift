@@ -18,10 +18,10 @@ public struct SetLogTagVerbosityLevel: Codable {
     public let tag: String
 
 
-    public init (
+    public init(
         newVerbosityLevel: Int,
-        tag: String) {
-
+        tag: String
+    ) {
         self.newVerbosityLevel = newVerbosityLevel
         self.tag = tag
     }

@@ -108,7 +108,7 @@ public struct UserPrivacySettingRuleAllowUsers: Codable {
     public let userIds: [Int]
 
 
-    public init (userIds: [Int]) {
+    public init(userIds: [Int]) {
         self.userIds = userIds
     }
 }
@@ -120,7 +120,7 @@ public struct UserPrivacySettingRuleAllowChatMembers: Codable {
     public let chatIds: [Int64]
 
 
-    public init (chatIds: [Int64]) {
+    public init(chatIds: [Int64]) {
         self.chatIds = chatIds
     }
 }
@@ -132,7 +132,7 @@ public struct UserPrivacySettingRuleRestrictUsers: Codable {
     public let userIds: [Int]
 
 
-    public init (userIds: [Int]) {
+    public init(userIds: [Int]) {
         self.userIds = userIds
     }
 }
@@ -144,7 +144,7 @@ public struct UserPrivacySettingRuleRestrictChatMembers: Codable {
     public let chatIds: [Int64]
 
 
-    public init (chatIds: [Int64]) {
+    public init(chatIds: [Int64]) {
         self.chatIds = chatIds
     }
 }

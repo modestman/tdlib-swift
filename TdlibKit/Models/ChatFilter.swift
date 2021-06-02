@@ -51,7 +51,7 @@ public struct ChatFilter: Codable {
     public let title: String
 
 
-    public init (
+    public init(
         excludeArchived: Bool,
         excludeMuted: Bool,
         excludeRead: Bool,
@@ -64,8 +64,8 @@ public struct ChatFilter: Codable {
         includeNonContacts: Bool,
         includedChatIds: [Int64],
         pinnedChatIds: [Int64],
-        title: String) {
-
+        title: String
+    ) {
         self.excludeArchived = excludeArchived
         self.excludeMuted = excludeMuted
         self.excludeRead = excludeRead

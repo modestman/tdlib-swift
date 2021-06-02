@@ -17,10 +17,10 @@ public struct BotCommand: Codable {
     public let description: String
 
 
-    public init (
+    public init(
         command: String,
-        description: String) {
-
+        description: String
+    ) {
         self.command = command
         self.description = description
     }

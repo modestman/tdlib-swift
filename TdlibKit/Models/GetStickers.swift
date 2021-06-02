@@ -18,10 +18,10 @@ public struct GetStickers: Codable {
     public let limit: Int
 
 
-    public init (
+    public init(
         emoji: String,
-        limit: Int) {
-
+        limit: Int
+    ) {
         self.emoji = emoji
         self.limit = limit
     }

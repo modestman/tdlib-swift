@@ -18,10 +18,10 @@ public struct JsonObjectMember: Codable {
     public let value: JsonValue
 
 
-    public init (
+    public init(
         key: String,
-        value: JsonValue) {
-
+        value: JsonValue
+    ) {
         self.key = key
         self.value = value
     }

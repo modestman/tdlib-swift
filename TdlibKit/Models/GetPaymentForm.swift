@@ -17,13 +17,18 @@ public struct GetPaymentForm: Codable {
     /// Message identifier
     public let messageId: Int64
 
+    /// Preferred payment form theme
+    public let theme: PaymentFormTheme
 
-    public init (
+
+    public init(
         chatId: Int64,
-        messageId: Int64) {
-
+        messageId: Int64,
+        theme: PaymentFormTheme
+    ) {
         self.chatId = chatId
         self.messageId = messageId
+        self.theme = theme
     }
 }
 

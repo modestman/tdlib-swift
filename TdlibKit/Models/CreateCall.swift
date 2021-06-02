@@ -21,11 +21,11 @@ public struct CreateCall: Codable {
     public let userId: Int
 
 
-    public init (
+    public init(
         isVideo: Bool,
         `protocol`: CallProtocol,
-        userId: Int) {
-
+        userId: Int
+    ) {
         self.isVideo = isVideo
         self.`protocol` = `protocol`
         self.userId = userId

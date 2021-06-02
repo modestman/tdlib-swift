@@ -14,18 +14,18 @@ public struct EditInlineMessageText: Codable {
     /// Inline message identifier
     public let inlineMessageId: String
 
-    /// New text content of the message. Should be of type InputMessageText
+    /// New text content of the message. Should be of type inputMessageText
     public let inputMessageContent: InputMessageContent
 
     /// The new message reply markup
     public let replyMarkup: ReplyMarkup
 
 
-    public init (
+    public init(
         inlineMessageId: String,
         inputMessageContent: InputMessageContent,
-        replyMarkup: ReplyMarkup) {
-
+        replyMarkup: ReplyMarkup
+    ) {
         self.inlineMessageId = inlineMessageId
         self.inputMessageContent = inputMessageContent
         self.replyMarkup = replyMarkup

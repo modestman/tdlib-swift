@@ -15,7 +15,7 @@ public struct DeletePassportElement: Codable {
     public let type: PassportElementType
 
 
-    public init (type: PassportElementType) {
+    public init(type: PassportElementType) {
         self.type = type
     }
 }

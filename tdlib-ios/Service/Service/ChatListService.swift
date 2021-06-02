@@ -9,7 +9,7 @@
 import Foundation
 import TdlibKit
 
-protocol ChatListServiceDelegate: class {
+protocol ChatListServiceDelegate: AnyObject {
     func chatListUpdated()
 }
 

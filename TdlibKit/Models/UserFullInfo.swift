@@ -42,7 +42,7 @@ public struct UserFullInfo: Codable {
     public let supportsVideoCalls: Bool
 
 
-    public init (
+    public init(
         bio: String,
         botInfo: BotInfo?,
         canBeCalled: Bool,
@@ -52,8 +52,8 @@ public struct UserFullInfo: Codable {
         needPhoneNumberPrivacyException: Bool,
         photo: ChatPhoto?,
         shareText: String,
-        supportsVideoCalls: Bool) {
-
+        supportsVideoCalls: Bool
+    ) {
         self.bio = bio
         self.botInfo = botInfo
         self.canBeCalled = canBeCalled

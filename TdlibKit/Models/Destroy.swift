@@ -12,7 +12,6 @@ import Foundation
 public struct Destroy: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

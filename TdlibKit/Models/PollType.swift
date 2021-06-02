@@ -56,7 +56,7 @@ public struct PollTypeRegular: Codable {
     public let allowMultipleAnswers: Bool
 
 
-    public init (allowMultipleAnswers: Bool) {
+    public init(allowMultipleAnswers: Bool) {
         self.allowMultipleAnswers = allowMultipleAnswers
     }
 }
@@ -67,14 +67,14 @@ public struct PollTypeQuiz: Codable {
     /// 0-based identifier of the correct answer option; -1 for a yet unanswered poll
     public let correctOptionId: Int
 
-    /// Text that is shown when the user chooses an incorrect answer or taps on the lamp icon, 0-200 characters with at most 2 line feeds; empty for a yet unanswered poll
+    /// Text that is shown when the user chooses an incorrect answer or taps on the lamp icon; 0-200 characters with at most 2 line feeds; empty for a yet unanswered poll
     public let explanation: FormattedText
 
 
-    public init (
+    public init(
         correctOptionId: Int,
-        explanation: FormattedText) {
-
+        explanation: FormattedText
+    ) {
         self.correctOptionId = correctOptionId
         self.explanation = explanation
     }

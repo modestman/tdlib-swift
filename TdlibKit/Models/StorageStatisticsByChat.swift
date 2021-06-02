@@ -24,12 +24,12 @@ public struct StorageStatisticsByChat: Codable {
     public let size: Int64
 
 
-    public init (
+    public init(
         byFileType: [StorageStatisticsByFileType],
         chatId: Int64,
         count: Int,
-        size: Int64) {
-
+        size: Int64
+    ) {
         self.byFileType = byFileType
         self.chatId = chatId
         self.count = count

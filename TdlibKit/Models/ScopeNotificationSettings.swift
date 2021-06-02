@@ -27,13 +27,13 @@ public struct ScopeNotificationSettings: Codable {
     public let sound: String
 
 
-    public init (
+    public init(
         disableMentionNotifications: Bool,
         disablePinnedMessageNotifications: Bool,
         muteFor: Int,
         showPreview: Bool,
-        sound: String) {
-
+        sound: String
+    ) {
         self.disableMentionNotifications = disableMentionNotifications
         self.disablePinnedMessageNotifications = disablePinnedMessageNotifications
         self.muteFor = muteFor

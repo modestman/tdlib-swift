@@ -57,7 +57,7 @@ public struct TdlibParameters: Codable {
     public let useTestDc: Bool
 
 
-    public init (
+    public init(
         apiHash: String,
         apiId: Int,
         applicationVersion: String,
@@ -72,8 +72,8 @@ public struct TdlibParameters: Codable {
         useFileDatabase: Bool,
         useMessageDatabase: Bool,
         useSecretChats: Bool,
-        useTestDc: Bool) {
-
+        useTestDc: Bool
+    ) {
         self.apiHash = apiHash
         self.apiId = apiId
         self.applicationVersion = applicationVersion

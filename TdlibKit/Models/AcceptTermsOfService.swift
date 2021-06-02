@@ -15,7 +15,7 @@ public struct AcceptTermsOfService: Codable {
     public let termsOfServiceId: String
 
 
-    public init (termsOfServiceId: String) {
+    public init(termsOfServiceId: String) {
         self.termsOfServiceId = termsOfServiceId
     }
 }

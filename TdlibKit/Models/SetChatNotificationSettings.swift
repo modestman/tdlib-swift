@@ -18,10 +18,10 @@ public struct SetChatNotificationSettings: Codable {
     public let notificationSettings: ChatNotificationSettings
 
 
-    public init (
+    public init(
         chatId: Int64,
-        notificationSettings: ChatNotificationSettings) {
-
+        notificationSettings: ChatNotificationSettings
+    ) {
         self.chatId = chatId
         self.notificationSettings = notificationSettings
     }

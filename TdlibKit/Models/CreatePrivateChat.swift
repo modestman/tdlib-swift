@@ -18,10 +18,10 @@ public struct CreatePrivateChat: Codable {
     public let userId: Int
 
 
-    public init (
+    public init(
         force: Bool,
-        userId: Int) {
-
+        userId: Int
+    ) {
         self.force = force
         self.userId = userId
     }

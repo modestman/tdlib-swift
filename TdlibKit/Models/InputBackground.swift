@@ -56,7 +56,7 @@ public struct InputBackgroundLocal: Codable {
     public let background: InputFile
 
 
-    public init (background: InputFile) {
+    public init(background: InputFile) {
         self.background = background
     }
 }
@@ -68,7 +68,7 @@ public struct InputBackgroundRemote: Codable {
     public let backgroundId: TdInt64
 
 
-    public init (backgroundId: TdInt64) {
+    public init(backgroundId: TdInt64) {
         self.backgroundId = backgroundId
     }
 }

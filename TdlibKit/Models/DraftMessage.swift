@@ -21,11 +21,11 @@ public struct DraftMessage: Codable {
     public let replyToMessageId: Int64
 
 
-    public init (
+    public init(
         date: Int,
         inputMessageText: InputMessageContent,
-        replyToMessageId: Int64) {
-
+        replyToMessageId: Int64
+    ) {
         self.date = date
         self.inputMessageText = inputMessageText
         self.replyToMessageId = replyToMessageId

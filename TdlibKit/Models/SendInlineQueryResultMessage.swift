@@ -33,15 +33,15 @@ public struct SendInlineQueryResultMessage: Codable {
     public let resultId: String
 
 
-    public init (
+    public init(
         chatId: Int64,
         hideViaBot: Bool,
         messageThreadId: Int64,
         options: MessageSendOptions,
         queryId: TdInt64,
         replyToMessageId: Int64,
-        resultId: String) {
-
+        resultId: String
+    ) {
         self.chatId = chatId
         self.hideViaBot = hideViaBot
         self.messageThreadId = messageThreadId

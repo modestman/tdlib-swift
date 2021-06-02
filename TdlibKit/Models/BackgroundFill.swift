@@ -56,7 +56,7 @@ public struct BackgroundFillSolid: Codable {
     public let color: Int
 
 
-    public init (color: Int) {
+    public init(color: Int) {
         self.color = color
     }
 }
@@ -74,11 +74,11 @@ public struct BackgroundFillGradient: Codable {
     public let topColor: Int
 
 
-    public init (
+    public init(
         bottomColor: Int,
         rotationAngle: Int,
-        topColor: Int) {
-
+        topColor: Int
+    ) {
         self.bottomColor = bottomColor
         self.rotationAngle = rotationAngle
         self.topColor = topColor

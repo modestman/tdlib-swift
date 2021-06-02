@@ -15,7 +15,7 @@ public struct ImportContacts: Codable {
     public let contacts: [Contact]
 
 
-    public init (contacts: [Contact]) {
+    public init(contacts: [Contact]) {
         self.contacts = contacts
     }
 }

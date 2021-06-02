@@ -24,12 +24,12 @@ public struct GetLoginUrl: Codable {
     public let messageId: Int64
 
 
-    public init (
+    public init(
         allowWriteAccess: Bool,
         buttonId: Int,
         chatId: Int64,
-        messageId: Int64) {
-
+        messageId: Int64
+    ) {
         self.allowWriteAccess = allowWriteAccess
         self.buttonId = buttonId
         self.chatId = chatId

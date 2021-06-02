@@ -14,14 +14,14 @@ public struct AddLogMessage: Codable {
     /// Text of a message to log
     public let text: String
 
-    /// The minimum verbosity level needed for the message to be logged, 0-1023
+    /// The minimum verbosity level needed for the message to be logged; 0-1023
     public let verbosityLevel: Int
 
 
-    public init (
+    public init(
         text: String,
-        verbosityLevel: Int) {
-
+        verbosityLevel: Int
+    ) {
         self.text = text
         self.verbosityLevel = verbosityLevel
     }

@@ -18,10 +18,10 @@ public struct SetSupergroupUsername: Codable {
     public let username: String
 
 
-    public init (
+    public init(
         supergroupId: Int,
-        username: String) {
-
+        username: String
+    ) {
         self.supergroupId = supergroupId
         self.username = username
     }

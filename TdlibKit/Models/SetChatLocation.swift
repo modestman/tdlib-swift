@@ -18,10 +18,10 @@ public struct SetChatLocation: Codable {
     public let location: ChatLocation
 
 
-    public init (
+    public init(
         chatId: Int64,
-        location: ChatLocation) {
-
+        location: ChatLocation
+    ) {
         self.chatId = chatId
         self.location = location
     }

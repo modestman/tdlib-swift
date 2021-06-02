@@ -56,7 +56,7 @@ public struct MessageSenderUser: Codable {
     public let userId: Int
 
 
-    public init (userId: Int) {
+    public init(userId: Int) {
         self.userId = userId
     }
 }
@@ -68,7 +68,7 @@ public struct MessageSenderChat: Codable {
     public let chatId: Int64
 
 
-    public init (chatId: Int64) {
+    public init(chatId: Int64) {
         self.chatId = chatId
     }
 }

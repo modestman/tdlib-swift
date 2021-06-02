@@ -15,7 +15,7 @@ public struct GetProxyLink: Codable {
     public let proxyId: Int
 
 
-    public init (proxyId: Int) {
+    public init(proxyId: Int) {
         self.proxyId = proxyId
     }
 }

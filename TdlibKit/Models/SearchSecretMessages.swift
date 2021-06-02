@@ -27,13 +27,13 @@ public struct SearchSecretMessages: Codable {
     public let query: String
 
 
-    public init (
+    public init(
         chatId: Int64,
         filter: SearchMessagesFilter,
         limit: Int,
         offset: String,
-        query: String) {
-
+        query: String
+    ) {
         self.chatId = chatId
         self.filter = filter
         self.limit = limit

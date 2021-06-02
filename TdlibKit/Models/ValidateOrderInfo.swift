@@ -24,12 +24,12 @@ public struct ValidateOrderInfo: Codable {
     public let orderInfo: OrderInfo
 
 
-    public init (
+    public init(
         allowSave: Bool,
         chatId: Int64,
         messageId: Int64,
-        orderInfo: OrderInfo) {
-
+        orderInfo: OrderInfo
+    ) {
         self.allowSave = allowSave
         self.chatId = chatId
         self.messageId = messageId

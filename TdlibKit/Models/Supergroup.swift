@@ -23,10 +23,16 @@ public struct Supergroup: Codable {
     /// Supergroup or channel identifier
     public let id: Int
 
+    /// True, if the supergroup is a broadcast group, i.e. only administrators can send messages and there is no limit on number of members
+    public let isBroadcastGroup: Bool
+
     /// True, if the supergroup is a channel
     public let isChannel: Bool
 
-    /// True, if many users reported this supergroup as a scam
+    /// True, if many users reported this supergroup or channel as a fake account
+    public let isFake: Bool
+
+    /// True, if many users reported this supergroup or channel as a scam
     public let isScam: Bool
 
     /// True, if the slow mode is enabled in the supergroup
@@ -51,12 +57,14 @@ public struct Supergroup: Codable {
     public let username: String
 
 
-    public init (
+    public init(
         date: Int,
         hasLinkedChat: Bool,
         hasLocation: Bool,
         id: Int,
+        isBroadcastGroup: Bool,
         isChannel: Bool,
+        isFake: Bool,
         isScam: Bool,
         isSlowModeEnabled: Bool,
         isVerified: Bool,
@@ -64,13 +72,15 @@ public struct Supergroup: Codable {
         restrictionReason: String,
         signMessages: Bool,
         status: ChatMemberStatus,
-        username: String) {
-
+        username: String
+    ) {
         self.date = date
         self.hasLinkedChat = hasLinkedChat
         self.hasLocation = hasLocation
         self.id = id
+        self.isBroadcastGroup = isBroadcastGroup
         self.isChannel = isChannel
+        self.isFake = isFake
         self.isScam = isScam
         self.isSlowModeEnabled = isSlowModeEnabled
         self.isVerified = isVerified

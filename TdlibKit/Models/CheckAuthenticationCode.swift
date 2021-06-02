@@ -15,7 +15,7 @@ public struct CheckAuthenticationCode: Codable {
     public let code: String
 
 
-    public init (code: String) {
+    public init(code: String) {
         self.code = code
     }
 }

@@ -15,7 +15,7 @@ public struct GetBackgrounds: Codable {
     public let forDarkTheme: Bool
 
 
-    public init (forDarkTheme: Bool) {
+    public init(forDarkTheme: Bool) {
         self.forDarkTheme = forDarkTheme
     }
 }

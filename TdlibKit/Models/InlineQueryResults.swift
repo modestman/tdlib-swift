@@ -27,13 +27,13 @@ public struct InlineQueryResults: Codable {
     public let switchPmText: String
 
 
-    public init (
+    public init(
         inlineQueryId: TdInt64,
         nextOffset: String,
         results: [InlineQueryResult],
         switchPmParameter: String,
-        switchPmText: String) {
-
+        switchPmText: String
+    ) {
         self.inlineQueryId = inlineQueryId
         self.nextOffset = nextOffset
         self.results = results

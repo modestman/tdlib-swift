@@ -134,7 +134,7 @@ public struct AuthorizationStateWaitEncryptionKey: Codable {
     public let isEncrypted: Bool
 
 
-    public init (isEncrypted: Bool) {
+    public init(isEncrypted: Bool) {
         self.isEncrypted = isEncrypted
     }
 }
@@ -146,7 +146,7 @@ public struct AuthorizationStateWaitCode: Codable {
     public let codeInfo: AuthenticationCodeInfo
 
 
-    public init (codeInfo: AuthenticationCodeInfo) {
+    public init(codeInfo: AuthenticationCodeInfo) {
         self.codeInfo = codeInfo
     }
 }
@@ -158,7 +158,7 @@ public struct AuthorizationStateWaitOtherDeviceConfirmation: Codable {
     public let link: String
 
 
-    public init (link: String) {
+    public init(link: String) {
         self.link = link
     }
 }
@@ -170,7 +170,7 @@ public struct AuthorizationStateWaitRegistration: Codable {
     public let termsOfService: TermsOfService
 
 
-    public init (termsOfService: TermsOfService) {
+    public init(termsOfService: TermsOfService) {
         self.termsOfService = termsOfService
     }
 }
@@ -188,11 +188,11 @@ public struct AuthorizationStateWaitPassword: Codable {
     public let recoveryEmailAddressPattern: String
 
 
-    public init (
+    public init(
         hasRecoveryEmailAddress: Bool,
         passwordHint: String,
-        recoveryEmailAddressPattern: String) {
-
+        recoveryEmailAddressPattern: String
+    ) {
         self.hasRecoveryEmailAddress = hasRecoveryEmailAddress
         self.passwordHint = passwordHint
         self.recoveryEmailAddressPattern = recoveryEmailAddressPattern

@@ -82,13 +82,13 @@ public struct UserTypeBot: Codable {
     public let needLocation: Bool
 
 
-    public init (
+    public init(
         canJoinGroups: Bool,
         canReadAllGroupMessages: Bool,
         inlineQueryPlaceholder: String,
         isInline: Bool,
-        needLocation: Bool) {
-
+        needLocation: Bool
+    ) {
         self.canJoinGroups = canJoinGroups
         self.canReadAllGroupMessages = canReadAllGroupMessages
         self.inlineQueryPlaceholder = inlineQueryPlaceholder

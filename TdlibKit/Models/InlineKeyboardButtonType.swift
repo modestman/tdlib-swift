@@ -14,7 +14,7 @@ public enum InlineKeyboardButtonType: Codable {
     /// A button that opens a specified URL
     case inlineKeyboardButtonTypeUrl(InlineKeyboardButtonTypeUrl)
 
-    /// A button that opens a specified URL and automatically logs in in current user if they allowed to do that
+    /// A button that opens a specified URL and automatically authorize the current user if allowed to do so
     case inlineKeyboardButtonTypeLoginUrl(InlineKeyboardButtonTypeLoginUrl)
 
     /// A button that sends a callback query to a bot
@@ -102,12 +102,12 @@ public struct InlineKeyboardButtonTypeUrl: Codable {
     public let url: String
 
 
-    public init (url: String) {
+    public init(url: String) {
         self.url = url
     }
 }
 
-/// A button that opens a specified URL and automatically logs in in current user if they allowed to do that
+/// A button that opens a specified URL and automatically authorize the current user if allowed to do so
 public struct InlineKeyboardButtonTypeLoginUrl: Codable {
 
     /// If non-empty, new text of the button in forwarded messages
@@ -120,11 +120,11 @@ public struct InlineKeyboardButtonTypeLoginUrl: Codable {
     public let url: String
 
 
-    public init (
+    public init(
         forwardText: String,
         id: Int,
-        url: String) {
-
+        url: String
+    ) {
         self.forwardText = forwardText
         self.id = id
         self.url = url
@@ -138,7 +138,7 @@ public struct InlineKeyboardButtonTypeCallback: Codable {
     public let data: Data
 
 
-    public init (data: Data) {
+    public init(data: Data) {
         self.data = data
     }
 }
@@ -150,7 +150,7 @@ public struct InlineKeyboardButtonTypeCallbackWithPassword: Codable {
     public let data: Data
 
 
-    public init (data: Data) {
+    public init(data: Data) {
         self.data = data
     }
 }
@@ -165,10 +165,10 @@ public struct InlineKeyboardButtonTypeSwitchInline: Codable {
     public let query: String
 
 
-    public init (
+    public init(
         inCurrentChat: Bool,
-        query: String) {
-
+        query: String
+    ) {
         self.inCurrentChat = inCurrentChat
         self.query = query
     }

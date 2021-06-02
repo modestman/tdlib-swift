@@ -114,7 +114,7 @@ public struct PassportElementErrorSourceDataField: Codable {
     public let fieldName: String
 
 
-    public init (fieldName: String) {
+    public init(fieldName: String) {
         self.fieldName = fieldName
     }
 }
@@ -126,7 +126,7 @@ public struct PassportElementErrorSourceTranslationFile: Codable {
     public let fileIndex: Int
 
 
-    public init (fileIndex: Int) {
+    public init(fileIndex: Int) {
         self.fileIndex = fileIndex
     }
 }
@@ -138,7 +138,7 @@ public struct PassportElementErrorSourceFile: Codable {
     public let fileIndex: Int
 
 
-    public init (fileIndex: Int) {
+    public init(fileIndex: Int) {
         self.fileIndex = fileIndex
     }
 }

@@ -18,10 +18,10 @@ public struct DatedFile: Codable {
     public let file: File
 
 
-    public init (
+    public init(
         date: Int,
-        file: File) {
-
+        file: File
+    ) {
         self.date = date
         self.file = file
     }

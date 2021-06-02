@@ -27,13 +27,13 @@ public struct Call: Codable {
     public let userId: Int
 
 
-    public init (
+    public init(
         id: Int,
         isOutgoing: Bool,
         isVideo: Bool,
         state: CallState,
-        userId: Int) {
-
+        userId: Int
+    ) {
         self.id = id
         self.isOutgoing = isOutgoing
         self.isVideo = isVideo

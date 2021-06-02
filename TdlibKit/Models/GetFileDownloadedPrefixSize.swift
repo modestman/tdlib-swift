@@ -18,10 +18,10 @@ public struct GetFileDownloadedPrefixSize: Codable {
     public let offset: Int
 
 
-    public init (
+    public init(
         fileId: Int,
-        offset: Int) {
-
+        offset: Int
+    ) {
         self.fileId = fileId
         self.offset = offset
     }

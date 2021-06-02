@@ -15,7 +15,7 @@ public struct GetSupergroup: Codable {
     public let supergroupId: Int
 
 
-    public init (supergroupId: Int) {
+    public init(supergroupId: Int) {
         self.supergroupId = supergroupId
     }
 }

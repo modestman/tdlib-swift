@@ -72,7 +72,7 @@ public struct CanTransferOwnershipResultPasswordTooFresh: Codable {
     public let retryAfter: Int
 
 
-    public init (retryAfter: Int) {
+    public init(retryAfter: Int) {
         self.retryAfter = retryAfter
     }
 }
@@ -84,7 +84,7 @@ public struct CanTransferOwnershipResultSessionTooFresh: Codable {
     public let retryAfter: Int
 
 
-    public init (retryAfter: Int) {
+    public init(retryAfter: Int) {
         self.retryAfter = retryAfter
     }
 }

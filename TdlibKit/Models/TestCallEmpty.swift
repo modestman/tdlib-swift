@@ -12,7 +12,6 @@ import Foundation
 public struct TestCallEmpty: Codable {
 
 
-    public init () {
-    }
+    public init() {}
 }
 

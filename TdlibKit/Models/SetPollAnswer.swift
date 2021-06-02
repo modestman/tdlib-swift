@@ -21,11 +21,11 @@ public struct SetPollAnswer: Codable {
     public let optionIds: [Int]
 
 
-    public init (
+    public init(
         chatId: Int64,
         messageId: Int64,
-        optionIds: [Int]) {
-
+        optionIds: [Int]
+    ) {
         self.chatId = chatId
         self.messageId = messageId
         self.optionIds = optionIds

@@ -95,10 +95,10 @@ public struct CallStatePending: Codable {
     public let isReceived: Bool
 
 
-    public init (
+    public init(
         isCreated: Bool,
-        isReceived: Bool) {
-
+        isReceived: Bool
+    ) {
         self.isCreated = isCreated
         self.isReceived = isReceived
     }
@@ -126,14 +126,14 @@ public struct CallStateReady: Codable {
     public let servers: [CallServer]
 
 
-    public init (
+    public init(
         allowP2p: Bool,
         config: String,
         emojis: [String],
         encryptionKey: Data,
         `protocol`: CallProtocol,
-        servers: [CallServer]) {
-
+        servers: [CallServer]
+    ) {
         self.allowP2p = allowP2p
         self.config = config
         self.emojis = emojis
@@ -156,11 +156,11 @@ public struct CallStateDiscarded: Codable {
     public let reason: CallDiscardReason
 
 
-    public init (
+    public init(
         needDebugInformation: Bool,
         needRating: Bool,
-        reason: CallDiscardReason) {
-
+        reason: CallDiscardReason
+    ) {
         self.needDebugInformation = needDebugInformation
         self.needRating = needRating
         self.reason = reason
@@ -174,7 +174,7 @@ public struct CallStateError: Codable {
     public let error: Error
 
 
-    public init (error: Error) {
+    public init(error: Error) {
         self.error = error
     }
 }
