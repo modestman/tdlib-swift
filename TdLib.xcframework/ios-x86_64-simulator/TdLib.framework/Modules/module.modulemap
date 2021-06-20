@@ -1,5 +1,5 @@
 framework module TdLib {
-  umbrella header "td_simulator.h"
+  umbrella header "td.h"
 
   export *
   module * { export * }

@@ -4,6 +4,10 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>Headers/td.h</key>
+		<data>
+		7Sjxv/6v9iKVpOzqmIHEwj4Za3E=
+		</data>
 		<key>Headers/td_json_client.h</key>
 		<data>
 		L8Ks0RQ6dXbyskp57Dhc33f/Zi0=
@@ -12,25 +16,32 @@
 		<data>
 		JYXHDyODLXX8VYS0r+uQ31Z1zU0=
 		</data>
-		<key>Headers/td_simulator.h</key>
-		<data>
-		KEuqaPbj7kMgwM3z+1MU6bKTL30=
-		</data>
 		<key>Headers/tdjson_export.h</key>
 		<data>
 		IMwHOjBCv4qWKRlyyCJTHK5eQyQ=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		5Zolz6/4jAyrjkpqmqR7VZp/rf8=
+		UDHxk5UcN27wJy43VcMbw7sMHME=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		9XHaBCJkiczsjghhMBJm9axUCeE=
+		SdIhOXJxtShkeLsfISkLXv9vhi4=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>Headers/td.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			7Sjxv/6v9iKVpOzqmIHEwj4Za3E=
+			</data>
+			<key>hash2</key>
+			<data>
+			wPUkqwYpQP2Ia+aDwOZcWHT00JvIBssQacOUPI5oWBs=
+			</data>
+		</dict>
 		<key>Headers/td_json_client.h</key>
 		<dict>
 			<key>hash</key>
@@ -53,17 +64,6 @@
 			g86/IA60Cdzdvwdyanrk9oZNdquDI8x5zzAwC6AQx9A=
 			</data>
 		</dict>
-		<key>Headers/td_simulator.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			KEuqaPbj7kMgwM3z+1MU6bKTL30=
-			</data>
-			<key>hash2</key>
-			<data>
-			LK7MNes2mJJ7BTju6BRCXUXY6V66xmdVGGD20um3gIQ=
-			</data>
-		</dict>
 		<key>Headers/tdjson_export.h</key>
 		<dict>
 			<key>hash</key>
@@ -79,11 +79,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			9XHaBCJkiczsjghhMBJm9axUCeE=
+			SdIhOXJxtShkeLsfISkLXv9vhi4=
 			</data>
 			<key>hash2</key>
 			<data>
-			0uS4Y7u5fCYxwolX6yVCJ7+Low3CbPdcnhO6cJZxwTc=
+			DjPlWzclXJvgODRhwOKBkXLVDGI8ZmqNRizMbJxedd0=
 			</data>
 		</dict>
 	</dict>

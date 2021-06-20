@@ -4,9 +4,9 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>Headers/td_ios.h</key>
+		<key>Headers/td.h</key>
 		<data>
-		brw13WyVmSGXFeHGEzJArlNakUw=
+		7Sjxv/6v9iKVpOzqmIHEwj4Za3E=
 		</data>
 		<key>Headers/td_json_client.h</key>
 		<data>
@@ -22,24 +22,24 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		acJ4XbxV809w31BpuVE4ElzS51E=
+		++JKfq/lY9lCKOFQPgS4ubV7Yts=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		J8caCZpgsPgr64vW0Kgz9OCrorY=
+		SdIhOXJxtShkeLsfISkLXv9vhi4=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>Headers/td_ios.h</key>
+		<key>Headers/td.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			brw13WyVmSGXFeHGEzJArlNakUw=
+			7Sjxv/6v9iKVpOzqmIHEwj4Za3E=
 			</data>
 			<key>hash2</key>
 			<data>
-			pEimZzprLG8lMBGoRqG0RCceJNcfPJ2ZmrBwQymPbB4=
+			wPUkqwYpQP2Ia+aDwOZcWHT00JvIBssQacOUPI5oWBs=
 			</data>
 		</dict>
 		<key>Headers/td_json_client.h</key>
@@ -79,11 +79,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			J8caCZpgsPgr64vW0Kgz9OCrorY=
+			SdIhOXJxtShkeLsfISkLXv9vhi4=
 			</data>
 			<key>hash2</key>
 			<data>
-			eKkm50B6qKny1IjGgKJfcZNeuyNA9dtVJR0MI4bMkkA=
+			DjPlWzclXJvgODRhwOKBkXLVDGI8ZmqNRizMbJxedd0=
 			</data>
 		</dict>
 	</dict>
