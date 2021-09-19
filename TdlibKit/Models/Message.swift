@@ -26,6 +26,9 @@ public struct Message: Codable {
     /// True, if the message can be forwarded
     public let canBeForwarded: Bool
 
+    /// True, if media timestamp links can be generated for media timestamp entities in the message text, caption or web page description
+    public let canGetMediaTimestampLinks: Bool
+
     /// True, if the message thread info is available
     public let canGetMessageThread: Bool
 
@@ -49,6 +52,9 @@ public struct Message: Codable {
 
     /// Information about the initial message sender; may be null
     public let forwardInfo: MessageForwardInfo?
+
+    /// True, if media timestamp entities refers to a media in this message as opposed to a media in the replied message
+    public let hasTimestampedMedia: Bool
 
     /// Message identifier; unique for the chat to which the message belongs
     public let id: Int64
@@ -95,7 +101,7 @@ public struct Message: Codable {
     /// For self-destructing messages, the message's TTL (Time To Live), in seconds; 0 if none. TDLib will send updateDeleteMessages or updateMessageContent once the TTL expires
     public let ttl: Int
 
-    /// Time left before the message expires, in seconds
+    /// Time left before the message expires, in seconds. If the TTL timer isn't started yet, equals to the value of the ttl field
     public let ttlExpiresIn: Double
 
     /// If non-zero, the user identifier of the bot through which this message was sent
@@ -108,6 +114,7 @@ public struct Message: Codable {
         canBeDeletedOnlyForSelf: Bool,
         canBeEdited: Bool,
         canBeForwarded: Bool,
+        canGetMediaTimestampLinks: Bool,
         canGetMessageThread: Bool,
         canGetStatistics: Bool,
         chatId: Int64,
@@ -116,6 +123,7 @@ public struct Message: Codable {
         date: Int,
         editDate: Int,
         forwardInfo: MessageForwardInfo?,
+        hasTimestampedMedia: Bool,
         id: Int64,
         interactionInfo: MessageInteractionInfo?,
         isChannelPost: Bool,
@@ -139,6 +147,7 @@ public struct Message: Codable {
         self.canBeDeletedOnlyForSelf = canBeDeletedOnlyForSelf
         self.canBeEdited = canBeEdited
         self.canBeForwarded = canBeForwarded
+        self.canGetMediaTimestampLinks = canGetMediaTimestampLinks
         self.canGetMessageThread = canGetMessageThread
         self.canGetStatistics = canGetStatistics
         self.chatId = chatId
@@ -147,6 +156,7 @@ public struct Message: Codable {
         self.date = date
         self.editDate = editDate
         self.forwardInfo = forwardInfo
+        self.hasTimestampedMedia = hasTimestampedMedia
         self.id = id
         self.interactionInfo = interactionInfo
         self.isChannelPost = isChannelPost

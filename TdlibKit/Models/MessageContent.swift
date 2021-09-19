@@ -116,6 +116,9 @@ public enum MessageContent: Codable {
     /// A screenshot of a message in the chat has been taken
     case messageScreenshotTaken
 
+    /// A theme in the chat has been changed
+    case messageChatSetTheme(MessageChatSetTheme)
+
     /// The TTL (Time To Live) setting for messages in the chat has been changed
     case messageChatSetTtl(MessageChatSetTtl)
 
@@ -186,6 +189,7 @@ public enum MessageContent: Codable {
         case messageChatUpgradeFrom
         case messagePinMessage
         case messageScreenshotTaken
+        case messageChatSetTheme
         case messageChatSetTtl
         case messageCustomServiceAction
         case messageGameScore
@@ -303,6 +307,9 @@ public enum MessageContent: Codable {
             self = .messagePinMessage(value)
         case .messageScreenshotTaken:
             self = .messageScreenshotTaken
+        case .messageChatSetTheme:
+            let value = try MessageChatSetTheme(from: decoder)
+            self = .messageChatSetTheme(value)
         case .messageChatSetTtl:
             let value = try MessageChatSetTtl(from: decoder)
             self = .messageChatSetTtl(value)
@@ -440,6 +447,9 @@ public enum MessageContent: Codable {
             try value.encode(to: encoder)
         case .messageScreenshotTaken:
             try container.encode(Kind.messageScreenshotTaken, forKey: .type)
+        case .messageChatSetTheme(let value):
+            try container.encode(Kind.messageChatSetTheme, forKey: .type)
+            try value.encode(to: encoder)
         case .messageChatSetTtl(let value):
             try container.encode(Kind.messageChatSetTtl, forKey: .type)
             try value.encode(to: encoder)
@@ -891,7 +901,7 @@ public struct MessageVoiceChatStarted: Codable {
 /// A message with information about an ended voice chat
 public struct MessageVoiceChatEnded: Codable {
 
-    /// Call duration
+    /// Call duration, in seconds
     public let duration: Int
 
 
@@ -1038,6 +1048,18 @@ public struct MessagePinMessage: Codable {
 
     public init(messageId: Int64) {
         self.messageId = messageId
+    }
+}
+
+/// A theme in the chat has been changed
+public struct MessageChatSetTheme: Codable {
+
+    /// If non-empty, name of a new theme set for the chat. Otherwise chat theme was reset to the default one
+    public let themeName: String
+
+
+    public init(themeName: String) {
+        self.themeName = themeName
     }
 }
 

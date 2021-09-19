@@ -11,13 +11,13 @@ import Foundation
 /// Provides information about the status of a member in a chat
 public enum ChatMemberStatus: Codable {
 
-    /// The user is the owner of a chat and has all the administrator privileges
+    /// The user is the owner of the chat and has all the administrator privileges
     case chatMemberStatusCreator(ChatMemberStatusCreator)
 
-    /// The user is a member of a chat and has some additional privileges. In basic groups, administrators can edit and delete messages sent by others, add new members, ban unprivileged members, and manage voice chats. In supergroups and channels, there are more detailed options for administrator privileges
+    /// The user is a member of the chat and has some additional privileges. In basic groups, administrators can edit and delete messages sent by others, add new members, ban unprivileged members, and manage voice chats. In supergroups and channels, there are more detailed options for administrator privileges
     case chatMemberStatusAdministrator(ChatMemberStatusAdministrator)
 
-    /// The user is a member of a chat, without any additional privileges or restrictions
+    /// The user is a member of the chat, without any additional privileges or restrictions
     case chatMemberStatusMember
 
     /// The user is under certain restrictions in the chat. Not supported in basic groups and channels
@@ -85,7 +85,7 @@ public enum ChatMemberStatus: Codable {
     }
 }
 
-/// The user is the owner of a chat and has all the administrator privileges
+/// The user is the owner of the chat and has all the administrator privileges
 public struct ChatMemberStatusCreator: Codable {
 
     /// A custom title of the owner; 0-16 characters without emojis; applicable to supergroups only
@@ -109,7 +109,7 @@ public struct ChatMemberStatusCreator: Codable {
     }
 }
 
-/// The user is a member of a chat and has some additional privileges. In basic groups, administrators can edit and delete messages sent by others, add new members, ban unprivileged members, and manage voice chats. In supergroups and channels, there are more detailed options for administrator privileges
+/// The user is a member of the chat and has some additional privileges. In basic groups, administrators can edit and delete messages sent by others, add new members, ban unprivileged members, and manage voice chats. In supergroups and channels, there are more detailed options for administrator privileges
 public struct ChatMemberStatusAdministrator: Codable {
 
     /// True, if the current user can edit the administrator privileges for the called user
@@ -142,7 +142,7 @@ public struct ChatMemberStatusAdministrator: Codable {
     /// True, if the administrator can add new administrators with a subset of their own privileges or demote administrators that were directly or indirectly promoted by them
     public let canPromoteMembers: Bool
 
-    /// True, if the administrator can restrict, ban, or unban chat members
+    /// True, if the administrator can restrict, ban, or unban chat members; always true for channels
     public let canRestrictMembers: Bool
 
     /// A custom title of the administrator; 0-16 characters without emojis; applicable to supergroups only

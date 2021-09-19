@@ -12,10 +12,10 @@ import Foundation
 public struct TestCallVectorIntObject: Codable {
 
     /// Vector of objects to return
-    public let x: [TestInt]
+    public let x: [TestInt]?
 
 
-    public init(x: [TestInt]) {
+    public init(x: [TestInt]?) {
         self.x = x
     }
 }

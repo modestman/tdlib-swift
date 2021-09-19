@@ -17,6 +17,9 @@ public struct SupergroupFullInfo: Codable {
     /// Number of users banned from chat; 0 if unknown
     public let bannedCount: Int
 
+    /// List of commands of bots in the group
+    public let botCommands: [BotCommands]
+
     /// True, if members of the chat can be retrieved
     public let canGetMembers: Bool
 
@@ -74,6 +77,7 @@ public struct SupergroupFullInfo: Codable {
     public init(
         administratorCount: Int,
         bannedCount: Int,
+        botCommands: [BotCommands],
         canGetMembers: Bool,
         canGetStatistics: Bool,
         canSetLocation: Bool,
@@ -95,6 +99,7 @@ public struct SupergroupFullInfo: Codable {
     ) {
         self.administratorCount = administratorCount
         self.bannedCount = bannedCount
+        self.botCommands = botCommands
         self.canGetMembers = canGetMembers
         self.canGetStatistics = canGetStatistics
         self.canSetLocation = canSetLocation

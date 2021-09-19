@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Contains auto-download settings presets for the user
+/// Contains auto-download settings presets for the current user
 public struct AutoDownloadSettingsPresets: Codable {
 
     /// Preset with highest settings; supposed to be used by default when connected on Wi-Fi

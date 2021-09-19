@@ -20,7 +20,7 @@ public enum AuthenticationCodeType: Codable {
     /// An authentication code is delivered via a phone call to the specified phone number
     case authenticationCodeTypeCall(AuthenticationCodeTypeCall)
 
-    /// An authentication code is delivered by an immediately cancelled call to the specified phone number. The number from which the call was made is the code
+    /// An authentication code is delivered by an immediately canceled call to the specified phone number. The number from which the call was made is the code
     case authenticationCodeTypeFlashCall(AuthenticationCodeTypeFlashCall)
 
 
@@ -105,7 +105,7 @@ public struct AuthenticationCodeTypeCall: Codable {
     }
 }
 
-/// An authentication code is delivered by an immediately cancelled call to the specified phone number. The number from which the call was made is the code
+/// An authentication code is delivered by an immediately canceled call to the specified phone number. The number from which the call was made is the code
 public struct AuthenticationCodeTypeFlashCall: Codable {
 
     /// Pattern of the phone number from which the call will be made

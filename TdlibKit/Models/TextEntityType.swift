@@ -20,7 +20,7 @@ public enum TextEntityType: Codable {
     /// A cashtag text, beginning with "$" and consisting of capital english letters (i.e. "$USD")
     case textEntityTypeCashtag
 
-    /// A bot command, beginning with "/". This shouldn't be highlighted if there are no bots in the chat
+    /// A bot command, beginning with "/"
     case textEntityTypeBotCommand
 
     /// An HTTP URL
@@ -62,6 +62,9 @@ public enum TextEntityType: Codable {
     /// A text shows instead of a raw mention of the user (e.g., when the user has no username)
     case textEntityTypeMentionName(TextEntityTypeMentionName)
 
+    /// A media timestamp
+    case textEntityTypeMediaTimestamp(TextEntityTypeMediaTimestamp)
+
 
     private enum Kind: String, Codable {
         case textEntityTypeMention
@@ -81,6 +84,7 @@ public enum TextEntityType: Codable {
         case textEntityTypePreCode
         case textEntityTypeTextUrl
         case textEntityTypeMentionName
+        case textEntityTypeMediaTimestamp
     }
 
     public init(from decoder: Decoder) throws {
@@ -124,6 +128,9 @@ public enum TextEntityType: Codable {
         case .textEntityTypeMentionName:
             let value = try TextEntityTypeMentionName(from: decoder)
             self = .textEntityTypeMentionName(value)
+        case .textEntityTypeMediaTimestamp:
+            let value = try TextEntityTypeMediaTimestamp(from: decoder)
+            self = .textEntityTypeMediaTimestamp(value)
         }
     }
 
@@ -167,6 +174,9 @@ public enum TextEntityType: Codable {
         case .textEntityTypeMentionName(let value):
             try container.encode(Kind.textEntityTypeMentionName, forKey: .type)
             try value.encode(to: encoder)
+        case .textEntityTypeMediaTimestamp(let value):
+            try container.encode(Kind.textEntityTypeMediaTimestamp, forKey: .type)
+            try value.encode(to: encoder)
         }
     }
 }
@@ -204,6 +214,18 @@ public struct TextEntityTypeMentionName: Codable {
 
     public init(userId: Int) {
         self.userId = userId
+    }
+}
+
+/// A media timestamp
+public struct TextEntityTypeMediaTimestamp: Codable {
+
+    /// Timestamp from which a video/audio/video note/voice note playing should start, in seconds. The media can be in the content or the web page preview of the current message, or in the same places in the replied message
+    public let mediaTimestamp: Int
+
+
+    public init(mediaTimestamp: Int) {
+        self.mediaTimestamp = mediaTimestamp
     }
 }
 

@@ -11,6 +11,9 @@ import Foundation
 /// Represents a group call participant
 public struct GroupCallParticipant: Codable {
 
+    /// User's audio channel synchronization source identifier
+    public let audioSourceId: Int
+
     /// The participant user's bio or the participant chat's description
     public let bio: String
 
@@ -20,13 +23,13 @@ public struct GroupCallParticipant: Codable {
     /// True, if the current user can mute the participant only for self
     public let canBeMutedForCurrentUser: Bool
 
-    /// True, if the current user can allow the participant to unmute themself or unmute the participant (if the participant is the current user)
+    /// True, if the current user can allow the participant to unmute themselves or unmute the participant (if the participant is the current user)
     public let canBeUnmutedForAllUsers: Bool
 
     /// True, if the current user can unmute the participant for self
     public let canBeUnmutedForCurrentUser: Bool
 
-    /// True, if the participant is muted for all users, but can unmute themself
+    /// True, if the participant is muted for all users, but can unmute themselves
     public let canUnmuteSelf: Bool
 
     /// True, if the participant is the current user
@@ -50,14 +53,21 @@ public struct GroupCallParticipant: Codable {
     /// Identifier of the group call participant
     public let participantId: MessageSender
 
-    /// User's synchronization source
-    public let source: Int
+    /// User's screen sharing audio channel synchronization source identifier
+    public let screenSharingAudioSourceId: Int
+
+    /// Information about user's screen sharing video channel; may be null if there is no active screen sharing video
+    public let screenSharingVideoInfo: GroupCallParticipantVideoInfo?
+
+    /// Information about user's video channel; may be null if there is no active video
+    public let videoInfo: GroupCallParticipantVideoInfo?
 
     /// Participant's volume level; 1-20000 in hundreds of percents
     public let volumeLevel: Int
 
 
     public init(
+        audioSourceId: Int,
         bio: String,
         canBeMutedForAllUsers: Bool,
         canBeMutedForCurrentUser: Bool,
@@ -71,9 +81,12 @@ public struct GroupCallParticipant: Codable {
         isSpeaking: Bool,
         order: String,
         participantId: MessageSender,
-        source: Int,
+        screenSharingAudioSourceId: Int,
+        screenSharingVideoInfo: GroupCallParticipantVideoInfo?,
+        videoInfo: GroupCallParticipantVideoInfo?,
         volumeLevel: Int
     ) {
+        self.audioSourceId = audioSourceId
         self.bio = bio
         self.canBeMutedForAllUsers = canBeMutedForAllUsers
         self.canBeMutedForCurrentUser = canBeMutedForCurrentUser
@@ -87,7 +100,9 @@ public struct GroupCallParticipant: Codable {
         self.isSpeaking = isSpeaking
         self.order = order
         self.participantId = participantId
-        self.source = source
+        self.screenSharingAudioSourceId = screenSharingAudioSourceId
+        self.screenSharingVideoInfo = screenSharingVideoInfo
+        self.videoInfo = videoInfo
         self.volumeLevel = volumeLevel
     }
 }

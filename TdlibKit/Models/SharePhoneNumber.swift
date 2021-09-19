@@ -12,10 +12,10 @@ import Foundation
 public struct SharePhoneNumber: Codable {
 
     /// Identifier of the user with whom to share the phone number. The user must be a mutual contact
-    public let userId: Int
+    public let userId: Int?
 
 
-    public init(userId: Int) {
+    public init(userId: Int?) {
         self.userId = userId
     }
 }

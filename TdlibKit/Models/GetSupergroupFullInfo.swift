@@ -12,10 +12,10 @@ import Foundation
 public struct GetSupergroupFullInfo: Codable {
 
     /// Supergroup or channel identifier
-    public let supergroupId: Int
+    public let supergroupId: Int?
 
 
-    public init(supergroupId: Int) {
+    public init(supergroupId: Int?) {
         self.supergroupId = supergroupId
     }
 }

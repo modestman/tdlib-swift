@@ -12,15 +12,15 @@ import Foundation
 public struct SetOption: Codable {
 
     /// The name of the option
-    public let name: String
+    public let name: String?
 
     /// The new value of the option
-    public let value: OptionValue
+    public let value: OptionValue?
 
 
     public init(
-        name: String,
-        value: OptionValue
+        name: String?,
+        value: OptionValue?
     ) {
         self.name = name
         self.value = value

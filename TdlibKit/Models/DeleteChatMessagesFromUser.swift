@@ -12,15 +12,15 @@ import Foundation
 public struct DeleteChatMessagesFromUser: Codable {
 
     /// Chat identifier
-    public let chatId: Int64
+    public let chatId: Int64?
 
     /// User identifier
-    public let userId: Int
+    public let userId: Int?
 
 
     public init(
-        chatId: Int64,
-        userId: Int
+        chatId: Int64?,
+        userId: Int?
     ) {
         self.chatId = chatId
         self.userId = userId

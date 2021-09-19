@@ -17,10 +17,14 @@ public enum BackgroundFill: Codable {
     /// Describes a gradient fill of a background
     case backgroundFillGradient(BackgroundFillGradient)
 
+    /// Describes a freeform gradient fill of a background
+    case backgroundFillFreeformGradient(BackgroundFillFreeformGradient)
+
 
     private enum Kind: String, Codable {
         case backgroundFillSolid
         case backgroundFillGradient
+        case backgroundFillFreeformGradient
     }
 
     public init(from decoder: Decoder) throws {
@@ -33,6 +37,9 @@ public enum BackgroundFill: Codable {
         case .backgroundFillGradient:
             let value = try BackgroundFillGradient(from: decoder)
             self = .backgroundFillGradient(value)
+        case .backgroundFillFreeformGradient:
+            let value = try BackgroundFillFreeformGradient(from: decoder)
+            self = .backgroundFillFreeformGradient(value)
         }
     }
 
@@ -44,6 +51,9 @@ public enum BackgroundFill: Codable {
             try value.encode(to: encoder)
         case .backgroundFillGradient(let value):
             try container.encode(Kind.backgroundFillGradient, forKey: .type)
+            try value.encode(to: encoder)
+        case .backgroundFillFreeformGradient(let value):
+            try container.encode(Kind.backgroundFillFreeformGradient, forKey: .type)
             try value.encode(to: encoder)
         }
     }
@@ -82,6 +92,18 @@ public struct BackgroundFillGradient: Codable {
         self.bottomColor = bottomColor
         self.rotationAngle = rotationAngle
         self.topColor = topColor
+    }
+}
+
+/// Describes a freeform gradient fill of a background
+public struct BackgroundFillFreeformGradient: Codable {
+
+    /// A list of 3 or 4 colors of the freeform gradients in the RGB24 format
+    public let colors: [Int]
+
+
+    public init(colors: [Int]) {
+        self.colors = colors
     }
 }
 

@@ -12,31 +12,31 @@ import Foundation
 public struct SetGameScore: Codable {
 
     /// The chat to which the message with the game belongs
-    public let chatId: Int64
+    public let chatId: Int64?
 
     /// True, if the message should be edited
-    public let editMessage: Bool
+    public let editMessage: Bool?
 
     /// Pass true to update the score even if it decreases. If the score is 0, the user will be deleted from the high score table
-    public let force: Bool
+    public let force: Bool?
 
     /// Identifier of the message
-    public let messageId: Int64
+    public let messageId: Int64?
 
     /// The new score
-    public let score: Int
+    public let score: Int?
 
     /// User identifier
-    public let userId: Int
+    public let userId: Int?
 
 
     public init(
-        chatId: Int64,
-        editMessage: Bool,
-        force: Bool,
-        messageId: Int64,
-        score: Int,
-        userId: Int
+        chatId: Int64?,
+        editMessage: Bool?,
+        force: Bool?,
+        messageId: Int64?,
+        score: Int?,
+        userId: Int?
     ) {
         self.chatId = chatId
         self.editMessage = editMessage

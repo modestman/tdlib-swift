@@ -12,10 +12,10 @@ import Foundation
 public struct SetNetworkType: Codable {
 
     /// The new network type. By default, networkTypeOther
-    public let type: NetworkType
+    public let type: NetworkType?
 
 
-    public init(type: NetworkType) {
+    public init(type: NetworkType?) {
         self.type = type
     }
 }

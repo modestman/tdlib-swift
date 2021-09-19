@@ -111,7 +111,7 @@ public struct InputFileGenerated: Codable {
     /// String specifying the conversion applied to the original file; should be persistent across application restarts. Conversions beginning with '#' are reserved for internal TDLib usage
     public let conversion: String
 
-    /// Expected size of the generated file; 0 if unknown
+    /// Expected size of the generated file, in bytes; 0 if unknown
     public let expectedSize: Int
 
     /// Local path to a file from which the file is generated; may be empty if there is no such file

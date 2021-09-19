@@ -8,14 +8,14 @@
 import Foundation
 
 
-/// Returns information about a public or private message link
+/// Returns information about a public or private message link. Can be called for any internal link of the type internalLinkTypeMessage
 public struct GetMessageLinkInfo: Codable {
 
-    /// The message link in the format "https://t.me/c/...", or "tg://privatepost?...", or "https://t.me/username/...", or "tg://resolve?..."
-    public let url: String
+    /// The message link
+    public let url: String?
 
 
-    public init(url: String) {
+    public init(url: String?) {
         self.url = url
     }
 }

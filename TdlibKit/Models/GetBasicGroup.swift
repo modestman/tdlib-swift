@@ -12,10 +12,10 @@ import Foundation
 public struct GetBasicGroup: Codable {
 
     /// Basic group identifier
-    public let basicGroupId: Int
+    public let basicGroupId: Int?
 
 
-    public init(basicGroupId: Int) {
+    public init(basicGroupId: Int?) {
         self.basicGroupId = basicGroupId
     }
 }

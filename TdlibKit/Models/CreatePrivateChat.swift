@@ -12,15 +12,15 @@ import Foundation
 public struct CreatePrivateChat: Codable {
 
     /// If true, the chat will be created without network request. In this case all information about the chat except its type, title and photo can be incorrect
-    public let force: Bool
+    public let force: Bool?
 
     /// User identifier
-    public let userId: Int
+    public let userId: Int?
 
 
     public init(
-        force: Bool,
-        userId: Int
+        force: Bool?,
+        userId: Int?
     ) {
         self.force = force
         self.userId = userId

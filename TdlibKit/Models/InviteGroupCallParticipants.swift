@@ -12,15 +12,15 @@ import Foundation
 public struct InviteGroupCallParticipants: Codable {
 
     /// Group call identifier
-    public let groupCallId: Int
+    public let groupCallId: Int?
 
     /// User identifiers. At most 10 users can be invited simultaneously
-    public let userIds: [Int]
+    public let userIds: [Int]?
 
 
     public init(
-        groupCallId: Int,
-        userIds: [Int]
+        groupCallId: Int?,
+        userIds: [Int]?
     ) {
         self.groupCallId = groupCallId
         self.userIds = userIds

@@ -12,10 +12,10 @@ import Foundation
 public struct HideSuggestedAction: Codable {
 
     /// Suggested action to hide
-    public let action: SuggestedAction
+    public let action: SuggestedAction?
 
 
-    public init(action: SuggestedAction) {
+    public init(action: SuggestedAction?) {
         self.action = action
     }
 }

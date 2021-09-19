@@ -26,19 +26,24 @@ public struct MessageThreadInfo: Codable {
     /// Contains information about the message thread
     public let replyInfo: MessageReplyInfo
 
+    /// Approximate number of unread messages in the message thread
+    public let unreadMessageCount: Int
+
 
     public init(
         chatId: Int64,
         draftMessage: DraftMessage?,
         messageThreadId: Int64,
         messages: [Message],
-        replyInfo: MessageReplyInfo
+        replyInfo: MessageReplyInfo,
+        unreadMessageCount: Int
     ) {
         self.chatId = chatId
         self.draftMessage = draftMessage
         self.messageThreadId = messageThreadId
         self.messages = messages
         self.replyInfo = replyInfo
+        self.unreadMessageCount = unreadMessageCount
     }
 }
 

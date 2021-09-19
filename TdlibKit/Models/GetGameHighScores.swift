@@ -12,19 +12,19 @@ import Foundation
 public struct GetGameHighScores: Codable {
 
     /// The chat that contains the message with the game
-    public let chatId: Int64
+    public let chatId: Int64?
 
     /// Identifier of the message
-    public let messageId: Int64
+    public let messageId: Int64?
 
     /// User identifier
-    public let userId: Int
+    public let userId: Int?
 
 
     public init(
-        chatId: Int64,
-        messageId: Int64,
-        userId: Int
+        chatId: Int64?,
+        messageId: Int64?,
+        userId: Int?
     ) {
         self.chatId = chatId
         self.messageId = messageId

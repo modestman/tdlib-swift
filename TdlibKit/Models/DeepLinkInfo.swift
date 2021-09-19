@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Contains information about a tg:// deep link
+/// Contains information about a tg: deep link
 public struct DeepLinkInfo: Codable {
 
     /// True, if user should be asked to update the application

@@ -12,10 +12,10 @@ import Foundation
 public struct RemoveRecentHashtag: Codable {
 
     /// Hashtag to delete
-    public let hashtag: String
+    public let hashtag: String?
 
 
-    public init(hashtag: String) {
+    public init(hashtag: String?) {
         self.hashtag = hashtag
     }
 }

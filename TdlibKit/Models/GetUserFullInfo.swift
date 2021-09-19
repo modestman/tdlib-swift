@@ -12,10 +12,10 @@ import Foundation
 public struct GetUserFullInfo: Codable {
 
     /// User identifier
-    public let userId: Int
+    public let userId: Int?
 
 
-    public init(userId: Int) {
+    public init(userId: Int?) {
         self.userId = userId
     }
 }

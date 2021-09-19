@@ -11,6 +11,9 @@ import Foundation
 /// Contains full information about a basic group
 public struct BasicGroupFullInfo: Codable {
 
+    /// List of commands of bots in the group
+    public let botCommands: [BotCommands]
+
     /// User identifier of the creator of the group; 0 if unknown
     public let creatorUserId: Int
 
@@ -27,12 +30,14 @@ public struct BasicGroupFullInfo: Codable {
 
 
     public init(
+        botCommands: [BotCommands],
         creatorUserId: Int,
         description: String,
         inviteLink: ChatInviteLink?,
         members: [ChatMember],
         photo: ChatPhoto?
     ) {
+        self.botCommands = botCommands
         self.creatorUserId = creatorUserId
         self.description = description
         self.inviteLink = inviteLink

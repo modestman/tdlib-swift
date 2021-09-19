@@ -12,19 +12,19 @@ import Foundation
 public struct SendBotStartMessage: Codable {
 
     /// Identifier of the bot
-    public let botUserId: Int
+    public let botUserId: Int?
 
     /// Identifier of the target chat
-    public let chatId: Int64
+    public let chatId: Int64?
 
     /// A hidden parameter sent to the bot for deep linking purposes (https://core.telegram.org/bots#deep-linking)
-    public let parameter: String
+    public let parameter: String?
 
 
     public init(
-        botUserId: Int,
-        chatId: Int64,
-        parameter: String
+        botUserId: Int?,
+        chatId: Int64?,
+        parameter: String?
     ) {
         self.botUserId = botUserId
         self.chatId = chatId

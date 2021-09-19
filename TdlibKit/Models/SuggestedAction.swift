@@ -14,7 +14,10 @@ public enum SuggestedAction: Codable {
     /// Suggests the user to enable "archive_and_mute_new_chats_from_unknown_users" option
     case suggestedActionEnableArchiveAndMuteNewChats
 
-    /// Suggests the user to check authorization phone number and change the phone number if it is inaccessible
+    /// Suggests the user to check whether 2-step verification password is still remembered
+    case suggestedActionCheckPassword
+
+    /// Suggests the user to check whether authorization phone number is correct and change the phone number if it is inaccessible
     case suggestedActionCheckPhoneNumber
 
     /// Suggests the user to see a hint about meaning of one and two ticks on sent message
@@ -26,6 +29,7 @@ public enum SuggestedAction: Codable {
 
     private enum Kind: String, Codable {
         case suggestedActionEnableArchiveAndMuteNewChats
+        case suggestedActionCheckPassword
         case suggestedActionCheckPhoneNumber
         case suggestedActionSeeTicksHint
         case suggestedActionConvertToBroadcastGroup
@@ -37,6 +41,8 @@ public enum SuggestedAction: Codable {
         switch type {
         case .suggestedActionEnableArchiveAndMuteNewChats:
             self = .suggestedActionEnableArchiveAndMuteNewChats
+        case .suggestedActionCheckPassword:
+            self = .suggestedActionCheckPassword
         case .suggestedActionCheckPhoneNumber:
             self = .suggestedActionCheckPhoneNumber
         case .suggestedActionSeeTicksHint:
@@ -52,6 +58,8 @@ public enum SuggestedAction: Codable {
         switch self {
         case .suggestedActionEnableArchiveAndMuteNewChats:
             try container.encode(Kind.suggestedActionEnableArchiveAndMuteNewChats, forKey: .type)
+        case .suggestedActionCheckPassword:
+            try container.encode(Kind.suggestedActionCheckPassword, forKey: .type)
         case .suggestedActionCheckPhoneNumber:
             try container.encode(Kind.suggestedActionCheckPhoneNumber, forKey: .type)
         case .suggestedActionSeeTicksHint:

@@ -17,7 +17,7 @@ public struct PhotoSize: Codable {
     /// Information about the image file
     public let photo: File
 
-    /// Sizes of progressive JPEG file prefixes, which can be used to preliminarily show the image
+    /// Sizes of progressive JPEG file prefixes, which can be used to preliminarily show the image; in bytes
     public let progressiveSizes: [Int]
 
     /// Image type (see https://core.telegram.org/constructor/photoSize)

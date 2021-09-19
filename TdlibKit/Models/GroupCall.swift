@@ -17,7 +17,10 @@ public struct GroupCall: Codable {
     /// True, if the current user can enable or disable mute_new_participants setting
     public let canChangeMuteNewParticipants: Bool
 
-    /// Call duration; for ended calls only
+    /// True, if the current user can broadcast video or share screen
+    public let canEnableVideo: Bool
+
+    /// Call duration, in seconds; for ended calls only
     public let duration: Int
 
     /// True, if the group call is scheduled and the current user will receive a notification when the group call will start
@@ -31,6 +34,15 @@ public struct GroupCall: Codable {
 
     /// True, if the call is joined
     public let isJoined: Bool
+
+    /// True, if the current user's video is enabled
+    public let isMyVideoEnabled: Bool
+
+    /// True, if the current user's video is paused
+    public let isMyVideoPaused: Bool
+
+    /// True, if a video file is being recorded for the call
+    public let isVideoRecorded: Bool
 
     /// True, if all group call participants are loaded
     public let loadedAllParticipants: Bool
@@ -60,11 +72,15 @@ public struct GroupCall: Codable {
     public init(
         canBeManaged: Bool,
         canChangeMuteNewParticipants: Bool,
+        canEnableVideo: Bool,
         duration: Int,
         enabledStartNotification: Bool,
         id: Int,
         isActive: Bool,
         isJoined: Bool,
+        isMyVideoEnabled: Bool,
+        isMyVideoPaused: Bool,
+        isVideoRecorded: Bool,
         loadedAllParticipants: Bool,
         muteNewParticipants: Bool,
         needRejoin: Bool,
@@ -76,11 +92,15 @@ public struct GroupCall: Codable {
     ) {
         self.canBeManaged = canBeManaged
         self.canChangeMuteNewParticipants = canChangeMuteNewParticipants
+        self.canEnableVideo = canEnableVideo
         self.duration = duration
         self.enabledStartNotification = enabledStartNotification
         self.id = id
         self.isActive = isActive
         self.isJoined = isJoined
+        self.isMyVideoEnabled = isMyVideoEnabled
+        self.isMyVideoPaused = isMyVideoPaused
+        self.isVideoRecorded = isVideoRecorded
         self.loadedAllParticipants = loadedAllParticipants
         self.muteNewParticipants = muteNewParticipants
         self.needRejoin = needRejoin

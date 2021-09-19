@@ -101,6 +101,9 @@ public enum Update: Codable {
     /// The chat action bar was changed
     case updateChatActionBar(UpdateChatActionBar)
 
+    /// The chat theme was changed
+    case updateChatTheme(UpdateChatTheme)
+
     /// The default chat reply markup was changed. Can occur because new messages with reply markup were received or because an old reply markup was hidden by the user
     case updateChatReplyMarkup(UpdateChatReplyMarkup)
 
@@ -212,6 +215,9 @@ public enum Update: Codable {
     /// The selected background has changed
     case updateSelectedBackground(UpdateSelectedBackground)
 
+    /// The list of available chat themes has changed
+    case updateChatThemes(UpdateChatThemes)
+
     /// Some language pack strings have been updated
     case updateLanguagePackStrings(UpdateLanguagePackStrings)
 
@@ -298,6 +304,7 @@ public enum Update: Codable {
         case updateScopeNotificationSettings
         case updateChatMessageTtlSetting
         case updateChatActionBar
+        case updateChatTheme
         case updateChatReplyMarkup
         case updateChatDraftMessage
         case updateChatFilters
@@ -335,6 +342,7 @@ public enum Update: Codable {
         case updateFavoriteStickers
         case updateSavedAnimations
         case updateSelectedBackground
+        case updateChatThemes
         case updateLanguagePackStrings
         case updateConnectionState
         case updateTermsOfService
@@ -449,6 +457,9 @@ public enum Update: Codable {
         case .updateChatActionBar:
             let value = try UpdateChatActionBar(from: decoder)
             self = .updateChatActionBar(value)
+        case .updateChatTheme:
+            let value = try UpdateChatTheme(from: decoder)
+            self = .updateChatTheme(value)
         case .updateChatReplyMarkup:
             let value = try UpdateChatReplyMarkup(from: decoder)
             self = .updateChatReplyMarkup(value)
@@ -560,6 +571,9 @@ public enum Update: Codable {
         case .updateSelectedBackground:
             let value = try UpdateSelectedBackground(from: decoder)
             self = .updateSelectedBackground(value)
+        case .updateChatThemes:
+            let value = try UpdateChatThemes(from: decoder)
+            self = .updateChatThemes(value)
         case .updateLanguagePackStrings:
             let value = try UpdateLanguagePackStrings(from: decoder)
             self = .updateLanguagePackStrings(value)
@@ -710,6 +724,9 @@ public enum Update: Codable {
         case .updateChatActionBar(let value):
             try container.encode(Kind.updateChatActionBar, forKey: .type)
             try value.encode(to: encoder)
+        case .updateChatTheme(let value):
+            try container.encode(Kind.updateChatTheme, forKey: .type)
+            try value.encode(to: encoder)
         case .updateChatReplyMarkup(let value):
             try container.encode(Kind.updateChatReplyMarkup, forKey: .type)
             try value.encode(to: encoder)
@@ -820,6 +837,9 @@ public enum Update: Codable {
             try value.encode(to: encoder)
         case .updateSelectedBackground(let value):
             try container.encode(Kind.updateSelectedBackground, forKey: .type)
+            try value.encode(to: encoder)
+        case .updateChatThemes(let value):
+            try container.encode(Kind.updateChatThemes, forKey: .type)
             try value.encode(to: encoder)
         case .updateLanguagePackStrings(let value):
             try container.encode(Kind.updateLanguagePackStrings, forKey: .type)
@@ -1475,6 +1495,25 @@ public struct UpdateChatActionBar: Codable {
     ) {
         self.actionBar = actionBar
         self.chatId = chatId
+    }
+}
+
+/// The chat theme was changed
+public struct UpdateChatTheme: Codable {
+
+    /// Chat identifier
+    public let chatId: Int64
+
+    /// The new name of the chat theme; may be empty if theme was reset to default
+    public let themeName: String
+
+
+    public init(
+        chatId: Int64,
+        themeName: String
+    ) {
+        self.chatId = chatId
+        self.themeName = themeName
     }
 }
 
@@ -2170,6 +2209,18 @@ public struct UpdateSelectedBackground: Codable {
     ) {
         self.background = background
         self.forDarkTheme = forDarkTheme
+    }
+}
+
+/// The list of available chat themes has changed
+public struct UpdateChatThemes: Codable {
+
+    /// The new list of chat themes
+    public let chatThemes: [ChatTheme]
+
+
+    public init(chatThemes: [ChatTheme]) {
+        self.chatThemes = chatThemes
     }
 }
 

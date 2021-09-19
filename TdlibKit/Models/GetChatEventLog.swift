@@ -12,31 +12,31 @@ import Foundation
 public struct GetChatEventLog: Codable {
 
     /// Chat identifier
-    public let chatId: Int64
+    public let chatId: Int64?
 
     /// The types of events to return. By default, all types will be returned
-    public let filters: ChatEventLogFilters
+    public let filters: ChatEventLogFilters?
 
     /// Identifier of an event from which to return results. Use 0 to get results from the latest events
-    public let fromEventId: TdInt64
+    public let fromEventId: TdInt64?
 
     /// The maximum number of events to return; up to 100
-    public let limit: Int
+    public let limit: Int?
 
     /// Search query by which to filter events
-    public let query: String
+    public let query: String?
 
     /// User identifiers by which to filter events. By default, events relating to all users will be returned
-    public let userIds: [Int]
+    public let userIds: [Int]?
 
 
     public init(
-        chatId: Int64,
-        filters: ChatEventLogFilters,
-        fromEventId: TdInt64,
-        limit: Int,
-        query: String,
-        userIds: [Int]
+        chatId: Int64?,
+        filters: ChatEventLogFilters?,
+        fromEventId: TdInt64?,
+        limit: Int?,
+        query: String?,
+        userIds: [Int]?
     ) {
         self.chatId = chatId
         self.filters = filters

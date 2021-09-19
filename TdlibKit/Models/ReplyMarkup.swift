@@ -84,17 +84,27 @@ public struct ReplyMarkupRemoveKeyboard: Codable {
 /// Instructs application to force a reply to this message
 public struct ReplyMarkupForceReply: Codable {
 
+    /// If non-empty, the placeholder to be shown in the input field when the reply is active; 0-64 characters
+    public let inputFieldPlaceholder: String
+
     /// True, if a forced reply must automatically be shown to the current user. For outgoing messages, specify true to show the forced reply only for the mentioned users and for the target user of a reply
     public let isPersonal: Bool
 
 
-    public init(isPersonal: Bool) {
+    public init(
+        inputFieldPlaceholder: String,
+        isPersonal: Bool
+    ) {
+        self.inputFieldPlaceholder = inputFieldPlaceholder
         self.isPersonal = isPersonal
     }
 }
 
 /// Contains a custom keyboard layout to quickly reply to bots
 public struct ReplyMarkupShowKeyboard: Codable {
+
+    /// If non-empty, the placeholder to be shown in the input field when the keyboard is active; 0-64 characters
+    public let inputFieldPlaceholder: String
 
     /// True, if the keyboard must automatically be shown to the current user. For outgoing messages, specify true to show the keyboard only for the mentioned users and for the target user of a reply
     public let isPersonal: Bool
@@ -110,11 +120,13 @@ public struct ReplyMarkupShowKeyboard: Codable {
 
 
     public init(
+        inputFieldPlaceholder: String,
         isPersonal: Bool,
         oneTime: Bool,
         resizeKeyboard: Bool,
         rows: [[KeyboardButton]]
     ) {
+        self.inputFieldPlaceholder = inputFieldPlaceholder
         self.isPersonal = isPersonal
         self.oneTime = oneTime
         self.resizeKeyboard = resizeKeyboard

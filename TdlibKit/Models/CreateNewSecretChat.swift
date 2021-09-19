@@ -12,10 +12,10 @@ import Foundation
 public struct CreateNewSecretChat: Codable {
 
     /// Identifier of the target user
-    public let userId: Int
+    public let userId: Int?
 
 
-    public init(userId: Int) {
+    public init(userId: Int?) {
         self.userId = userId
     }
 }

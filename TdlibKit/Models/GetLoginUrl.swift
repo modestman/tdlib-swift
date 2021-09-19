@@ -12,23 +12,23 @@ import Foundation
 public struct GetLoginUrl: Codable {
 
     /// True, if the user allowed the bot to send them messages
-    public let allowWriteAccess: Bool
+    public let allowWriteAccess: Bool?
 
     /// Button identifier
-    public let buttonId: Int
+    public let buttonId: Int?
 
     /// Chat identifier of the message with the button
-    public let chatId: Int64
+    public let chatId: Int64?
 
     /// Message identifier of the message with the button
-    public let messageId: Int64
+    public let messageId: Int64?
 
 
     public init(
-        allowWriteAccess: Bool,
-        buttonId: Int,
-        chatId: Int64,
-        messageId: Int64
+        allowWriteAccess: Bool?,
+        buttonId: Int?,
+        chatId: Int64?,
+        messageId: Int64?
     ) {
         self.allowWriteAccess = allowWriteAccess
         self.buttonId = buttonId

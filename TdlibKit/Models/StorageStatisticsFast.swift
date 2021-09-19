@@ -17,7 +17,7 @@ public struct StorageStatisticsFast: Codable {
     /// Approximate number of files
     public let fileCount: Int
 
-    /// Approximate total size of files
+    /// Approximate total size of files, in bytes
     public let filesSize: Int64
 
     /// Size of the language pack database

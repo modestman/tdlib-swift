@@ -12,19 +12,19 @@ import Foundation
 public struct GetUserProfilePhotos: Codable {
 
     /// The maximum number of photos to be returned; up to 100
-    public let limit: Int
+    public let limit: Int?
 
     /// The number of photos to skip; must be non-negative
-    public let offset: Int
+    public let offset: Int?
 
     /// User identifier
-    public let userId: Int
+    public let userId: Int?
 
 
     public init(
-        limit: Int,
-        offset: Int,
-        userId: Int
+        limit: Int?,
+        offset: Int?,
+        userId: Int?
     ) {
         self.limit = limit
         self.offset = offset

@@ -38,27 +38,21 @@ final class ChatListService: UpdateListener {
     
     // MARK: - Public methods
     
-    func getChatList(limit: Int = 10) throws {
+    func getChatList(limit: Int = 20) throws {
         if !haveFullChatList, limit > chatList.count {
-            // have enough chats in the chat list or chat list is too small
-            var offsetOrder = TdInt64.max
-            var offsetChatId: Int64 = 0
-            if let last = chatList.last {
-                offsetOrder = last.position.order
-                offsetChatId = last.chatId
-            }
-            try api.getChats(chatList: .chatListMain, limit: limit, offsetChatId: offsetChatId, offsetOrder: offsetOrder) { [weak self] result in
-                guard
-                    let self = self,
-                    let chats = try? result.get()
-                else { return }
-                
-                if chats.chatIds.isEmpty {
-                    self.haveFullChatList = true
+            try api.loadChats(chatList: .chatListMain, limit: limit - chatList.count) { result in
+                switch result {
+                case .success:
+                    // chats had already been received through updates, let's retry request
+                    try? self.getChatList(limit: limit)
+                    
+                case .failure(let error):
+                    if let tdLibError = error as? TdlibKit.Error, tdLibError.code == 404 {
+                        self.haveFullChatList = true
+                    } else {
+                        print("Receive an error for LoadChats: \(error)")
+                    }
                 }
-                
-                // chats had already been received through updates, let's retry request
-                try? self.getChatList(limit: limit)
             }
         }
         

@@ -14,7 +14,7 @@ public enum CallDiscardReason: Codable {
     /// The call wasn't discarded, or the reason is unknown
     case callDiscardReasonEmpty
 
-    /// The call was ended before the conversation started. It was cancelled by the caller or missed by the other party
+    /// The call was ended before the conversation started. It was canceled by the caller or missed by the other party
     case callDiscardReasonMissed
 
     /// The call was ended before the conversation started. It was declined by the other party

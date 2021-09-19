@@ -12,23 +12,23 @@ import Foundation
 public struct EditMessageCaption: Codable {
 
     /// New message content caption; 0-GetOption("message_caption_length_max") characters
-    public let caption: FormattedText
+    public let caption: FormattedText?
 
     /// The chat the message belongs to
-    public let chatId: Int64
+    public let chatId: Int64?
 
     /// Identifier of the message
-    public let messageId: Int64
+    public let messageId: Int64?
 
     /// The new message reply markup; for bots only
-    public let replyMarkup: ReplyMarkup
+    public let replyMarkup: ReplyMarkup?
 
 
     public init(
-        caption: FormattedText,
-        chatId: Int64,
-        messageId: Int64,
-        replyMarkup: ReplyMarkup
+        caption: FormattedText?,
+        chatId: Int64?,
+        messageId: Int64?,
+        replyMarkup: ReplyMarkup?
     ) {
         self.caption = caption
         self.chatId = chatId

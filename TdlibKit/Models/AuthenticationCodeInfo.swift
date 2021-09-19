@@ -17,7 +17,7 @@ public struct AuthenticationCodeInfo: Codable {
     /// A phone number that is being authenticated
     public let phoneNumber: String
 
-    /// Timeout before the code should be re-sent, in seconds
+    /// Timeout before the code can be re-sent, in seconds
     public let timeout: Int
 
     /// Describes the way the code was sent to the user

@@ -71,6 +71,9 @@ public struct Chat: Codable {
     /// Identifier of the message from which reply markup needs to be used; 0 if there is no default custom reply markup in the chat
     public let replyMarkupMessageId: Int64
 
+    /// If non-empty, name of a theme set for the chat
+    public let themeName: String
+
     /// Chat title
     public let title: String
 
@@ -108,6 +111,7 @@ public struct Chat: Codable {
         photo: ChatPhotoInfo?,
         positions: [ChatPosition],
         replyMarkupMessageId: Int64,
+        themeName: String,
         title: String,
         type: ChatType,
         unreadCount: Int,
@@ -134,6 +138,7 @@ public struct Chat: Codable {
         self.photo = photo
         self.positions = positions
         self.replyMarkupMessageId = replyMarkupMessageId
+        self.themeName = themeName
         self.title = title
         self.type = type
         self.unreadCount = unreadCount

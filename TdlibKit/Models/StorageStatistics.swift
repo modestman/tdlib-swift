@@ -17,7 +17,7 @@ public struct StorageStatistics: Codable {
     /// Total number of files
     public let count: Int
 
-    /// Total size of files
+    /// Total size of files, in bytes
     public let size: Int64
 
 

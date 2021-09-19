@@ -12,19 +12,19 @@ import Foundation
 public struct GetLoginUrlInfo: Codable {
 
     /// Button identifier
-    public let buttonId: Int
+    public let buttonId: Int?
 
     /// Chat identifier of the message with the button
-    public let chatId: Int64
+    public let chatId: Int64?
 
     /// Message identifier of the message with the button
-    public let messageId: Int64
+    public let messageId: Int64?
 
 
     public init(
-        buttonId: Int,
-        chatId: Int64,
-        messageId: Int64
+        buttonId: Int?,
+        chatId: Int64?,
+        messageId: Int64?
     ) {
         self.buttonId = buttonId
         self.chatId = chatId

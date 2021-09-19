@@ -17,7 +17,7 @@ public struct StorageStatisticsByFileType: Codable {
     /// File type
     public let fileType: FileType
 
-    /// Total size of the files
+    /// Total size of the files, in bytes
     public let size: Int64
 
 

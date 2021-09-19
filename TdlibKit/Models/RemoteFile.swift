@@ -23,7 +23,7 @@ public struct RemoteFile: Codable {
     /// Unique file identifier; may be empty if unknown. The unique file identifier which is the same for the same file even for different users and is persistent over time
     public let uniqueId: String
 
-    /// Size of the remote available part of the file; 0 if unknown
+    /// Size of the remote available part of the file, in bytes; 0 if unknown
     public let uploadedSize: Int
 
 

@@ -58,7 +58,7 @@ public enum LogStream: Codable {
 /// The log is written to a file
 public struct LogStreamFile: Codable {
 
-    /// The maximum size of the file to where the internal TDLib log is written before the file will be auto-rotated
+    /// The maximum size of the file to where the internal TDLib log is written before the file will be auto-rotated, in bytes
     public let maxFileSize: Int64
 
     /// Path to the file to where the internal TDLib log will be written

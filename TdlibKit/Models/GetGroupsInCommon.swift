@@ -12,19 +12,19 @@ import Foundation
 public struct GetGroupsInCommon: Codable {
 
     /// The maximum number of chats to be returned; up to 100
-    public let limit: Int
+    public let limit: Int?
 
     /// Chat identifier starting from which to return chats; use 0 for the first request
-    public let offsetChatId: Int64
+    public let offsetChatId: Int64?
 
     /// User identifier
-    public let userId: Int
+    public let userId: Int?
 
 
     public init(
-        limit: Int,
-        offsetChatId: Int64,
-        userId: Int
+        limit: Int?,
+        offsetChatId: Int64?,
+        userId: Int?
     ) {
         self.limit = limit
         self.offsetChatId = offsetChatId

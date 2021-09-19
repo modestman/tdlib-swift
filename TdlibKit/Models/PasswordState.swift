@@ -23,6 +23,9 @@ public struct PasswordState: Codable {
     /// Hint for the password; may be empty
     public let passwordHint: String
 
+    /// If not 0, point in time (Unix timestamp) after which the password can be reset immediately using resetPassword
+    public let pendingResetDate: Int
+
     /// Information about the recovery email address to which the confirmation email was sent; may be null
     public let recoveryEmailAddressCodeInfo: EmailAddressAuthenticationCodeInfo?
 
@@ -32,12 +35,14 @@ public struct PasswordState: Codable {
         hasPassword: Bool,
         hasRecoveryEmailAddress: Bool,
         passwordHint: String,
+        pendingResetDate: Int,
         recoveryEmailAddressCodeInfo: EmailAddressAuthenticationCodeInfo?
     ) {
         self.hasPassportData = hasPassportData
         self.hasPassword = hasPassword
         self.hasRecoveryEmailAddress = hasRecoveryEmailAddress
         self.passwordHint = passwordHint
+        self.pendingResetDate = pendingResetDate
         self.recoveryEmailAddressCodeInfo = recoveryEmailAddressCodeInfo
     }
 }

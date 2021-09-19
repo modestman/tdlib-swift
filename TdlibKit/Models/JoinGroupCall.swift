@@ -8,42 +8,47 @@
 import Foundation
 
 
-/// Joins an active group call
+/// Joins an active group call. Returns join response payload for tgcalls
 public struct JoinGroupCall: Codable {
 
+    /// Caller audio channel synchronization source identifier; received from tgcalls
+    public let audioSourceId: Int?
+
     /// Group call identifier
-    public let groupCallId: Int
+    public let groupCallId: Int?
 
     /// If non-empty, invite hash to be used to join the group call without being muted by administrators
-    public let inviteHash: String
+    public let inviteHash: String?
 
     /// True, if the user's microphone is muted
-    public let isMuted: Bool
+    public let isMuted: Bool?
+
+    /// True, if the user's video is enabled
+    public let isMyVideoEnabled: Bool?
 
     /// Identifier of a group call participant, which will be used to join the call; voice chats only
-    public let participantId: MessageSender
+    public let participantId: MessageSender?
 
-    /// Group join payload; received from tgcalls
-    public let payload: GroupCallPayload
-
-    /// Caller synchronization source identifier; received from tgcalls
-    public let source: Int
+    /// Group call join payload; received from tgcalls
+    public let payload: String?
 
 
     public init(
-        groupCallId: Int,
-        inviteHash: String,
-        isMuted: Bool,
-        participantId: MessageSender,
-        payload: GroupCallPayload,
-        source: Int
+        audioSourceId: Int?,
+        groupCallId: Int?,
+        inviteHash: String?,
+        isMuted: Bool?,
+        isMyVideoEnabled: Bool?,
+        participantId: MessageSender?,
+        payload: String?
     ) {
+        self.audioSourceId = audioSourceId
         self.groupCallId = groupCallId
         self.inviteHash = inviteHash
         self.isMuted = isMuted
+        self.isMyVideoEnabled = isMyVideoEnabled
         self.participantId = participantId
         self.payload = payload
-        self.source = source
     }
 }
 

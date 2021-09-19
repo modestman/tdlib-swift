@@ -20,7 +20,7 @@ public struct StorageStatisticsByChat: Codable {
     /// Total number of files in the chat
     public let count: Int
 
-    /// Total size of the files in the chat
+    /// Total size of the files in the chat, in bytes
     public let size: Int64
 
 

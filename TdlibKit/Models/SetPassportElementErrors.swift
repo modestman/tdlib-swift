@@ -12,15 +12,15 @@ import Foundation
 public struct SetPassportElementErrors: Codable {
 
     /// The errors
-    public let errors: [InputPassportElementError]
+    public let errors: [InputPassportElementError]?
 
     /// User identifier
-    public let userId: Int
+    public let userId: Int?
 
 
     public init(
-        errors: [InputPassportElementError],
-        userId: Int
+        errors: [InputPassportElementError]?,
+        userId: Int?
     ) {
         self.errors = errors
         self.userId = userId

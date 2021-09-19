@@ -12,19 +12,19 @@ import Foundation
 public struct ReportSupergroupSpam: Codable {
 
     /// Identifiers of messages sent in the supergroup by the user. This list must be non-empty
-    public let messageIds: [Int64]
+    public let messageIds: [Int64]?
 
     /// Supergroup identifier
-    public let supergroupId: Int
+    public let supergroupId: Int?
 
     /// User identifier
-    public let userId: Int
+    public let userId: Int?
 
 
     public init(
-        messageIds: [Int64],
-        supergroupId: Int,
-        userId: Int
+        messageIds: [Int64]?,
+        supergroupId: Int?,
+        userId: Int?
     ) {
         self.messageIds = messageIds
         self.supergroupId = supergroupId
