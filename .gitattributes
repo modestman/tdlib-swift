@@ -1,5 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 TdLib.xcframework/ios-arm64/TdLib.framework/TdLib filter=lfs diff=lfs merge=lfs -text
-TdLib.xcframework/ios-x86_64-simulator/TdLib.framework/TdLib filter=lfs diff=lfs merge=lfs -text
-TdLib.xcframework/macos-x86_64/TdLib.framework/Versions/A/TdLib filter=lfs diff=lfs merge=lfs -text
+TdLib.xcframework/ios-arm64_x86_64-simulator/TdLib.framework/TdLib filter=lfs diff=lfs merge=lfs -text
+TdLib.xcframework/macos-arm64_x86_64/TdLib.framework/Versions/A/TdLib filter=lfs diff=lfs merge=lfs -text

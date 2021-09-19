@@ -4,9 +4,29 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>Resources/Info.plist</key>
+		<key>Headers/td.h</key>
 		<data>
-		nzkhgXabqKAzrUGekz8svHPPo9E=
+		7Sjxv/6v9iKVpOzqmIHEwj4Za3E=
+		</data>
+		<key>Headers/td_json_client.h</key>
+		<data>
+		L8Ks0RQ6dXbyskp57Dhc33f/Zi0=
+		</data>
+		<key>Headers/td_log.h</key>
+		<data>
+		JYXHDyODLXX8VYS0r+uQ31Z1zU0=
+		</data>
+		<key>Headers/tdjson_export.h</key>
+		<data>
+		IMwHOjBCv4qWKRlyyCJTHK5eQyQ=
+		</data>
+		<key>Info.plist</key>
+		<data>
+		dHBA/ojo8UnxTRSyhKC0fg/cFy8=
+		</data>
+		<key>Modules/module.modulemap</key>
+		<data>
+		SdIhOXJxtShkeLsfISkLXv9vhi4=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -26,11 +46,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			sQMdqo92JLpkjz6jtybdYs5Uyuw=
+			L8Ks0RQ6dXbyskp57Dhc33f/Zi0=
 			</data>
 			<key>hash2</key>
 			<data>
-			M/k/FJtSsP/RxDgoJ3AdE+s5pftE8uB0ozaDZ+RvT0A=
+			iL5JQOD4Q7VQAyM3MIP3NCEPbFZZVquTKR0Mkt2ELTA=
 			</data>
 		</dict>
 		<key>Headers/td_log.h</key>
@@ -66,37 +86,26 @@
 			DjPlWzclXJvgODRhwOKBkXLVDGI8ZmqNRizMbJxedd0=
 			</data>
 		</dict>
-		<key>Resources/Info.plist</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			nzkhgXabqKAzrUGekz8svHPPo9E=
-			</data>
-			<key>hash2</key>
-			<data>
-			y+4fdD1vv4IYwS15d1NtlN2RFxBGBKxka0l84fYXYAw=
-			</data>
-		</dict>
 	</dict>
 	<key>rules</key>
 	<dict>
-		<key>^Resources/</key>
+		<key>^.*</key>
 		<true/>
-		<key>^Resources/.*\.lproj/</key>
+		<key>^.*\.lproj/</key>
 		<dict>
 			<key>optional</key>
 			<true/>
 			<key>weight</key>
 			<real>1000</real>
 		</dict>
-		<key>^Resources/.*\.lproj/locversion.plist$</key>
+		<key>^.*\.lproj/locversion.plist$</key>
 		<dict>
 			<key>omit</key>
 			<true/>
 			<key>weight</key>
 			<real>1100</real>
 		</dict>
-		<key>^Resources/Base\.lproj/</key>
+		<key>^Base\.lproj/</key>
 		<dict>
 			<key>weight</key>
 			<real>1010</real>
@@ -118,15 +127,27 @@
 			<key>weight</key>
 			<real>2000</real>
 		</dict>
-		<key>^(Frameworks|SharedFrameworks|PlugIns|Plug-ins|XPCServices|Helpers|MacOS|Library/(Automator|Spotlight|LoginItems))/</key>
-		<dict>
-			<key>nested</key>
-			<true/>
-			<key>weight</key>
-			<real>10</real>
-		</dict>
 		<key>^.*</key>
 		<true/>
+		<key>^.*\.lproj/</key>
+		<dict>
+			<key>optional</key>
+			<true/>
+			<key>weight</key>
+			<real>1000</real>
+		</dict>
+		<key>^.*\.lproj/locversion.plist$</key>
+		<dict>
+			<key>omit</key>
+			<true/>
+			<key>weight</key>
+			<real>1100</real>
+		</dict>
+		<key>^Base\.lproj/</key>
+		<dict>
+			<key>weight</key>
+			<real>1010</real>
+		</dict>
 		<key>^Info\.plist$</key>
 		<dict>
 			<key>omit</key>
@@ -140,37 +161,6 @@
 			<true/>
 			<key>weight</key>
 			<real>20</real>
-		</dict>
-		<key>^Resources/</key>
-		<dict>
-			<key>weight</key>
-			<real>20</real>
-		</dict>
-		<key>^Resources/.*\.lproj/</key>
-		<dict>
-			<key>optional</key>
-			<true/>
-			<key>weight</key>
-			<real>1000</real>
-		</dict>
-		<key>^Resources/.*\.lproj/locversion.plist$</key>
-		<dict>
-			<key>omit</key>
-			<true/>
-			<key>weight</key>
-			<real>1100</real>
-		</dict>
-		<key>^Resources/Base\.lproj/</key>
-		<dict>
-			<key>weight</key>
-			<real>1010</real>
-		</dict>
-		<key>^[^/]+$</key>
-		<dict>
-			<key>nested</key>
-			<true/>
-			<key>weight</key>
-			<real>10</real>
 		</dict>
 		<key>^embedded\.provisionprofile$</key>
 		<dict>
