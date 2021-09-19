@@ -39,12 +39,7 @@ platforms="macOS iOS iOS-simulator"
 for platform in $platforms;
 do
     LIB_PATH="$TD_BUILD_PATH/install-$platform/lib"
-    if [[ $platform = "iOS" || $platform = "iOS-simulator" ]]; then
-        OPENSSL_LIB_PATH="$OPENSSL_PATH/iOS/lib"
-    else 
-        OPENSSL_LIB_PATH="$OPENSSL_PATH/macOS/lib"
-    fi
-
+    OPENSSL_LIB_PATH="$OPENSSL_PATH/$platform/lib"
     INSTALL_PATH="$platform/lib"
 
     if [ -d "$LIB_PATH" ]; then
