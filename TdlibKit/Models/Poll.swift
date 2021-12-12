@@ -11,7 +11,7 @@ import Foundation
 /// Describes a poll
 public struct Poll: Codable {
 
-    /// Point in time (Unix timestamp) when the poll will be automatically closed
+    /// Point in time (Unix timestamp) when the poll will automatically be closed
     public let closeDate: Int
 
     /// Unique poll identifier
@@ -33,7 +33,7 @@ public struct Poll: Codable {
     public let question: String
 
     /// User identifiers of recent voters, if the poll is non-anonymous
-    public let recentVoterUserIds: [Int]
+    public let recentVoterUserIds: [Int64]
 
     /// Total number of voters, participating in the poll
     public let totalVoterCount: Int
@@ -50,7 +50,7 @@ public struct Poll: Codable {
         openPeriod: Int,
         options: [PollOption],
         question: String,
-        recentVoterUserIds: [Int],
+        recentVoterUserIds: [Int64],
         totalVoterCount: Int,
         type: PollType
     ) {

@@ -68,7 +68,7 @@ public struct SupergroupFullInfo: Codable {
     public let stickerSetId: TdInt64
 
     /// Identifier of the basic group from which supergroup was upgraded; 0 if none
-    public let upgradedFromBasicGroupId: Int
+    public let upgradedFromBasicGroupId: Int64
 
     /// Identifier of the last message in the basic group from which supergroup was upgraded; 0 if none
     public let upgradedFromMaxMessageId: Int64
@@ -94,7 +94,7 @@ public struct SupergroupFullInfo: Codable {
         slowModeDelay: Int,
         slowModeDelayExpiresIn: Double,
         stickerSetId: TdInt64,
-        upgradedFromBasicGroupId: Int,
+        upgradedFromBasicGroupId: Int64,
         upgradedFromMaxMessageId: Int64
     ) {
         self.administratorCount = administratorCount

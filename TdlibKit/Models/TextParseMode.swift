@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Describes the way the text should be parsed for TextEntities
+/// Describes the way the text needs to be parsed for TextEntities
 public enum TextParseMode: Codable {
 
     /// The text uses Markdown-style formatting

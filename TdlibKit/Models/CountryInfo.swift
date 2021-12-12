@@ -20,7 +20,7 @@ public struct CountryInfo: Codable {
     /// English name of the country
     public let englishName: String
 
-    /// True, if the country should be hidden from the list of all countries
+    /// True, if the country must be hidden from the list of all countries
     public let isHidden: Bool
 
     /// Native name of the country

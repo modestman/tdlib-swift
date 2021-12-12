@@ -11,13 +11,13 @@ import Foundation
 /// Describes a horizontal alignment of a table cell content
 public enum PageBlockHorizontalAlignment: Codable {
 
-    /// The content should be left-aligned
+    /// The content must be left-aligned
     case pageBlockHorizontalAlignmentLeft
 
-    /// The content should be center-aligned
+    /// The content must be center-aligned
     case pageBlockHorizontalAlignmentCenter
 
-    /// The content should be right-aligned
+    /// The content must be right-aligned
     case pageBlockHorizontalAlignmentRight
 
 

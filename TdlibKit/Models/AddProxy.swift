@@ -11,7 +11,7 @@ import Foundation
 /// Adds a proxy server for network requests. Can be called before authorization
 public struct AddProxy: Codable {
 
-    /// True, if the proxy should be enabled
+    /// True, if the proxy needs to be enabled
     public let enable: Bool?
 
     /// Proxy server port

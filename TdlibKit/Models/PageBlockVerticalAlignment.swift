@@ -11,13 +11,13 @@ import Foundation
 /// Describes a Vertical alignment of a table cell content
 public enum PageBlockVerticalAlignment: Codable {
 
-    /// The content should be top-aligned
+    /// The content must be top-aligned
     case pageBlockVerticalAlignmentTop
 
-    /// The content should be middle-aligned
+    /// The content must be middle-aligned
     case pageBlockVerticalAlignmentMiddle
 
-    /// The content should be bottom-aligned
+    /// The content must be bottom-aligned
     case pageBlockVerticalAlignmentBottom
 
 

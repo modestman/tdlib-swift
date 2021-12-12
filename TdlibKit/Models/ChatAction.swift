@@ -50,6 +50,9 @@ public enum ChatAction: Codable {
     /// The user is uploading a video note
     case chatActionUploadingVideoNote(ChatActionUploadingVideoNote)
 
+    /// The user is watching animations sent by the other party by clicking on an animated emoji
+    case chatActionWatchingAnimations(ChatActionWatchingAnimations)
+
     /// The user has canceled the previous action
     case chatActionCancel
 
@@ -68,6 +71,7 @@ public enum ChatAction: Codable {
         case chatActionStartPlayingGame
         case chatActionRecordingVideoNote
         case chatActionUploadingVideoNote
+        case chatActionWatchingAnimations
         case chatActionCancel
     }
 
@@ -106,6 +110,9 @@ public enum ChatAction: Codable {
         case .chatActionUploadingVideoNote:
             let value = try ChatActionUploadingVideoNote(from: decoder)
             self = .chatActionUploadingVideoNote(value)
+        case .chatActionWatchingAnimations:
+            let value = try ChatActionWatchingAnimations(from: decoder)
+            self = .chatActionWatchingAnimations(value)
         case .chatActionCancel:
             self = .chatActionCancel
         }
@@ -144,6 +151,9 @@ public enum ChatAction: Codable {
             try container.encode(Kind.chatActionRecordingVideoNote, forKey: .type)
         case .chatActionUploadingVideoNote(let value):
             try container.encode(Kind.chatActionUploadingVideoNote, forKey: .type)
+            try value.encode(to: encoder)
+        case .chatActionWatchingAnimations(let value):
+            try container.encode(Kind.chatActionWatchingAnimations, forKey: .type)
             try value.encode(to: encoder)
         case .chatActionCancel:
             try container.encode(Kind.chatActionCancel, forKey: .type)
@@ -208,6 +218,18 @@ public struct ChatActionUploadingVideoNote: Codable {
 
     public init(progress: Int) {
         self.progress = progress
+    }
+}
+
+/// The user is watching animations sent by the other party by clicking on an animated emoji
+public struct ChatActionWatchingAnimations: Codable {
+
+    /// The animated emoji
+    public let emoji: String
+
+
+    public init(emoji: String) {
+        self.emoji = emoji
     }
 }
 

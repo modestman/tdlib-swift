@@ -14,7 +14,7 @@ struct TextMessage {
     let id: Int64
     let chatId: Int64
     let date: Foundation.Date
-    let senderUserId: Int
+    let senderUserId: Int64
     let isChannelPost: Bool
     private(set) var text: String?
     var user: UserInfo?
@@ -28,7 +28,7 @@ extension TextMessage {
         id = message.id
         chatId = message.chatId
         date = Foundation.Date(timeIntervalSince1970: TimeInterval(message.date))
-        switch message.sender {
+        switch message.senderId {
         case .messageSenderUser(let user):
             senderUserId = user.userId
         default:

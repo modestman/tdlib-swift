@@ -23,7 +23,7 @@ public struct Sticker: Codable {
     /// True, if the sticker is a mask
     public let isMask: Bool
 
-    /// Position where the mask should be placed; may be null
+    /// Position where the mask is placed; may be null
     public let maskPosition: MaskPosition?
 
     /// Sticker's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner

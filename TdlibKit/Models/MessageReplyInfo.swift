@@ -20,8 +20,8 @@ public struct MessageReplyInfo: Codable {
     /// Identifier of the last read outgoing reply to the message
     public let lastReadOutboxMessageId: Int64
 
-    /// Recent repliers to the message; available in channels with a discussion supergroup
-    public let recentRepliers: [MessageSender]
+    /// Identifiers of recent repliers to the message; available in channels with a discussion supergroup
+    public let recentReplierIds: [MessageSender]
 
     /// Number of times the message was directly or indirectly replied
     public let replyCount: Int
@@ -31,13 +31,13 @@ public struct MessageReplyInfo: Codable {
         lastMessageId: Int64,
         lastReadInboxMessageId: Int64,
         lastReadOutboxMessageId: Int64,
-        recentRepliers: [MessageSender],
+        recentReplierIds: [MessageSender],
         replyCount: Int
     ) {
         self.lastMessageId = lastMessageId
         self.lastReadInboxMessageId = lastReadInboxMessageId
         self.lastReadOutboxMessageId = lastReadOutboxMessageId
-        self.recentRepliers = recentRepliers
+        self.recentReplierIds = recentReplierIds
         self.replyCount = replyCount
     }
 }

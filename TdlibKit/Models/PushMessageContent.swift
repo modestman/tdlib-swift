@@ -78,13 +78,16 @@ public enum PushMessageContent: Codable {
     case pushMessageContentChatChangeTitle(PushMessageContentChatChangeTitle)
 
     /// A chat theme was edited
-    case pushMessageContentChatChangeTheme(PushMessageContentChatChangeTheme)
+    case pushMessageContentChatSetTheme(PushMessageContentChatSetTheme)
 
     /// A chat member was deleted
     case pushMessageContentChatDeleteMember(PushMessageContentChatDeleteMember)
 
     /// A new member joined the chat by invite link
     case pushMessageContentChatJoinByLink
+
+    /// A new member was accepted to the chat by an administrator
+    case pushMessageContentChatJoinByRequest
 
     /// A forwarded messages
     case pushMessageContentMessageForwards(PushMessageContentMessageForwards)
@@ -116,9 +119,10 @@ public enum PushMessageContent: Codable {
         case pushMessageContentChatAddMembers
         case pushMessageContentChatChangePhoto
         case pushMessageContentChatChangeTitle
-        case pushMessageContentChatChangeTheme
+        case pushMessageContentChatSetTheme
         case pushMessageContentChatDeleteMember
         case pushMessageContentChatJoinByLink
+        case pushMessageContentChatJoinByRequest
         case pushMessageContentMessageForwards
         case pushMessageContentMediaAlbum
     }
@@ -189,14 +193,16 @@ public enum PushMessageContent: Codable {
         case .pushMessageContentChatChangeTitle:
             let value = try PushMessageContentChatChangeTitle(from: decoder)
             self = .pushMessageContentChatChangeTitle(value)
-        case .pushMessageContentChatChangeTheme:
-            let value = try PushMessageContentChatChangeTheme(from: decoder)
-            self = .pushMessageContentChatChangeTheme(value)
+        case .pushMessageContentChatSetTheme:
+            let value = try PushMessageContentChatSetTheme(from: decoder)
+            self = .pushMessageContentChatSetTheme(value)
         case .pushMessageContentChatDeleteMember:
             let value = try PushMessageContentChatDeleteMember(from: decoder)
             self = .pushMessageContentChatDeleteMember(value)
         case .pushMessageContentChatJoinByLink:
             self = .pushMessageContentChatJoinByLink
+        case .pushMessageContentChatJoinByRequest:
+            self = .pushMessageContentChatJoinByRequest
         case .pushMessageContentMessageForwards:
             let value = try PushMessageContentMessageForwards(from: decoder)
             self = .pushMessageContentMessageForwards(value)
@@ -271,14 +277,16 @@ public enum PushMessageContent: Codable {
         case .pushMessageContentChatChangeTitle(let value):
             try container.encode(Kind.pushMessageContentChatChangeTitle, forKey: .type)
             try value.encode(to: encoder)
-        case .pushMessageContentChatChangeTheme(let value):
-            try container.encode(Kind.pushMessageContentChatChangeTheme, forKey: .type)
+        case .pushMessageContentChatSetTheme(let value):
+            try container.encode(Kind.pushMessageContentChatSetTheme, forKey: .type)
             try value.encode(to: encoder)
         case .pushMessageContentChatDeleteMember(let value):
             try container.encode(Kind.pushMessageContentChatDeleteMember, forKey: .type)
             try value.encode(to: encoder)
         case .pushMessageContentChatJoinByLink:
             try container.encode(Kind.pushMessageContentChatJoinByLink, forKey: .type)
+        case .pushMessageContentChatJoinByRequest:
+            try container.encode(Kind.pushMessageContentChatJoinByRequest, forKey: .type)
         case .pushMessageContentMessageForwards(let value):
             try container.encode(Kind.pushMessageContentMessageForwards, forKey: .type)
             try value.encode(to: encoder)
@@ -663,9 +671,9 @@ public struct PushMessageContentChatChangeTitle: Codable {
 }
 
 /// A chat theme was edited
-public struct PushMessageContentChatChangeTheme: Codable {
+public struct PushMessageContentChatSetTheme: Codable {
 
-    /// If non-empty, name of a new theme set for the chat. Otherwise chat theme was reset to the default one
+    /// If non-empty, name of a new theme, set for the chat. Otherwise chat theme was reset to the default one
     public let themeName: String
 
 

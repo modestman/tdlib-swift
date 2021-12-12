@@ -18,13 +18,13 @@ public struct ChatInviteLinkCount: Codable {
     public let revokedInviteLinkCount: Int
 
     /// Administrator's user identifier
-    public let userId: Int
+    public let userId: Int64
 
 
     public init(
         inviteLinkCount: Int,
         revokedInviteLinkCount: Int,
-        userId: Int
+        userId: Int64
     ) {
         self.inviteLinkCount = inviteLinkCount
         self.revokedInviteLinkCount = revokedInviteLinkCount

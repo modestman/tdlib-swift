@@ -105,10 +105,10 @@ public enum UserPrivacySettingRule: Codable {
 public struct UserPrivacySettingRuleAllowUsers: Codable {
 
     /// The user identifiers, total number of users in all rules must not exceed 1000
-    public let userIds: [Int]
+    public let userIds: [Int64]
 
 
-    public init(userIds: [Int]) {
+    public init(userIds: [Int64]) {
         self.userIds = userIds
     }
 }
@@ -129,10 +129,10 @@ public struct UserPrivacySettingRuleAllowChatMembers: Codable {
 public struct UserPrivacySettingRuleRestrictUsers: Codable {
 
     /// The user identifiers, total number of users in all rules must not exceed 1000
-    public let userIds: [Int]
+    public let userIds: [Int64]
 
 
-    public init(userIds: [Int]) {
+    public init(userIds: [Int64]) {
         self.userIds = userIds
     }
 }

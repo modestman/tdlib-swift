@@ -15,12 +15,12 @@ public struct UploadStickerFile: Codable {
     public let sticker: InputSticker?
 
     /// Sticker file owner; ignored for regular users
-    public let userId: Int?
+    public let userId: Int64?
 
 
     public init(
         sticker: InputSticker?,
-        userId: Int?
+        userId: Int64?
     ) {
         self.sticker = sticker
         self.userId = userId

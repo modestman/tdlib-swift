@@ -29,7 +29,7 @@ public struct Video: Codable {
     /// Video minithumbnail; may be null
     public let minithumbnail: Minithumbnail?
 
-    /// True, if the video should be tried to be streamed
+    /// True, if the video is supposed to be streamed
     public let supportsStreaming: Bool
 
     /// Video thumbnail in JPEG or MPEG4 format; as defined by the sender; may be null

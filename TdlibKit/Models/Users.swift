@@ -15,12 +15,12 @@ public struct Users: Codable {
     public let totalCount: Int
 
     /// A list of user identifiers
-    public let userIds: [Int]
+    public let userIds: [Int64]
 
 
     public init(
         totalCount: Int,
-        userIds: [Int]
+        userIds: [Int64]
     ) {
         self.totalCount = totalCount
         self.userIds = userIds

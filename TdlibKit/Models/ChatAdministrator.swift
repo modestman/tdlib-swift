@@ -18,13 +18,13 @@ public struct ChatAdministrator: Codable {
     public let isOwner: Bool
 
     /// User identifier of the administrator
-    public let userId: Int
+    public let userId: Int64
 
 
     public init(
         customTitle: String,
         isOwner: Bool,
-        userId: Int
+        userId: Int64
     ) {
         self.customTitle = customTitle
         self.isOwner = isOwner

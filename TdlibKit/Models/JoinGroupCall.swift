@@ -26,7 +26,7 @@ public struct JoinGroupCall: Codable {
     /// True, if the user's video is enabled
     public let isMyVideoEnabled: Bool?
 
-    /// Identifier of a group call participant, which will be used to join the call; voice chats only
+    /// Identifier of a group call participant, which will be used to join the call; pass null to join as self; video chats only
     public let participantId: MessageSender?
 
     /// Group call join payload; received from tgcalls

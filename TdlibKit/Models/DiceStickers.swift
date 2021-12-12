@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Contains animated stickers which should be used for dice animation rendering
+/// Contains animated stickers which must be used for dice animation rendering
 public enum DiceStickers: Codable {
 
     /// A regular animated sticker

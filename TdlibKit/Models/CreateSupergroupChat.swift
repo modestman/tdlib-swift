@@ -15,12 +15,12 @@ public struct CreateSupergroupChat: Codable {
     public let force: Bool?
 
     /// Supergroup or channel identifier
-    public let supergroupId: Int?
+    public let supergroupId: Int64?
 
 
     public init(
         force: Bool?,
-        supergroupId: Int?
+        supergroupId: Int64?
     ) {
         self.force = force
         self.supergroupId = supergroupId

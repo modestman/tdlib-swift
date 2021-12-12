@@ -15,7 +15,7 @@ public struct BasicGroupFullInfo: Codable {
     public let botCommands: [BotCommands]
 
     /// User identifier of the creator of the group; 0 if unknown
-    public let creatorUserId: Int
+    public let creatorUserId: Int64
 
     public let description: String
 
@@ -31,7 +31,7 @@ public struct BasicGroupFullInfo: Codable {
 
     public init(
         botCommands: [BotCommands],
-        creatorUserId: Int,
+        creatorUserId: Int64,
         description: String,
         inviteLink: ChatInviteLink?,
         members: [ChatMember],

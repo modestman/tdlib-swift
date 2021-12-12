@@ -18,13 +18,13 @@ public struct ChatStatisticsMessageSenderInfo: Codable {
     public let sentMessageCount: Int
 
     /// User identifier
-    public let userId: Int
+    public let userId: Int64
 
 
     public init(
         averageCharacterCount: Int,
         sentMessageCount: Int,
-        userId: Int
+        userId: Int64
     ) {
         self.averageCharacterCount = averageCharacterCount
         self.sentMessageCount = sentMessageCount

@@ -14,7 +14,7 @@ public struct SetChatSlowModeDelay: Codable {
     /// Chat identifier
     public let chatId: Int64?
 
-    /// New slow mode delay for the chat; must be one of 0, 10, 30, 60, 300, 900, 3600
+    /// New slow mode delay for the chat, in seconds; must be one of 0, 10, 30, 60, 300, 900, 3600
     public let slowModeDelay: Int?
 
 

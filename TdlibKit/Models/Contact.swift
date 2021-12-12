@@ -21,7 +21,7 @@ public struct Contact: Codable {
     public let phoneNumber: String
 
     /// Identifier of the user, if known; otherwise 0
-    public let userId: Int
+    public let userId: Int64
 
     /// Additional data about the user in a form of vCard; 0-2048 bytes in length
     public let vcard: String
@@ -31,7 +31,7 @@ public struct Contact: Codable {
         firstName: String,
         lastName: String,
         phoneNumber: String,
-        userId: Int,
+        userId: Int64,
         vcard: String
     ) {
         self.firstName = firstName

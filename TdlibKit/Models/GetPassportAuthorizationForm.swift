@@ -12,7 +12,7 @@ import Foundation
 public struct GetPassportAuthorizationForm: Codable {
 
     /// User identifier of the service's bot
-    public let botUserId: Int?
+    public let botUserId: Int64?
 
     /// Unique request identifier provided by the service
     public let nonce: String?
@@ -25,7 +25,7 @@ public struct GetPassportAuthorizationForm: Codable {
 
 
     public init(
-        botUserId: Int?,
+        botUserId: Int64?,
         nonce: String?,
         publicKey: String?,
         scope: String?

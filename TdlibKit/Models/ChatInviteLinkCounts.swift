@@ -11,7 +11,7 @@ import Foundation
 /// Contains a list of chat invite link counts
 public struct ChatInviteLinkCounts: Codable {
 
-    /// List of invite linkcounts
+    /// List of invite link counts
     public let inviteLinkCounts: [ChatInviteLinkCount]
 
 

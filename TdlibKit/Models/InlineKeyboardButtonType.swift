@@ -32,6 +32,9 @@ public enum InlineKeyboardButtonType: Codable {
     /// A button to buy something. This button must be in the first column and row of the keyboard and can be attached only to a message with content of the type messageInvoice
     case inlineKeyboardButtonTypeBuy
 
+    /// A button to open a chat with a user
+    case inlineKeyboardButtonTypeUser(InlineKeyboardButtonTypeUser)
+
 
     private enum Kind: String, Codable {
         case inlineKeyboardButtonTypeUrl
@@ -41,6 +44,7 @@ public enum InlineKeyboardButtonType: Codable {
         case inlineKeyboardButtonTypeCallbackGame
         case inlineKeyboardButtonTypeSwitchInline
         case inlineKeyboardButtonTypeBuy
+        case inlineKeyboardButtonTypeUser
     }
 
     public init(from decoder: Decoder) throws {
@@ -66,6 +70,9 @@ public enum InlineKeyboardButtonType: Codable {
             self = .inlineKeyboardButtonTypeSwitchInline(value)
         case .inlineKeyboardButtonTypeBuy:
             self = .inlineKeyboardButtonTypeBuy
+        case .inlineKeyboardButtonTypeUser:
+            let value = try InlineKeyboardButtonTypeUser(from: decoder)
+            self = .inlineKeyboardButtonTypeUser(value)
         }
     }
 
@@ -91,6 +98,9 @@ public enum InlineKeyboardButtonType: Codable {
             try value.encode(to: encoder)
         case .inlineKeyboardButtonTypeBuy:
             try container.encode(Kind.inlineKeyboardButtonTypeBuy, forKey: .type)
+        case .inlineKeyboardButtonTypeUser(let value):
+            try container.encode(Kind.inlineKeyboardButtonTypeUser, forKey: .type)
+            try value.encode(to: encoder)
         }
     }
 }
@@ -114,7 +124,7 @@ public struct InlineKeyboardButtonTypeLoginUrl: Codable {
     public let forwardText: String
 
     /// Unique button identifier
-    public let id: Int
+    public let id: Int64
 
     /// An HTTP URL to open
     public let url: String
@@ -122,7 +132,7 @@ public struct InlineKeyboardButtonTypeLoginUrl: Codable {
 
     public init(
         forwardText: String,
-        id: Int,
+        id: Int64,
         url: String
     ) {
         self.forwardText = forwardText
@@ -158,7 +168,7 @@ public struct InlineKeyboardButtonTypeCallbackWithPassword: Codable {
 /// A button that forces an inline query to the bot to be inserted in the input field
 public struct InlineKeyboardButtonTypeSwitchInline: Codable {
 
-    /// True, if the inline query should be sent from the current chat
+    /// True, if the inline query must be sent from the current chat
     public let inCurrentChat: Bool
 
     /// Inline query to be sent to the bot
@@ -171,6 +181,18 @@ public struct InlineKeyboardButtonTypeSwitchInline: Codable {
     ) {
         self.inCurrentChat = inCurrentChat
         self.query = query
+    }
+}
+
+/// A button to open a chat with a user
+public struct InlineKeyboardButtonTypeUser: Codable {
+
+    /// User identifier
+    public let userId: Int64
+
+
+    public init(userId: Int64) {
+        self.userId = userId
     }
 }
 

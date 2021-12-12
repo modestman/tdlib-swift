@@ -14,7 +14,7 @@ public struct UploadFile: Codable {
     /// File to upload
     public let file: InputFile?
 
-    /// File type
+    /// File type; pass null if unknown
     public let fileType: FileType?
 
     /// Priority of the upload (1-32). The higher the priority, the earlier the file will be uploaded. If the priorities of two files are equal, then the first one for which uploadFile was called will be uploaded first

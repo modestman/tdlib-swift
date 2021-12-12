@@ -20,7 +20,7 @@ public struct GetMessageLink: Codable {
     /// Pass true to create a link to the message as a channel post comment, or from a message thread
     public let forComment: Bool?
 
-    /// If not 0, timestamp from which the video/audio/video note/voice note playing should start, in seconds. The media can be in the message content or in its web page preview
+    /// If not 0, timestamp from which the video/audio/video note/voice note playing must start, in seconds. The media can be in the message content or in its web page preview
     public let mediaTimestamp: Int?
 
     /// Identifier of the message

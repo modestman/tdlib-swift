@@ -14,7 +14,7 @@ public struct GetChatEventLog: Codable {
     /// Chat identifier
     public let chatId: Int64?
 
-    /// The types of events to return. By default, all types will be returned
+    /// The types of events to return; pass null to get chat events of all types
     public let filters: ChatEventLogFilters?
 
     /// Identifier of an event from which to return results. Use 0 to get results from the latest events
@@ -27,7 +27,7 @@ public struct GetChatEventLog: Codable {
     public let query: String?
 
     /// User identifiers by which to filter events. By default, events relating to all users will be returned
-    public let userIds: [Int]?
+    public let userIds: [Int64]?
 
 
     public init(
@@ -36,7 +36,7 @@ public struct GetChatEventLog: Codable {
         fromEventId: TdInt64?,
         limit: Int?,
         query: String?,
-        userIds: [Int]?
+        userIds: [Int64]?
     ) {
         self.chatId = chatId
         self.filters = filters

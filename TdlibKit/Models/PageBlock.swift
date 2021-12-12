@@ -411,7 +411,7 @@ public struct PageBlockParagraph: Codable {
 /// A preformatted text paragraph
 public struct PageBlockPreformatted: Codable {
 
-    /// Programming language for which the text should be formatted
+    /// Programming language for which the text needs to be formatted
     public let language: String
 
     /// Paragraph text
@@ -510,7 +510,7 @@ public struct PageBlockAnimation: Codable {
     /// Animation caption
     public let caption: PageBlockCaption
 
-    /// True, if the animation should be played automatically
+    /// True, if the animation must be played automatically
     public let needAutoplay: Bool
 
 
@@ -574,10 +574,10 @@ public struct PageBlockVideo: Codable {
     /// Video caption
     public let caption: PageBlockCaption
 
-    /// True, if the video should be looped
+    /// True, if the video must be looped
     public let isLooped: Bool
 
-    /// True, if the video should be played automatically
+    /// True, if the video must be played automatically
     public let needAutoplay: Bool
 
     /// Video file; may be null
@@ -631,7 +631,7 @@ public struct PageBlockCover: Codable {
 /// An embedded web page
 public struct PageBlockEmbedded: Codable {
 
-    /// True, if scrolling should be allowed
+    /// True, if scrolling needs to be allowed
     public let allowScrolling: Bool
 
     /// Block caption
@@ -643,7 +643,7 @@ public struct PageBlockEmbedded: Codable {
     /// HTML-markup of the embedded page
     public let html: String
 
-    /// True, if the block should be full width
+    /// True, if the block must be full width
     public let isFullWidth: Bool
 
     /// Poster photo, if available; may be null
@@ -763,7 +763,7 @@ public struct PageBlockChatLink: Codable {
     /// Chat title
     public let title: String
 
-    /// Chat username, by which all other information about the chat should be resolved
+    /// Chat username, by which all other information about the chat can be resolved
     public let username: String
 
 

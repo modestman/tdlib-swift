@@ -15,12 +15,12 @@ public struct SetSupergroupStickerSet: Codable {
     public let stickerSetId: TdInt64?
 
     /// Identifier of the supergroup
-    public let supergroupId: Int?
+    public let supergroupId: Int64?
 
 
     public init(
         stickerSetId: TdInt64?,
-        supergroupId: Int?
+        supergroupId: Int64?
     ) {
         self.stickerSetId = stickerSetId
         self.supergroupId = supergroupId

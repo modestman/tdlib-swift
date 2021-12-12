@@ -20,7 +20,7 @@ public struct SendInlineQueryResultMessage: Codable {
     /// If not 0, a message thread identifier in which the message will be sent
     public let messageThreadId: Int64?
 
-    /// Options to be used to send the message
+    /// Options to be used to send the message; pass null to use default options
     public let options: MessageSendOptions?
 
     /// Identifier of the inline query

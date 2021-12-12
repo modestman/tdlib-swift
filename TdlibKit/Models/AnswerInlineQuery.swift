@@ -29,7 +29,7 @@ public struct AnswerInlineQuery: Codable {
     /// The parameter for the bot start message
     public let switchPmParameter: String?
 
-    /// If non-empty, this text should be shown on the button that opens a private chat with the bot and sends a start message to the bot with the parameter switch_pm_parameter
+    /// If non-empty, this text must be shown on the button that opens a private chat with the bot and sends a start message to the bot with the parameter switch_pm_parameter
     public let switchPmText: String?
 
 

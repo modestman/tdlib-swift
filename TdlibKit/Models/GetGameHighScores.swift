@@ -18,13 +18,13 @@ public struct GetGameHighScores: Codable {
     public let messageId: Int64?
 
     /// User identifier
-    public let userId: Int?
+    public let userId: Int64?
 
 
     public init(
         chatId: Int64?,
         messageId: Int64?,
-        userId: Int?
+        userId: Int64?
     ) {
         self.chatId = chatId
         self.messageId = messageId

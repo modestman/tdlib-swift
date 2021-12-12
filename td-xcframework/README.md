@@ -1,4 +1,4 @@
-# How to make xcframefork from TDLib
+# How to make static xcframefork from TDLib
 
 Clone the [tdlib](https://github.com/tdlib/td) repo. Go to the `td/example/ios` directory.
 

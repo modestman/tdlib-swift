@@ -23,7 +23,7 @@ public struct MessageLinkInfo: Codable {
     /// True, if the link is a public link for a message in a chat
     public let isPublic: Bool
 
-    /// Timestamp from which the video/audio/video note/voice note playing should start, in seconds; 0 if not specified. The media can be in the message content or in its web page preview
+    /// Timestamp from which the video/audio/video note/voice note playing must start, in seconds; 0 if not specified. The media can be in the message content or in its web page preview
     public let mediaTimestamp: Int
 
     /// If found, the linked message; may be null

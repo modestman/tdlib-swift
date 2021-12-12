@@ -15,7 +15,7 @@ public struct GetLoginUrl: Codable {
     public let allowWriteAccess: Bool?
 
     /// Button identifier
-    public let buttonId: Int?
+    public let buttonId: Int64?
 
     /// Chat identifier of the message with the button
     public let chatId: Int64?
@@ -26,7 +26,7 @@ public struct GetLoginUrl: Codable {
 
     public init(
         allowWriteAccess: Bool?,
-        buttonId: Int?,
+        buttonId: Int64?,
         chatId: Int64?,
         messageId: Int64?
     ) {

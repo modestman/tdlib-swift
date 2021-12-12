@@ -44,7 +44,7 @@ public enum InternalLinkType: Codable {
     /// The link is a link to a Telegram message. Call getMessageLinkInfo with the given URL to process the link
     case internalLinkTypeMessage(InternalLinkTypeMessage)
 
-    /// The link contains a message draft text. A share screen needs to be shown to the user, then the chosen chat should be open and the text should be added to the input field
+    /// The link contains a message draft text. A share screen needs to be shown to the user, then the chosen chat must be opened and the text is added to the input field
     case internalLinkTypeMessageDraft(InternalLinkTypeMessageDraft)
 
     /// The link contains a request of Telegram passport data. Call getPassportAuthorizationForm with the given parameters to process the link if the link was received from outside of the app, otherwise ignore it
@@ -77,8 +77,11 @@ public enum InternalLinkType: Codable {
     /// The link is an unknown tg: link. Call getDeepLinkInfo to process the link
     case internalLinkTypeUnknownDeepLink(InternalLinkTypeUnknownDeepLink)
 
-    /// The link is a link to a voice chat. Call searchPublicChat with the given chat username, and then joinGoupCall with the given invite hash to process the link
-    case internalLinkTypeVoiceChat(InternalLinkTypeVoiceChat)
+    /// The link is a link to an unsupported proxy. An alert can be shown to the user
+    case internalLinkTypeUnsupportedProxy
+
+    /// The link is a link to a video chat. Call searchPublicChat with the given chat username, and then joinGoupCall with the given invite hash to process the link
+    case internalLinkTypeVideoChat(InternalLinkTypeVideoChat)
 
 
     private enum Kind: String, Codable {
@@ -104,7 +107,8 @@ public enum InternalLinkType: Codable {
         case internalLinkTypeTheme
         case internalLinkTypeThemeSettings
         case internalLinkTypeUnknownDeepLink
-        case internalLinkTypeVoiceChat
+        case internalLinkTypeUnsupportedProxy
+        case internalLinkTypeVideoChat
     }
 
     public init(from decoder: Decoder) throws {
@@ -171,9 +175,11 @@ public enum InternalLinkType: Codable {
         case .internalLinkTypeUnknownDeepLink:
             let value = try InternalLinkTypeUnknownDeepLink(from: decoder)
             self = .internalLinkTypeUnknownDeepLink(value)
-        case .internalLinkTypeVoiceChat:
-            let value = try InternalLinkTypeVoiceChat(from: decoder)
-            self = .internalLinkTypeVoiceChat(value)
+        case .internalLinkTypeUnsupportedProxy:
+            self = .internalLinkTypeUnsupportedProxy
+        case .internalLinkTypeVideoChat:
+            let value = try InternalLinkTypeVideoChat(from: decoder)
+            self = .internalLinkTypeVideoChat(value)
         }
     }
 
@@ -240,8 +246,10 @@ public enum InternalLinkType: Codable {
         case .internalLinkTypeUnknownDeepLink(let value):
             try container.encode(Kind.internalLinkTypeUnknownDeepLink, forKey: .type)
             try value.encode(to: encoder)
-        case .internalLinkTypeVoiceChat(let value):
-            try container.encode(Kind.internalLinkTypeVoiceChat, forKey: .type)
+        case .internalLinkTypeUnsupportedProxy:
+            try container.encode(Kind.internalLinkTypeUnsupportedProxy, forKey: .type)
+        case .internalLinkTypeVideoChat(let value):
+            try container.encode(Kind.internalLinkTypeVideoChat, forKey: .type)
             try value.encode(to: encoder)
         }
     }
@@ -364,10 +372,10 @@ public struct InternalLinkTypeMessage: Codable {
     }
 }
 
-/// The link contains a message draft text. A share screen needs to be shown to the user, then the chosen chat should be open and the text should be added to the input field
+/// The link contains a message draft text. A share screen needs to be shown to the user, then the chosen chat must be opened and the text is added to the input field
 public struct InternalLinkTypeMessageDraft: Codable {
 
-    /// True, if the first line of the text contains a link. If true, the input field needs to be focused and the text after the link should be selected
+    /// True, if the first line of the text contains a link. If true, the input field needs to be focused and the text after the link must be selected
     public let containsLink: Bool
 
     /// Message draft text
@@ -387,7 +395,7 @@ public struct InternalLinkTypeMessageDraft: Codable {
 public struct InternalLinkTypePassportDataRequest: Codable {
 
     /// User identifier of the service's bot
-    public let botUserId: Int
+    public let botUserId: Int64
 
     /// An HTTP URL to open once the request is finished or canceled with the parameter tg_passport=success or tg_passport=cancel respectively. If empty, then the link tgbot{bot_user_id}://passport/success or tgbot{bot_user_id}://passport/cancel needs to be opened instead
     public let callbackUrl: String
@@ -403,7 +411,7 @@ public struct InternalLinkTypePassportDataRequest: Codable {
 
 
     public init(
-        botUserId: Int,
+        botUserId: Int64,
         callbackUrl: String,
         nonce: String,
         publicKey: String,
@@ -508,16 +516,16 @@ public struct InternalLinkTypeUnknownDeepLink: Codable {
     }
 }
 
-/// The link is a link to a voice chat. Call searchPublicChat with the given chat username, and then joinGoupCall with the given invite hash to process the link
-public struct InternalLinkTypeVoiceChat: Codable {
+/// The link is a link to a video chat. Call searchPublicChat with the given chat username, and then joinGoupCall with the given invite hash to process the link
+public struct InternalLinkTypeVideoChat: Codable {
 
-    /// Username of the chat with the voice chat
+    /// Username of the chat with the video chat
     public let chatUsername: String
 
-    /// If non-empty, invite hash to be used to join the voice chat without being muted by administrators
+    /// If non-empty, invite hash to be used to join the video chat without being muted by administrators
     public let inviteHash: String
 
-    /// True, if the voice chat is expected to be a live stream in a channel or a broadcast group
+    /// True, if the video chat is expected to be a live stream in a channel or a broadcast group
     public let isLiveStream: Bool
 
 

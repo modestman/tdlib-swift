@@ -19,20 +19,20 @@ public struct PaymentReceipt: Codable {
 
     public let description: String
 
-    /// Contains information about the invoice
+    /// Information about the invoice
     public let invoice: Invoice
 
     /// Order information; may be null
     public let orderInfo: OrderInfo?
 
     /// User identifier of the payment provider bot
-    public let paymentsProviderUserId: Int
+    public let paymentsProviderUserId: Int64
 
     /// Product photo; may be null
     public let photo: Photo?
 
     /// User identifier of the seller bot
-    public let sellerBotUserId: Int
+    public let sellerBotUserId: Int64
 
     /// Chosen shipping option; may be null
     public let shippingOption: ShippingOption?
@@ -50,9 +50,9 @@ public struct PaymentReceipt: Codable {
         description: String,
         invoice: Invoice,
         orderInfo: OrderInfo?,
-        paymentsProviderUserId: Int,
+        paymentsProviderUserId: Int64,
         photo: Photo?,
-        sellerBotUserId: Int,
+        sellerBotUserId: Int64,
         shippingOption: ShippingOption?,
         tipAmount: Int64,
         title: String

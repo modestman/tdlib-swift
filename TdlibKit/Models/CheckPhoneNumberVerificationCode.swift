@@ -11,7 +11,7 @@ import Foundation
 /// Checks the phone number verification code for Telegram Passport
 public struct CheckPhoneNumberVerificationCode: Codable {
 
-    /// Verification code
+    /// Verification code to check
     public let code: String?
 
 

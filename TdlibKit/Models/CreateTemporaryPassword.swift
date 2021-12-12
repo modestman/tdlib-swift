@@ -14,7 +14,7 @@ public struct CreateTemporaryPassword: Codable {
     /// Persistent user password
     public let password: String?
 
-    /// Time during which the temporary password will be valid, in seconds; should be between 60 and 86400
+    /// Time during which the temporary password will be valid, in seconds; must be between 60 and 86400
     public let validFor: Int?
 
 

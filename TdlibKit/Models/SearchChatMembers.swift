@@ -14,10 +14,10 @@ public struct SearchChatMembers: Codable {
     /// Chat identifier
     public let chatId: Int64?
 
-    /// The type of users to return. By default, chatMembersFilterMembers
+    /// The type of users to search for; pass null to search among all chat members
     public let filter: ChatMembersFilter?
 
-    /// The maximum number of users to be returned
+    /// The maximum number of users to be returned; up to 200
     public let limit: Int?
 
     /// Query to search for

@@ -15,12 +15,12 @@ public struct AddChatMembers: Codable {
     public let chatId: Int64?
 
     /// Identifiers of the users to be added to the chat. The maximum number of added users is 20 for supergroups and 100 for channels
-    public let userIds: [Int]?
+    public let userIds: [Int64]?
 
 
     public init(
         chatId: Int64?,
-        userIds: [Int]?
+        userIds: [Int64]?
     ) {
         self.chatId = chatId
         self.userIds = userIds

@@ -21,14 +21,14 @@ public struct ChatEvent: Codable {
     public let id: TdInt64
 
     /// Identifier of the user who performed the action that triggered the event
-    public let userId: Int
+    public let userId: Int64
 
 
     public init(
         action: ChatEventAction,
         date: Int,
         id: TdInt64,
-        userId: Int
+        userId: Int64
     ) {
         self.action = action
         self.date = date

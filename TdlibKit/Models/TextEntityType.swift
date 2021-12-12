@@ -17,7 +17,7 @@ public enum TextEntityType: Codable {
     /// A hashtag text, beginning with "#"
     case textEntityTypeHashtag
 
-    /// A cashtag text, beginning with "$" and consisting of capital english letters (i.e. "$USD")
+    /// A cashtag text, beginning with "$" and consisting of capital English letters (e.g., "$USD")
     case textEntityTypeCashtag
 
     /// A bot command, beginning with "/"
@@ -209,10 +209,10 @@ public struct TextEntityTypeTextUrl: Codable {
 public struct TextEntityTypeMentionName: Codable {
 
     /// Identifier of the mentioned user
-    public let userId: Int
+    public let userId: Int64
 
 
-    public init(userId: Int) {
+    public init(userId: Int64) {
         self.userId = userId
     }
 }
@@ -220,7 +220,7 @@ public struct TextEntityTypeMentionName: Codable {
 /// A media timestamp
 public struct TextEntityTypeMediaTimestamp: Codable {
 
-    /// Timestamp from which a video/audio/video note/voice note playing should start, in seconds. The media can be in the content or the web page preview of the current message, or in the same places in the replied message
+    /// Timestamp from which a video/audio/video note/voice note playing must start, in seconds. The media can be in the content or the web page preview of the current message, or in the same places in the replied message
     public let mediaTimestamp: Int
 
 

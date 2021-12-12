@@ -142,7 +142,7 @@ public enum DeviceToken: Codable {
 /// A token for Firebase Cloud Messaging
 public struct DeviceTokenFirebaseCloudMessaging: Codable {
 
-    /// True, if push notifications should be additionally encrypted
+    /// True, if push notifications must be additionally encrypted
     public let encrypt: Bool
 
     /// Device registration token; may be empty to de-register a device
@@ -183,7 +183,7 @@ public struct DeviceTokenApplePushVoIP: Codable {
     /// Device token; may be empty to de-register a device
     public let deviceToken: String
 
-    /// True, if push notifications should be additionally encrypted
+    /// True, if push notifications must be additionally encrypted
     public let encrypt: Bool
 
     /// True, if App Sandbox is enabled

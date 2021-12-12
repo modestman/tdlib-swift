@@ -15,12 +15,12 @@ public struct GetChatInviteLinks: Codable {
     public let chatId: Int64?
 
     /// User identifier of a chat administrator. Must be an identifier of the current user for non-owner
-    public let creatorUserId: Int?
+    public let creatorUserId: Int64?
 
     /// Pass true if revoked links needs to be returned instead of active or expired
     public let isRevoked: Bool?
 
-    /// The maximum number of invite links to return
+    /// The maximum number of invite links to return; up to 100
     public let limit: Int?
 
     /// Creation date of an invite link starting after which to return invite links; use 0 to get results from the beginning
@@ -32,7 +32,7 @@ public struct GetChatInviteLinks: Codable {
 
     public init(
         chatId: Int64?,
-        creatorUserId: Int?,
+        creatorUserId: Int64?,
         isRevoked: Bool?,
         limit: Int?,
         offsetDate: Int?,

@@ -20,7 +20,7 @@ public struct EditMessageMedia: Codable {
     /// Identifier of the message
     public let messageId: Int64?
 
-    /// The new message reply markup; for bots only
+    /// The new message reply markup; pass null if none; for bots only
     public let replyMarkup: ReplyMarkup?
 
 

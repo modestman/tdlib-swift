@@ -83,10 +83,10 @@ public enum MessageForwardOrigin: Codable {
 public struct MessageForwardOriginUser: Codable {
 
     /// Identifier of the user that originally sent the message
-    public let senderUserId: Int
+    public let senderUserId: Int64
 
 
-    public init(senderUserId: Int) {
+    public init(senderUserId: Int64) {
         self.senderUserId = senderUserId
     }
 }

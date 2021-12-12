@@ -18,13 +18,13 @@ public struct AddStickerToSet: Codable {
     public let sticker: InputSticker?
 
     /// Sticker set owner
-    public let userId: Int?
+    public let userId: Int64?
 
 
     public init(
         name: String?,
         sticker: InputSticker?,
-        userId: Int?
+        userId: Int64?
     ) {
         self.name = name
         self.sticker = sticker

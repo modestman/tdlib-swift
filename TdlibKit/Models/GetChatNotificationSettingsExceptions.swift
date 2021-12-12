@@ -14,7 +14,7 @@ public struct GetChatNotificationSettingsExceptions: Codable {
     /// If true, also chats with non-default sound will be returned
     public let compareSound: Bool?
 
-    /// If specified, only chats from the specified scope will be returned
+    /// If specified, only chats from the scope will be returned; pass null to return chats from all scopes
     public let scope: NotificationSettingsScope?
 
 

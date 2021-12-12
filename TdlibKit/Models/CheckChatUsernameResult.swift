@@ -20,7 +20,7 @@ public enum CheckChatUsernameResult: Codable {
     /// The username is occupied
     case checkChatUsernameResultUsernameOccupied
 
-    /// The user has too much chats with username, one of them should be made private first
+    /// The user has too much chats with username, one of them must be made private first
     case checkChatUsernameResultPublicChatsTooMuch
 
     /// The user can't be a member of a public supergroup

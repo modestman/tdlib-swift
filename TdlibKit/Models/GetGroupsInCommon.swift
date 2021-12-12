@@ -18,13 +18,13 @@ public struct GetGroupsInCommon: Codable {
     public let offsetChatId: Int64?
 
     /// User identifier
-    public let userId: Int?
+    public let userId: Int64?
 
 
     public init(
         limit: Int?,
         offsetChatId: Int64?,
-        userId: Int?
+        userId: Int64?
     ) {
         self.limit = limit
         self.offsetChatId = offsetChatId

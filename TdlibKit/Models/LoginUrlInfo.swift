@@ -72,7 +72,7 @@ public struct LoginUrlInfoOpen: Codable {
 public struct LoginUrlInfoRequestConfirmation: Codable {
 
     /// User identifier of a bot linked with the website
-    public let botUserId: Int
+    public let botUserId: Int64
 
     /// A domain of the URL
     public let domain: String
@@ -85,7 +85,7 @@ public struct LoginUrlInfoRequestConfirmation: Codable {
 
 
     public init(
-        botUserId: Int,
+        botUserId: Int64,
         domain: String,
         requestWriteAccess: Bool,
         url: String

@@ -32,6 +32,9 @@ public enum ChatEventAction: Codable {
     /// A new member joined the chat by an invite link
     case chatEventMemberJoinedByInviteLink(ChatEventMemberJoinedByInviteLink)
 
+    /// A new member was accepted to the chat by an administrator
+    case chatEventMemberJoinedByRequest(ChatEventMemberJoinedByRequest)
+
     /// A member left the chat
     case chatEventMemberLeft
 
@@ -59,9 +62,6 @@ public enum ChatEventAction: Codable {
     /// The chat photo was changed
     case chatEventPhotoChanged(ChatEventPhotoChanged)
 
-    /// The chat theme was changed. This event shouldn't be received until chat themes would be supported in supergroups
-    case chatEventThemeChanged(ChatEventThemeChanged)
-
     /// The can_invite_users permission of a supergroup chat was toggled
     case chatEventInvitesToggled(ChatEventInvitesToggled)
 
@@ -76,6 +76,9 @@ public enum ChatEventAction: Codable {
 
     /// The sign_messages setting of a channel was toggled
     case chatEventSignMessagesToggled(ChatEventSignMessagesToggled)
+
+    /// The has_protected_content setting of a channel was toggled
+    case chatEventHasProtectedContentToggled(ChatEventHasProtectedContentToggled)
 
     /// The supergroup sticker set was changed
     case chatEventStickerSetChanged(ChatEventStickerSetChanged)
@@ -95,20 +98,20 @@ public enum ChatEventAction: Codable {
     /// A revoked chat invite link was deleted
     case chatEventInviteLinkDeleted(ChatEventInviteLinkDeleted)
 
-    /// A voice chat was created
-    case chatEventVoiceChatCreated(ChatEventVoiceChatCreated)
+    /// A video chat was created
+    case chatEventVideoChatCreated(ChatEventVideoChatCreated)
 
-    /// A voice chat was discarded
-    case chatEventVoiceChatDiscarded(ChatEventVoiceChatDiscarded)
+    /// A video chat was discarded
+    case chatEventVideoChatDiscarded(ChatEventVideoChatDiscarded)
 
-    /// A voice chat participant was muted or unmuted
-    case chatEventVoiceChatParticipantIsMutedToggled(ChatEventVoiceChatParticipantIsMutedToggled)
+    /// A video chat participant was muted or unmuted
+    case chatEventVideoChatParticipantIsMutedToggled(ChatEventVideoChatParticipantIsMutedToggled)
 
-    /// A voice chat participant volume level was changed
-    case chatEventVoiceChatParticipantVolumeLevelChanged(ChatEventVoiceChatParticipantVolumeLevelChanged)
+    /// A video chat participant volume level was changed
+    case chatEventVideoChatParticipantVolumeLevelChanged(ChatEventVideoChatParticipantVolumeLevelChanged)
 
-    /// The mute_new_participants setting of a voice chat was toggled
-    case chatEventVoiceChatMuteNewParticipantsToggled(ChatEventVoiceChatMuteNewParticipantsToggled)
+    /// The mute_new_participants setting of a video chat was toggled
+    case chatEventVideoChatMuteNewParticipantsToggled(ChatEventVideoChatMuteNewParticipantsToggled)
 
 
     private enum Kind: String, Codable {
@@ -119,6 +122,7 @@ public enum ChatEventAction: Codable {
         case chatEventMessageUnpinned
         case chatEventMemberJoined
         case chatEventMemberJoinedByInviteLink
+        case chatEventMemberJoinedByRequest
         case chatEventMemberLeft
         case chatEventMemberInvited
         case chatEventMemberPromoted
@@ -128,23 +132,23 @@ public enum ChatEventAction: Codable {
         case chatEventDescriptionChanged
         case chatEventUsernameChanged
         case chatEventPhotoChanged
-        case chatEventThemeChanged
         case chatEventInvitesToggled
         case chatEventLinkedChatChanged
         case chatEventSlowModeDelayChanged
         case chatEventMessageTtlSettingChanged
         case chatEventSignMessagesToggled
+        case chatEventHasProtectedContentToggled
         case chatEventStickerSetChanged
         case chatEventLocationChanged
         case chatEventIsAllHistoryAvailableToggled
         case chatEventInviteLinkEdited
         case chatEventInviteLinkRevoked
         case chatEventInviteLinkDeleted
-        case chatEventVoiceChatCreated
-        case chatEventVoiceChatDiscarded
-        case chatEventVoiceChatParticipantIsMutedToggled
-        case chatEventVoiceChatParticipantVolumeLevelChanged
-        case chatEventVoiceChatMuteNewParticipantsToggled
+        case chatEventVideoChatCreated
+        case chatEventVideoChatDiscarded
+        case chatEventVideoChatParticipantIsMutedToggled
+        case chatEventVideoChatParticipantVolumeLevelChanged
+        case chatEventVideoChatMuteNewParticipantsToggled
     }
 
     public init(from decoder: Decoder) throws {
@@ -171,6 +175,9 @@ public enum ChatEventAction: Codable {
         case .chatEventMemberJoinedByInviteLink:
             let value = try ChatEventMemberJoinedByInviteLink(from: decoder)
             self = .chatEventMemberJoinedByInviteLink(value)
+        case .chatEventMemberJoinedByRequest:
+            let value = try ChatEventMemberJoinedByRequest(from: decoder)
+            self = .chatEventMemberJoinedByRequest(value)
         case .chatEventMemberLeft:
             self = .chatEventMemberLeft
         case .chatEventMemberInvited:
@@ -197,9 +204,6 @@ public enum ChatEventAction: Codable {
         case .chatEventPhotoChanged:
             let value = try ChatEventPhotoChanged(from: decoder)
             self = .chatEventPhotoChanged(value)
-        case .chatEventThemeChanged:
-            let value = try ChatEventThemeChanged(from: decoder)
-            self = .chatEventThemeChanged(value)
         case .chatEventInvitesToggled:
             let value = try ChatEventInvitesToggled(from: decoder)
             self = .chatEventInvitesToggled(value)
@@ -215,6 +219,9 @@ public enum ChatEventAction: Codable {
         case .chatEventSignMessagesToggled:
             let value = try ChatEventSignMessagesToggled(from: decoder)
             self = .chatEventSignMessagesToggled(value)
+        case .chatEventHasProtectedContentToggled:
+            let value = try ChatEventHasProtectedContentToggled(from: decoder)
+            self = .chatEventHasProtectedContentToggled(value)
         case .chatEventStickerSetChanged:
             let value = try ChatEventStickerSetChanged(from: decoder)
             self = .chatEventStickerSetChanged(value)
@@ -233,21 +240,21 @@ public enum ChatEventAction: Codable {
         case .chatEventInviteLinkDeleted:
             let value = try ChatEventInviteLinkDeleted(from: decoder)
             self = .chatEventInviteLinkDeleted(value)
-        case .chatEventVoiceChatCreated:
-            let value = try ChatEventVoiceChatCreated(from: decoder)
-            self = .chatEventVoiceChatCreated(value)
-        case .chatEventVoiceChatDiscarded:
-            let value = try ChatEventVoiceChatDiscarded(from: decoder)
-            self = .chatEventVoiceChatDiscarded(value)
-        case .chatEventVoiceChatParticipantIsMutedToggled:
-            let value = try ChatEventVoiceChatParticipantIsMutedToggled(from: decoder)
-            self = .chatEventVoiceChatParticipantIsMutedToggled(value)
-        case .chatEventVoiceChatParticipantVolumeLevelChanged:
-            let value = try ChatEventVoiceChatParticipantVolumeLevelChanged(from: decoder)
-            self = .chatEventVoiceChatParticipantVolumeLevelChanged(value)
-        case .chatEventVoiceChatMuteNewParticipantsToggled:
-            let value = try ChatEventVoiceChatMuteNewParticipantsToggled(from: decoder)
-            self = .chatEventVoiceChatMuteNewParticipantsToggled(value)
+        case .chatEventVideoChatCreated:
+            let value = try ChatEventVideoChatCreated(from: decoder)
+            self = .chatEventVideoChatCreated(value)
+        case .chatEventVideoChatDiscarded:
+            let value = try ChatEventVideoChatDiscarded(from: decoder)
+            self = .chatEventVideoChatDiscarded(value)
+        case .chatEventVideoChatParticipantIsMutedToggled:
+            let value = try ChatEventVideoChatParticipantIsMutedToggled(from: decoder)
+            self = .chatEventVideoChatParticipantIsMutedToggled(value)
+        case .chatEventVideoChatParticipantVolumeLevelChanged:
+            let value = try ChatEventVideoChatParticipantVolumeLevelChanged(from: decoder)
+            self = .chatEventVideoChatParticipantVolumeLevelChanged(value)
+        case .chatEventVideoChatMuteNewParticipantsToggled:
+            let value = try ChatEventVideoChatMuteNewParticipantsToggled(from: decoder)
+            self = .chatEventVideoChatMuteNewParticipantsToggled(value)
         }
     }
 
@@ -273,6 +280,9 @@ public enum ChatEventAction: Codable {
             try container.encode(Kind.chatEventMemberJoined, forKey: .type)
         case .chatEventMemberJoinedByInviteLink(let value):
             try container.encode(Kind.chatEventMemberJoinedByInviteLink, forKey: .type)
+            try value.encode(to: encoder)
+        case .chatEventMemberJoinedByRequest(let value):
+            try container.encode(Kind.chatEventMemberJoinedByRequest, forKey: .type)
             try value.encode(to: encoder)
         case .chatEventMemberLeft:
             try container.encode(Kind.chatEventMemberLeft, forKey: .type)
@@ -300,9 +310,6 @@ public enum ChatEventAction: Codable {
         case .chatEventPhotoChanged(let value):
             try container.encode(Kind.chatEventPhotoChanged, forKey: .type)
             try value.encode(to: encoder)
-        case .chatEventThemeChanged(let value):
-            try container.encode(Kind.chatEventThemeChanged, forKey: .type)
-            try value.encode(to: encoder)
         case .chatEventInvitesToggled(let value):
             try container.encode(Kind.chatEventInvitesToggled, forKey: .type)
             try value.encode(to: encoder)
@@ -317,6 +324,9 @@ public enum ChatEventAction: Codable {
             try value.encode(to: encoder)
         case .chatEventSignMessagesToggled(let value):
             try container.encode(Kind.chatEventSignMessagesToggled, forKey: .type)
+            try value.encode(to: encoder)
+        case .chatEventHasProtectedContentToggled(let value):
+            try container.encode(Kind.chatEventHasProtectedContentToggled, forKey: .type)
             try value.encode(to: encoder)
         case .chatEventStickerSetChanged(let value):
             try container.encode(Kind.chatEventStickerSetChanged, forKey: .type)
@@ -336,20 +346,20 @@ public enum ChatEventAction: Codable {
         case .chatEventInviteLinkDeleted(let value):
             try container.encode(Kind.chatEventInviteLinkDeleted, forKey: .type)
             try value.encode(to: encoder)
-        case .chatEventVoiceChatCreated(let value):
-            try container.encode(Kind.chatEventVoiceChatCreated, forKey: .type)
+        case .chatEventVideoChatCreated(let value):
+            try container.encode(Kind.chatEventVideoChatCreated, forKey: .type)
             try value.encode(to: encoder)
-        case .chatEventVoiceChatDiscarded(let value):
-            try container.encode(Kind.chatEventVoiceChatDiscarded, forKey: .type)
+        case .chatEventVideoChatDiscarded(let value):
+            try container.encode(Kind.chatEventVideoChatDiscarded, forKey: .type)
             try value.encode(to: encoder)
-        case .chatEventVoiceChatParticipantIsMutedToggled(let value):
-            try container.encode(Kind.chatEventVoiceChatParticipantIsMutedToggled, forKey: .type)
+        case .chatEventVideoChatParticipantIsMutedToggled(let value):
+            try container.encode(Kind.chatEventVideoChatParticipantIsMutedToggled, forKey: .type)
             try value.encode(to: encoder)
-        case .chatEventVoiceChatParticipantVolumeLevelChanged(let value):
-            try container.encode(Kind.chatEventVoiceChatParticipantVolumeLevelChanged, forKey: .type)
+        case .chatEventVideoChatParticipantVolumeLevelChanged(let value):
+            try container.encode(Kind.chatEventVideoChatParticipantVolumeLevelChanged, forKey: .type)
             try value.encode(to: encoder)
-        case .chatEventVoiceChatMuteNewParticipantsToggled(let value):
-            try container.encode(Kind.chatEventVoiceChatMuteNewParticipantsToggled, forKey: .type)
+        case .chatEventVideoChatMuteNewParticipantsToggled(let value):
+            try container.encode(Kind.chatEventVideoChatMuteNewParticipantsToggled, forKey: .type)
             try value.encode(to: encoder)
         }
     }
@@ -434,6 +444,25 @@ public struct ChatEventMemberJoinedByInviteLink: Codable {
     }
 }
 
+/// A new member was accepted to the chat by an administrator
+public struct ChatEventMemberJoinedByRequest: Codable {
+
+    /// User identifier of the chat administrator, approved user join request
+    public let approverUserId: Int64
+
+    /// Invite link used to join the chat; may be null
+    public let inviteLink: ChatInviteLink?
+
+
+    public init(
+        approverUserId: Int64,
+        inviteLink: ChatInviteLink?
+    ) {
+        self.approverUserId = approverUserId
+        self.inviteLink = inviteLink
+    }
+}
+
 /// A new chat member was invited
 public struct ChatEventMemberInvited: Codable {
 
@@ -441,12 +470,12 @@ public struct ChatEventMemberInvited: Codable {
     public let status: ChatMemberStatus
 
     /// New member user identifier
-    public let userId: Int
+    public let userId: Int64
 
 
     public init(
         status: ChatMemberStatus,
-        userId: Int
+        userId: Int64
     ) {
         self.status = status
         self.userId = userId
@@ -463,13 +492,13 @@ public struct ChatEventMemberPromoted: Codable {
     public let oldStatus: ChatMemberStatus
 
     /// Affected chat member user identifier
-    public let userId: Int
+    public let userId: Int64
 
 
     public init(
         newStatus: ChatMemberStatus,
         oldStatus: ChatMemberStatus,
-        userId: Int
+        userId: Int64
     ) {
         self.newStatus = newStatus
         self.oldStatus = oldStatus
@@ -596,25 +625,6 @@ public struct ChatEventPhotoChanged: Codable {
     }
 }
 
-/// The chat theme was changed. This event shouldn't be received until chat themes would be supported in supergroups
-public struct ChatEventThemeChanged: Codable {
-
-    /// New chat theme name; empty if the new theme is default one
-    public let newThemeName: String
-
-    /// Previous chat theme name; empty if the previous theme was default one
-    public let oldThemeName: String
-
-
-    public init(
-        newThemeName: String,
-        oldThemeName: String
-    ) {
-        self.newThemeName = newThemeName
-        self.oldThemeName = oldThemeName
-    }
-}
-
 /// The can_invite_users permission of a supergroup chat was toggled
 public struct ChatEventInvitesToggled: Codable {
 
@@ -649,10 +659,10 @@ public struct ChatEventLinkedChatChanged: Codable {
 /// The slow_mode_delay setting of a supergroup was changed
 public struct ChatEventSlowModeDelayChanged: Codable {
 
-    /// New value of slow_mode_delay
+    /// New value of slow_mode_delay, in seconds
     public let newSlowModeDelay: Int
 
-    /// Previous value of slow_mode_delay
+    /// Previous value of slow_mode_delay, in seconds
     public let oldSlowModeDelay: Int
 
 
@@ -693,6 +703,18 @@ public struct ChatEventSignMessagesToggled: Codable {
 
     public init(signMessages: Bool) {
         self.signMessages = signMessages
+    }
+}
+
+/// The has_protected_content setting of a channel was toggled
+public struct ChatEventHasProtectedContentToggled: Codable {
+
+    /// New value of has_protected_content
+    public let hasProtectedContent: Bool
+
+
+    public init(hasProtectedContent: Bool) {
+        self.hasProtectedContent = hasProtectedContent
     }
 }
 
@@ -789,10 +811,10 @@ public struct ChatEventInviteLinkDeleted: Codable {
     }
 }
 
-/// A voice chat was created
-public struct ChatEventVoiceChatCreated: Codable {
+/// A video chat was created
+public struct ChatEventVideoChatCreated: Codable {
 
-    /// Identifier of the voice chat. The voice chat can be received through the method getGroupCall
+    /// Identifier of the video chat. The video chat can be received through the method getGroupCall
     public let groupCallId: Int
 
 
@@ -801,10 +823,10 @@ public struct ChatEventVoiceChatCreated: Codable {
     }
 }
 
-/// A voice chat was discarded
-public struct ChatEventVoiceChatDiscarded: Codable {
+/// A video chat was discarded
+public struct ChatEventVideoChatDiscarded: Codable {
 
-    /// Identifier of the voice chat. The voice chat can be received through the method getGroupCall
+    /// Identifier of the video chat. The video chat can be received through the method getGroupCall
     public let groupCallId: Int
 
 
@@ -813,8 +835,8 @@ public struct ChatEventVoiceChatDiscarded: Codable {
     }
 }
 
-/// A voice chat participant was muted or unmuted
-public struct ChatEventVoiceChatParticipantIsMutedToggled: Codable {
+/// A video chat participant was muted or unmuted
+public struct ChatEventVideoChatParticipantIsMutedToggled: Codable {
 
     /// New value of is_muted
     public let isMuted: Bool
@@ -832,8 +854,8 @@ public struct ChatEventVoiceChatParticipantIsMutedToggled: Codable {
     }
 }
 
-/// A voice chat participant volume level was changed
-public struct ChatEventVoiceChatParticipantVolumeLevelChanged: Codable {
+/// A video chat participant volume level was changed
+public struct ChatEventVideoChatParticipantVolumeLevelChanged: Codable {
 
     /// Identifier of the affected group call participant
     public let participantId: MessageSender
@@ -851,8 +873,8 @@ public struct ChatEventVoiceChatParticipantVolumeLevelChanged: Codable {
     }
 }
 
-/// The mute_new_participants setting of a voice chat was toggled
-public struct ChatEventVoiceChatMuteNewParticipantsToggled: Codable {
+/// The mute_new_participants setting of a video chat was toggled
+public struct ChatEventVideoChatMuteNewParticipantsToggled: Codable {
 
     /// New value of the mute_new_participants setting
     public let muteNewParticipants: Bool

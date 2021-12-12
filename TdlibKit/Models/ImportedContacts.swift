@@ -15,12 +15,12 @@ public struct ImportedContacts: Codable {
     public let importerCount: [Int]
 
     /// User identifiers of the imported contacts in the same order as they were specified in the request; 0 if the contact is not yet a registered user
-    public let userIds: [Int]
+    public let userIds: [Int64]
 
 
     public init(
         importerCount: [Int],
-        userIds: [Int]
+        userIds: [Int64]
     ) {
         self.importerCount = importerCount
         self.userIds = userIds

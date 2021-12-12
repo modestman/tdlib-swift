@@ -15,12 +15,12 @@ public struct RegisterDevice: Codable {
     public let deviceToken: DeviceToken?
 
     /// List of user identifiers of other users currently using the application
-    public let otherUserIds: [Int]?
+    public let otherUserIds: [Int64]?
 
 
     public init(
         deviceToken: DeviceToken?,
-        otherUserIds: [Int]?
+        otherUserIds: [Int64]?
     ) {
         self.deviceToken = deviceToken
         self.otherUserIds = otherUserIds

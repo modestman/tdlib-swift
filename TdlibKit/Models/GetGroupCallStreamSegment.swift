@@ -23,7 +23,7 @@ public struct GetGroupCallStreamSegment: Codable {
     /// Point in time when the stream segment begins; Unix timestamp in milliseconds
     public let timeOffset: Int64?
 
-    /// Video quality as received from tgcalls
+    /// Video quality as received from tgcalls; pass null to get the worst available quality
     public let videoQuality: GroupCallVideoQuality?
 
 

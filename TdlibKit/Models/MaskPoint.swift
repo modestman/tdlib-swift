@@ -8,19 +8,19 @@
 import Foundation
 
 
-/// Part of the face, relative to which a mask should be placed
+/// Part of the face, relative to which a mask is placed
 public enum MaskPoint: Codable {
 
-    /// A mask should be placed relatively to the forehead
+    /// The mask is placed relatively to the forehead
     case maskPointForehead
 
-    /// A mask should be placed relatively to the eyes
+    /// The mask is placed relatively to the eyes
     case maskPointEyes
 
-    /// A mask should be placed relatively to the mouth
+    /// The mask is placed relatively to the mouth
     case maskPointMouth
 
-    /// A mask should be placed relatively to the chin
+    /// The mask is placed relatively to the chin
     case maskPointChin
 
 

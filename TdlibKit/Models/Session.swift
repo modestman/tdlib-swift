@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Contains information about one session in a Telegram application used by the current user. Sessions should be shown to the user in the returned order
+/// Contains information about one session in a Telegram application used by the current user. Sessions must be shown to the user in the returned order
 public struct Session: Codable {
 
     /// Telegram API identifier, as provided by the application
@@ -19,6 +19,12 @@ public struct Session: Codable {
 
     /// The version of the application, as provided by the application
     public let applicationVersion: String
+
+    /// True, if incoming calls can be accepted by the session
+    public let canAcceptCalls: Bool
+
+    /// True, if incoming secret chats can be accepted by the session
+    public let canAcceptSecretChats: Bool
 
     /// A two-letter country code for the country from which the session was created, based on the IP address
     public let country: String
@@ -61,6 +67,8 @@ public struct Session: Codable {
         apiId: Int,
         applicationName: String,
         applicationVersion: String,
+        canAcceptCalls: Bool,
+        canAcceptSecretChats: Bool,
         country: String,
         deviceModel: String,
         id: TdInt64,
@@ -77,6 +85,8 @@ public struct Session: Codable {
         self.apiId = apiId
         self.applicationName = applicationName
         self.applicationVersion = applicationVersion
+        self.canAcceptCalls = canAcceptCalls
+        self.canAcceptSecretChats = canAcceptSecretChats
         self.country = country
         self.deviceModel = deviceModel
         self.id = id

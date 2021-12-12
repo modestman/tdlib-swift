@@ -20,7 +20,7 @@ public struct ChatNotificationSettings: Codable {
     /// Time left before notifications will be unmuted, in seconds
     public let muteFor: Int
 
-    /// True, if message content should be displayed in notifications
+    /// True, if message content must be displayed in notifications
     public let showPreview: Bool
 
     /// The name of an audio file to be used for notification sounds; only applies to iOS applications

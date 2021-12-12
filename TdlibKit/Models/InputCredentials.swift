@@ -87,7 +87,7 @@ public struct InputCredentialsNew: Codable {
     /// True, if the credential identifier can be saved on the server side
     public let allowSave: Bool
 
-    /// Contains JSON-encoded data with a credential identifier from the payment provider
+    /// JSON-encoded data with the credential identifier from the payment provider
     public let data: String
 
 

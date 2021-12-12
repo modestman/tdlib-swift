@@ -17,7 +17,7 @@ public struct EditMessageSchedulingState: Codable {
     /// Identifier of the message
     public let messageId: Int64?
 
-    /// The new message scheduling state. Pass null to send the message immediately
+    /// The new message scheduling state; pass null to send the message immediately
     public let schedulingState: MessageSchedulingState?
 
 

@@ -14,7 +14,7 @@ public struct ToggleGroupCallParticipantIsHandRaised: Codable {
     /// Group call identifier
     public let groupCallId: Int?
 
-    /// Pass true if the user's hand should be raised. Only self hand can be raised. Requires groupCall.can_be_managed group call flag to lower other's hand
+    /// Pass true if the user's hand needs to be raised. Only self hand can be raised. Requires groupCall.can_be_managed group call flag to lower other's hand
     public let isHandRaised: Bool?
 
     /// Participant identifier

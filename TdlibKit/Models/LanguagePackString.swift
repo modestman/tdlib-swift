@@ -14,7 +14,7 @@ public struct LanguagePackString: Codable {
     /// String key
     public let key: String
 
-    /// String value
+    /// String value; pass null if the string needs to be taken from the built-in English language pack
     public let value: LanguagePackStringValue
 
 

@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Toggles whether new participants of a group call can be unmuted only by administrators of the group call. Requires groupCall.can_change_mute_new_participants group call flag
+/// Toggles whether new participants of a group call can be unmuted only by administrators of the group call. Requires groupCall.can_toggle_mute_new_participants group call flag
 public struct ToggleGroupCallMuteNewParticipants: Codable {
 
     /// Group call identifier

@@ -17,7 +17,7 @@ public enum LanguagePackStringValue: Codable {
     /// A language pack string which has different forms based on the number of some object it mentions. See https://www.unicode.org/cldr/charts/latest/supplemental/language_plural_rules.html for more info
     case languagePackStringValuePluralized(LanguagePackStringValuePluralized)
 
-    /// A deleted language pack string, the value should be taken from the built-in english language pack
+    /// A deleted language pack string, the value must be taken from the built-in English language pack
     case languagePackStringValueDeleted
 
 

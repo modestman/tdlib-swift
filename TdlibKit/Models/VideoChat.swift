@@ -1,5 +1,5 @@
 //
-//  VoiceChat.swift
+//  VideoChat.swift
 //  tl2swift
 //
 //  Created by Code Generator
@@ -8,16 +8,16 @@
 import Foundation
 
 
-/// Describes a voice chat
-public struct VoiceChat: Codable {
+/// Describes a video chat
+public struct VideoChat: Codable {
 
-    /// Default group call participant identifier to join the voice chat; may be null
+    /// Default group call participant identifier to join the video chat; may be null
     public let defaultParticipantId: MessageSender?
 
-    /// Group call identifier of an active voice chat; 0 if none. Full informationa about the voice chat can be received through the method getGroupCall
+    /// Group call identifier of an active video chat; 0 if none. Full information about the video chat can be received through the method getGroupCall
     public let groupCallId: Int
 
-    /// True, if the voice chat has participants
+    /// True, if the video chat has participants
     public let hasParticipants: Bool
 
 

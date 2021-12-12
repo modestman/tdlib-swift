@@ -17,7 +17,7 @@ public struct StopPoll: Codable {
     /// Identifier of the message containing the poll
     public let messageId: Int64?
 
-    /// The new message reply markup; for bots only
+    /// The new message reply markup; pass null if none; for bots only
     public let replyMarkup: ReplyMarkup?
 
 

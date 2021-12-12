@@ -14,7 +14,7 @@ public struct PaymentFormTheme: Codable {
     /// A color of the payment form background in the RGB24 format
     public let backgroundColor: Int
 
-    /// A color of thebuttons in the RGB24 format
+    /// A color of the buttons in the RGB24 format
     public let buttonColor: Int
 
     /// A color of text on the buttons in the RGB24 format

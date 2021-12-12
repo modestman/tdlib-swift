@@ -12,7 +12,7 @@ import Foundation
 public struct SendBotStartMessage: Codable {
 
     /// Identifier of the bot
-    public let botUserId: Int?
+    public let botUserId: Int64?
 
     /// Identifier of the target chat
     public let chatId: Int64?
@@ -22,7 +22,7 @@ public struct SendBotStartMessage: Codable {
 
 
     public init(
-        botUserId: Int?,
+        botUserId: Int64?,
         chatId: Int64?,
         parameter: String?
     ) {

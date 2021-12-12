@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Returns detailed statistics about a message. Can be used only if Message.can_get_statistics == true
+/// Returns detailed statistics about a message. Can be used only if message.can_get_statistics == true
 public struct GetMessageStatistics: Codable {
 
     /// Chat identifier

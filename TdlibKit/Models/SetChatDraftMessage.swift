@@ -14,7 +14,7 @@ public struct SetChatDraftMessage: Codable {
     /// Chat identifier
     public let chatId: Int64?
 
-    /// New draft message; may be null
+    /// New draft message; pass null to remove the draft
     public let draftMessage: DraftMessage?
 
     /// If not 0, a message thread identifier in which the draft was changed

@@ -11,7 +11,7 @@ import Foundation
 /// A chat. (Can be a private chat, basic group, supergroup, or secret chat)
 public struct Chat: Codable {
 
-    /// Describes actions which should be possible to do through a chat action bar; may be null
+    /// Information about actions which must be possible to do through the chat action bar; may be null
     public let actionBar: ChatActionBar?
 
     /// True, if the chat messages can be deleted for all users
@@ -23,14 +23,20 @@ public struct Chat: Codable {
     /// True, if the chat can be reported to Telegram moderators through reportChat or reportChatPhoto
     public let canBeReported: Bool
 
-    /// Contains application-specific data associated with the chat. (For example, the chat scroll position or local chat notification settings can be stored here.) Persistent if the message database is used
+    /// Application-specific data associated with the chat. (For example, the chat scroll position or local chat notification settings can be stored here.) Persistent if the message database is used
     public let clientData: String
 
     /// Default value of the disable_notification parameter, used when a message is sent to the chat
     public let defaultDisableNotification: Bool
 
+    /// Default identifier of a user or chat that is chosen to send messages in the chat; may be null if the user can't change message sender
+    public let defaultMessageSenderId: MessageSender?
+
     /// A draft of a message in the chat; may be null
     public let draftMessage: DraftMessage?
+
+    /// True, if chat content can't be saved locally, forwarded, or copied
+    public let hasProtectedContent: Bool
 
     /// True, if the chat has scheduled messages
     public let hasScheduledMessages: Bool
@@ -59,6 +65,9 @@ public struct Chat: Codable {
     /// Notification settings for this chat
     public let notificationSettings: ChatNotificationSettings
 
+    /// Information about pending join requests; may be null
+    public let pendingJoinRequests: ChatJoinRequestsInfo?
+
     /// Actions that non-administrator chat members are allowed to take in the chat
     public let permissions: ChatPermissions
 
@@ -71,7 +80,7 @@ public struct Chat: Codable {
     /// Identifier of the message from which reply markup needs to be used; 0 if there is no default custom reply markup in the chat
     public let replyMarkupMessageId: Int64
 
-    /// If non-empty, name of a theme set for the chat
+    /// If non-empty, name of a theme, set for the chat
     public let themeName: String
 
     /// Chat title
@@ -86,8 +95,8 @@ public struct Chat: Codable {
     /// Number of unread messages with a mention/reply in the chat
     public let unreadMentionCount: Int
 
-    /// Contains information about voice chat of the chat
-    public let voiceChat: VoiceChat
+    /// Information about video chat of the chat
+    public let videoChat: VideoChat
 
 
     public init(
@@ -97,7 +106,9 @@ public struct Chat: Codable {
         canBeReported: Bool,
         clientData: String,
         defaultDisableNotification: Bool,
+        defaultMessageSenderId: MessageSender?,
         draftMessage: DraftMessage?,
+        hasProtectedContent: Bool,
         hasScheduledMessages: Bool,
         id: Int64,
         isBlocked: Bool,
@@ -107,6 +118,7 @@ public struct Chat: Codable {
         lastReadOutboxMessageId: Int64,
         messageTtlSetting: Int,
         notificationSettings: ChatNotificationSettings,
+        pendingJoinRequests: ChatJoinRequestsInfo?,
         permissions: ChatPermissions,
         photo: ChatPhotoInfo?,
         positions: [ChatPosition],
@@ -116,7 +128,7 @@ public struct Chat: Codable {
         type: ChatType,
         unreadCount: Int,
         unreadMentionCount: Int,
-        voiceChat: VoiceChat
+        videoChat: VideoChat
     ) {
         self.actionBar = actionBar
         self.canBeDeletedForAllUsers = canBeDeletedForAllUsers
@@ -124,7 +136,9 @@ public struct Chat: Codable {
         self.canBeReported = canBeReported
         self.clientData = clientData
         self.defaultDisableNotification = defaultDisableNotification
+        self.defaultMessageSenderId = defaultMessageSenderId
         self.draftMessage = draftMessage
+        self.hasProtectedContent = hasProtectedContent
         self.hasScheduledMessages = hasScheduledMessages
         self.id = id
         self.isBlocked = isBlocked
@@ -134,6 +148,7 @@ public struct Chat: Codable {
         self.lastReadOutboxMessageId = lastReadOutboxMessageId
         self.messageTtlSetting = messageTtlSetting
         self.notificationSettings = notificationSettings
+        self.pendingJoinRequests = pendingJoinRequests
         self.permissions = permissions
         self.photo = photo
         self.positions = positions
@@ -143,7 +158,7 @@ public struct Chat: Codable {
         self.type = type
         self.unreadCount = unreadCount
         self.unreadMentionCount = unreadMentionCount
-        self.voiceChat = voiceChat
+        self.videoChat = videoChat
     }
 }
 

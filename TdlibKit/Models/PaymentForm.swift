@@ -23,20 +23,20 @@ public struct PaymentForm: Codable {
     /// True, if the user will be able to save credentials protected by a password they set up
     public let needPassword: Bool
 
-    /// Contains information about the payment provider, if available, to support it natively without the need for opening the URL; may be null
+    /// Information about the payment provider, if available, to support it natively without the need for opening the URL; may be null
     public let paymentsProvider: PaymentsProviderStripe?
 
     /// User identifier of the payment provider bot
-    public let paymentsProviderUserId: Int
+    public let paymentsProviderUserId: Int64
 
-    /// Contains information about saved card credentials; may be null
+    /// Information about saved card credentials; may be null
     public let savedCredentials: SavedCredentials?
 
     /// Saved server-side order information; may be null
     public let savedOrderInfo: OrderInfo?
 
     /// User identifier of the seller bot
-    public let sellerBotUserId: Int
+    public let sellerBotUserId: Int64
 
     /// Payment form URL
     public let url: String
@@ -48,10 +48,10 @@ public struct PaymentForm: Codable {
         invoice: Invoice,
         needPassword: Bool,
         paymentsProvider: PaymentsProviderStripe?,
-        paymentsProviderUserId: Int,
+        paymentsProviderUserId: Int64,
         savedCredentials: SavedCredentials?,
         savedOrderInfo: OrderInfo?,
-        sellerBotUserId: Int,
+        sellerBotUserId: Int64,
         url: String
     ) {
         self.canSaveCredentials = canSaveCredentials

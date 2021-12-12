@@ -12,7 +12,7 @@ import Foundation
 public struct GetInlineQueryResults: Codable {
 
     /// The identifier of the target bot
-    public let botUserId: Int?
+    public let botUserId: Int64?
 
     /// Identifier of the chat where the query was sent
     public let chatId: Int64?
@@ -23,12 +23,12 @@ public struct GetInlineQueryResults: Codable {
     /// Text of the query
     public let query: String?
 
-    /// Location of the user, only if needed
+    /// Location of the user; pass null if unknown or the bot doesn't need user's location
     public let userLocation: Location?
 
 
     public init(
-        botUserId: Int?,
+        botUserId: Int64?,
         chatId: Int64?,
         offset: String?,
         query: String?,

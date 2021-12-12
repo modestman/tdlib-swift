@@ -27,7 +27,7 @@ public struct SecretChat: Codable {
     public let state: SecretChatState
 
     /// Identifier of the chat partner
-    public let userId: Int
+    public let userId: Int64
 
 
     public init(
@@ -36,7 +36,7 @@ public struct SecretChat: Codable {
         keyHash: Data,
         layer: Int,
         state: SecretChatState,
-        userId: Int
+        userId: Int64
     ) {
         self.id = id
         self.isOutbound = isOutbound

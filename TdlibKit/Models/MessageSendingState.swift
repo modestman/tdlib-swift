@@ -59,6 +59,9 @@ public struct MessageSendingStateFailed: Codable {
     /// Error message
     public let errorMessage: String
 
+    /// True, if the message can be re-sent only on behalf of a different sender
+    public let needAnotherSender: Bool
+
     /// Time left before the message can be re-sent, in seconds. No update is sent when this field changes
     public let retryAfter: Double
 
@@ -67,11 +70,13 @@ public struct MessageSendingStateFailed: Codable {
         canRetry: Bool,
         errorCode: Int,
         errorMessage: String,
+        needAnotherSender: Bool,
         retryAfter: Double
     ) {
         self.canRetry = canRetry
         self.errorCode = errorCode
         self.errorMessage = errorMessage
+        self.needAnotherSender = needAnotherSender
         self.retryAfter = retryAfter
     }
 }

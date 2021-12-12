@@ -8,10 +8,10 @@
 import Foundation
 
 
-/// Position on a photo where a mask should be placed
+/// Position on a photo where a mask is placed
 public struct MaskPosition: Codable {
 
-    /// Part of the face, relative to which the mask should be placed
+    /// Part of the face, relative to which the mask is placed
     public let point: MaskPoint
 
     /// Mask scaling coefficient. (For example, 2.0 means a doubled size)

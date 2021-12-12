@@ -14,17 +14,17 @@ public struct AddChatMember: Codable {
     /// Chat identifier
     public let chatId: Int64?
 
-    /// The number of earlier messages from the chat to be forwarded to the new member; up to 100. Ignored for supergroups and channels
+    /// The number of earlier messages from the chat to be forwarded to the new member; up to 100. Ignored for supergroups and channels, or if the added user is a bot
     public let forwardLimit: Int?
 
     /// Identifier of the user
-    public let userId: Int?
+    public let userId: Int64?
 
 
     public init(
         chatId: Int64?,
         forwardLimit: Int?,
-        userId: Int?
+        userId: Int64?
     ) {
         self.chatId = chatId
         self.forwardLimit = forwardLimit

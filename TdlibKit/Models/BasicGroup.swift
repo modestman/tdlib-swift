@@ -12,7 +12,7 @@ import Foundation
 public struct BasicGroup: Codable {
 
     /// Group identifier
-    public let id: Int
+    public let id: Int64
 
     /// True, if the group is active
     public let isActive: Bool
@@ -24,15 +24,15 @@ public struct BasicGroup: Codable {
     public let status: ChatMemberStatus
 
     /// Identifier of the supergroup to which this group was upgraded; 0 if none
-    public let upgradedToSupergroupId: Int
+    public let upgradedToSupergroupId: Int64
 
 
     public init(
-        id: Int,
+        id: Int64,
         isActive: Bool,
         memberCount: Int,
         status: ChatMemberStatus,
-        upgradedToSupergroupId: Int
+        upgradedToSupergroupId: Int64
     ) {
         self.id = id
         self.isActive = isActive

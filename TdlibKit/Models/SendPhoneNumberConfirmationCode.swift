@@ -17,7 +17,7 @@ public struct SendPhoneNumberConfirmationCode: Codable {
     /// Phone number value from the link
     public let phoneNumber: String?
 
-    /// Settings for the authentication of the user's phone number
+    /// Settings for the authentication of the user's phone number; pass null to use default settings
     public let settings: PhoneNumberAuthenticationSettings?
 
 

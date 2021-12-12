@@ -11,7 +11,7 @@ import Foundation
 /// An identity document to be saved to Telegram Passport
 public struct InputIdentityDocument: Codable {
 
-    /// Document expiry date, if available
+    /// Document expiry date; pass null if not applicable
     public let expiryDate: Date
 
     /// Front side of the document
@@ -20,10 +20,10 @@ public struct InputIdentityDocument: Codable {
     /// Document number; 1-24 characters
     public let number: String
 
-    /// Reverse side of the document; only for driver license and identity card
+    /// Reverse side of the document; only for driver license and identity card; pass null otherwise
     public let reverseSide: InputFile
 
-    /// Selfie with the document, if available
+    /// Selfie with the document; pass null if unavailable
     public let selfie: InputFile
 
     /// List of files containing a certified English translation of the document

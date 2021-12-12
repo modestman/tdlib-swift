@@ -146,10 +146,10 @@ public struct CallStateReady: Codable {
 /// The call has ended successfully
 public struct CallStateDiscarded: Codable {
 
-    /// True, if the call debug information should be sent to the server
+    /// True, if the call debug information must be sent to the server
     public let needDebugInformation: Bool
 
-    /// True, if the call rating should be sent to the server
+    /// True, if the call rating must be sent to the server
     public let needRating: Bool
 
     /// The reason, why the call has ended

@@ -14,7 +14,7 @@ public struct SetOption: Codable {
     /// The name of the option
     public let name: String?
 
-    /// The new value of the option
+    /// The new value of the option; pass null to reset option value to a default value
     public let value: OptionValue?
 
 

@@ -12,10 +12,10 @@ import Foundation
 public struct RemoveContacts: Codable {
 
     /// Identifiers of users to be deleted
-    public let userIds: [Int]?
+    public let userIds: [Int64]?
 
 
-    public init(userIds: [Int]?) {
+    public init(userIds: [Int64]?) {
         self.userIds = userIds
     }
 }

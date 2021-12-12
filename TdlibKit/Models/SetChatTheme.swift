@@ -14,7 +14,7 @@ public struct SetChatTheme: Codable {
     /// Chat identifier
     public let chatId: Int64?
 
-    /// Name of the new chat theme; may be empty to return the default theme
+    /// Name of the new chat theme; pass an empty string to return the default theme
     public let themeName: String?
 
 

@@ -14,10 +14,10 @@ public enum ChatType: Codable {
     /// An ordinary chat with a user
     case chatTypePrivate(ChatTypePrivate)
 
-    /// A basic group (i.e., a chat with 0-200 other users)
+    /// A basic group (a chat with 0-200 other users)
     case chatTypeBasicGroup(ChatTypeBasicGroup)
 
-    /// A supergroup (i.e. a chat with up to GetOption("supergroup_max_size") other users), or channel (with unlimited members)
+    /// A supergroup or channel (with unlimited members)
     case chatTypeSupergroup(ChatTypeSupergroup)
 
     /// A secret chat with a user
@@ -73,39 +73,39 @@ public enum ChatType: Codable {
 public struct ChatTypePrivate: Codable {
 
     /// User identifier
-    public let userId: Int
+    public let userId: Int64
 
 
-    public init(userId: Int) {
+    public init(userId: Int64) {
         self.userId = userId
     }
 }
 
-/// A basic group (i.e., a chat with 0-200 other users)
+/// A basic group (a chat with 0-200 other users)
 public struct ChatTypeBasicGroup: Codable {
 
     /// Basic group identifier
-    public let basicGroupId: Int
+    public let basicGroupId: Int64
 
 
-    public init(basicGroupId: Int) {
+    public init(basicGroupId: Int64) {
         self.basicGroupId = basicGroupId
     }
 }
 
-/// A supergroup (i.e. a chat with up to GetOption("supergroup_max_size") other users), or channel (with unlimited members)
+/// A supergroup or channel (with unlimited members)
 public struct ChatTypeSupergroup: Codable {
 
     /// True, if the supergroup is a channel
     public let isChannel: Bool
 
     /// Supergroup or channel identifier
-    public let supergroupId: Int
+    public let supergroupId: Int64
 
 
     public init(
         isChannel: Bool,
-        supergroupId: Int
+        supergroupId: Int64
     ) {
         self.isChannel = isChannel
         self.supergroupId = supergroupId
@@ -119,12 +119,12 @@ public struct ChatTypeSecret: Codable {
     public let secretChatId: Int
 
     /// User identifier of the secret chat peer
-    public let userId: Int
+    public let userId: Int64
 
 
     public init(
         secretChatId: Int,
-        userId: Int
+        userId: Int64
     ) {
         self.secretChatId = secretChatId
         self.userId = userId

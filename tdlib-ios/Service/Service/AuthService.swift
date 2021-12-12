@@ -52,8 +52,11 @@ final class AuthService: UpdateListener {
     func sendPhone(_ phone: String) {
         let settings = PhoneNumberAuthenticationSettings(
             allowFlashCall: false,
+            allowMissedCall: false,
             allowSmsRetrieverApi: false,
-            isCurrentPhoneNumber: false)
+            authenticationTokens: [],
+            isCurrentPhoneNumber: false
+        )
         try? self.api.setAuthenticationPhoneNumber(
             phoneNumber: phone,
             settings: settings) { [weak self] in

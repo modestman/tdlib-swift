@@ -26,6 +26,9 @@ public struct Message: Codable {
     /// True, if the message can be forwarded
     public let canBeForwarded: Bool
 
+    /// True, if content of the message can be saved locally or copied
+    public let canBeSaved: Bool
+
     /// True, if media timestamp links can be generated for media timestamp entities in the message text, caption or web page description
     public let canGetMediaTimestampLinks: Bool
 
@@ -34,6 +37,9 @@ public struct Message: Codable {
 
     /// True, if the message statistics are available
     public let canGetStatistics: Bool
+
+    /// True, if chat members already viewed the message can be received through getMessageViewers
+    public let canGetViewers: Bool
 
     /// Chat identifier
     public let chatId: Int64
@@ -89,13 +95,13 @@ public struct Message: Codable {
     /// If non-empty, contains a human-readable description of the reason why access to this message must be restricted
     public let restrictionReason: String
 
-    /// Information about the scheduling state of the message; may be null
+    /// The scheduling state of the message; may be null
     public let schedulingState: MessageSchedulingState?
 
-    /// The sender of the message
-    public let sender: MessageSender
+    /// Identifier of the sender of the message
+    public let senderId: MessageSender
 
-    /// Information about the sending state of the message; may be null
+    /// The sending state of the message; may be null
     public let sendingState: MessageSendingState?
 
     /// For self-destructing messages, the message's TTL (Time To Live), in seconds; 0 if none. TDLib will send updateDeleteMessages or updateMessageContent once the TTL expires
@@ -105,7 +111,7 @@ public struct Message: Codable {
     public let ttlExpiresIn: Double
 
     /// If non-zero, the user identifier of the bot through which this message was sent
-    public let viaBotUserId: Int
+    public let viaBotUserId: Int64
 
 
     public init(
@@ -114,9 +120,11 @@ public struct Message: Codable {
         canBeDeletedOnlyForSelf: Bool,
         canBeEdited: Bool,
         canBeForwarded: Bool,
+        canBeSaved: Bool,
         canGetMediaTimestampLinks: Bool,
         canGetMessageThread: Bool,
         canGetStatistics: Bool,
+        canGetViewers: Bool,
         chatId: Int64,
         containsUnreadMention: Bool,
         content: MessageContent,
@@ -136,20 +144,22 @@ public struct Message: Codable {
         replyToMessageId: Int64,
         restrictionReason: String,
         schedulingState: MessageSchedulingState?,
-        sender: MessageSender,
+        senderId: MessageSender,
         sendingState: MessageSendingState?,
         ttl: Int,
         ttlExpiresIn: Double,
-        viaBotUserId: Int
+        viaBotUserId: Int64
     ) {
         self.authorSignature = authorSignature
         self.canBeDeletedForAllUsers = canBeDeletedForAllUsers
         self.canBeDeletedOnlyForSelf = canBeDeletedOnlyForSelf
         self.canBeEdited = canBeEdited
         self.canBeForwarded = canBeForwarded
+        self.canBeSaved = canBeSaved
         self.canGetMediaTimestampLinks = canGetMediaTimestampLinks
         self.canGetMessageThread = canGetMessageThread
         self.canGetStatistics = canGetStatistics
+        self.canGetViewers = canGetViewers
         self.chatId = chatId
         self.containsUnreadMention = containsUnreadMention
         self.content = content
@@ -169,7 +179,7 @@ public struct Message: Codable {
         self.replyToMessageId = replyToMessageId
         self.restrictionReason = restrictionReason
         self.schedulingState = schedulingState
-        self.sender = sender
+        self.senderId = senderId
         self.sendingState = sendingState
         self.ttl = ttl
         self.ttlExpiresIn = ttlExpiresIn

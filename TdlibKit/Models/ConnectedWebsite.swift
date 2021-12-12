@@ -12,7 +12,7 @@ import Foundation
 public struct ConnectedWebsite: Codable {
 
     /// User identifier of a bot linked with the website
-    public let botUserId: Int
+    public let botUserId: Int64
 
     /// The version of a browser used to log in
     public let browser: String
@@ -40,7 +40,7 @@ public struct ConnectedWebsite: Codable {
 
 
     public init(
-        botUserId: Int,
+        botUserId: Int64,
         browser: String,
         domainName: String,
         id: TdInt64,

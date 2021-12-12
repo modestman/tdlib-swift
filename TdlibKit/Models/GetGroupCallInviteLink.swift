@@ -8,10 +8,10 @@
 import Foundation
 
 
-/// Returns invite link to a voice chat in a public chat
+/// Returns invite link to a video chat in a public chat
 public struct GetGroupCallInviteLink: Codable {
 
-    /// Pass true if the invite_link should contain an invite hash, passing which to joinGroupCall would allow the invited user to unmute themselves. Requires groupCall.can_be_managed group call flag
+    /// Pass true if the invite link needs to contain an invite hash, passing which to joinGroupCall would allow the invited user to unmute themselves. Requires groupCall.can_be_managed group call flag
     public let canSelfUnmute: Bool?
 
     /// Group call identifier

@@ -15,12 +15,12 @@ public struct CreateNewBasicGroupChat: Codable {
     public let title: String?
 
     /// Identifiers of users to be added to the basic group
-    public let userIds: [Int]?
+    public let userIds: [Int64]?
 
 
     public init(
         title: String?,
-        userIds: [Int]?
+        userIds: [Int64]?
     ) {
         self.title = title
         self.userIds = userIds

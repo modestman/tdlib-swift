@@ -20,8 +20,11 @@ public enum AuthenticationCodeType: Codable {
     /// An authentication code is delivered via a phone call to the specified phone number
     case authenticationCodeTypeCall(AuthenticationCodeTypeCall)
 
-    /// An authentication code is delivered by an immediately canceled call to the specified phone number. The number from which the call was made is the code
+    /// An authentication code is delivered by an immediately canceled call to the specified phone number. The phone number from which the call was made is the code that must be entered automatically
     case authenticationCodeTypeFlashCall(AuthenticationCodeTypeFlashCall)
+
+    /// An authentication code is delivered by an immediately canceled call to the specified phone number. The phone number from which the call was made is the code that is supposed to be entered manually by the user
+    case authenticationCodeTypeMissedCall(AuthenticationCodeTypeMissedCall)
 
 
     private enum Kind: String, Codable {
@@ -29,6 +32,7 @@ public enum AuthenticationCodeType: Codable {
         case authenticationCodeTypeSms
         case authenticationCodeTypeCall
         case authenticationCodeTypeFlashCall
+        case authenticationCodeTypeMissedCall
     }
 
     public init(from decoder: Decoder) throws {
@@ -47,6 +51,9 @@ public enum AuthenticationCodeType: Codable {
         case .authenticationCodeTypeFlashCall:
             let value = try AuthenticationCodeTypeFlashCall(from: decoder)
             self = .authenticationCodeTypeFlashCall(value)
+        case .authenticationCodeTypeMissedCall:
+            let value = try AuthenticationCodeTypeMissedCall(from: decoder)
+            self = .authenticationCodeTypeMissedCall(value)
         }
     }
 
@@ -64,6 +71,9 @@ public enum AuthenticationCodeType: Codable {
             try value.encode(to: encoder)
         case .authenticationCodeTypeFlashCall(let value):
             try container.encode(Kind.authenticationCodeTypeFlashCall, forKey: .type)
+            try value.encode(to: encoder)
+        case .authenticationCodeTypeMissedCall(let value):
+            try container.encode(Kind.authenticationCodeTypeMissedCall, forKey: .type)
             try value.encode(to: encoder)
         }
     }
@@ -105,7 +115,7 @@ public struct AuthenticationCodeTypeCall: Codable {
     }
 }
 
-/// An authentication code is delivered by an immediately canceled call to the specified phone number. The number from which the call was made is the code
+/// An authentication code is delivered by an immediately canceled call to the specified phone number. The phone number from which the call was made is the code that must be entered automatically
 public struct AuthenticationCodeTypeFlashCall: Codable {
 
     /// Pattern of the phone number from which the call will be made
@@ -114,6 +124,25 @@ public struct AuthenticationCodeTypeFlashCall: Codable {
 
     public init(pattern: String) {
         self.pattern = pattern
+    }
+}
+
+/// An authentication code is delivered by an immediately canceled call to the specified phone number. The phone number from which the call was made is the code that is supposed to be entered manually by the user
+public struct AuthenticationCodeTypeMissedCall: Codable {
+
+    /// Number of digits in the code, excluding the prefix
+    public let length: Int
+
+    /// Prefix of the phone number from which the call will be made
+    public let phoneNumberPrefix: String
+
+
+    public init(
+        length: Int,
+        phoneNumberPrefix: String
+    ) {
+        self.length = length
+        self.phoneNumberPrefix = phoneNumberPrefix
     }
 }
 

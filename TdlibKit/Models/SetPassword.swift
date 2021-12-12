@@ -23,7 +23,7 @@ public struct SetPassword: Codable {
     /// Previous password of the user
     public let oldPassword: String?
 
-    /// Pass true if the recovery email address should be changed
+    /// Pass true if the recovery email address must be changed
     public let setRecoveryEmailAddress: Bool?
 
 

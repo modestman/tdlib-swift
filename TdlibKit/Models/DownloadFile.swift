@@ -14,10 +14,10 @@ public struct DownloadFile: Codable {
     /// Identifier of the file to download
     public let fileId: Int?
 
-    /// Number of bytes which should be downloaded starting from the "offset" position before the download will be automatically canceled; use 0 to download without a limit
+    /// Number of bytes which need to be downloaded starting from the "offset" position before the download will automatically be canceled; use 0 to download without a limit
     public let limit: Int?
 
-    /// The starting position from which the file should be downloaded
+    /// The starting position from which the file needs to be downloaded
     public let offset: Int?
 
     /// Priority of the download (1-32). The higher the priority, the earlier the file will be downloaded. If the priorities of two files are equal, then the last one for which downloadFile was called will be downloaded first

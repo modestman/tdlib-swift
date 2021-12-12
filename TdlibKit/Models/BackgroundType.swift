@@ -81,7 +81,7 @@ public struct BackgroundTypeWallpaper: Codable {
 /// A PNG or TGV (gzipped subset of SVG with MIME type "application/x-tgwallpattern") pattern to be combined with the background fill chosen by the user
 public struct BackgroundTypePattern: Codable {
 
-    /// Description of the background fill
+    /// Fill of the background
     public let fill: BackgroundFill
 
     /// Intensity of the pattern when it is shown above the filled background; 0-100.
@@ -110,7 +110,7 @@ public struct BackgroundTypePattern: Codable {
 /// A filled background
 public struct BackgroundTypeFill: Codable {
 
-    /// Description of the background fill
+    /// The background fill
     public let fill: BackgroundFill
 
 

@@ -27,7 +27,7 @@ public struct CreateNewStickerSet: Codable {
     public let title: String?
 
     /// Sticker set owner; ignored for regular users
-    public let userId: Int?
+    public let userId: Int64?
 
 
     public init(
@@ -36,7 +36,7 @@ public struct CreateNewStickerSet: Codable {
         source: String?,
         stickers: [InputSticker]?,
         title: String?,
-        userId: Int?
+        userId: Int64?
     ) {
         self.isMasks = isMasks
         self.name = name

@@ -14,7 +14,7 @@ public struct PinChatMessage: Codable {
     /// Identifier of the chat
     public let chatId: Int64?
 
-    /// True, if there should be no notification about the pinned message. Notifications are always disabled in channels and private chats
+    /// True, if there must be no notification about the pinned message. Notifications are always disabled in channels and private chats
     public let disableNotification: Bool?
 
     /// Identifier of the new pinned message

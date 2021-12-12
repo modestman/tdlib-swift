@@ -26,6 +26,9 @@ public enum SuggestedAction: Codable {
     /// Suggests the user to convert specified supergroup to a broadcast group
     case suggestedActionConvertToBroadcastGroup(SuggestedActionConvertToBroadcastGroup)
 
+    /// Suggests the user to set a 2-step verification password to be able to log in again
+    case suggestedActionSetPassword(SuggestedActionSetPassword)
+
 
     private enum Kind: String, Codable {
         case suggestedActionEnableArchiveAndMuteNewChats
@@ -33,6 +36,7 @@ public enum SuggestedAction: Codable {
         case suggestedActionCheckPhoneNumber
         case suggestedActionSeeTicksHint
         case suggestedActionConvertToBroadcastGroup
+        case suggestedActionSetPassword
     }
 
     public init(from decoder: Decoder) throws {
@@ -50,6 +54,9 @@ public enum SuggestedAction: Codable {
         case .suggestedActionConvertToBroadcastGroup:
             let value = try SuggestedActionConvertToBroadcastGroup(from: decoder)
             self = .suggestedActionConvertToBroadcastGroup(value)
+        case .suggestedActionSetPassword:
+            let value = try SuggestedActionSetPassword(from: decoder)
+            self = .suggestedActionSetPassword(value)
         }
     }
 
@@ -67,6 +74,9 @@ public enum SuggestedAction: Codable {
         case .suggestedActionConvertToBroadcastGroup(let value):
             try container.encode(Kind.suggestedActionConvertToBroadcastGroup, forKey: .type)
             try value.encode(to: encoder)
+        case .suggestedActionSetPassword(let value):
+            try container.encode(Kind.suggestedActionSetPassword, forKey: .type)
+            try value.encode(to: encoder)
         }
     }
 }
@@ -75,11 +85,23 @@ public enum SuggestedAction: Codable {
 public struct SuggestedActionConvertToBroadcastGroup: Codable {
 
     /// Supergroup identifier
-    public let supergroupId: Int
+    public let supergroupId: Int64
 
 
-    public init(supergroupId: Int) {
+    public init(supergroupId: Int64) {
         self.supergroupId = supergroupId
+    }
+}
+
+/// Suggests the user to set a 2-step verification password to be able to log in again
+public struct SuggestedActionSetPassword: Codable {
+
+    /// The number of days to pass between consecutive authorizations if the user declines to set password
+    public let authorizationDelay: Int
+
+
+    public init(authorizationDelay: Int) {
+        self.authorizationDelay = authorizationDelay
     }
 }
 

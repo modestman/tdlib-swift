@@ -14,7 +14,7 @@ public struct SetGameScore: Codable {
     /// The chat to which the message with the game belongs
     public let chatId: Int64?
 
-    /// True, if the message should be edited
+    /// True, if the message needs to be edited
     public let editMessage: Bool?
 
     /// Pass true to update the score even if it decreases. If the score is 0, the user will be deleted from the high score table
@@ -27,7 +27,7 @@ public struct SetGameScore: Codable {
     public let score: Int?
 
     /// User identifier
-    public let userId: Int?
+    public let userId: Int64?
 
 
     public init(
@@ -36,7 +36,7 @@ public struct SetGameScore: Codable {
         force: Bool?,
         messageId: Int64?,
         score: Int?,
-        userId: Int?
+        userId: Int64?
     ) {
         self.chatId = chatId
         self.editMessage = editMessage

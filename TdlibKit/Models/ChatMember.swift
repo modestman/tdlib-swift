@@ -8,11 +8,11 @@
 import Foundation
 
 
-/// Information about a user or a chat as a member of another chat
+/// Describes a user or a chat as a member of another chat
 public struct ChatMember: Codable {
 
     /// Identifier of a user that invited/promoted/banned this member in the chat; 0 if unknown
-    public let inviterUserId: Int
+    public let inviterUserId: Int64
 
     /// Point in time (Unix timestamp) when the user joined the chat
     public let joinedChatDate: Int
@@ -25,7 +25,7 @@ public struct ChatMember: Codable {
 
 
     public init(
-        inviterUserId: Int,
+        inviterUserId: Int64,
         joinedChatDate: Int,
         memberId: MessageSender,
         status: ChatMemberStatus

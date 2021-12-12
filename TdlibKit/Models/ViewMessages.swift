@@ -14,7 +14,7 @@ public struct ViewMessages: Codable {
     /// Chat identifier
     public let chatId: Int64?
 
-    /// True, if messages in closed chats should be marked as read by the request
+    /// True, if messages in closed chats must be marked as read by the request
     public let forceRead: Bool?
 
     /// The identifiers of the messages being viewed

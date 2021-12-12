@@ -11,7 +11,7 @@ import Foundation
 /// Optimizes storage usage, i.e. deletes some files and returns new storage usage statistics. Secret thumbnails can't be deleted
 public struct OptimizeStorage: Codable {
 
-    /// If not empty, only files from the given chats are considered. Use 0 as chat identifier to delete files not belonging to any chat (e.g., profile photos)
+    /// If non-empty, only files from the given chats are considered. Use 0 as chat identifier to delete files not belonging to any chat (e.g., profile photos)
     public let chatIds: [Int64]?
 
     /// Same as in getStorageStatistics. Affects only returned statistics
@@ -20,10 +20,10 @@ public struct OptimizeStorage: Codable {
     /// Limit on the total count of files after deletion. Pass -1 to use the default limit
     public let count: Int?
 
-    /// If not empty, files from the given chats are excluded. Use 0 as chat identifier to exclude all files not belonging to any chat (e.g., profile photos)
+    /// If non-empty, files from the given chats are excluded. Use 0 as chat identifier to exclude all files not belonging to any chat (e.g., profile photos)
     public let excludeChatIds: [Int64]?
 
-    /// If not empty, only files with the given type(s) are considered. By default, all types except thumbnails, profile photos, stickers and wallpapers are deleted
+    /// If non-empty, only files with the given types are considered. By default, all types except thumbnails, profile photos, stickers and wallpapers are deleted
     public let fileTypes: [FileType]?
 
     /// The amount of time after the creation of a file during which it can't be deleted, in seconds. Pass -1 to use the default value

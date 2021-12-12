@@ -17,13 +17,13 @@ public struct EditInlineMessageLiveLocation: Codable {
     /// Inline message identifier
     public let inlineMessageId: String?
 
-    /// New location content of the message; may be null. Pass null to stop sharing the live location
+    /// New location content of the message; pass null to stop sharing the live location
     public let location: Location?
 
     /// The new maximum distance for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled
     public let proximityAlertRadius: Int?
 
-    /// The new message reply markup
+    /// The new message reply markup; pass null if none
     public let replyMarkup: ReplyMarkup?
 
 

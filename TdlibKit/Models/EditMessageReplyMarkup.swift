@@ -17,7 +17,7 @@ public struct EditMessageReplyMarkup: Codable {
     /// Identifier of the message
     public let messageId: Int64?
 
-    /// The new message reply markup
+    /// The new message reply markup; pass null if none
     public let replyMarkup: ReplyMarkup?
 
 

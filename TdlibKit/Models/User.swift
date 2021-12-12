@@ -18,7 +18,7 @@ public struct User: Codable {
     public let haveAccess: Bool
 
     /// User identifier
-    public let id: Int
+    public let id: Int64
 
     /// The user is a contact of the current user
     public let isContact: Bool
@@ -66,7 +66,7 @@ public struct User: Codable {
     public init(
         firstName: String,
         haveAccess: Bool,
-        id: Int,
+        id: Int64,
         isContact: Bool,
         isFake: Bool,
         isMutualContact: Bool,

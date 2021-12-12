@@ -23,13 +23,13 @@ public struct ForwardMessages: Codable {
     /// If true, messages will not be forwarded and instead fake messages will be returned
     public let onlyPreview: Bool?
 
-    /// Options to be used to send the messages
+    /// Options to be used to send the messages; pass null to use default options
     public let options: MessageSendOptions?
 
     /// If true, media caption of message copies will be removed. Ignored if send_copy is false
     public let removeCaption: Bool?
 
-    /// If true, content of the messages will be copied without links to the original messages. Always true if the messages are forwarded to a secret chat
+    /// If true, content of the messages will be copied without reference to the original sender. Always true if the messages are forwarded to a secret chat or are local
     public let sendCopy: Bool?
 
 

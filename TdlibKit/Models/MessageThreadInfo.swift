@@ -23,7 +23,7 @@ public struct MessageThreadInfo: Codable {
     /// The messages from which the thread starts. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id)
     public let messages: [Message]
 
-    /// Contains information about the message thread
+    /// Information about the message thread
     public let replyInfo: MessageReplyInfo
 
     /// Approximate number of unread messages in the message thread

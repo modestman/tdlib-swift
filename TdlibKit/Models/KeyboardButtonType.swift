@@ -11,7 +11,7 @@ import Foundation
 /// Describes a keyboard button type
 public enum KeyboardButtonType: Codable {
 
-    /// A simple button, with text that should be sent when the button is pressed
+    /// A simple button, with text that must be sent when the button is pressed
     case keyboardButtonTypeText
 
     /// A button that sends the user's phone number when pressed; available only in private chats

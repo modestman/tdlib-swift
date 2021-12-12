@@ -15,12 +15,12 @@ public struct ToggleSupergroupIsAllHistoryAvailable: Codable {
     public let isAllHistoryAvailable: Bool?
 
     /// The identifier of the supergroup
-    public let supergroupId: Int?
+    public let supergroupId: Int64?
 
 
     public init(
         isAllHistoryAvailable: Bool?,
-        supergroupId: Int?
+        supergroupId: Int64?
     ) {
         self.isAllHistoryAvailable = isAllHistoryAvailable
         self.supergroupId = supergroupId

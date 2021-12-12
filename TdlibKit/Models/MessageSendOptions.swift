@@ -17,7 +17,7 @@ public struct MessageSendOptions: Codable {
     /// Pass true if the message is sent from the background
     public let fromBackground: Bool
 
-    /// Message scheduling state. Messages sent to a secret chat, live location messages and self-destructing messages can't be scheduled
+    /// Message scheduling state; pass null to send message immediately. Messages sent to a secret chat, live location messages and self-destructing messages can't be scheduled
     public let schedulingState: MessageSchedulingState
 
 

@@ -17,7 +17,7 @@ public struct SearchCallMessages: Codable {
     /// The maximum number of messages to be returned; up to 100. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
     public let limit: Int?
 
-    /// If true, returns only messages with missed calls
+    /// If true, returns only messages with missed/declined calls
     public let onlyMissed: Bool?
 
 

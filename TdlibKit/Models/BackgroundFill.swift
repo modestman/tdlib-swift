@@ -77,7 +77,7 @@ public struct BackgroundFillGradient: Codable {
     /// A bottom color of the background in the RGB24 format
     public let bottomColor: Int
 
-    /// Clockwise rotation angle of the gradient, in degrees; 0-359. Should be always divisible by 45
+    /// Clockwise rotation angle of the gradient, in degrees; 0-359. Must be always divisible by 45
     public let rotationAngle: Int
 
     /// A top color of the background in the RGB24 format

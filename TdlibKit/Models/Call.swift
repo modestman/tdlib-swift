@@ -24,7 +24,7 @@ public struct Call: Codable {
     public let state: CallState
 
     /// Peer user identifier
-    public let userId: Int
+    public let userId: Int64
 
 
     public init(
@@ -32,7 +32,7 @@ public struct Call: Codable {
         isOutgoing: Bool,
         isVideo: Bool,
         state: CallState,
-        userId: Int
+        userId: Int64
     ) {
         self.id = id
         self.isOutgoing = isOutgoing

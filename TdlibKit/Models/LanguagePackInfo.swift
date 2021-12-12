@@ -11,7 +11,7 @@ import Foundation
 /// Contains information about a language pack
 public struct LanguagePackInfo: Codable {
 
-    /// Identifier of a base language pack; may be empty. If a string is missed in the language pack, then it should be fetched from base language pack. Unsupported in custom language packs
+    /// Identifier of a base language pack; may be empty. If a string is missed in the language pack, then it must be fetched from base language pack. Unsupported in custom language packs
     public let baseLanguagePackId: String
 
     /// Unique language pack identifier

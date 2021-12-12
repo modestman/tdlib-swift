@@ -52,7 +52,7 @@ public enum NetworkStatisticsEntry: Codable {
 /// Contains information about the total amount of data that was used to send and receive files
 public struct NetworkStatisticsEntryFile: Codable {
 
-    /// Type of the file the data is part of
+    /// Type of the file the data is part of; pass null if the data isn't related to files
     public let fileType: FileType
 
     /// Type of the network the data was sent through. Call setNetworkType to maintain the actual network type

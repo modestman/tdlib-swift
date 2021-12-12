@@ -14,11 +14,11 @@ public struct GroupCall: Codable {
     /// True, if the current user can manage the group call
     public let canBeManaged: Bool
 
-    /// True, if the current user can enable or disable mute_new_participants setting
-    public let canChangeMuteNewParticipants: Bool
-
     /// True, if the current user can broadcast video or share screen
     public let canEnableVideo: Bool
+
+    /// True, if the current user can enable or disable mute_new_participants setting
+    public let canToggleMuteNewParticipants: Bool
 
     /// Call duration, in seconds; for ended calls only
     public let duration: Int
@@ -71,8 +71,8 @@ public struct GroupCall: Codable {
 
     public init(
         canBeManaged: Bool,
-        canChangeMuteNewParticipants: Bool,
         canEnableVideo: Bool,
+        canToggleMuteNewParticipants: Bool,
         duration: Int,
         enabledStartNotification: Bool,
         id: Int,
@@ -91,8 +91,8 @@ public struct GroupCall: Codable {
         title: String
     ) {
         self.canBeManaged = canBeManaged
-        self.canChangeMuteNewParticipants = canChangeMuteNewParticipants
         self.canEnableVideo = canEnableVideo
+        self.canToggleMuteNewParticipants = canToggleMuteNewParticipants
         self.duration = duration
         self.enabledStartNotification = enabledStartNotification
         self.id = id

@@ -17,7 +17,7 @@ public struct AnswerCallbackQuery: Codable {
     /// Identifier of the callback query
     public let callbackQueryId: TdInt64?
 
-    /// If true, an alert should be shown to the user instead of a toast notification
+    /// If true, an alert must be shown to the user instead of a toast notification
     public let showAlert: Bool?
 
     /// Text of the answer

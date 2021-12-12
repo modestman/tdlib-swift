@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// Describes actions which should be possible to do through a chat action bar
+/// Describes actions which must be possible to do through a chat action bar
 public enum ChatActionBar: Codable {
 
     /// The chat can be reported as spam using the method reportChat with the reason chatReportReasonSpam
@@ -17,10 +17,10 @@ public enum ChatActionBar: Codable {
     /// The chat is a location-based supergroup, which can be reported as having unrelated location using the method reportChat with the reason chatReportReasonUnrelatedLocation
     case chatActionBarReportUnrelatedLocation
 
-    /// The chat is a recently created group chat, to which new members can be invited
+    /// The chat is a recently created group chat to which new members can be invited
     case chatActionBarInviteMembers
 
-    /// The chat is a private or secret chat, which can be reported using the method reportChat, or the other user can be blocked using the method blockUser, or the other user can be added to the contact list using the method addContact
+    /// The chat is a private or secret chat, which can be reported using the method reportChat, or the other user can be blocked using the method toggleMessageSenderIsBlocked, or the other user can be added to the contact list using the method addContact
     case chatActionBarReportAddBlock(ChatActionBarReportAddBlock)
 
     /// The chat is a private or secret chat and the other user can be added to the contact list using the method addContact
@@ -28,6 +28,9 @@ public enum ChatActionBar: Codable {
 
     /// The chat is a private or secret chat with a mutual contact and the user's phone number can be shared with the other user using the method sharePhoneNumber
     case chatActionBarSharePhoneNumber
+
+    /// The chat is a private chat with an administrator of a chat to which the user sent join request
+    case chatActionBarJoinRequest(ChatActionBarJoinRequest)
 
 
     private enum Kind: String, Codable {
@@ -37,6 +40,7 @@ public enum ChatActionBar: Codable {
         case chatActionBarReportAddBlock
         case chatActionBarAddContact
         case chatActionBarSharePhoneNumber
+        case chatActionBarJoinRequest
     }
 
     public init(from decoder: Decoder) throws {
@@ -57,6 +61,9 @@ public enum ChatActionBar: Codable {
             self = .chatActionBarAddContact
         case .chatActionBarSharePhoneNumber:
             self = .chatActionBarSharePhoneNumber
+        case .chatActionBarJoinRequest:
+            let value = try ChatActionBarJoinRequest(from: decoder)
+            self = .chatActionBarJoinRequest(value)
         }
     }
 
@@ -77,6 +84,9 @@ public enum ChatActionBar: Codable {
             try container.encode(Kind.chatActionBarAddContact, forKey: .type)
         case .chatActionBarSharePhoneNumber:
             try container.encode(Kind.chatActionBarSharePhoneNumber, forKey: .type)
+        case .chatActionBarJoinRequest(let value):
+            try container.encode(Kind.chatActionBarJoinRequest, forKey: .type)
+            try value.encode(to: encoder)
         }
     }
 }
@@ -93,7 +103,7 @@ public struct ChatActionBarReportSpam: Codable {
     }
 }
 
-/// The chat is a private or secret chat, which can be reported using the method reportChat, or the other user can be blocked using the method blockUser, or the other user can be added to the contact list using the method addContact
+/// The chat is a private or secret chat, which can be reported using the method reportChat, or the other user can be blocked using the method toggleMessageSenderIsBlocked, or the other user can be added to the contact list using the method addContact
 public struct ChatActionBarReportAddBlock: Codable {
 
     /// If true, the chat was automatically archived and can be moved back to the main chat list using addChatToList simultaneously with setting chat notification settings to default using setChatNotificationSettings
@@ -109,6 +119,30 @@ public struct ChatActionBarReportAddBlock: Codable {
     ) {
         self.canUnarchive = canUnarchive
         self.distance = distance
+    }
+}
+
+/// The chat is a private chat with an administrator of a chat to which the user sent join request
+public struct ChatActionBarJoinRequest: Codable {
+
+    /// True, if the join request was sent to a channel chat
+    public let isChannel: Bool
+
+    /// Point in time (Unix timestamp) when the join request was sent
+    public let requestDate: Int
+
+    /// Title of the chat to which the join request was sent
+    public let title: String
+
+
+    public init(
+        isChannel: Bool,
+        requestDate: Int,
+        title: String
+    ) {
+        self.isChannel = isChannel
+        self.requestDate = requestDate
+        self.title = title
     }
 }
 

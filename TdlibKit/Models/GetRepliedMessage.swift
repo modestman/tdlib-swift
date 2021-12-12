@@ -14,7 +14,7 @@ public struct GetRepliedMessage: Codable {
     /// Identifier of the chat the message belongs to
     public let chatId: Int64?
 
-    /// Identifier of the message reply to which to get
+    /// Identifier of the reply message
     public let messageId: Int64?
 
 

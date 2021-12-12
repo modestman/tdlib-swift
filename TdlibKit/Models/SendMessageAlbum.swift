@@ -20,7 +20,7 @@ public struct SendMessageAlbum: Codable {
     /// If not 0, a message thread identifier in which the messages will be sent
     public let messageThreadId: Int64?
 
-    /// Options to be used to send the messages
+    /// Options to be used to send the messages; pass null to use default options
     public let options: MessageSendOptions?
 
     /// Identifier of a message to reply to or 0

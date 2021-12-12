@@ -41,12 +41,6 @@ public enum SearchMessagesFilter: Codable {
     /// Returns only messages containing chat photos
     case searchMessagesFilterChatPhoto
 
-    /// Returns only call messages
-    case searchMessagesFilterCall
-
-    /// Returns only incoming call messages with missed/declined discard reasons
-    case searchMessagesFilterMissedCall
-
     /// Returns only video note messages
     case searchMessagesFilterVideoNote
 
@@ -77,8 +71,6 @@ public enum SearchMessagesFilter: Codable {
         case searchMessagesFilterPhotoAndVideo
         case searchMessagesFilterUrl
         case searchMessagesFilterChatPhoto
-        case searchMessagesFilterCall
-        case searchMessagesFilterMissedCall
         case searchMessagesFilterVideoNote
         case searchMessagesFilterVoiceAndVideoNote
         case searchMessagesFilterMention
@@ -111,10 +103,6 @@ public enum SearchMessagesFilter: Codable {
             self = .searchMessagesFilterUrl
         case .searchMessagesFilterChatPhoto:
             self = .searchMessagesFilterChatPhoto
-        case .searchMessagesFilterCall:
-            self = .searchMessagesFilterCall
-        case .searchMessagesFilterMissedCall:
-            self = .searchMessagesFilterMissedCall
         case .searchMessagesFilterVideoNote:
             self = .searchMessagesFilterVideoNote
         case .searchMessagesFilterVoiceAndVideoNote:
@@ -153,10 +141,6 @@ public enum SearchMessagesFilter: Codable {
             try container.encode(Kind.searchMessagesFilterUrl, forKey: .type)
         case .searchMessagesFilterChatPhoto:
             try container.encode(Kind.searchMessagesFilterChatPhoto, forKey: .type)
-        case .searchMessagesFilterCall:
-            try container.encode(Kind.searchMessagesFilterCall, forKey: .type)
-        case .searchMessagesFilterMissedCall:
-            try container.encode(Kind.searchMessagesFilterMissedCall, forKey: .type)
         case .searchMessagesFilterVideoNote:
             try container.encode(Kind.searchMessagesFilterVideoNote, forKey: .type)
         case .searchMessagesFilterVoiceAndVideoNote:

@@ -15,12 +15,12 @@ public struct CreatePrivateChat: Codable {
     public let force: Bool?
 
     /// User identifier
-    public let userId: Int?
+    public let userId: Int64?
 
 
     public init(
         force: Bool?,
-        userId: Int?
+        userId: Int64?
     ) {
         self.force = force
         self.userId = userId

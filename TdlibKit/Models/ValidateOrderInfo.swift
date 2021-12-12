@@ -20,7 +20,7 @@ public struct ValidateOrderInfo: Codable {
     /// Message identifier
     public let messageId: Int64?
 
-    /// The order information, provided by the user
+    /// The order information, provided by the user; pass null if empty
     public let orderInfo: OrderInfo?
 
 

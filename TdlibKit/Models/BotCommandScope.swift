@@ -122,12 +122,12 @@ public struct BotCommandScopeChatMember: Codable {
     public let chatId: Int64
 
     /// User identifier
-    public let userId: Int
+    public let userId: Int64
 
 
     public init(
         chatId: Int64,
-        userId: Int
+        userId: Int64
     ) {
         self.chatId = chatId
         self.userId = userId

@@ -78,7 +78,7 @@ public struct UserTypeBot: Codable {
     /// True, if the bot supports inline queries
     public let isInline: Bool
 
-    /// True, if the location of the user should be sent with every inline query to this bot
+    /// True, if the location of the user is expected to be sent with every inline query to this bot
     public let needLocation: Bool
 
 

@@ -28,6 +28,9 @@ public struct UserFullInfo: Codable {
     /// True, if the user can't be called due to their privacy settings
     public let hasPrivateCalls: Bool
 
+    /// True, if the user can't be linked in forwarded messages due to their privacy settings
+    public let hasPrivateForwards: Bool
+
     /// True, if the user is blocked by the current user
     public let isBlocked: Bool
 
@@ -51,6 +54,7 @@ public struct UserFullInfo: Codable {
         description: String,
         groupInCommonCount: Int,
         hasPrivateCalls: Bool,
+        hasPrivateForwards: Bool,
         isBlocked: Bool,
         needPhoneNumberPrivacyException: Bool,
         photo: ChatPhoto?,
@@ -63,6 +67,7 @@ public struct UserFullInfo: Codable {
         self.description = description
         self.groupInCommonCount = groupInCommonCount
         self.hasPrivateCalls = hasPrivateCalls
+        self.hasPrivateForwards = hasPrivateForwards
         self.isBlocked = isBlocked
         self.needPhoneNumberPrivacyException = needPhoneNumberPrivacyException
         self.photo = photo

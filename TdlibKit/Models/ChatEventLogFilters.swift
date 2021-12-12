@@ -11,41 +11,41 @@ import Foundation
 /// Represents a set of filters used to obtain a chat event log
 public struct ChatEventLogFilters: Codable {
 
-    /// True, if changes in chat information should be returned
+    /// True, if changes in chat information need to be returned
     public let infoChanges: Bool
 
-    /// True, if changes to invite links should be returned
+    /// True, if changes to invite links need to be returned
     public let inviteLinkChanges: Bool
 
-    /// True, if invited member events should be returned
+    /// True, if invited member events need to be returned
     public let memberInvites: Bool
 
-    /// True, if members joining events should be returned
+    /// True, if members joining events need to be returned
     public let memberJoins: Bool
 
-    /// True, if members leaving events should be returned
+    /// True, if members leaving events need to be returned
     public let memberLeaves: Bool
 
-    /// True, if member promotion/demotion events should be returned
+    /// True, if member promotion/demotion events need to be returned
     public let memberPromotions: Bool
 
-    /// True, if member restricted/unrestricted/banned/unbanned events should be returned
+    /// True, if member restricted/unrestricted/banned/unbanned events need to be returned
     public let memberRestrictions: Bool
 
-    /// True, if message deletions should be returned
+    /// True, if message deletions need to be returned
     public let messageDeletions: Bool
 
-    /// True, if message edits should be returned
+    /// True, if message edits need to be returned
     public let messageEdits: Bool
 
-    /// True, if pin/unpin events should be returned
+    /// True, if pin/unpin events need to be returned
     public let messagePins: Bool
 
-    /// True, if changes in chat settings should be returned
+    /// True, if changes in chat settings need to be returned
     public let settingChanges: Bool
 
-    /// True, if voice chat actions should be returned
-    public let voiceChatChanges: Bool
+    /// True, if video chat actions need to be returned
+    public let videoChatChanges: Bool
 
 
     public init(
@@ -60,7 +60,7 @@ public struct ChatEventLogFilters: Codable {
         messageEdits: Bool,
         messagePins: Bool,
         settingChanges: Bool,
-        voiceChatChanges: Bool
+        videoChatChanges: Bool
     ) {
         self.infoChanges = infoChanges
         self.inviteLinkChanges = inviteLinkChanges
@@ -73,7 +73,7 @@ public struct ChatEventLogFilters: Codable {
         self.messageEdits = messageEdits
         self.messagePins = messagePins
         self.settingChanges = settingChanges
-        self.voiceChatChanges = voiceChatChanges
+        self.videoChatChanges = videoChatChanges
     }
 }
 
